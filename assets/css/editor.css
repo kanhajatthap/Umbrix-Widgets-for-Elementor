@@ -1,0 +1,52 @@
+.es-badge {
+    background: #e91e63;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1.2;
+    padding: 2px 6px;
+    margin-left: 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    top: -1px;
+}
+
+.elementor-panel-elements .elementor-widget .es-badge,
+.elementor-panel-elements .elementor-element .es-badge {
+    opacity: 1;
+    visibility: visible;
+}
+
+.elementor-panel-elements .bdea-icon-wrapper {
+    position: relative;
+}
+
+.elementor-panel-elements .bdea-icon-wrapper .eicon-skill-bar,
+.elementor-panel-elements .bdea-icon-wrapper .eicon-table {
+    position: relative;
+}
+
+div#elementor-panel-elements-wrapper .eicon-skill-bar::after,
+div#elementor-panel-elements-wrapper .eicon-table::after,
+div#elementor-panel-elements-wrapper .eicon-slider-push::after {
+    content: "ES";
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #fff;
+    background: #cdcfd2;
+    padding: 2px;
+    border-radius: 2px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 2;
+}

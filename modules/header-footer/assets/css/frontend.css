@@ -1,0 +1,21 @@
+.bdea-hf-header,
+.bdea-hf-footer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.bdea-hf-header {
+    position: relative;
+    z-index: 100;
+}
+
+.bdea-hf-footer {
+    position: relative;
+    z-index: 100;
+}
+
+.elementor-editor-active .bdea-hf-header,
+.elementor-editor-active .bdea-hf-footer {
+    display: none;
+}
