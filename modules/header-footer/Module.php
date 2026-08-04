@@ -50,8 +50,13 @@ class Module {
 
     public static function sanitize_module_status( $input ) {
         $defaults = self::get_default_module_status();
-        $output   = [];
-        $input    = is_array( $input ) ? $input : [];
+
+        if ( ! is_array( $input ) || empty( $input ) ) {
+            $current = get_option( 'bdea_module_status', $defaults );
+            return wp_parse_args( is_array( $current ) ? $current : [], $defaults );
+        }
+
+        $output = [];
 
         foreach ( $defaults as $key => $value ) {
             $output[ $key ] = ! empty( $input[ $key ] ) ? 1 : 0;

@@ -11,7 +11,8 @@ class TemplateRenderer {
     private $condition_manager;
     private $cache;
 
-    private $rendered = [];
+    private $rendered     = [];
+    private $match_cache  = [];
 
     public function __construct( ConditionManager $condition_manager, Cache $cache ) {
         $this->condition_manager = $condition_manager;
@@ -19,11 +20,8 @@ class TemplateRenderer {
     }
 
     public function get_matching_template_id( $type ) {
-        $cache_key = 'matching_' . $type;
-        $cached    = $this->cache->get( $cache_key );
-
-        if ( false !== $cached ) {
-            return $cached;
+        if ( isset( $this->match_cache[ $type ] ) ) {
+            return $this->match_cache[ $type ];
         }
 
         $template_ids  = $this->get_templates_by_type( $type );
@@ -42,7 +40,7 @@ class TemplateRenderer {
             }
         }
 
-        $this->cache->set( $cache_key, $matched_id );
+        $this->match_cache[ $type ] = $matched_id;
         return $matched_id;
     }
 

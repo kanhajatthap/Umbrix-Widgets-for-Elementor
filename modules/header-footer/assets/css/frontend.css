@@ -15,7 +15,42 @@
     z-index: 100;
 }
 
+.bdea-hf-announcement {
+    position: relative;
+    z-index: 10002;
+    width: 100%;
+}
+
+.bdea-hf-announcement-close {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 6px;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.bdea-hf-announcement-close:hover {
+    opacity: 1;
+}
+
+.bdea-hf-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+}
+
 .elementor-editor-active .bdea-hf-header,
-.elementor-editor-active .bdea-hf-footer {
+.elementor-editor-active .bdea-hf-footer,
+.elementor-editor-active .bdea-hf-announcement,
+.elementor-editor-active .bdea-hf-bottom-bar {
     display: none;
 }

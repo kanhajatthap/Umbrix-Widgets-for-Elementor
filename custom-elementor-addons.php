@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ElementStack Elementor Addons
  * Description: Custom widgets and UI modules for Elementor.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: ElementStack
  */
 
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 define( 'BDEA_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BDEA_URL', plugin_dir_url( __FILE__ ) );
-define( 'BDEA_VERSION', '1.0.0' );
+define( 'BDEA_VERSION', '1.1.0' );
 
 /**
  * PSR-4 autoloader for BDEA classes.
@@ -146,8 +146,13 @@ add_action( 'elementor/widgets/register', 'bdea_register_widgets' );
 
 function bdea_sanitize_widget_status( $input ) {
     $defaults = bdea_get_default_widget_status();
-    $output   = [];
-    $input    = is_array( $input ) ? $input : [];
+
+    if ( ! is_array( $input ) || empty( $input ) ) {
+        $current = get_option( 'bdea_widget_status', $defaults );
+        return wp_parse_args( is_array( $current ) ? $current : [], $defaults );
+    }
+
+    $output = [];
 
     foreach ( $defaults as $key => $value ) {
         $output[ $key ] = ! empty( $input[ $key ] ) ? 1 : 0;
@@ -204,9 +209,16 @@ function bdea_enqueue_admin_assets( $hook ) {
     }
 
     wp_enqueue_style(
+        'bdea-admin-font',
+        'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
+        [],
+        BDEA_VERSION
+    );
+
+    wp_enqueue_style(
         'bdea-admin-style',
         BDEA_URL . 'assets/css/admin.css',
-        [],
+        [ 'bdea-admin-font' ],
         BDEA_VERSION
     );
 }
@@ -286,11 +298,14 @@ function bdea_render_admin_page() {
             </div>
 
             <div class="bdea-admin-content-grid">
-                <div class="bdea-admin-panel bdea-admin-panel-widgets">
-                    <h2 class="bdea-admin-panel-title">Widget Manager</h2>
+                <form method="post" action="options.php" class="bdea-admin-main-form">
+                    <?php settings_fields( 'bdea_options_group' ); ?>
 
-                    <form method="post" action="options.php">
-                        <?php settings_fields( 'bdea_options_group' ); ?>
+                    <input type="hidden" name="bdea_widget_status" value="" />
+                    <input type="hidden" name="bdea_module_status" value="" />
+
+                    <div class="bdea-admin-panel bdea-admin-panel-widgets">
+                        <h2 class="bdea-admin-panel-title">Widget Manager</h2>
 
                         <div class="bdea-admin-widget-list">
                             <?php foreach ( $widgets as $slug => $widget ) : ?>
@@ -299,13 +314,16 @@ function bdea_render_admin_page() {
                                 $description = isset( $descriptions[ $slug ] ) ? $descriptions[ $slug ] : '';
                                 ?>
                                 <div class="bdea-admin-widget-card">
-                                    <div class="bdea-admin-widget-icon dashicons dashicons-grid-view" aria-hidden="true"></div>
-                                    <div class="bdea-admin-widget-details">
-                                        <h3><?php echo esc_html( $widget['label'] ); ?></h3>
-                                        <p><?php echo esc_html( $description ); ?></p>
+                                    <div class="bdea-admin-widget-card-head">
+                                        <div class="bdea-admin-widget-icon dashicons dashicons-grid-view" aria-hidden="true"></div>
+                                        <div class="bdea-admin-widget-details">
+                                            <h3><?php echo esc_html( $widget['label'] ); ?></h3>
+                                            <p><?php echo esc_html( $description ); ?></p>
+                                        </div>
                                     </div>
 
                                     <div class="bdea-admin-widget-toggle-wrap">
+                                        <span class="bdea-admin-widget-state<?php echo $is_active ? ' is-on' : ' is-off'; ?>"><?php echo $is_active ? 'Active' : 'Inactive'; ?></span>
                                         <label class="bdea-switch" for="bdea_widget_status_<?php echo esc_attr( $slug ); ?>">
                                             <input
                                                 type="checkbox"
@@ -316,32 +334,29 @@ function bdea_render_admin_page() {
                                             />
                                             <span class="bdea-slider"></span>
                                         </label>
-                                        <span class="bdea-admin-widget-state"><?php echo $is_active ? 'Active' : 'Inactive'; ?></span>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
+                    </div>
 
-                        <button type="submit" class="button button-primary bdea-admin-save-btn" style="margin-top: 20px;">Save Settings</button>
-                    </form>
-                </div>
-
-                <?php
-                $module_status = get_option( 'bdea_module_status', [] );
-                $hf_enabled    = ! empty( $module_status['header_footer'] );
-                ?>
-                <div class="bdea-admin-panel" style="margin-top: 24px;">
-                    <h2 class="bdea-admin-panel-title">Modules</h2>
-                    <form method="post" action="options.php" style="margin:0;">
-                        <?php settings_fields( 'bdea_options_group' ); ?>
+                    <?php
+                    $module_status = get_option( 'bdea_module_status', [] );
+                    $hf_enabled    = ! empty( $module_status['header_footer'] );
+                    ?>
+                    <div class="bdea-admin-panel bdea-admin-panel-modules">
+                        <h2 class="bdea-admin-panel-title">Modules</h2>
                         <div class="bdea-admin-widget-list">
                             <div class="bdea-admin-widget-card">
-                                <div class="bdea-admin-widget-icon dashicons dashicons-editor-kitchensink" aria-hidden="true"></div>
-                                <div class="bdea-admin-widget-details">
-                                    <h3>Header & Footer Builder</h3>
-                                    <p>Create and manage custom header and footer templates with Elementor.</p>
+                                <div class="bdea-admin-widget-card-head">
+                                    <div class="bdea-admin-widget-icon dashicons dashicons-editor-kitchensink" aria-hidden="true"></div>
+                                    <div class="bdea-admin-widget-details">
+                                        <h3>Header & Footer Builder</h3>
+                                        <p>Create and manage custom header and footer templates with Elementor.</p>
+                                    </div>
                                 </div>
                                 <div class="bdea-admin-widget-toggle-wrap">
+                                    <span class="bdea-admin-widget-state<?php echo $hf_enabled ? ' is-on' : ' is-off'; ?>"><?php echo $hf_enabled ? 'Active' : 'Inactive'; ?></span>
                                     <label class="bdea-switch" for="bdea_module_status_header_footer">
                                         <input
                                             type="checkbox"
@@ -352,13 +367,16 @@ function bdea_render_admin_page() {
                                         />
                                         <span class="bdea-slider"></span>
                                     </label>
-                                    <span class="bdea-admin-widget-state"><?php echo $hf_enabled ? 'Active' : 'Inactive'; ?></span>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="button button-primary bdea-admin-save-btn" style="margin-top:14px;">Save Settings</button>
-                    </form>
-                </div>
+                    </div>
+
+                    <div class="bdea-admin-form-actions">
+                        <button type="submit" class="button button-primary bdea-admin-save-btn">Save Settings</button>
+                        <span class="bdea-admin-form-hint">Saves widget and module changes together</span>
+                    </div>
+                </form>
 
                 <div class="bdea-admin-sidebar">
                     <div class="bdea-admin-panel">
@@ -380,8 +398,34 @@ function bdea_render_admin_page() {
                     </div>
                 </div>
             </div>
+
+            <div class="bdea-admin-footer">
+                <span class="bdea-admin-footer-brand">ElementStack Addons</span>
+                <span class="bdea-admin-footer-note"><?php echo esc_html( $total_widgets ); ?> widgets &middot; <?php echo esc_html( $enabled_count ); ?> active &middot; Crafted for Elementor</span>
+            </div>
         </div>
     </div>
+    <script>
+    ( function () {
+        var switches = document.querySelectorAll( '.bdea-admin-wrap .bdea-switch input' );
+        switches.forEach( function ( input ) {
+            input.addEventListener( 'change', function () {
+                var card = input.closest( '.bdea-admin-widget-card' );
+                if ( ! card ) {
+                    return;
+                }
+                var state = card.querySelector( '.bdea-admin-widget-state' );
+                if ( ! state ) {
+                    return;
+                }
+                var on = input.checked;
+                state.textContent = on ? 'Active' : 'Inactive';
+                state.classList.toggle( 'is-on', on );
+                state.classList.toggle( 'is-off', ! on );
+            } );
+        } );
+    } )();
+    </script>
     <?php
 }
 

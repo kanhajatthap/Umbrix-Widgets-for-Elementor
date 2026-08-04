@@ -74,9 +74,45 @@ class ConditionManager {
         }
 
         $this->register_user_role_conditions();
+        $this->register_language_conditions();
 
         if ( class_exists( 'WooCommerce' ) ) {
             $this->register_woocommerce_conditions();
+        }
+    }
+
+    private function register_language_conditions() {
+        $has_wpml    = function_exists( 'wpml_current_language' ) || has_filter( 'wpml_active_languages' );
+        $has_polylang = function_exists( 'pll_languages_list' );
+
+        if ( ! $has_wpml && ! $has_polylang ) {
+            return;
+        }
+
+        $languages = [];
+
+        if ( $has_polylang && function_exists( 'pll_languages_list' ) ) {
+            foreach ( pll_languages_list( [ 'fields' => 'slug' ] ) as $slug ) {
+                $languages[ $slug ] = $slug;
+            }
+        }
+
+        if ( $has_wpml ) {
+            $active = apply_filters( 'wpml_active_languages', [] );
+
+            foreach ( (array) $active as $lang ) {
+                if ( isset( $lang['code'] ) ) {
+                    $languages[ $lang['code'] ] = $lang['code'];
+                }
+            }
+        }
+
+        foreach ( $languages as $code ) {
+            $this->register(
+                'language:' . $code,
+                sprintf( __( 'Language: %s', 'bdea' ), strtoupper( $code ) ),
+                __( 'Language', 'bdea' )
+            );
         }
     }
 
@@ -134,7 +170,7 @@ class ConditionManager {
 
     public function evaluate( $conditions ) {
         if ( empty( $conditions ) || ! is_array( $conditions ) ) {
-            return false;
+            return true;
         }
 
         $includes = [];
@@ -152,7 +188,13 @@ class ConditionManager {
         }
 
         if ( empty( $includes ) ) {
-            return false;
+            foreach ( $excludes as $condition_id ) {
+                if ( $this->check( $condition_id ) ) {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         $matched = false;
@@ -212,6 +254,9 @@ class ConditionManager {
 
             case 'user_role':
                 return $this->check_user_role( $parts );
+
+            case 'language':
+                return $this->check_language( $parts );
 
             case 'woocommerce':
                 return $this->check_woocommerce( $parts );
@@ -295,6 +340,24 @@ class ConditionManager {
         }
 
         return false;
+    }
+
+    private function check_language( $parts ) {
+        $code = $parts[1] ?? '';
+
+        if ( empty( $code ) ) {
+            return false;
+        }
+
+        $current = '';
+
+        if ( has_filter( 'wpml_current_language' ) ) {
+            $current = apply_filters( 'wpml_current_language', $current );
+        } elseif ( function_exists( 'pll_current_language' ) ) {
+            $current = pll_current_language();
+        }
+
+        return $current === $code;
     }
 
     private function check_woocommerce( $parts ) {

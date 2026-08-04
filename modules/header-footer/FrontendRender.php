@@ -18,8 +18,10 @@ class FrontendRender {
         $this->cache    = $cache;
 
         add_action( 'wp', [ $this, 'check_disable_theme' ] );
+        add_action( 'wp_body_open', [ $this, 'render_announcement' ], -5 );
         add_action( 'wp_body_open', [ $this, 'render_header' ], 0 );
         add_action( 'wp_footer', [ $this, 'render_footer' ], 0 );
+        add_action( 'wp_footer', [ $this, 'render_bottom_bar' ], 100 );
         add_action( 'wp_enqueue_scripts', [ $this, 'suppress_theme_css' ], 999 );
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
     }
@@ -38,7 +40,7 @@ class FrontendRender {
         $footer_id = $this->renderer->get_matching_template_id( 'footer' );
 
         foreach ( [ $header_id, $footer_id ] as $id ) {
-            if ( $id && 'yes' === get_post_meta( $id, '_bdea_hf_disable_theme', true ) ) {
+            if ( $id && $this->check_schedule( $id ) && 'yes' === $this->get_setting( $id, 'disable_theme' ) ) {
                 $this->disable_theme = true;
                 break;
             }
@@ -60,6 +62,18 @@ class FrontendRender {
                 display: none !important;
             }
         ' );
+    }
+
+    private function get_setting( $post_id, $key, $default = '' ) {
+        $page_settings = get_post_meta( $post_id, '_elementor_page_settings', true );
+
+        if ( is_array( $page_settings ) && array_key_exists( $key, $page_settings ) ) {
+            return '' !== $page_settings[ $key ] ? $page_settings[ $key ] : $default;
+        }
+
+        $legacy = get_post_meta( $post_id, '_bdea_hf_' . $key, true );
+
+        return '' !== $legacy ? $legacy : $default;
     }
 
     private function check_device_visibility( $post_id ) {
@@ -96,57 +110,177 @@ class FrontendRender {
         return $detect;
     }
 
-    public function render_header() {
-        if ( ! class_exists( '\Elementor\Plugin' ) ) {
+    public function render_announcement() {
+        if ( ! $this->can_render() ) {
             return;
         }
 
-        $plugin = \Elementor\Plugin::$instance;
+        $post_id = $this->renderer->get_matching_template_id( 'announcement' );
 
-        if ( $plugin->preview->is_preview_mode() || $plugin->editor->is_edit_mode() ) {
+        if ( ! $post_id || ! $this->check_schedule( $post_id ) || ! $this->check_device_visibility( $post_id ) ) {
+            return;
+        }
+
+        if ( $this->is_announcement_dismissed( $post_id ) ) {
+            return;
+        }
+
+        $dismissible = 'yes' === $this->get_setting( $post_id, 'dismissible' );
+        $cookie_days = max( 1, (int) $this->get_setting( $post_id, 'cookie_days', 1 ) );
+        $classes     = 'bdea-hf-announcement';
+
+        echo '<div class="' . esc_attr( $classes ) . '" data-id="' . esc_attr( $post_id ) . '">';
+        $this->renderer->render( $post_id );
+
+        if ( $dismissible ) {
+            echo '<button type="button" class="bdea-hf-announcement-close" aria-label="' . esc_attr__( 'Dismiss', 'bdea' ) . '" data-days="' . esc_attr( $cookie_days ) . '">';
+            echo '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7"/></svg>';
+            echo '</button>';
+        }
+
+        echo '</div>';
+    }
+
+    public function render_header() {
+        if ( ! $this->can_render() ) {
             return;
         }
 
         $post_id = $this->renderer->get_matching_template_id( 'header' );
 
-        if ( $post_id && $this->check_device_visibility( $post_id ) ) {
-            $sticky      = get_post_meta( $post_id, '_bdea_hf_sticky', true ) === 'yes';
-            $scroll_anim = get_post_meta( $post_id, '_bdea_hf_scroll_animation', true ) === 'yes';
-            $classes     = 'bdea-hf-header';
-            $attrs       = '';
-
-            if ( $sticky ) {
-                $classes .= ' bdea-hf-sticky';
-            }
-
-            if ( $scroll_anim ) {
-                $classes .= ' bdea-hf-scroll-anim';
-            }
-
-            echo '<header class="' . esc_attr( $classes ) . '"' . $attrs . '>';
-            $this->renderer->render( $post_id );
-            echo '</header>';
-        }
-    }
-
-    public function render_footer() {
-        if ( ! class_exists( '\Elementor\Plugin' ) ) {
+        if ( ! $post_id || ! $this->check_schedule( $post_id ) || ! $this->check_device_visibility( $post_id ) ) {
             return;
         }
 
-        $plugin = \Elementor\Plugin::$instance;
+        $sticky       = 'yes' === $this->get_setting( $post_id, 'sticky' );
+        $transparent  = 'yes' === $this->get_setting( $post_id, 'transparent' );
+        $shrink       = 'yes' === $this->get_setting( $post_id, 'sticky_shrink' );
+        $hide_scroll  = 'yes' === $this->get_setting( $post_id, 'sticky_hide_scroll' );
+        $logo_switch  = 'yes' === $this->get_setting( $post_id, 'logo_switcher' );
+        $scroll_anim  = 'yes' === $this->get_setting( $post_id, 'scroll_animation' );
+        $offset       = absint( $this->get_setting( $post_id, 'sticky_offset', 0 ) );
 
-        if ( $plugin->preview->is_preview_mode() || $plugin->editor->is_edit_mode() ) {
+        $classes = 'bdea-hf-header';
+
+        if ( $sticky ) {
+            $classes .= ' bdea-hf-sticky';
+        }
+
+        if ( $transparent ) {
+            $classes .= ' bdea-hf-transparent';
+        }
+
+        if ( $shrink ) {
+            $classes .= ' bdea-hf-shrink';
+        }
+
+        if ( $hide_scroll ) {
+            $classes .= ' bdea-hf-hide-scroll';
+        }
+
+        if ( $logo_switch ) {
+            $classes .= ' bdea-hf-logo-switch';
+        }
+
+        if ( $scroll_anim ) {
+            $classes .= ' bdea-hf-scroll-anim';
+        }
+
+        $attrs = ' data-id="' . esc_attr( $post_id ) . '"';
+
+        if ( $offset > 0 ) {
+            $attrs .= ' data-offset="' . esc_attr( $offset ) . '"';
+        }
+
+        echo '<header class="' . esc_attr( $classes ) . '"' . $attrs . '>';
+        $this->renderer->render( $post_id );
+        echo '</header>';
+    }
+
+    public function render_footer() {
+        if ( ! $this->can_render() ) {
             return;
         }
 
         $post_id = $this->renderer->get_matching_template_id( 'footer' );
 
-        if ( $post_id && $this->check_device_visibility( $post_id ) ) {
-            echo '<footer class="bdea-hf-footer">';
-            $this->renderer->render( $post_id );
-            echo '</footer>';
+        if ( ! $post_id || ! $this->check_schedule( $post_id ) || ! $this->check_device_visibility( $post_id ) ) {
+            return;
         }
+
+        echo '<footer class="bdea-hf-footer">';
+        $this->renderer->render( $post_id );
+        echo '</footer>';
+    }
+
+    public function render_bottom_bar() {
+        if ( ! $this->can_render() ) {
+            return;
+        }
+
+        $post_id = $this->renderer->get_matching_template_id( 'bottom_bar' );
+
+        if ( ! $post_id || ! $this->check_schedule( $post_id ) || ! $this->check_device_visibility( $post_id ) ) {
+            return;
+        }
+
+        echo '<div class="bdea-hf-bottom-bar">';
+        $this->renderer->render( $post_id );
+        echo '</div>';
+    }
+
+    private function can_render() {
+        if ( ! class_exists( '\Elementor\Plugin' ) ) {
+            return false;
+        }
+
+        $plugin = \Elementor\Plugin::$instance;
+
+        if ( $plugin->preview->is_preview_mode() || $plugin->editor->is_edit_mode() ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function check_schedule( $post_id ) {
+        if ( 'yes' !== $this->get_setting( $post_id, 'schedule_enabled' ) ) {
+            return true;
+        }
+
+        $now   = current_time( 'timestamp' );
+        $start = $this->schedule_timestamp( $this->get_setting( $post_id, 'schedule_start' ) );
+        $end   = $this->schedule_timestamp( $this->get_setting( $post_id, 'schedule_end' ) );
+
+        if ( $start && $now < $start ) {
+            return false;
+        }
+
+        if ( $end && $now > $end ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function schedule_timestamp( $value ) {
+        if ( empty( $value ) ) {
+            return 0;
+        }
+
+        if ( is_numeric( $value ) ) {
+            return (int) $value;
+        }
+
+        $timestamp = strtotime( $value );
+
+        return false === $timestamp ? 0 : $timestamp;
+    }
+
+    private function is_announcement_dismissed( $post_id ) {
+        $cookie_name = 'bdea_hf_dismiss_' . (int) $post_id;
+
+        return isset( $_COOKIE[ $cookie_name ] );
     }
 
     public function enqueue_scripts() {
@@ -154,11 +288,23 @@ class FrontendRender {
             return;
         }
 
-        $header_id = $this->renderer->get_matching_template_id( 'header' );
-        $has_sticky = false;
+        $header_id   = $this->renderer->get_matching_template_id( 'header' );
+        $has_sticky  = false;
+        $needs_js    = false;
 
         if ( $header_id ) {
-            $has_sticky = get_post_meta( $header_id, '_bdea_hf_sticky', true ) === 'yes';
+            $has_sticky  = 'yes' === $this->get_setting( $header_id, 'sticky' );
+            $needs_js    = $has_sticky
+                || 'yes' === $this->get_setting( $header_id, 'transparent' )
+                || 'yes' === $this->get_setting( $header_id, 'sticky_shrink' )
+                || 'yes' === $this->get_setting( $header_id, 'sticky_hide_scroll' )
+                || 'yes' === $this->get_setting( $header_id, 'logo_switcher' );
+        }
+
+        $announcement_id = $this->renderer->get_matching_template_id( 'announcement' );
+
+        if ( $announcement_id && 'yes' === $this->get_setting( $announcement_id, 'dismissible' ) ) {
+            $needs_js = true;
         }
 
         $css_file = __DIR__ . '/assets/css/frontend.css';
@@ -171,30 +317,85 @@ class FrontendRender {
             );
         }
 
-        if ( $has_sticky ) {
-            wp_add_inline_style( 'bdea-hf-frontend', '
-                .bdea-hf-sticky {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    z-index: 9999;
-                }
-                .admin-bar .bdea-hf-sticky {
-                    top: 32px;
-                }
-                @media screen and (max-width: 782px) {
-                    .admin-bar .bdea-hf-sticky {
-                        top: 46px;
-                    }
-                }
-                .bdea-hf-scroll-anim {
-                    transition: transform 0.3s ease;
-                }
-                .bdea-hf-scroll-anim.bdea-hf-hidden {
-                    transform: translateY(-100%);
-                }
-            ' );
+        $js_file = __DIR__ . '/assets/js/frontend.js';
+        if ( $needs_js && file_exists( $js_file ) ) {
+            wp_enqueue_script(
+                'bdea-hf-frontend-js',
+                plugin_dir_url( __FILE__ ) . 'assets/js/frontend.js',
+                [],
+                BDEA_VERSION,
+                true
+            );
         }
+
+        wp_add_inline_style( 'bdea-hf-frontend', '
+            .bdea-hf-sticky {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 9999;
+            }
+            .admin-bar .bdea-hf-sticky {
+                top: 32px;
+            }
+            @media screen and (max-width: 782px) {
+                .admin-bar .bdea-hf-sticky {
+                    top: 46px;
+                }
+            }
+            .bdea-hf-scroll-anim {
+                transition: transform 0.3s ease;
+            }
+            .bdea-hf-scroll-anim.bdea-hf-hidden {
+                transform: translateY(-100%);
+            }
+            .bdea-hf-hide-scroll {
+                transition: transform 0.3s ease;
+            }
+            .bdea-hf-hide-scroll.bdea-hf-scroll-down {
+                transform: translateY(-100%);
+            }
+            .bdea-hf-shrink .elementor-section,
+            .bdea-hf-shrink .elementor-container {
+                transition: min-height 0.3s ease, padding 0.3s ease;
+            }
+            .bdea-hf-shrink.bdea-hf-scrolled .elementor-section,
+            .bdea-hf-shrink.bdea-hf-scrolled .elementor-container {
+                min-height: 60px !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+            .bdea-hf-transparent {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 9998;
+                background: transparent;
+            }
+            .admin-bar .bdea-hf-transparent {
+                top: 32px;
+            }
+            @media screen and (max-width: 782px) {
+                .admin-bar .bdea-hf-transparent {
+                    top: 46px;
+                }
+            }
+            .bdea-hf-transparent.bdea-hf-scrolled {
+                position: fixed;
+                background: #ffffff;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            }
+            .bdea-hf-logo-switch .bdea-hf-logo-sticky {
+                display: none !important;
+            }
+            .bdea-hf-logo-switch.bdea-hf-scrolled .bdea-hf-logo-default {
+                display: none !important;
+            }
+            .bdea-hf-logo-switch.bdea-hf-scrolled .bdea-hf-logo-sticky {
+                display: block !important;
+            }
+        ' );
     }
 }

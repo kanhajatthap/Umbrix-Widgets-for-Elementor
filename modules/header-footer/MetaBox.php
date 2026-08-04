@@ -90,6 +90,8 @@ class MetaBox {
                 <option value=""><?php esc_html_e( '— Select —', 'bdea' ); ?></option>
                 <option value="header" <?php selected( $current, 'header' ); ?>><?php esc_html_e( 'Header', 'bdea' ); ?></option>
                 <option value="footer" <?php selected( $current, 'footer' ); ?>><?php esc_html_e( 'Footer', 'bdea' ); ?></option>
+                <option value="announcement" <?php selected( $current, 'announcement' ); ?>><?php esc_html_e( 'Announcement Bar', 'bdea' ); ?></option>
+                <option value="bottom_bar" <?php selected( $current, 'bottom_bar' ); ?>><?php esc_html_e( 'Bottom Bar', 'bdea' ); ?></option>
             </select>
         </p>
         <?php
@@ -147,30 +149,19 @@ class MetaBox {
             $priority = 10;
         }
 
-        $sticky      = get_post_meta( $post->ID, '_bdea_hf_sticky', true );
-        $scroll_anim = get_post_meta( $post->ID, '_bdea_hf_scroll_animation', true );
-        $type        = get_post_meta( $post->ID, '_bdea_hf_template_type', true );
+        $type = get_post_meta( $post->ID, '_bdea_hf_template_type', true );
         ?>
-        <?php if ( 'header' === $type ) : ?>
-        <p>
-            <label>
-                <input type="checkbox" name="bdea_hf_sticky" value="yes" <?php checked( $sticky, 'yes' ); ?> />
-                <?php esc_html_e( 'Make Header Sticky', 'bdea' ); ?>
-            </label>
+        <p class="description">
+            <?php esc_html_e( 'Sticky, transparent, logo switcher and schedule settings are managed inside the Elementor editor (Settings panel).', 'bdea' ); ?>
         </p>
-        <p>
-            <label>
-                <input type="checkbox" name="bdea_hf_scroll_animation" value="yes" <?php checked( $scroll_anim, 'yes' ); ?> />
-                <?php esc_html_e( 'Enable Scroll Animation', 'bdea' ); ?>
-            </label>
-        </p>
-        <?php endif; ?>
+        <?php if ( in_array( $type, [ 'header', 'footer' ], true ) ) : ?>
         <p>
             <label>
                 <input type="checkbox" name="bdea_hf_disable_theme" value="yes" <?php checked( get_post_meta( $post->ID, '_bdea_hf_disable_theme', true ), 'yes' ); ?> />
                 <?php esc_html_e( 'Disable default theme header/footer', 'bdea' ); ?>
             </label>
         </p>
+        <?php endif; ?>
         <p>
             <label for="bdea-hf-priority">
                 <?php esc_html_e( 'Priority (lower value = higher priority):', 'bdea' ); ?>
@@ -206,7 +197,7 @@ class MetaBox {
         if ( isset( $_POST['bdea_hf_template_type'] ) ) {
             $type = sanitize_key( $_POST['bdea_hf_template_type'] );
 
-            if ( in_array( $type, [ 'header', 'footer' ], true ) ) {
+            if ( in_array( $type, [ 'header', 'footer', 'announcement', 'bottom_bar' ], true ) ) {
                 update_post_meta( $post_id, '_bdea_hf_template_type', $type );
             } else {
                 delete_post_meta( $post_id, '_bdea_hf_template_type' );
@@ -235,26 +226,15 @@ class MetaBox {
             update_post_meta( $post_id, '_bdea_hf_priority', absint( $_POST['bdea_hf_priority'] ) );
         }
 
-        $sticky      = isset( $_POST['bdea_hf_sticky'] ) ? sanitize_key( $_POST['bdea_hf_sticky'] ) : '';
-        $scroll_anim = isset( $_POST['bdea_hf_scroll_animation'] ) ? sanitize_key( $_POST['bdea_hf_scroll_animation'] ) : '';
-
-        if ( 'yes' === $sticky ) {
-            update_post_meta( $post_id, '_bdea_hf_sticky', 'yes' );
-        } else {
-            delete_post_meta( $post_id, '_bdea_hf_sticky' );
-        }
-
-        if ( 'yes' === $scroll_anim ) {
-            update_post_meta( $post_id, '_bdea_hf_scroll_animation', 'yes' );
-        } else {
-            delete_post_meta( $post_id, '_bdea_hf_scroll_animation' );
-        }
-
         $disable_theme = isset( $_POST['bdea_hf_disable_theme'] ) ? sanitize_key( $_POST['bdea_hf_disable_theme'] ) : '';
-        if ( 'yes' === $disable_theme ) {
-            update_post_meta( $post_id, '_bdea_hf_disable_theme', 'yes' );
+        $this->save_yes_no_meta( $post_id, '_bdea_hf_disable_theme', $disable_theme );
+    }
+
+    private function save_yes_no_meta( $post_id, $key, $value ) {
+        if ( 'yes' === $value ) {
+            update_post_meta( $post_id, $key, 'yes' );
         } else {
-            delete_post_meta( $post_id, '_bdea_hf_disable_theme' );
+            delete_post_meta( $post_id, $key );
         }
     }
 
