@@ -1148,3 +1148,23 @@ function bdea_enqueue_editor_assets() {
     );
 }
 add_action( 'elementor/editor/after_enqueue_scripts', 'bdea_enqueue_editor_assets' );
+
+/**
+ * Register Demo Landing page template
+ */
+function bdea_register_demo_template( $templates ) {
+    $templates['templates/demo-landing.php'] = 'BDEA Widget Demo Landing';
+    return $templates;
+}
+add_filter( 'page_templates', 'bdea_register_demo_template' );
+
+function bdea_demo_template_include( $template ) {
+    if ( is_page_template( 'templates/demo-landing.php' ) ) {
+        $new_template = BDEA_PATH . 'templates/demo-landing.php';
+        if ( file_exists( $new_template ) ) {
+            return $new_template;
+        }
+    }
+    return $template;
+}
+add_filter( 'template_include', 'bdea_demo_template_include' );

@@ -1,3 +1,11 @@
-.playwright-mcp/
-hf-settings-snapshot.md
-opencode.json
+# Debug/temp files (not for git)
+debug-*.php
+check-*.php
+clear-*.php
+fix*.php
+curl-test.php
+render-test.php
+test-page.php
+verify-page.php
+create-demo-page.php
+raw-json.txt
