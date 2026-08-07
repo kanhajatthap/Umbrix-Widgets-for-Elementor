@@ -12,7 +12,7 @@ class PostType {
 
     public function register() {
         $labels = [
-            'name'               => __( 'Header & Footer', 'bdea' ),
+            'name'               => __( 'Theme Builder', 'bdea' ),
             'singular_name'      => __( 'Template', 'bdea' ),
             'add_new'            => __( 'Add New', 'bdea' ),
             'add_new_item'       => __( 'Add New Template', 'bdea' ),
@@ -21,7 +21,7 @@ class PostType {
             'search_items'       => __( 'Search Templates', 'bdea' ),
             'not_found'          => __( 'No templates found', 'bdea' ),
             'not_found_in_trash' => __( 'No templates found in Trash', 'bdea' ),
-            'all_items'          => __( 'Header & Footer', 'bdea' ),
+            'all_items'          => __( 'Theme Builder', 'bdea' ),
         ];
 
         $args = [

@@ -48,6 +48,15 @@
     z-index: 9998;
 }
 
+.bdea-hf-single,
+.bdea-hf-archive,
+.bdea-hf-404 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .elementor-editor-active .bdea-hf-header,
 .elementor-editor-active .bdea-hf-footer,
 .elementor-editor-active .bdea-hf-announcement,

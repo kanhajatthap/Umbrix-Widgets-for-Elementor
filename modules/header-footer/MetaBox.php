@@ -90,6 +90,9 @@ class MetaBox {
                 <option value=""><?php esc_html_e( '— Select —', 'bdea' ); ?></option>
                 <option value="header" <?php selected( $current, 'header' ); ?>><?php esc_html_e( 'Header', 'bdea' ); ?></option>
                 <option value="footer" <?php selected( $current, 'footer' ); ?>><?php esc_html_e( 'Footer', 'bdea' ); ?></option>
+                <option value="single" <?php selected( $current, 'single' ); ?>><?php esc_html_e( 'Single Post Template', 'bdea' ); ?></option>
+                <option value="archive" <?php selected( $current, 'archive' ); ?>><?php esc_html_e( 'Archive (Category / Tag / Loop)', 'bdea' ); ?></option>
+                <option value="404" <?php selected( $current, '404' ); ?>><?php esc_html_e( '404 Page', 'bdea' ); ?></option>
                 <option value="announcement" <?php selected( $current, 'announcement' ); ?>><?php esc_html_e( 'Announcement Bar', 'bdea' ); ?></option>
                 <option value="bottom_bar" <?php selected( $current, 'bottom_bar' ); ?>><?php esc_html_e( 'Bottom Bar', 'bdea' ); ?></option>
             </select>
@@ -197,7 +200,7 @@ class MetaBox {
         if ( isset( $_POST['bdea_hf_template_type'] ) ) {
             $type = sanitize_key( $_POST['bdea_hf_template_type'] );
 
-            if ( in_array( $type, [ 'header', 'footer', 'announcement', 'bottom_bar' ], true ) ) {
+            if ( in_array( $type, [ 'header', 'footer', 'single', 'archive', '404', 'announcement', 'bottom_bar' ], true ) ) {
                 update_post_meta( $post_id, '_bdea_hf_template_type', $type );
             } else {
                 delete_post_meta( $post_id, '_bdea_hf_template_type' );

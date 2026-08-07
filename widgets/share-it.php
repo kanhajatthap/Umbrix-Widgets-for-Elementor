@@ -50,10 +50,8 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
     public function get_style_depends() {
         $depends = [ 'bdea-share-it-style' ];
 
-        if ( ! \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_font_icon_svg' ) ) {
-            $depends[] = 'elementor-icons-fa-solid';
-            $depends[] = 'elementor-icons-fa-brands';
-        }
+        $depends[] = 'elementor-icons-fa-solid';
+        $depends[] = 'elementor-icons-fa-brands';
 
         return $depends;
     }

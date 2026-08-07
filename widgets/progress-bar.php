@@ -29,7 +29,6 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
 
     protected function register_controls() {
 
-        // ================= CONTENT =================
         $this->start_controls_section(
             'content_section',
             [
@@ -93,17 +92,16 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
 
         $this->end_controls_section();
 
-
-        // ================= STYLE =================
+        // General Style
         $this->start_controls_section(
             'style_general_section',
             [
-                'label' => 'Generale',
+                'label' => 'General',
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'height',
             [
                 'label' => 'Height',
@@ -121,7 +119,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'item_spacing',
             [
                 'label' => 'Item Spacing',
@@ -139,26 +137,29 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'bar_radius',
             [
-                'label' => 'Bar Radius',
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [ 'min' => 0, 'max' => 50 ],
-                ],
+                'label' => 'Border Radius',
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
                 'default' => [
-                    'size' => 50,
+                    'top' => 50,
+                    'right' => 50,
+                    'bottom' => 50,
+                    'left' => 50,
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-bar, {{WRAPPER}} .bdea-progress-fill' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .bdea-progress-bar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .bdea-progress-fill' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->end_controls_section();
 
+        // Background Style
         $this->start_controls_section(
             'style_background_section',
             [
@@ -170,7 +171,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bg_color',
             [
-                'label' => 'Background Color',
+                'label' => 'Color',
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#eeeeee',
                 'selectors' => [
@@ -179,8 +180,17 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'bar_shadow',
+                'selector' => '{{WRAPPER}} .bdea-progress-bar',
+            ]
+        );
+
         $this->end_controls_section();
 
+        // Fill Style
         $this->start_controls_section(
             'style_fill_section',
             [
@@ -192,7 +202,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bar_color',
             [
-                'label' => 'Fill Color',
+                'label' => 'Color',
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4CAF50',
                 'selectors' => [
@@ -201,8 +211,20 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'bar_gradient',
+            [
+                'label' => 'Gradient',
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-progress-fill' => 'background: linear-gradient(90deg, {{VALUE}}, transparent);',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
+        // Typography
         $this->start_controls_section(
             'style_typography_section',
             [
@@ -222,10 +244,21 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title & Percentage Color',
+                'label' => 'Title Color',
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-title span' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .bdea-progress-title span:first-child' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'percentage_color',
+            [
+                'label' => 'Percentage Color',
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-progress-title span:last-child' => 'color: {{VALUE}};',
                 ],
             ]
         );

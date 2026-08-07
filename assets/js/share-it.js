@@ -22,7 +22,7 @@
                 document.execCommand('copy');
                 onSuccess();
             } catch (err) {
-                // Do nothing when copy fails in unsupported browsers.
+                /* Do nothing when copy fails in unsupported browsers. */
             }
 
             document.body.removeChild(temp);

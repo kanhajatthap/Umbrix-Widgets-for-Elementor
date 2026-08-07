@@ -12,7 +12,7 @@ class Document extends \BDEA\Framework\Elementor\ThemeBuilderDocument {
     }
 
     public static function get_title() {
-        return __( 'Header/Footer Template', 'bdea' );
+        return __( 'Theme Builder Template', 'bdea' );
     }
 
     protected static function get_cpt() {
@@ -158,10 +158,10 @@ class Document extends \BDEA\Framework\Elementor\ThemeBuilderDocument {
             $this->add_control(
                 'disable_theme',
                 [
-                    'label'        => __( 'Disable Theme Header/Footer', 'bdea' ),
+                    'label'        => __( 'Disable Theme Header', 'bdea' ),
                     'type'         => Controls_Manager::SWITCHER,
                     'default'      => $this->legacy( 'disable_theme' ),
-                    'description'  => __( 'Hide the theme header/footer with CSS.', 'bdea' ),
+                    'description'  => __( 'Hide the theme header with CSS.', 'bdea' ),
                 ]
             );
 

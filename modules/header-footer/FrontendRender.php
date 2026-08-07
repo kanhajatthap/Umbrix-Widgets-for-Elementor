@@ -12,6 +12,8 @@ class FrontendRender {
     private $cache;
 
     private $disable_theme = false;
+    private $current_404_id = 0;
+    private $current_archive_id = 0;
 
     public function __construct( TemplateRenderer $renderer, Cache $cache ) {
         $this->renderer = $renderer;
@@ -24,6 +26,11 @@ class FrontendRender {
         add_action( 'wp_footer', [ $this, 'render_bottom_bar' ], 100 );
         add_action( 'wp_enqueue_scripts', [ $this, 'suppress_theme_css' ], 999 );
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+        add_filter( 'the_content', [ $this, 'filter_single_content' ], 10 );
+        add_filter( 'template_include', [ $this, 'override_archive_template' ], 15 );
+        add_action( 'bdea_hf_render_archive', [ $this, 'render_archive_content' ] );
+        add_filter( 'template_include', [ $this, 'override_404_template' ], 20 );
+        add_action( 'bdea_hf_render_404', [ $this, 'render_404_content' ] );
     }
 
     public function check_disable_theme() {
@@ -227,6 +234,84 @@ class FrontendRender {
         echo '<div class="bdea-hf-bottom-bar">';
         $this->renderer->render( $post_id );
         echo '</div>';
+    }
+
+    public function filter_single_content( $content ) {
+        if ( ! $this->can_render() || ! is_singular() || ! in_the_loop() || ! is_main_query() ) {
+            return $content;
+        }
+
+        $post_id = $this->renderer->get_matching_template_id( 'single' );
+
+        if ( ! $post_id || ! $this->check_schedule( $post_id ) ) {
+            return $content;
+        }
+
+        if ( $this->renderer->has_rendered( $post_id ) ) {
+            return $content;
+        }
+
+        ob_start();
+        $this->renderer->render( $post_id );
+        $template = ob_get_clean();
+
+        if ( $template ) {
+            return '<div class="bdea-hf-single">' . $template . '</div>';
+        }
+
+        return $content;
+    }
+
+    public function override_archive_template( $template ) {
+        if ( ! is_archive() || ! $this->can_render() ) {
+            return $template;
+        }
+
+        $post_id = $this->renderer->get_matching_template_id( 'archive' );
+
+        if ( ! $post_id || ! $this->check_schedule( $post_id ) ) {
+            return $template;
+        }
+
+        $this->current_archive_id = $post_id;
+
+        $file = __DIR__ . '/templates/archive-template.php';
+
+        return file_exists( $file ) ? $file : $template;
+    }
+
+    public function render_archive_content() {
+        if ( empty( $this->current_archive_id ) ) {
+            return;
+        }
+
+        $this->renderer->render( $this->current_archive_id );
+    }
+
+    public function override_404_template( $template ) {
+        if ( ! is_404() || ! $this->can_render() ) {
+            return $template;
+        }
+
+        $post_id = $this->renderer->get_matching_template_id( '404' );
+
+        if ( ! $post_id || ! $this->check_schedule( $post_id ) ) {
+            return $template;
+        }
+
+        $this->current_404_id = $post_id;
+
+        $file = __DIR__ . '/templates/404-template.php';
+
+        return file_exists( $file ) ? $file : $template;
+    }
+
+    public function render_404_content() {
+        if ( empty( $this->current_404_id ) ) {
+            return;
+        }
+
+        $this->renderer->render( $this->current_404_id );
     }
 
     private function can_render() {

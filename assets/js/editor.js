@@ -1,42 +1,48 @@
-jQuery(function ($) {
-
-    var targets = {
-        'Progress Bar': '.eicon-skill-bar',
-        'Data Table': '.eicon-table',
-        'Carousel': '.eicon-slider-push',
-        'Feature Comparison Table': '.eicon-table-of-contents'
-    };
+(function () {
 
     var appendBadge = function () {
-        $('.elementor-panel-elements .elementor-widget, .elementor-panel-elements .elementor-element').each(function () {
-            var $widget = $(this);
-            var $title = $widget.find('.elementor-widget-title, .elementor-panel-element-title, .elementor-element-title, .title').first();
-            if (!$title.length) {
+        var $ = window.jQuery;
+        if (!$) {
+            return;
+        }
+
+        // Category view - badge only in "ElementStack Elements" category
+        $('.elementor-panel-category').each(function () {
+            var $cat = $(this);
+            var catTitle = $cat.find('.elementor-panel-heading-title').first().text().trim();
+
+            if (catTitle !== 'ElementStack Elements') {
                 return;
             }
 
-            var titleText = $title.clone().children().remove().end().text().trim();
-            Object.keys(targets).forEach(function (widgetTitle) {
-                if (titleText.indexOf(widgetTitle) !== -1) {
-                    var $icon = $widget.find('.icon ' + targets[widgetTitle]).first();
-                    if ($icon.length) {
-                        var $wrapper = $icon.parent();
-                        if (!$wrapper.hasClass('bdea-icon-wrapper')) {
-                            $wrapper.addClass('bdea-icon-wrapper');
-                        }
-                    } else {
-                        if (!$title.find('.es-badge').length) {
-                            $title.append('<span class="es-badge">ES</span>');
-                        }
-                    }
+            $cat.find('.elementor-element').each(function () {
+                var $title = $(this).find('.title-wrapper .title').first();
+                if (!$title.length) {
+                    return;
+                }
+
+                if (!$title.find('.es-badge').length) {
+                    $title.append('<span class="es-badge">ES</span>');
                 }
             });
         });
+
+        // Search view - badge on widgets with bdea_ prefix
+        $('.elementor-element[data-library-element-type]').each(function () {
+            var type = $(this).attr('data-library-element-type');
+            if (type && type.indexOf('bdea_') === 0) {
+                var $title = $(this).find('.title-wrapper .title').first();
+                if ($title.length && !$title.find('.es-badge').length) {
+                    $title.append('<span class="es-badge">ES</span>');
+                }
+            }
+        });
     };
 
-    var initObserver = function () {
-        var panel = document.querySelector('.elementor-panel-elements');
+    var startObserver = function () {
+        var panel = document.querySelector('.elementor-panel');
         if (!panel) {
+            setTimeout(startObserver, 1000);
             return;
         }
 
@@ -45,23 +51,9 @@ jQuery(function ($) {
         });
 
         observer.observe(panel, { childList: true, subtree: true });
-    };
-
-    var init = function () {
         appendBadge();
-        setTimeout(initObserver, 500);
     };
 
-    if (window.elementor && window.elementor.hooks) {
-        init();
-    } else {
-        $(window).on('elementor:init', init);
-    }
+    setTimeout(startObserver, 1500);
 
-    if (window.elementor && window.elementor.hooks) {
-        elementor.hooks.addFilter('panel/elements/regionViews', function (panel) {
-            setTimeout(appendBadge, 300);
-            return panel;
-        });
-    }
-});
+})();

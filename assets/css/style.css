@@ -24,16 +24,6 @@
     border-radius: 50px;
 }
 
-.es-badge {
-    background: #e91e63;
-    color: #fff;
-    font-size: 9px;
-    padding: 2px 5px;
-    margin-left: 6px;
-    border-radius: 3px;
-    font-weight: 600;
-}
-
 .bdea-table-wrapper {
     overflow-x: auto;
 }

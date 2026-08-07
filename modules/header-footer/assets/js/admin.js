@@ -4,12 +4,27 @@
     var data      = window.bdeaHFData || {};
     var grouped   = data.conditions || {};
 
+    var typeLabels = {
+        header: 'Header',
+        footer: 'Footer',
+        single: 'Single Post',
+        archive: 'Archive (Category / Tag / Loop)',
+        '404': '404 Page',
+        announcement: 'Announcement',
+        bottom_bar: 'Bottom Bar',
+        'loop': 'Loop Item'
+    };
+
+    function typeLabel(type) {
+        return typeLabels[type] || type.charAt(0).toUpperCase() + type.slice(1);
+    }
+
     // Open create modal
     $(document).on('click', '.bdea-hf-create-btn', function (e) {
         e.preventDefault();
         var type = $(this).data('type');
         if (!type) return;
-        $('#bdea-hf-create-modal').find('.bdea-hf-modal-type-label').text(type.charAt(0).toUpperCase() + type.slice(1));
+        $('#bdea-hf-create-modal').find('.bdea-hf-modal-type-label').text(typeLabel(type));
         $('#bdea-hf-create-modal input[name="type"]').val(type);
         $('#bdea-hf-create-modal select[name="template_type"]').val(type);
         updateCreateModalForType(type);
@@ -20,13 +35,19 @@
     $(document).on('change', '#bdea-hf-create-modal select[name="template_type"]', function () {
         var type = $(this).val();
         $('#bdea-hf-create-modal input[name="type"]').val(type);
-        $('#bdea-hf-create-modal').find('.bdea-hf-modal-type-label').text(type.charAt(0).toUpperCase() + type.slice(1));
+        $('#bdea-hf-create-modal').find('.bdea-hf-modal-type-label').text(typeLabel(type));
         updateCreateModalForType(type);
     });
 
     function updateCreateModalForType(type) {
         var showDisable = (type === 'header' || type === 'footer');
+        var showConditions = (type !== 'loop');
         $('#bdea-hf-create-modal input[name="disable_theme"]').closest('.bdea-hf-field').toggle(showDisable);
+        $('#bdea-hf-create-modal .bdea-hf-field-row').toggle(showConditions);
+        var condMap = { single: 'singular:post_type:post', archive: 'archive', '404': '404' };
+        if (condMap[type]) {
+            $('#bdea-hf-create-modal select[name="condition"]').val(condMap[type]);
+        }
     }
 
     // Close modals

@@ -29,6 +29,32 @@ body.bdea-hf-admin-page .update-nag {
     margin-left: 4px;
 }
 
+/* Theme Builder type tabs */
+.bdea-hf-type-tabs {
+    margin: 14px 0 18px;
+    border-bottom: 1px solid #c3c4c7;
+    padding-bottom: 0;
+}
+
+.bdea-hf-type-tabs .nav-tab {
+    margin-left: 0;
+    margin-right: 4px;
+    font-weight: 500;
+}
+
+.bdea-hf-type-tabs .nav-tab .count {
+    color: #8c8f94;
+    font-weight: 400;
+}
+
+.bdea-hf-type-tabs .nav-tab-active .count {
+    color: #646970;
+}
+
+.bdea-hf-wrap .subsubsub {
+    margin-top: 0;
+}
+
 /* Table — default WP list table look */
 .bdea-hf-table {
     border-collapse: collapse;
@@ -861,6 +887,26 @@ body.bdea-hf-admin-page .update-nag {
 .bdea-hf-badge-bottom-bar {
     background: #cffafe;
     color: #0e7490;
+}
+
+.bdea-hf-badge-single {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.bdea-hf-badge-archive {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.bdea-hf-badge-404 {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.bdea-hf-badge-loop {
+    background: #e0e7ff;
+    color: #4f46e5;
 }
 
 .bdea-hf-badge-active {

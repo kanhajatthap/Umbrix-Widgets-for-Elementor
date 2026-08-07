@@ -44,8 +44,8 @@ class Admin {
     public function register_admin_menu() {
         add_submenu_page(
             'elementstack-settings',
-            'Header / Footer Builder',
-            'Header / Footer',
+            'Theme Builder',
+            'Theme Builder',
             'manage_options',
             'bdea-hf-builder',
             [ $this, 'render_admin_page' ]
@@ -63,29 +63,60 @@ class Admin {
             'published' => [ 'publish' ],
             'trash'     => [ 'trash' ],
         ];
-        $templates   = $this->get_templates( '', $statuses[ $status_view ] );
+
+        $type_labels = [
+            'header'       => 'Header',
+            'footer'       => 'Footer',
+            'single'       => 'Single Post',
+            'archive'      => 'Archive',
+            '404'          => '404 Page',
+            'announcement' => 'Announcement',
+            'bottom_bar'   => 'Bottom Bar',
+            'loop'         => 'Loop Item',
+        ];
+
+        $type_view = isset( $_GET['bdea_type'] ) ? sanitize_key( $_GET['bdea_type'] ) : '';
+        if ( ! isset( $type_labels[ $type_view ] ) ) {
+            $type_view = '';
+        }
+
+        $type_counts = [];
+        foreach ( array_keys( $type_labels ) as $type_key ) {
+            $type_counts[ $type_key ] = count( $this->get_templates( $type_key, [ 'publish', 'draft' ] ) );
+        }
+
+        $templates   = $this->get_templates( $type_view, $statuses[ $status_view ] );
         $all_pages   = get_pages();
-        $counts      = wp_count_posts( 'bdea_header_footer' );
-        $all_count   = (int) $counts->publish + (int) $counts->draft;
-        $pub_count   = (int) $counts->publish;
-        $trash_count = (int) $counts->trash;
+        $hf_counts   = wp_count_posts( 'bdea_header_footer' );
+        $loop_templates = $this->get_templates( 'loop', [ 'publish', 'draft' ] );
+        $all_count   = (int) $hf_counts->publish + (int) $hf_counts->draft + count( $loop_templates );
+        $pub_count   = (int) $hf_counts->publish + count( array_filter( $loop_templates, function( $p ) { return 'publish' === $p->post_status; } ) );
+        $trash_count = (int) $hf_counts->trash;
         $page_url    = admin_url( 'admin.php?page=bdea-hf-builder' );
+        $base_url    = $type_view ? add_query_arg( 'bdea_type', $type_view, $page_url ) : $page_url;
+
+        $create_label = $type_view ? 'Add New ' . $type_labels[ $type_view ] : 'Add New Template';
+        $create_type  = $type_view ? $type_view : 'header';
         ?>
         <div class="wrap bdea-hf-wrap">
-            <h1 class="wp-heading-inline">Header / Footer</h1>
+            <h1 class="wp-heading-inline">Theme Builder</h1>
 
-            <a href="#" class="page-title-action bdea-hf-create-btn" data-type="header">Add New Header</a>
-            <a href="#" class="page-title-action bdea-hf-create-btn" data-type="footer">Add New Footer</a>
-            <a href="#" class="page-title-action bdea-hf-create-btn" data-type="announcement">Add New Announcement</a>
-            <a href="#" class="page-title-action bdea-hf-create-btn" data-type="bottom_bar">Add New Bottom Bar</a>
+            <a href="#" class="page-title-action bdea-hf-create-btn" data-type="<?php echo esc_attr( $create_type ); ?>"><?php echo esc_html( $create_label ); ?></a>
             <a href="#" class="page-title-action bdea-hf-import-btn">Import</a>
 
             <hr class="wp-header-end">
 
+            <nav class="nav-tab-wrapper bdea-hf-type-tabs">
+                <a href="<?php echo esc_url( remove_query_arg( 'bdea_type', $page_url ) ); ?>" class="nav-tab <?php echo '' === $type_view ? 'nav-tab-active' : ''; ?>">All <span class="count">(<?php echo esc_html( $all_count ); ?>)</span></a>
+                <?php foreach ( $type_labels as $type_key => $type_label ) : ?>
+                    <a href="<?php echo esc_url( add_query_arg( 'bdea_type', $type_key, $page_url ) ); ?>" class="nav-tab <?php echo $type_key === $type_view ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $type_label ); ?> <span class="count">(<?php echo esc_html( $type_counts[ $type_key ] ); ?>)</span></a>
+                <?php endforeach; ?>
+            </nav>
+
             <ul class="subsubsub">
-                <li class="all"><a href="<?php echo esc_url( $page_url ); ?>" class="<?php echo 'all' === $status_view ? 'current' : ''; ?>">All <span class="count">(<?php echo esc_html( $all_count ); ?>)</span></a> |</li>
-                <li class="published"><a href="<?php echo esc_url( add_query_arg( 'bdea_status', 'published', $page_url ) ); ?>" class="<?php echo 'published' === $status_view ? 'current' : ''; ?>">Published <span class="count">(<?php echo esc_html( $pub_count ); ?>)</span></a> |</li>
-                <li class="trash"><a href="<?php echo esc_url( add_query_arg( 'bdea_status', 'trash', $page_url ) ); ?>" class="<?php echo 'trash' === $status_view ? 'current' : ''; ?>">Trash <span class="count">(<?php echo esc_html( $trash_count ); ?>)</span></a></li>
+                <li class="all"><a href="<?php echo esc_url( $base_url ); ?>" class="<?php echo 'all' === $status_view ? 'current' : ''; ?>">All <span class="count">(<?php echo esc_html( $all_count ); ?>)</span></a> |</li>
+                <li class="published"><a href="<?php echo esc_url( add_query_arg( 'bdea_status', 'published', $base_url ) ); ?>" class="<?php echo 'published' === $status_view ? 'current' : ''; ?>">Published <span class="count">(<?php echo esc_html( $pub_count ); ?>)</span></a> |</li>
+                <li class="trash"><a href="<?php echo esc_url( add_query_arg( 'bdea_status', 'trash', $base_url ) ); ?>" class="<?php echo 'trash' === $status_view ? 'current' : ''; ?>">Trash <span class="count">(<?php echo esc_html( $trash_count ); ?>)</span></a></li>
             </ul>
 
             <p class="bdea-hf-list-sub"><?php echo count( $templates ); ?> template<?php echo count( $templates ) !== 1 ? 's' : ''; ?> found</p>
@@ -118,13 +149,16 @@ class Admin {
                 </thead>
                 <tbody>
                     <?php if ( empty( $templates ) ) : ?>
-                        <tr><td colspan="6">No templates found. Click "Add New Header" or "Add New Footer" to create one.</td></tr>
+                        <tr><td colspan="6">No <?php echo esc_html( $type_view ? strtolower( $type_labels[ $type_view ] ) . ' ' : '' ); ?>templates found. Click "<?php echo esc_html( $create_label ); ?>" to create one.</td></tr>
                     <?php else : ?>
                         <?php foreach ( $templates as $post ) : ?>
                             <?php
                             $post_id    = $post->ID;
-                            $type       = get_post_meta( $post_id, '_bdea_hf_template_type', true );
-                            $conditions = get_post_meta( $post_id, '_bdea_hf_conditions', true );
+                            $is_loop    = 'elementor_library' === $post->post_type;
+                            $type       = $is_loop
+                                ? get_post_meta( $post_id, '_elementor_template_type', true )
+                                : get_post_meta( $post_id, '_bdea_hf_template_type', true );
+                            $conditions = $is_loop ? [] : get_post_meta( $post_id, '_bdea_hf_conditions', true );
                             $is_trash   = 'trash' === $post->post_status;
                             $is_active  = 'publish' === $post->post_status;
                             $cond_label = $this->get_conditions_label( $conditions );
@@ -280,15 +314,19 @@ class Admin {
                             <select name="template_type" id="bdea-hf-create-type">
                                 <option value="header">Header</option>
                                 <option value="footer">Footer</option>
+                                <option value="single">Single Post Template</option>
+                                <option value="archive">Archive (Category / Tag / Loop)</option>
+                                <option value="404">404 Page</option>
                                 <option value="announcement">Announcement Bar</option>
                                 <option value="bottom_bar">Bottom Bar</option>
+                                <option value="loop">Loop Item Template</option>
                             </select>
                         </div>
 
                         <div class="bdea-hf-field-row">
                             <div class="bdea-hf-field">
                                 <label><span class="dashicons dashicons-layout"></span> Display Condition</label>
-                                <select name="condition">
+                                                                <select name="condition">
                                     <option value="entire_site">Entire Website</option>
                                     <option value="front_page">Front Page</option>
                                     <option value="home_page">Home / Blog Page</option>
@@ -297,6 +335,25 @@ class Admin {
                                     <option value="singular:post_type:post">All Blog Posts</option>
                                     <option value="singular:post_type:page">All Pages</option>
                                     <option value="archive">All Archives</option>
+                                    <?php
+                                    $bdea_archive_condition_taxonomies = get_taxonomies( [ 'public' => true ], 'objects' );
+                                    foreach ( $bdea_archive_condition_taxonomies as $bdea_tax ) :
+                                        if ( in_array( $bdea_tax->name, [ 'elementor_library', 'bdea_header_footer', 'nav_menu', 'link_category' ], true ) ) {
+                                            continue;
+                                        }
+                                        ?>
+                                        <option value="archive:taxonomy:<?php echo esc_attr( $bdea_tax->name ); ?>">All <?php echo esc_html( $bdea_tax->labels->name ); ?> Archives</option>
+                                        <?php
+                                        $bdea_terms = get_terms( [ 'taxonomy' => $bdea_tax->name, 'hide_empty' => false, 'number' => 50 ] );
+                                        if ( ! is_wp_error( $bdea_terms ) ) {
+                                            foreach ( $bdea_terms as $bdea_term ) {
+                                                ?>
+                                                <option value="archive:taxonomy:<?php echo esc_attr( $bdea_tax->name ); ?>:term:<?php echo esc_attr( $bdea_term->slug ); ?>"><?php echo esc_html( $bdea_tax->labels->name ); ?>: <?php echo esc_html( $bdea_term->name ); ?></option>
+                                                <?php
+                                            }
+                                        }
+                                    endforeach;
+                                    ?>
                                     <option value="search">Search Results</option>
                                     <option value="404">404 Page</option>
                                 </select>
@@ -348,8 +405,8 @@ class Admin {
                                     <input type="checkbox" name="disable_theme" value="yes" />
                                     <span class="bdea-hf-checkbox-ui"></span>
                                     <span class="bdea-hf-checkbox-content">
-                                        <strong>Disable Theme Header/Footer</strong>
-                                        <span class="bdea-hf-field-desc">Replace theme header/footer with Elementor</span>
+                                        <strong>Disable Theme Header</strong>
+                                        <span class="bdea-hf-field-desc">Replace theme header with Elementor</span>
                                     </span>
                                 </label>
                             </div>
@@ -403,8 +460,8 @@ class Admin {
                                     <input type="checkbox" name="disable_theme" value="yes" />
                                     <span class="bdea-hf-checkbox-ui"></span>
                                     <span class="bdea-hf-checkbox-content">
-                                        <strong>Disable Theme Header/Footer</strong>
-                                        <span class="bdea-hf-field-desc">Hide theme header/footer with CSS</span>
+                                        <strong>Disable Theme Header</strong>
+                                        <span class="bdea-hf-field-desc">Hide theme header with CSS</span>
                                     </span>
                                 </label>
                             </div>
@@ -496,8 +553,45 @@ class Admin {
         $exclude_pgs = isset( $_POST['exclude_pages'] ) ? array_map( 'intval', $_POST['exclude_pages'] ) : [];
         $disable_theme = ! empty( $_POST['disable_theme'] );
 
-        if ( empty( $name ) || ! in_array( $type, [ 'header', 'footer', 'announcement', 'bottom_bar' ], true ) ) {
+        if ( empty( $name ) || ! in_array( $type, [ 'header', 'footer', 'single', 'archive', '404', 'announcement', 'bottom_bar', 'loop' ], true ) ) {
             wp_send_json_error( [ 'message' => 'Name and type are required.' ] );
+        }
+
+        // Loop templates use elementor_library post type (like Elementor Pro)
+        if ( 'loop' === $type ) {
+            $post_id = wp_insert_post( [
+                'post_title'  => $name,
+                'post_type'   => 'elementor_library',
+                'post_status' => 'publish',
+            ] );
+
+            if ( is_wp_error( $post_id ) ) {
+                wp_send_json_error( [ 'message' => 'Failed to create template.' ] );
+            }
+
+            $container_id = substr( md5( 'bdea-loop-' . $post_id . '-1' ), 0, 7 );
+            update_post_meta( $post_id, '_elementor_template_type', 'loop-item' );
+            update_post_meta( $post_id, '_elementor_edit_mode', 'builder' );
+            update_post_meta( $post_id, '_elementor_version', \Elementor\Plugin::$instance->version );
+            update_post_meta( $post_id, '_elementor_data', wp_json_encode( [
+                [
+                    'id'       => $container_id,
+                    'elType'   => 'container',
+                    'settings' => [],
+                    'elements' => [],
+                    'isInner'  => false,
+                ],
+            ] ) );
+
+            $this->cache->flush_all();
+
+            wp_send_json_success( [
+                'message' => 'Template created.',
+                'edit_url' => add_query_arg(
+                    [ 'action' => 'elementor', 'post' => $post_id ],
+                    admin_url( 'post.php' )
+                ),
+            ] );
         }
 
         $post_id = wp_insert_post( [
@@ -651,13 +745,13 @@ class Admin {
 
         $post = get_post( $post_id );
 
-        if ( ! $post || 'bdea_header_footer' !== $post->post_type ) {
+        if ( ! $post || ! in_array( $post->post_type, [ 'bdea_header_footer', 'elementor_library' ], true ) ) {
             wp_send_json_error( [ 'message' => 'Template not found.' ] );
         }
 
         $new_id = wp_insert_post( [
             'post_title'  => $post->post_title . ' (Copy)',
-            'post_type'   => 'bdea_header_footer',
+            'post_type'   => $post->post_type,
             'post_status' => 'publish',
         ] );
 
@@ -665,30 +759,13 @@ class Admin {
             wp_send_json_error( [ 'message' => 'Failed to duplicate template.' ] );
         }
 
-        $meta_keys = [
-            '_bdea_hf_template_type',
-            '_bdea_hf_conditions',
-            '_bdea_hf_priority',
-            '_bdea_hf_sticky',
-            '_bdea_hf_scroll_animation',
-            '_bdea_hf_disable_theme',
-            '_bdea_hf_device_visibility',
-            '_bdea_hf_transparent',
-            '_bdea_hf_sticky_shrink',
-            '_bdea_hf_sticky_hide_scroll',
-            '_bdea_hf_logo_switcher',
-            '_bdea_hf_sticky_offset',
-            '_bdea_hf_dismissible',
-            '_bdea_hf_cookie_days',
-            '_bdea_hf_schedule_enabled',
-            '_bdea_hf_schedule_start',
-            '_bdea_hf_schedule_end',
-        ];
-
-        foreach ( $meta_keys as $key ) {
-            $val = get_post_meta( $post_id, $key, true );
-            if ( '' !== $val ) {
-                update_post_meta( $new_id, $key, $val );
+        // Copy all post meta
+        $meta = get_post_meta( $post_id );
+        if ( is_array( $meta ) ) {
+            foreach ( $meta as $key => $values ) {
+                if ( '' !== $values[0] ) {
+                    update_post_meta( $new_id, $key, maybe_unserialize( $values[0] ) );
+                }
             }
         }
 
@@ -804,11 +881,12 @@ class Admin {
 
         $post = get_post( $post_id );
 
-        if ( ! $post || 'bdea_header_footer' !== $post->post_type ) {
+        if ( ! $post || ! in_array( $post->post_type, [ 'bdea_header_footer', 'elementor_library' ], true ) ) {
             wp_send_json_error( [ 'message' => 'Template not found.' ] );
         }
 
-        $meta_keys = [
+        $is_loop = 'elementor_library' === $post->post_type;
+        $meta_keys = $is_loop ? [] : [
             '_bdea_hf_template_type',
             '_bdea_hf_conditions',
             '_bdea_hf_priority',
@@ -841,12 +919,12 @@ class Admin {
         $export = [
             'version'                 => BDEA_VERSION,
             'title'                   => $post->post_title,
-            'type'                    => 'bdea_header_footer',
+            'type'                    => $post->post_type,
             'meta'                    => $meta,
             'elementor_data'          => $elementor_data,
             'elementor_css'           => $elementor_css,
             'elementor_page_settings' => get_post_meta( $post_id, '_elementor_page_settings', true ),
-            'elementor_template_type' => $template_type ?: 'bdea-hf-document',
+            'elementor_template_type' => $template_type ?: ( $is_loop ? 'loop-item' : 'bdea-hf-document' ),
         ];
 
         wp_send_json_success( [ 'export' => $export ] );
@@ -870,9 +948,14 @@ class Admin {
             wp_send_json_error( [ 'message' => 'Invalid or corrupt import file.' ] );
         }
 
+        // Determine post type from export data
+        $post_type = isset( $data['type'] ) && 'elementor_library' === $data['type']
+            ? 'elementor_library'
+            : 'bdea_header_footer';
+
         $post_id = wp_insert_post( [
             'post_title'  => sanitize_text_field( $data['title'] ),
-            'post_type'   => 'bdea_header_footer',
+            'post_type'   => $post_type,
             'post_status' => 'publish',
         ] );
 
@@ -946,6 +1029,25 @@ class Admin {
     private function get_templates( $type = '', $statuses = null ) {
         $statuses = $statuses ?: [ 'publish', 'draft' ];
 
+        // Loop templates use elementor_library post type (like Elementor Pro)
+        if ( 'loop' === $type ) {
+            $args = [
+                'post_type'      => 'elementor_library',
+                'post_status'    => $statuses,
+                'posts_per_page' => -1,
+                'orderby'        => 'title date',
+                'order'          => 'ASC',
+                'meta_query'     => [
+                    [
+                        'key'     => '_elementor_template_type',
+                        'value'   => [ 'loop-item', 'loop' ],
+                        'compare' => 'IN',
+                    ],
+                ],
+            ];
+            return get_posts( $args );
+        }
+
         $args = [
             'post_type'      => 'bdea_header_footer',
             'post_status'    => $statuses,
@@ -969,6 +1071,14 @@ class Admin {
             ?><span class="bdea-hf-badge bdea-hf-badge-announcement">&#9888; Announcement</span><?php
         elseif ( 'bottom_bar' === $type ) :
             ?><span class="bdea-hf-badge bdea-hf-badge-bottom-bar">&#9660; Bottom Bar</span><?php
+        elseif ( 'single' === $type ) :
+            ?><span class="bdea-hf-badge bdea-hf-badge-single">&#128196; Single Post</span><?php
+        elseif ( 'archive' === $type ) :
+            ?><span class="bdea-hf-badge bdea-hf-badge-archive">&#128230; Archive</span><?php
+        elseif ( '404' === $type ) :
+            ?><span class="bdea-hf-badge bdea-hf-badge-404">&#9888; 404 Page</span><?php
+        elseif ( 'loop' === $type || 'loop-item' === $type ) :
+            ?><span class="bdea-hf-badge bdea-hf-badge-loop">&#128260; Loop</span><?php
         else :
             ?><em>None</em><?php
         endif;

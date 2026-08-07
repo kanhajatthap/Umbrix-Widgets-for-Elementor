@@ -73,11 +73,46 @@ class ConditionManager {
             );
         }
 
+        $this->register_archive_conditions();
         $this->register_user_role_conditions();
         $this->register_language_conditions();
 
         if ( class_exists( 'WooCommerce' ) ) {
             $this->register_woocommerce_conditions();
+        }
+    }
+
+    private function register_archive_conditions() {
+        $taxonomies = get_taxonomies( [ 'public' => true ], 'objects' );
+
+        foreach ( $taxonomies as $tax ) {
+            if ( in_array( $tax->name, [ 'elementor_library', 'bdea_header_footer', 'nav_menu', 'link_category' ], true ) ) {
+                continue;
+            }
+
+            $this->register(
+                'archive:taxonomy:' . $tax->name,
+                sprintf( __( 'All %s Archives', 'bdea' ), $tax->labels->name ),
+                __( 'Archives', 'bdea' )
+            );
+
+            $terms = get_terms( [
+                'taxonomy'   => $tax->name,
+                'hide_empty' => false,
+                'number'     => 100,
+            ] );
+
+            if ( is_wp_error( $terms ) ) {
+                continue;
+            }
+
+            foreach ( $terms as $term ) {
+                $this->register(
+                    'archive:taxonomy:' . $tax->name . ':term:' . $term->slug,
+                    $term->name,
+                    sprintf( __( '%s Archives', 'bdea' ), $tax->labels->name )
+                );
+            }
         }
     }
 
@@ -290,7 +325,11 @@ class ConditionManager {
             return is_post_type_archive( $parts[2] );
         }
 
-        if ( 5 === count( $parts ) && 'taxonomy' === $parts[1] ) {
+        if ( 3 === count( $parts ) && 'taxonomy' === $parts[1] ) {
+            return is_tax( $parts[2] );
+        }
+
+        if ( 5 === count( $parts ) && 'taxonomy' === $parts[1] && 'term' === $parts[3] ) {
             return is_tax( $parts[2], $parts[4] );
         }
 
@@ -314,6 +353,8 @@ class ConditionManager {
         $current_path = wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
         $home_path    = wp_parse_url( home_url( '/' ), PHP_URL_PATH );
         $relative     = $home_path ? substr( $current_path, strlen( $home_path ) ) : ltrim( $current_path, '/' );
+
+        $pattern = ltrim( $pattern, '/' );
 
         if ( strpos( $pattern, '*' ) !== false ) {
             $regex = '/^' . str_replace( '\\*', '.*', preg_quote( $pattern, '/' ) ) . '$/i';

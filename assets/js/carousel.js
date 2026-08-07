@@ -77,7 +77,7 @@
 
         if (data.equalHeight) {
             var setEqualHeights = function () {
-                var cards = widget.querySelectorAll('.bdea-carousel-slide-inner');
+                var cards = widget.querySelectorAll('.bdea-carousel-slide-inner, .bdea-loop-carousel-card');
                 var maxHeight = 0;
 
                 cards.forEach(function (card) {
@@ -115,6 +115,22 @@
             if (window.elementorFrontend && window.elementorFrontend.hooks) {
                 window.elementorFrontend.hooks.addAction(
                     'frontend/element_ready/bdea_swiper_carousel.default',
+                    function (scope) {
+                        var root = scope && scope[0] ? scope[0] : document;
+                        initAllCarousels(root);
+                    }
+                );
+
+                window.elementorFrontend.hooks.addAction(
+                    'frontend/element_ready/bdea_loop_carousel.default',
+                    function (scope) {
+                        var root = scope && scope[0] ? scope[0] : document;
+                        initAllCarousels(root);
+                    }
+                );
+
+                window.elementorFrontend.hooks.addAction(
+                    'frontend/element_ready/bdea_image_carousel.default',
                     function (scope) {
                         var root = scope && scope[0] ? scope[0] : document;
                         initAllCarousels(root);
