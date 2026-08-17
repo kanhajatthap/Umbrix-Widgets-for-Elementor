@@ -5,7 +5,23 @@ clear-*.php
 fix*.php
 curl-test.php
 render-test.php
-test-page.php
-verify-page.php
+test-*.php
+verify-*.php
+populate-*.php
+run-populate.php
 create-demo-page.php
 raw-json.txt
+output*.txt
+page-source.html
+populate-result.txt
+*.png
+QA-CHECKLIST.md
+QC-REPORT.md
+hf-settings-snapshot.md
+opencode.json
+.playwright-mcp/
+
+# Local dev tools (machine-specific)
+tools/wp-cli.phar
+tools/php.ini
+tools/db-*.php

@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
@@ -28,7 +34,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_content_style',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -44,7 +50,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -56,13 +62,13 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
-                    'justify' => [ 'title' => 'Justified', 'icon' => 'eicon-text-align-justify' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'justify' => [ 'title' => __( 'Justified', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-justify' ],
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-content' => 'text-align: {{VALUE}};',
@@ -73,7 +79,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -89,7 +95,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_content_links_style',
             [
-                'label' => 'Links',
+                'label' => __( 'Links', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -97,7 +103,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -109,7 +115,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-content a:hover' => 'color: {{VALUE}};',
@@ -120,12 +126,12 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_decoration',
             [
-                'label' => 'Text Decoration',
+                'label' => __( 'Text Decoration', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'underline',
                 'options' => [
                     'none' => 'None',
-                    'underline' => 'Underline',
+                    'underline' => __( 'Underline', 'elementstack-elementor-addons' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-content a' => 'text-decoration: {{VALUE}};',
@@ -139,7 +145,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_content_lists_style',
             [
-                'label' => 'Lists',
+                'label' => __( 'Lists', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -147,7 +153,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'list_color',
             [
-                'label' => 'List Marker Color',
+                'label' => __( 'List Marker Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-content ul li::marker' => 'color: {{VALUE}};',
@@ -158,7 +164,7 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'list_spacing',
             [
-                'label' => 'List Item Spacing',
+                'label' => __( 'List Item Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],

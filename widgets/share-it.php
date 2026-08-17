@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
@@ -65,14 +71,14 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_share_it_content_section',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'bdea_share_it_show_title',
             [
-                'label' => 'Show Title',
+                'label' => __( 'Show Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -81,9 +87,9 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Share This Page',
+                'default' => __( 'Share This Page', 'elementstack-elementor-addons' ),
                 'condition' => [
                     'bdea_share_it_show_title' => 'yes',
                 ],
@@ -93,7 +99,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_facebook',
             [
-                'label' => 'Facebook',
+                'label' => __( 'Facebook', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -102,7 +108,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_x',
             [
-                'label' => 'X (Twitter)',
+                'label' => __( 'X (Twitter)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -111,7 +117,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_linkedin',
             [
-                'label' => 'LinkedIn',
+                'label' => __( 'LinkedIn', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -120,7 +126,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_whatsapp',
             [
-                'label' => 'WhatsApp',
+                'label' => __( 'WhatsApp', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -129,7 +135,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_telegram',
             [
-                'label' => 'Telegram',
+                'label' => __( 'Telegram', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -138,7 +144,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_email',
             [
-                'label' => 'Email',
+                'label' => __( 'Email', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -147,7 +153,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_copy_link',
             [
-                'label' => 'Copy Link',
+                'label' => __( 'Copy Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -156,7 +162,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_pinterest',
             [
-                'label' => 'Pinterest',
+                'label' => __( 'Pinterest', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -167,7 +173,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_share_it_style_section',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -175,20 +181,20 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_alignment',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'left',
                 'options' => [
                     'left' => [
-                        'title' => 'Left',
+                        'title' => __( 'Left', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => 'Center',
+                        'title' => __( 'Center', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => 'Right',
+                        'title' => __( 'Right', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -207,7 +213,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_icon_color',
             [
-                'label' => 'Icon Color',
+                'label' => __( 'Icon Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -220,7 +226,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -233,7 +239,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_background_color',
             [
-                'label' => 'Background Color',
+                'label' => __( 'Background Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f3a76',
                 'selectors' => [
@@ -245,7 +251,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_hover_background',
             [
-                'label' => 'Hover Background',
+                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#365ea8',
                 'selectors' => [
@@ -257,7 +263,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_icon_size',
             [
-                'label' => 'Icon Size',
+                'label' => __( 'Icon Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -277,7 +283,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_icon_spacing',
             [
-                'label' => 'Icon Spacing',
+                'label' => __( 'Icon Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -296,7 +302,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -315,7 +321,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -327,7 +333,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bdea_share_it_margin',
             [
-                'label' => 'Margin',
+                'label' => __( 'Margin', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -356,7 +362,7 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
         $links = [
             'facebook' => [
                 'enabled' => ( ! empty( $settings['bdea_share_it_facebook'] ) ),
-                'label' => 'Facebook',
+                'label' => __( 'Facebook', 'elementstack-elementor-addons' ),
                 'icon' => [ 'value' => 'fab fa-facebook-f', 'library' => 'fa-brands' ],
                 'url' => 'https://www.facebook.com/sharer/sharer.php?u=' . $encoded_url,
             ],
@@ -368,37 +374,37 @@ class BDEA_Share_It_Widget extends \Elementor\Widget_Base {
             ],
             'linkedin' => [
                 'enabled' => ( ! empty( $settings['bdea_share_it_linkedin'] ) ),
-                'label' => 'LinkedIn',
+                'label' => __( 'LinkedIn', 'elementstack-elementor-addons' ),
                 'icon' => [ 'value' => 'fab fa-linkedin-in', 'library' => 'fa-brands' ],
                 'url' => 'https://www.linkedin.com/sharing/share-offsite/?url=' . $encoded_url,
             ],
             'whatsapp' => [
                 'enabled' => ( ! empty( $settings['bdea_share_it_whatsapp'] ) ),
-                'label' => 'WhatsApp',
+                'label' => __( 'WhatsApp', 'elementstack-elementor-addons' ),
                 'icon' => [ 'value' => 'fab fa-whatsapp', 'library' => 'fa-brands' ],
                 'url' => 'https://api.whatsapp.com/send?text=' . rawurlencode( $current_title . ' ' . $current_url ),
             ],
             'telegram' => [
                 'enabled' => ( ! empty( $settings['bdea_share_it_telegram'] ) ),
-                'label' => 'Telegram',
+                'label' => __( 'Telegram', 'elementstack-elementor-addons' ),
                 'icon' => [ 'value' => 'fab fa-telegram-plane', 'library' => 'fa-brands' ],
                 'url' => 'https://t.me/share/url?url=' . $encoded_url . '&text=' . $encoded_title,
             ],
             'email' => [
                 'enabled' => ( ! empty( $settings['bdea_share_it_email'] ) ),
-                'label' => 'Email',
+                'label' => __( 'Email', 'elementstack-elementor-addons' ),
                 'icon' => [ 'value' => 'fas fa-envelope', 'library' => 'fa-solid' ],
                 'url' => 'mailto:?subject=' . $encoded_title . '&body=' . rawurlencode( $current_url ),
             ],
             'copy' => [
                 'enabled' => ( ! empty( $settings['bdea_share_it_copy_link'] ) ),
-                'label' => 'Copy Link',
+                'label' => __( 'Copy Link', 'elementstack-elementor-addons' ),
                 'icon' => [ 'value' => 'fas fa-copy', 'library' => 'fa-solid' ],
                 'url' => $current_url,
             ],
             'pinterest' => [
                 'enabled' => ( ! empty( $settings['bdea_share_it_pinterest'] ) ),
-                'label' => 'Pinterest',
+                'label' => __( 'Pinterest', 'elementstack-elementor-addons' ),
                 'icon' => [ 'value' => 'fab fa-pinterest-p', 'library' => 'fa-brands' ],
                 'url' => 'https://pinterest.com/pin/create/button/?url=' . $encoded_url . '&description=' . $encoded_title,
             ],

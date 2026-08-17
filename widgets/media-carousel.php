@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
@@ -32,7 +38,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_media_carousel_section',
             [
-                'label' => 'Media Carousel',
+                'label' => __( 'Media Carousel', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -41,7 +47,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'mc_image',
             [
-                'label' => 'Image',
+                'label' => __( 'Image', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
             ]
         );
@@ -49,16 +55,16 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'mc_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Media Title',
+                'default' => __( 'Media Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'mc_caption',
             [
-                'label' => 'Caption',
+                'label' => __( 'Caption', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
             ]
         );
@@ -66,13 +72,13 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'media_items',
             [
-                'label' => 'Items',
+                'label' => __( 'Items', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'mc_title' => 'Image One' ],
-                    [ 'mc_title' => 'Image Two' ],
-                    [ 'mc_title' => 'Image Three' ],
+                    [ 'mc_title' => __( 'Image One', 'elementstack-elementor-addons' ) ],
+                    [ 'mc_title' => __( 'Image Two', 'elementstack-elementor-addons' ) ],
+                    [ 'mc_title' => __( 'Image Three', 'elementstack-elementor-addons' ) ],
                 ],
                 'title_field' => '{{{ mc_title }}}',
             ]
@@ -81,7 +87,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'mc_slides_view',
             [
-                'label' => 'Slides to Show',
+                'label' => __( 'Slides to Show', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 3,
                 'min' => 1,
@@ -92,7 +98,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'mc_autoplay',
             [
-                'label' => 'Autoplay',
+                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -101,7 +107,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'mc_dots',
             [
-                'label' => 'Show Dots',
+                'label' => __( 'Show Dots', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -110,7 +116,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'mc_arrows',
             [
-                'label' => 'Show Arrows',
+                'label' => __( 'Show Arrows', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -121,7 +127,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_media_carousel_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -129,7 +135,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'mc_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -143,7 +149,7 @@ class BDEA_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'mc_caption_color',
             [
-                'label' => 'Caption Color',
+                'label' => __( 'Caption Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [

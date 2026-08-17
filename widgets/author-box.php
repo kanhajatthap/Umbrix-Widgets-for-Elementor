@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
@@ -28,19 +34,19 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_author_box_content',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'layout',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'left',
                 'options' => [
-                    'left' => 'Left',
-                    'top' => 'Top',
+                    'left' => __( 'Left', 'elementstack-elementor-addons' ),
+                    'top' => __( 'Top', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -48,7 +54,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_avatar',
             [
-                'label' => 'Show Avatar',
+                'label' => __( 'Show Avatar', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -57,7 +63,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'avatar_size',
             [
-                'label' => 'Avatar Size',
+                'label' => __( 'Avatar Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 96,
                 'min' => 32,
@@ -69,7 +75,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_name',
             [
-                'label' => 'Show Name',
+                'label' => __( 'Show Name', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -78,7 +84,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_description',
             [
-                'label' => 'Show Description',
+                'label' => __( 'Show Description', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -87,7 +93,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_website',
             [
-                'label' => 'Show Website Link',
+                'label' => __( 'Show Website Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -98,7 +104,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_author_box_style',
             [
-                'label' => 'Author Box',
+                'label' => __( 'Author Box', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -106,7 +112,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'box_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7f7f7',
                 'selectors' => [
@@ -118,7 +124,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'box_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -132,7 +138,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'box_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -152,7 +158,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'name_color',
             [
-                'label' => 'Name Color',
+                'label' => __( 'Name Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -172,7 +178,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'description_color',
             [
-                'label' => 'Description Color',
+                'label' => __( 'Description Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [

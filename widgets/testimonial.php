@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_testimonial_section',
             [
-                'label' => 'Testimonial',
+                'label' => __( 'Testimonial', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'testimonial_quote',
             [
-                'label' => 'Testimonial',
+                'label' => __( 'Testimonial', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'This product completely changed how we work. Setup was easy and the support team is fantastic.',
                 'rows' => 5,
@@ -45,16 +51,16 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonial_author',
             [
-                'label' => 'Author',
+                'label' => __( 'Author', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'John Smith',
+                'default' => __( 'John Smith', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'testimonial_role',
             [
-                'label' => 'Role / Company',
+                'label' => __( 'Role / Company', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'CEO, Example Inc.',
             ]
@@ -63,7 +69,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonial_avatar',
             [
-                'label' => 'Avatar',
+                'label' => __( 'Avatar', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [],
             ]
@@ -72,7 +78,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonial_rating',
             [
-                'label' => 'Rating',
+                'label' => __( 'Rating', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '5',
                 'options' => [
@@ -89,12 +95,12 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'testimonial_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -108,7 +114,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_testimonial_card_style',
             [
-                'label' => 'Card',
+                'label' => __( 'Card', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -116,7 +122,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -136,7 +142,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -158,7 +164,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -172,7 +178,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_testimonial_content_style',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -188,7 +194,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'quote_color',
             [
-                'label' => 'Quote Color',
+                'label' => __( 'Quote Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-testimonial-quote' => 'color: {{VALUE}};',
@@ -199,7 +205,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'quote_mark_color',
             [
-                'label' => 'Quote Mark Color',
+                'label' => __( 'Quote Mark Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -219,7 +225,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'author_color',
             [
-                'label' => 'Author Color',
+                'label' => __( 'Author Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-testimonial-author' => 'color: {{VALUE}};',
@@ -238,7 +244,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'role_color',
             [
-                'label' => 'Role Color',
+                'label' => __( 'Role Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-testimonial-role' => 'color: {{VALUE}};',

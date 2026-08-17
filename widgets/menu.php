@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Menu_Widget extends \Elementor\Widget_Base {
@@ -37,14 +43,14 @@ class BDEA_Menu_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_menu_section',
             [
-                'label' => 'Menu',
+                'label' => __( 'Menu', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'menu_id',
             [
-                'label' => 'Select Menu',
+                'label' => __( 'Select Menu', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_menus(),
             ]
@@ -53,12 +59,12 @@ class BDEA_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'menu_layout',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'horizontal',
                 'options' => [
-                    'horizontal' => 'Horizontal',
-                    'vertical' => 'Vertical',
+                    'horizontal' => __( 'Horizontal', 'elementstack-elementor-addons' ),
+                    'vertical' => __( 'Vertical', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -66,12 +72,12 @@ class BDEA_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'menu_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -85,7 +91,7 @@ class BDEA_Menu_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_menu_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -101,7 +107,7 @@ class BDEA_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'menu_link_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -113,7 +119,7 @@ class BDEA_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'menu_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [

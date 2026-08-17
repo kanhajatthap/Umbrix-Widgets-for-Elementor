@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Form_Widget extends \Elementor\Widget_Base {
@@ -32,7 +38,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_form_section',
             [
-                'label' => 'Form',
+                'label' => __( 'Form', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -41,14 +47,14 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'field_type',
             [
-                'label' => 'Field Type',
+                'label' => __( 'Field Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'text',
                 'options' => [
-                    'text' => 'Text',
-                    'email' => 'Email',
-                    'textarea' => 'Textarea',
-                    'select' => 'Select',
+                    'text' => __( 'Text', 'elementstack-elementor-addons' ),
+                    'email' => __( 'Email', 'elementstack-elementor-addons' ),
+                    'textarea' => __( 'Textarea', 'elementstack-elementor-addons' ),
+                    'select' => __( 'Select', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -56,16 +62,16 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'field_label',
             [
-                'label' => 'Label',
+                'label' => __( 'Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Field Label',
+                'default' => __( 'Field Label', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'field_name',
             [
-                'label' => 'Name',
+                'label' => __( 'Name', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'field_name',
             ]
@@ -74,7 +80,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'field_options',
             [
-                'label' => 'Options',
+                'label' => __( 'Options', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'description' => 'Comma separated list of options.',
                 'condition' => [ 'field_type' => 'select' ],
@@ -84,7 +90,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'field_required',
             [
-                'label' => 'Required',
+                'label' => __( 'Required', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -93,13 +99,13 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_fields',
             [
-                'label' => 'Fields',
+                'label' => __( 'Fields', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'field_type' => 'text', 'field_label' => 'Name', 'field_name' => 'name', 'field_required' => 'yes' ],
-                    [ 'field_type' => 'email', 'field_label' => 'Email', 'field_name' => 'email', 'field_required' => 'yes' ],
-                    [ 'field_type' => 'textarea', 'field_label' => 'Message', 'field_name' => 'message' ],
+                    [ 'field_type' => 'text', 'field_label' => __( 'Name', 'elementstack-elementor-addons' ), 'field_name' => 'name', 'field_required' => 'yes' ],
+                    [ 'field_type' => 'email', 'field_label' => __( 'Email', 'elementstack-elementor-addons' ), 'field_name' => 'email', 'field_required' => 'yes' ],
+                    [ 'field_type' => 'textarea', 'field_label' => __( 'Message', 'elementstack-elementor-addons' ), 'field_name' => 'message' ],
                 ],
                 'title_field' => '{{{ field_label }}}',
             ]
@@ -108,16 +114,16 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'submit_label',
             [
-                'label' => 'Submit Button Label',
+                'label' => __( 'Submit Button Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Submit',
+                'default' => __( 'Submit', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'email_to',
             [
-                'label' => 'Email To',
+                'label' => __( 'Email To', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => get_option( 'admin_email' ),
                 'input_type' => 'email',
@@ -127,16 +133,16 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'email_subject',
             [
-                'label' => 'Email Subject',
+                'label' => __( 'Email Subject', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'New Form Submission',
+                'default' => __( 'New Form Submission', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'success_message',
             [
-                'label' => 'Success Message',
+                'label' => __( 'Success Message', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'Thank you! Your message has been sent.',
             ]
@@ -145,7 +151,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'error_message',
             [
-                'label' => 'Error Message',
+                'label' => __( 'Error Message', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'Sorry, your message could not be sent. Please try again.',
             ]
@@ -157,7 +163,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_form_label_style',
             [
-                'label' => 'Labels',
+                'label' => __( 'Labels', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -173,7 +179,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'label_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -185,7 +191,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'label_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 20 ] ],
@@ -201,7 +207,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_form_input_style',
             [
-                'label' => 'Inputs',
+                'label' => __( 'Inputs', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -217,7 +223,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_text_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -229,7 +235,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_placeholder_color',
             [
-                'label' => 'Placeholder Color',
+                'label' => __( 'Placeholder Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-form-control::placeholder' => 'color: {{VALUE}};',
@@ -240,7 +246,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_bg_color',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -252,7 +258,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_border_color',
             [
-                'label' => 'Border Color',
+                'label' => __( 'Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#d1d5db',
                 'selectors' => [
@@ -264,7 +270,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_focus_border_color',
             [
-                'label' => 'Focus Border Color',
+                'label' => __( 'Focus Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-form-control:focus' => 'border-color: {{VALUE}};',
@@ -275,7 +281,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_border_width',
             [
-                'label' => 'Border Width',
+                'label' => __( 'Border Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 10 ] ],
@@ -288,7 +294,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -307,7 +313,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -326,7 +332,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'field_spacing',
             [
-                'label' => 'Field Spacing',
+                'label' => __( 'Field Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 40 ] ],
@@ -342,7 +348,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_form_button_style',
             [
-                'label' => 'Button',
+                'label' => __( 'Button', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -358,7 +364,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_bg_color',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -370,7 +376,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_hover_bg',
             [
-                'label' => 'Hover Background',
+                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-form-submit:hover' => 'background-color: {{VALUE}};',
@@ -381,7 +387,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -393,7 +399,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_hover_text',
             [
-                'label' => 'Hover Text Color',
+                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-form-submit:hover' => 'color: {{VALUE}};',
@@ -404,7 +410,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'button_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -423,7 +429,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'button_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -442,7 +448,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'button_spacing',
             [
-                'label' => 'Top Spacing',
+                'label' => __( 'Top Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 40 ] ],
@@ -492,10 +498,10 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
                     <?php endif; ?>
 
                     <?php if ( 'textarea' === $field_type ) : ?>
-                        <textarea class="bdea-form-control" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $input_name ); ?>" rows="4"<?php echo $required_attr; ?>></textarea>
+                        <textarea class="bdea-form-control" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $input_name ); ?>" rows="4"<?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static 'required' attribute. ?>></textarea>
                     <?php elseif ( 'select' === $field_type ) : ?>
-                        <select class="bdea-form-control" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $input_name ); ?>"<?php echo $required_attr; ?>>
-                            <option value="">Select option</option>
+                        <select class="bdea-form-control" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $input_name ); ?>"<?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static 'required' attribute. ?>>
+                            <option value=""><?php esc_html_e( 'Select option', 'elementstack-elementor-addons' ); ?></option>
                             <?php
                             $options = ! empty( $field['field_options'] ) ? array_map( 'trim', explode( ',', $field['field_options'] ) ) : [];
                             foreach ( $options as $option ) :
@@ -504,7 +510,7 @@ class BDEA_Form_Widget extends \Elementor\Widget_Base {
                             <?php endforeach; ?>
                         </select>
                     <?php else : ?>
-                        <input class="bdea-form-control" type="<?php echo esc_attr( $field_type ); ?>" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $input_name ); ?>"<?php echo $required_attr; ?>>
+                        <input class="bdea-form-control" type="<?php echo esc_attr( $field_type ); ?>" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $input_name ); ?>"<?php echo $required_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static 'required' attribute. ?>>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>

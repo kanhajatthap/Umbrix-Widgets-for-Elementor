@@ -1,4 +1,9 @@
-﻿<?php
+<?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Facebook_Embed_Widget extends \Elementor\Widget_Base {
@@ -28,14 +33,14 @@ class BDEA_Facebook_Embed_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_fb_embed_content',
             [
-                'label' => 'Facebook Embed',
+                'label' => __( 'Facebook Embed', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'url',
             [
-                'label' => 'Post URL',
+                'label' => __( 'Post URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'https://www.facebook.com/example/posts/123456789',
             ]
@@ -46,7 +51,7 @@ class BDEA_Facebook_Embed_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_fb_embed_style',
             [
-                'label' => 'Wrap',
+                'label' => __( 'Wrap', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -54,12 +59,12 @@ class BDEA_Facebook_Embed_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'wrap_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -71,7 +76,7 @@ class BDEA_Facebook_Embed_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'wrap_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -91,7 +96,7 @@ class BDEA_Facebook_Embed_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'wrap_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -117,6 +122,6 @@ class BDEA_Facebook_Embed_Widget extends \Elementor\Widget_Base {
     }
 
     private function maybe_render_fb_sdk() {
-        bdea_maybe_print_fb_sdk( 'v18.0' );
+        bdea_maybe_print_fb_sdk( 'v25.0' );
     }
 }

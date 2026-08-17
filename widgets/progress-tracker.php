@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Progress_Tracker_Widget extends \Elementor\Widget_Base {
@@ -32,23 +38,23 @@ class BDEA_Progress_Tracker_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_progress_tracker_section',
             [
-                'label' => 'Progress Tracker',
+                'label' => __( 'Progress Tracker', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'progress_description',
             [
-                'label' => 'Description',
+                'label' => __( 'Description', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Event Progress',
+                'default' => __( 'Event Progress', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'progress_percentage',
             [
-                'label' => 'Percentage',
+                'label' => __( 'Percentage', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 75,
                 'min' => 0,
@@ -60,7 +66,7 @@ class BDEA_Progress_Tracker_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'progress_show_percentage',
             [
-                'label' => 'Show Percentage',
+                'label' => __( 'Show Percentage', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -71,7 +77,7 @@ class BDEA_Progress_Tracker_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_progress_tracker_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -79,7 +85,7 @@ class BDEA_Progress_Tracker_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'progress_fill_color',
             [
-                'label' => 'Fill Color',
+                'label' => __( 'Fill Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -91,7 +97,7 @@ class BDEA_Progress_Tracker_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'progress_text_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -104,7 +110,7 @@ class BDEA_Progress_Tracker_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'progress_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 4, 'max' => 50 ] ],

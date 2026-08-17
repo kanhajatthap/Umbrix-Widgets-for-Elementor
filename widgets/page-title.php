@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Page_Title_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Page_Title_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_page_title_section',
             [
-                'label' => 'Page Title',
+                'label' => __( 'Page Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'page_title_tag',
             [
-                'label' => 'HTML Tag',
+                'label' => __( 'HTML Tag', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'h1',
                 'options' => [
@@ -54,7 +60,7 @@ class BDEA_Page_Title_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'page_title_link',
             [
-                'label' => 'Link to Page',
+                'label' => __( 'Link to Page', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -65,7 +71,7 @@ class BDEA_Page_Title_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_page_title_style',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -81,7 +87,7 @@ class BDEA_Page_Title_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'page_title_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -94,12 +100,12 @@ class BDEA_Page_Title_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'page_title_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [

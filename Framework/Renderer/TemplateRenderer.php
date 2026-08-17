@@ -1,4 +1,9 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 namespace BDEA\Framework\Renderer;
 
 use BDEA\Framework\Conditions\ConditionManager;
@@ -60,11 +65,13 @@ class TemplateRenderer {
             $content = \Elementor\Plugin::$instance->frontend->get_builder_content( $post_id, true );
 
             if ( $content ) {
-                echo $content; // WPCS: XSS OK. Elementor escapes content.
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor builder content is escaped by Elementor.
+                echo $content;
             }
         } else {
             if ( isset( $post->post_content ) ) {
-                echo apply_filters( 'the_content', $post->post_content ); // WPCS: XSS OK.
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- the_content filter escapes content.
+                echo apply_filters( 'the_content', $post->post_content );
             }
         }
     }
@@ -90,8 +97,8 @@ class TemplateRenderer {
                 'post_type'              => 'bdea_header_footer',
                 'post_status'            => 'publish',
                 'posts_per_page'         => 50,
-                'meta_key'               => '_bdea_hf_template_type',
-                'meta_value'             => $type,
+                'meta_key'               => '_bdea_hf_template_type', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Template type lookup is the primary filter.
+                'meta_value'             => $type, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Template type lookup is the primary filter.
                 'orderby'                => 'menu_order',
                 'order'                  => 'ASC',
                 'no_found_rows'          => true,

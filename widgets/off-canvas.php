@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
@@ -32,24 +38,24 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_trigger_section',
             [
-                'label' => 'Trigger',
+                'label' => __( 'Trigger', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'trigger_text',
             [
-                'label' => 'Button Text',
+                'label' => __( 'Button Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Open Panel',
-                'placeholder' => 'Open Panel',
+                'default' => __( 'Open Panel', 'elementstack-elementor-addons' ),
+                'placeholder' => __( 'Open Panel', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'trigger_icon',
             [
-                'label' => 'Icon (optional)',
+                'label' => __( 'Icon (optional)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-bars',
@@ -63,24 +69,24 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_content_section',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'panel_title',
             [
-                'label' => 'Panel Title',
+                'label' => __( 'Panel Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Menu',
-                'placeholder' => 'Menu',
+                'default' => __( 'Menu', 'elementstack-elementor-addons' ),
+                'placeholder' => __( 'Menu', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'panel_content',
             [
-                'label' => 'Panel Content',
+                'label' => __( 'Panel Content', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::WYSIWYG,
                 'default' => 'Add your content here. This panel works for menus, filters, forms and more.',
             ]
@@ -91,21 +97,21 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_behavior_section',
             [
-                'label' => 'Behavior',
+                'label' => __( 'Behavior', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'position',
             [
-                'label' => 'Position',
+                'label' => __( 'Position', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'right',
                 'options' => [
-                    'left' => 'Left',
-                    'right' => 'Right',
-                    'top' => 'Top',
-                    'bottom' => 'Bottom',
+                    'left' => __( 'Left', 'elementstack-elementor-addons' ),
+                    'right' => __( 'Right', 'elementstack-elementor-addons' ),
+                    'top' => __( 'Top', 'elementstack-elementor-addons' ),
+                    'bottom' => __( 'Bottom', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -113,7 +119,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'panel_width',
             [
-                'label' => 'Panel Width (side panels)',
+                'label' => __( 'Panel Width (side panels)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%', 'vw' ],
                 'range' => [ 'px' => [ 'min' => 200, 'max' => 1200 ], '%' => [ 'min' => 10, 'max' => 100 ], 'vw' => [ 'min' => 10, 'max' => 100 ] ],
@@ -130,7 +136,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'panel_height',
             [
-                'label' => 'Panel Height (top/bottom)',
+                'label' => __( 'Panel Height (top/bottom)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%', 'vh' ],
                 'range' => [ 'px' => [ 'min' => 100, 'max' => 1200 ], '%' => [ 'min' => 10, 'max' => 100 ], 'vh' => [ 'min' => 10, 'max' => 100 ] ],
@@ -147,7 +153,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'close_on_overlay',
             [
-                'label' => 'Close on Overlay Click',
+                'label' => __( 'Close on Overlay Click', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -156,7 +162,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'close_on_esc',
             [
-                'label' => 'Close on ESC',
+                'label' => __( 'Close on ESC', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -167,7 +173,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_trigger_style_section',
             [
-                'label' => 'Trigger Button',
+                'label' => __( 'Trigger Button', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -184,13 +190,13 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
 
         $this->start_controls_tab(
             'trigger_normal',
-            [ 'label' => 'Normal' ]
+            [ 'label' => __( 'Normal', 'elementstack-elementor-addons' ) ]
         );
 
         $this->add_control(
             'trigger_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-trigger' => 'color: {{VALUE}};',
@@ -201,7 +207,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'trigger_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-trigger' => 'background-color: {{VALUE}};',
@@ -213,13 +219,13 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
 
         $this->start_controls_tab(
             'trigger_hover',
-            [ 'label' => 'Hover' ]
+            [ 'label' => __( 'Hover', 'elementstack-elementor-addons' ) ]
         );
 
         $this->add_control(
             'trigger_hover_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-trigger:hover' => 'color: {{VALUE}};',
@@ -230,7 +236,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'trigger_hover_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-trigger:hover' => 'background-color: {{VALUE}};',
@@ -253,7 +259,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'trigger_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -266,7 +272,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'trigger_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
@@ -280,7 +286,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_panel_style_section',
             [
-                'label' => 'Panel',
+                'label' => __( 'Panel', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -288,7 +294,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'panel_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-panel' => 'background-color: {{VALUE}};',
@@ -299,7 +305,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'panel_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -311,7 +317,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'overlay_color',
             [
-                'label' => 'Overlay Color',
+                'label' => __( 'Overlay Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-overlay' => 'background-color: {{VALUE}};',
@@ -322,7 +328,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'close_color',
             [
-                'label' => 'Close Button Color',
+                'label' => __( 'Close Button Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-close' => 'color: {{VALUE}};',
@@ -333,7 +339,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'close_bg',
             [
-                'label' => 'Close Button Background',
+                'label' => __( 'Close Button Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-close' => 'background-color: {{VALUE}};',
@@ -346,7 +352,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_panel_typography_section',
             [
-                'label' => 'Panel Title & Content',
+                'label' => __( 'Panel Title & Content', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -362,7 +368,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'panel_title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-title' => 'color: {{VALUE}};',
@@ -381,7 +387,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'panel_content_color',
             [
-                'label' => 'Content Color',
+                'label' => __( 'Content Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-content' => 'color: {{VALUE}};',
@@ -392,7 +398,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_links_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-off-canvas-content a' => 'color: {{VALUE}};',
@@ -419,7 +425,7 @@ class BDEA_Off_Canvas_Widget extends \Elementor\Widget_Base {
 
         $icon = ! empty( $settings['trigger_icon']['value'] ) ? $settings['trigger_icon']['value'] : '';
         ?>
-        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+        <div <?php echo $this->get_render_attribute_string( 'wrapper' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
             <button type="button" class="bdea-off-canvas-trigger">
                 <?php if ( $icon ) : ?>
                     <span class="bdea-off-canvas-trigger-icon"><i class="<?php echo esc_attr( $icon ); ?>"></i></span>

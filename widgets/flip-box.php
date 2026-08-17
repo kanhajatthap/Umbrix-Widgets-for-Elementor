@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_flip_box_front',
             [
-                'label' => 'Front',
+                'label' => __( 'Front', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'flip_icon',
             [
-                'label' => 'Icon',
+                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-star',
@@ -47,16 +53,16 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_front_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Front Title',
+                'default' => __( 'Front Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'flip_front_text',
             [
-                'label' => 'Description',
+                'label' => __( 'Description', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Hover or tap to flip the box.',
             ]
@@ -67,23 +73,23 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_flip_box_back',
             [
-                'label' => 'Back',
+                'label' => __( 'Back', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'flip_back_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Back Title',
+                'default' => __( 'Back Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'flip_back_text',
             [
-                'label' => 'Description',
+                'label' => __( 'Description', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'This is the back side content.',
             ]
@@ -92,16 +98,16 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_btn_text',
             [
-                'label' => 'Button Text',
+                'label' => __( 'Button Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Learn More',
+                'default' => __( 'Learn More', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'flip_btn_url',
             [
-                'label' => 'Button Link',
+                'label' => __( 'Button Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -113,7 +119,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_flip_general_style',
             [
-                'label' => 'General',
+                'label' => __( 'General', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -121,7 +127,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 200, 'max' => 600 ] ],
@@ -143,7 +149,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'flip_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -166,7 +172,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_flip_front_style',
             [
-                'label' => 'Front',
+                'label' => __( 'Front', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -174,7 +180,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_front_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -186,7 +192,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_front_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -198,7 +204,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'front_icon_color',
             [
-                'label' => 'Icon Color',
+                'label' => __( 'Icon Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-flip-face-front .bdea-flip-icon' => 'color: {{VALUE}};',
@@ -209,7 +215,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'front_icon_size',
             [
-                'label' => 'Icon Size',
+                'label' => __( 'Icon Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 16, 'max' => 80 ] ],
@@ -238,7 +244,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'front_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -260,7 +266,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_flip_back_style',
             [
-                'label' => 'Back',
+                'label' => __( 'Back', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -268,7 +274,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_back_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -280,7 +286,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_back_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -308,7 +314,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'back_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -330,7 +336,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_flip_btn_style',
             [
-                'label' => 'Button',
+                'label' => __( 'Button', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -338,7 +344,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-flip-btn' => 'background-color: {{VALUE}};',
@@ -349,7 +355,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-flip-btn' => 'color: {{VALUE}};',
@@ -360,7 +366,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_bg',
             [
-                'label' => 'Hover Background',
+                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-flip-btn:hover' => 'background-color: {{VALUE}};',
@@ -371,7 +377,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_color',
             [
-                'label' => 'Hover Text Color',
+                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-flip-btn:hover' => 'color: {{VALUE}};',
@@ -390,7 +396,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -409,7 +415,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -428,7 +434,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_spacing',
             [
-                'label' => 'Top Spacing',
+                'label' => __( 'Top Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],

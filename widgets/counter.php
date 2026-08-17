@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Counter_Widget extends \Elementor\Widget_Base {
@@ -32,14 +38,14 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_counter_section',
             [
-                'label' => 'Counter',
+                'label' => __( 'Counter', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'counter_number',
             [
-                'label' => 'Number',
+                'label' => __( 'Number', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 250,
                 'min' => 0,
@@ -50,7 +56,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'counter_prefix',
             [
-                'label' => 'Prefix',
+                'label' => __( 'Prefix', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'Enter prefix ($, €, etc.)',
             ]
@@ -59,7 +65,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'counter_suffix',
             [
-                'label' => 'Suffix',
+                'label' => __( 'Suffix', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'Enter suffix (+, %, etc.)',
             ]
@@ -68,7 +74,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'counter_duration',
             [
-                'label' => 'Animation Duration (ms)',
+                'label' => __( 'Animation Duration (ms)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 2000,
                 'min' => 300,
@@ -80,10 +86,10 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'counter_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Happy Customers',
-                'placeholder' => 'Enter a title',
+                'default' => __( 'Happy Customers', 'elementstack-elementor-addons' ),
+                'placeholder' => __( 'Enter a title', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -93,7 +99,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_counter_general_style',
             [
-                'label' => 'General',
+                'label' => __( 'General', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -101,12 +107,12 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'counter_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -118,7 +124,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'counter_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-counter-widget' => 'background-color: {{VALUE}};',
@@ -137,7 +143,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'counter_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -157,7 +163,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'counter_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -171,7 +177,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_counter_number_style',
             [
-                'label' => 'Number',
+                'label' => __( 'Number', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -187,7 +193,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'number_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -199,7 +205,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'prefix_suffix_color',
             [
-                'label' => 'Prefix/Suffix Color',
+                'label' => __( 'Prefix/Suffix Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-counter-prefix, {{WRAPPER}} .bdea-counter-suffix' => 'color: {{VALUE}};',
@@ -220,7 +226,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_counter_title_style',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -236,7 +242,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-counter-title' => 'color: {{VALUE}};',
@@ -247,7 +253,7 @@ class BDEA_Counter_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],

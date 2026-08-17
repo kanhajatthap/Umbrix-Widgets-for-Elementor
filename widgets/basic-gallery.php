@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
@@ -28,7 +34,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_gallery_section',
             [
-                'label' => 'Gallery',
+                'label' => __( 'Gallery', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -37,7 +43,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'gallery_image',
             [
-                'label' => 'Image',
+                'label' => __( 'Image', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -48,7 +54,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'gallery_caption',
             [
-                'label' => 'Caption',
+                'label' => __( 'Caption', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -57,7 +63,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'gallery_link',
             [
-                'label' => 'Link',
+                'label' => __( 'Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -66,13 +72,13 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'galleries',
             [
-                'label' => 'Images',
+                'label' => __( 'Images', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'gallery_caption' => 'Gallery Image 1' ],
-                    [ 'gallery_caption' => 'Gallery Image 2' ],
-                    [ 'gallery_caption' => 'Gallery Image 3' ],
+                    [ 'gallery_caption' => __( 'Gallery Image 1', 'elementstack-elementor-addons' ) ],
+                    [ 'gallery_caption' => __( 'Gallery Image 2', 'elementstack-elementor-addons' ) ],
+                    [ 'gallery_caption' => __( 'Gallery Image 3', 'elementstack-elementor-addons' ) ],
                 ],
                 'title_field' => '{{{ gallery_caption }}}',
             ]
@@ -81,7 +87,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'columns',
             [
-                'label' => 'Columns',
+                'label' => __( 'Columns', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '3',
                 'tablet_default' => '2',
@@ -100,7 +106,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'gallery_gap',
             [
-                'label' => 'Gap',
+                'label' => __( 'Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -117,7 +123,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_gallery_image_style',
             [
-                'label' => 'Image',
+                'label' => __( 'Image', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -125,7 +131,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => 'Image Height',
+                'label' => __( 'Image Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
@@ -139,12 +145,12 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => 'Object Fit',
+                'label' => __( 'Object Fit', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => 'Cover',
-                    'contain' => 'Contain',
+                    'cover' => __( 'Cover', 'elementstack-elementor-addons' ),
+                    'contain' => __( 'Contain', 'elementstack-elementor-addons' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-gallery-item img' => 'object-fit: {{VALUE}};',
@@ -155,7 +161,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -179,7 +185,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_gallery_hover_style',
             [
-                'label' => 'Hover',
+                'label' => __( 'Hover', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -187,7 +193,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hover_scale',
             [
-                'label' => 'Hover Scale',
+                'label' => __( 'Hover Scale', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [ '' => [ 'min' => 1, 'max' => 1.5, 'step' => 0.01 ] ],
@@ -201,7 +207,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hover_opacity',
             [
-                'label' => 'Hover Opacity',
+                'label' => __( 'Hover Opacity', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [ '' => [ 'min' => 0.1, 'max' => 1, 'step' => 0.01 ] ],
@@ -218,7 +224,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_gallery_caption_style',
             [
-                'label' => 'Caption',
+                'label' => __( 'Caption', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -234,7 +240,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'caption_color',
             [
-                'label' => 'Caption Color',
+                'label' => __( 'Caption Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-gallery-caption' => 'color: {{VALUE}};',
@@ -245,12 +251,12 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'caption_align',
             [
-                'label' => 'Caption Alignment',
+                'label' => __( 'Caption Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-gallery-caption' => 'text-align: {{VALUE}};',
@@ -261,7 +267,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'caption_spacing',
             [
-                'label' => 'Spacing Above Caption',
+                'label' => __( 'Spacing Above Caption', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],

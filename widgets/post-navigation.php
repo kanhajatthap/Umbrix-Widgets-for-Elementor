@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
@@ -28,32 +34,32 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_navigation_content',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'prev_label',
             [
-                'label' => 'Previous Label',
+                'label' => __( 'Previous Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Previous',
+                'default' => __( 'Previous', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'next_label',
             [
-                'label' => 'Next Label',
+                'label' => __( 'Next Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Next',
+                'default' => __( 'Next', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_arrows',
             [
-                'label' => 'Show Arrows',
+                'label' => __( 'Show Arrows', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -62,12 +68,12 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'layout',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'horizontal',
                 'options' => [
-                    'horizontal' => 'Horizontal',
-                    'vertical' => 'Vertical',
+                    'horizontal' => __( 'Horizontal', 'elementstack-elementor-addons' ),
+                    'vertical' => __( 'Vertical', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -78,7 +84,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_navigation_style',
             [
-                'label' => 'Navigation',
+                'label' => __( 'Navigation', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -94,7 +100,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'nav_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -106,7 +112,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'nav_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-navigation a:hover' => 'color: {{VALUE}};',
@@ -117,7 +123,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'label_color',
             [
-                'label' => 'Label Color',
+                'label' => __( 'Label Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-navigation-label' => 'color: {{VALUE}};',
@@ -128,7 +134,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_color',
             [
-                'label' => 'Arrow Color',
+                'label' => __( 'Arrow Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-navigation-arrow' => 'color: {{VALUE}};',
@@ -139,12 +145,12 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'nav_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -159,7 +165,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_navigation_box_style',
             [
-                'label' => 'Box',
+                'label' => __( 'Box', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -167,7 +173,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'box_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -202,7 +208,7 @@ class BDEA_Post_Navigation_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'box_gap',
             [
-                'label' => 'Gap',
+                'label' => __( 'Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],

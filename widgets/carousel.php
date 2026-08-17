@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
@@ -32,20 +38,20 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_slides_section',
             [
-                'label' => 'Slides',
+                'label' => __( 'Slides', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'layout_type',
             [
-                'label' => 'Layout Type',
+                'label' => __( 'Layout Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'card',
                 'options' => [
-                    'basic' => 'Basic Carousel',
-                    'card' => 'Card Style',
-                    'image-only' => 'Image Only',
+                    'basic' => __( 'Basic Carousel', 'elementstack-elementor-addons' ),
+                    'card' => __( 'Card Style', 'elementstack-elementor-addons' ),
+                    'image-only' => __( 'Image Only', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -55,7 +61,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'slide_image',
             [
-                'label' => 'Image',
+                'label' => __( 'Image', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -66,16 +72,16 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'slide_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Real Estate Investors',
+                'default' => __( 'Real Estate Investors', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'slide_description',
             [
-                'label' => 'Description',
+                'label' => __( 'Description', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Enrich property data to analyze investments and assess risk.',
             ]
@@ -84,7 +90,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'slide_button_text',
             [
-                'label' => 'Button Text',
+                'label' => __( 'Button Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -93,7 +99,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'slide_button_url',
             [
-                'label' => 'Button Link',
+                'label' => __( 'Button Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://your-link.com',
                 'default' => [
@@ -105,24 +111,24 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slides',
             [
-                'label' => 'Slides',
+                'label' => __( 'Slides', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'slide_title' => 'Real Estate Investors',
+                        'slide_title' => __( 'Real Estate Investors', 'elementstack-elementor-addons' ),
                         'slide_description' => 'Enrich property data to analyze investments, assess risks, and estimate returns.',
                     ],
                     [
-                        'slide_title' => 'Insurance Companies',
+                        'slide_title' => __( 'Insurance Companies', 'elementstack-elementor-addons' ),
                         'slide_description' => 'Access property details to assess risk for home, flood, and fire insurance underwriting.',
                     ],
                     [
-                        'slide_title' => 'Mortgage Lenders',
+                        'slide_title' => __( 'Mortgage Lenders', 'elementstack-elementor-addons' ),
                         'slide_description' => 'Evaluate collateral and assess borrower risk with enriched property intelligence.',
                     ],
                     [
-                        'slide_title' => 'Appraisers',
+                        'slide_title' => __( 'Appraisers', 'elementstack-elementor-addons' ),
                         'slide_description' => 'Gather detailed property data to support accurate and reliable valuations.',
                     ],
                 ],
@@ -135,14 +141,14 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'behavior_section',
             [
-                'label' => 'Behavior',
+                'label' => __( 'Behavior', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_responsive_control(
             'slides_per_view',
             [
-                'label' => 'Slides Per View',
+                'label' => __( 'Slides Per View', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 6,
@@ -156,7 +162,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'space_between',
             [
-                'label' => 'Space Between (px)',
+                'label' => __( 'Space Between (px)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -180,7 +186,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_arrows',
             [
-                'label' => 'Show Arrows',
+                'label' => __( 'Show Arrows', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -189,7 +195,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_dots',
             [
-                'label' => 'Show Dots',
+                'label' => __( 'Show Dots', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -198,7 +204,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'autoplay',
             [
-                'label' => 'Autoplay',
+                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -207,7 +213,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'autoplay_delay',
             [
-                'label' => 'Autoplay Speed (ms)',
+                'label' => __( 'Autoplay Speed (ms)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 3500,
                 'min' => 500,
@@ -222,7 +228,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pause_on_hover',
             [
-                'label' => 'Pause on Hover',
+                'label' => __( 'Pause on Hover', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'condition' => [
@@ -234,7 +240,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'loop',
             [
-                'label' => 'Loop',
+                'label' => __( 'Loop', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -243,12 +249,12 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'effect',
             [
-                'label' => 'Animation Type',
+                'label' => __( 'Animation Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'slide',
                 'options' => [
-                    'slide' => 'Slide',
-                    'fade' => 'Fade',
+                    'slide' => __( 'Slide', 'elementstack-elementor-addons' ),
+                    'fade' => __( 'Fade', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -256,7 +262,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'transition_speed',
             [
-                'label' => 'Transition Speed (ms)',
+                'label' => __( 'Transition Speed (ms)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 650,
                 'min' => 100,
@@ -268,7 +274,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'center_mode',
             [
-                'label' => 'Center Mode',
+                'label' => __( 'Center Mode', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -277,7 +283,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'equal_height',
             [
-                'label' => 'Equal Height',
+                'label' => __( 'Equal Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -286,7 +292,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'drag_swipe',
             [
-                'label' => 'Drag / Swipe',
+                'label' => __( 'Drag / Swipe', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -297,7 +303,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_container_section',
             [
-                'label' => 'Container',
+                'label' => __( 'Container', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -305,7 +311,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'container_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-carousel-widget' => 'background-color: {{VALUE}};',
@@ -316,7 +322,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'container_max_width',
             [
-                'label' => 'Max Width',
+                'label' => __( 'Max Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [
@@ -332,20 +338,20 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'container_alignment',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'center',
                 'options' => [
                     'left' => [
-                        'title' => 'Left',
+                        'title' => __( 'Left', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => 'Center',
+                        'title' => __( 'Center', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => 'Right',
+                        'title' => __( 'Right', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -363,7 +369,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'container_padding',
             [
-                'label' => 'Outer Padding',
+                'label' => __( 'Outer Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -377,7 +383,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_slide_section',
             [
-                'label' => 'Slide / Card',
+                'label' => __( 'Slide / Card', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -385,7 +391,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slide_bg',
             [
-                'label' => 'Background Color',
+                'label' => __( 'Background Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-carousel-slide-inner' => 'background-color: {{VALUE}};',
@@ -404,7 +410,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'slide_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -427,7 +433,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'slide_padding',
             [
-                'label' => 'Inner Padding',
+                'label' => __( 'Inner Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -441,7 +447,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_image_section',
             [
-                'label' => 'Image',
+                'label' => __( 'Image', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -449,7 +455,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => 'Image Height',
+                'label' => __( 'Image Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -464,12 +470,12 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => 'Object Fit',
+                'label' => __( 'Object Fit', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => 'Cover',
-                    'contain' => 'Contain',
+                    'cover' => __( 'Cover', 'elementstack-elementor-addons' ),
+                    'contain' => __( 'Contain', 'elementstack-elementor-addons' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-carousel-image-wrap img' => 'object-fit: {{VALUE}};',
@@ -480,7 +486,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -495,7 +501,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_spacing',
             [
-                'label' => 'Spacing Below Image',
+                'label' => __( 'Spacing Below Image', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -512,7 +518,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_typography_section',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -528,7 +534,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-carousel-title' => 'color: {{VALUE}};',
@@ -547,7 +553,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'description_color',
             [
-                'label' => 'Description Color',
+                'label' => __( 'Description Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-carousel-description' => 'color: {{VALUE}};',
@@ -566,7 +572,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_text_color',
             [
-                'label' => 'Button Text Color',
+                'label' => __( 'Button Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-carousel-button' => 'color: {{VALUE}};',
@@ -577,7 +583,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_bg_color',
             [
-                'label' => 'Button Background',
+                'label' => __( 'Button Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-carousel-button' => 'background-color: {{VALUE}};',
@@ -588,7 +594,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'button_radius',
             [
-                'label' => 'Button Radius',
+                'label' => __( 'Button Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -603,7 +609,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'button_padding',
             [
-                'label' => 'Button Padding',
+                'label' => __( 'Button Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -617,7 +623,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_navigation_section',
             [
-                'label' => 'Navigation',
+                'label' => __( 'Navigation', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -625,12 +631,12 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'nav_position',
             [
-                'label' => 'Arrow Position',
+                'label' => __( 'Arrow Position', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'inside',
                 'options' => [
-                    'inside' => 'Inside',
-                    'outside' => 'Outside',
+                    'inside' => __( 'Inside', 'elementstack-elementor-addons' ),
+                    'outside' => __( 'Outside', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -638,7 +644,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'arrow_size',
             [
-                'label' => 'Arrow Size',
+                'label' => __( 'Arrow Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -653,7 +659,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'arrow_icon_size',
             [
-                'label' => 'Arrow Icon Size',
+                'label' => __( 'Arrow Icon Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -668,7 +674,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'arrow_padding',
             [
-                'label' => 'Arrow Padding',
+                'label' => __( 'Arrow Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -680,7 +686,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_color',
             [
-                'label' => 'Arrow Color',
+                'label' => __( 'Arrow Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-button-prev, {{WRAPPER}} .bdea-swiper-button-next' => 'color: {{VALUE}};',
@@ -691,7 +697,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_bg',
             [
-                'label' => 'Arrow Background',
+                'label' => __( 'Arrow Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-button-prev, {{WRAPPER}} .bdea-swiper-button-next' => 'background-color: {{VALUE}};',
@@ -702,7 +708,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'arrow_offset',
             [
-                'label' => 'Arrow Offset',
+                'label' => __( 'Arrow Offset', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -720,7 +726,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'dots_size',
             [
-                'label' => 'Dots Size',
+                'label' => __( 'Dots Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -735,7 +741,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'dots_color',
             [
-                'label' => 'Dots Color',
+                'label' => __( 'Dots Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-pagination .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
@@ -746,7 +752,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'dots_active_color',
             [
-                'label' => 'Active Dot Color',
+                'label' => __( 'Active Dot Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-pagination .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
@@ -757,7 +763,7 @@ class BDEA_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'dots_spacing',
             [
-                'label' => 'Dots Spacing',
+                'label' => __( 'Dots Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [

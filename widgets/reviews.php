@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
@@ -28,7 +34,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_reviews_section',
             [
-                'label' => 'Reviews',
+                'label' => __( 'Reviews', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -37,7 +43,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'rv_avatar',
             [
-                'label' => 'Avatar',
+                'label' => __( 'Avatar', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
             ]
         );
@@ -45,25 +51,25 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'rv_name',
             [
-                'label' => 'Name',
+                'label' => __( 'Name', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'John Doe',
+                'default' => __( 'John Doe', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'rv_role',
             [
-                'label' => 'Role',
+                'label' => __( 'Role', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Verified Customer',
+                'default' => __( 'Verified Customer', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'rv_comment',
             [
-                'label' => 'Review',
+                'label' => __( 'Review', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Great product, would buy again!',
             ]
@@ -72,7 +78,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'rv_rating',
             [
-                'label' => 'Rating',
+                'label' => __( 'Rating', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 5,
                 'min' => 1,
@@ -84,7 +90,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'rv_provider',
             [
-                'label' => 'Provider',
+                'label' => __( 'Provider', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'Google, Trustpilot...',
             ]
@@ -93,13 +99,13 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'reviews',
             [
-                'label' => 'Reviews',
+                'label' => __( 'Reviews', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'rv_name' => 'Alice Brown', 'rv_comment' => 'Fantastic experience from start to finish.' ],
-                    [ 'rv_name' => 'David Miller', 'rv_comment' => 'High quality and great support team.' ],
-                    [ 'rv_name' => 'Grace Lee', 'rv_comment' => 'Would recommend to anyone looking.' ],
+                    [ 'rv_name' => __( 'Alice Brown', 'elementstack-elementor-addons' ), 'rv_comment' => 'Fantastic experience from start to finish.' ],
+                    [ 'rv_name' => __( 'David Miller', 'elementstack-elementor-addons' ), 'rv_comment' => 'High quality and great support team.' ],
+                    [ 'rv_name' => __( 'Grace Lee', 'elementstack-elementor-addons' ), 'rv_comment' => 'Would recommend to anyone looking.' ],
                 ],
                 'title_field' => '{{{ rv_name }}}',
             ]
@@ -108,7 +114,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rv_columns',
             [
-                'label' => 'Columns',
+                'label' => __( 'Columns', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '3',
                 'options' => [
@@ -126,7 +132,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_reviews_card_style',
             [
-                'label' => 'Card',
+                'label' => __( 'Card', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -134,7 +140,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rv_card_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -154,7 +160,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -174,7 +180,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -193,7 +199,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_gap',
             [
-                'label' => 'Column Gap',
+                'label' => __( 'Column Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -209,7 +215,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_reviews_avatar_style',
             [
-                'label' => 'Avatar',
+                'label' => __( 'Avatar', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -217,7 +223,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'avatar_size',
             [
-                'label' => 'Size',
+                'label' => __( 'Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 16, 'max' => 120 ] ],
@@ -230,7 +236,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'avatar_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -243,7 +249,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'avatar_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],
@@ -259,7 +265,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_reviews_typo',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -275,7 +281,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rv_text_color',
             [
-                'label' => 'Review Text Color',
+                'label' => __( 'Review Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -287,7 +293,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rv_name_color',
             [
-                'label' => 'Name Color',
+                'label' => __( 'Name Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -307,7 +313,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'role_color',
             [
-                'label' => 'Role Color',
+                'label' => __( 'Role Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-review-role' => 'color: {{VALUE}};',
@@ -321,7 +327,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_reviews_stars_style',
             [
-                'label' => 'Stars',
+                'label' => __( 'Stars', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -329,7 +335,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rv_star_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f59e0b',
                 'selectors' => [
@@ -341,7 +347,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'star_size',
             [
-                'label' => 'Size',
+                'label' => __( 'Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 40 ] ],
@@ -354,7 +360,7 @@ class BDEA_Reviews_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'star_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 10 ] ],

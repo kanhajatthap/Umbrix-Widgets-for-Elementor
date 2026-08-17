@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
@@ -32,14 +38,14 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_animated_headline_section',
             [
-                'label' => 'Animated Headline',
+                'label' => __( 'Animated Headline', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'headline_before',
             [
-                'label' => 'Before Text',
+                'label' => __( 'Before Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'We',
             ]
@@ -50,22 +56,22 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'word',
             [
-                'label' => 'Word',
+                'label' => __( 'Word', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Design',
+                'default' => __( 'Design', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'headline_words',
             [
-                'label' => 'Rotating Words',
+                'label' => __( 'Rotating Words', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'word' => 'Design' ],
-                    [ 'word' => 'Create' ],
-                    [ 'word' => 'Inspire' ],
+                    [ 'word' => __( 'Design', 'elementstack-elementor-addons' ) ],
+                    [ 'word' => __( 'Create', 'elementstack-elementor-addons' ) ],
+                    [ 'word' => __( 'Inspire', 'elementstack-elementor-addons' ) ],
                 ],
                 'title_field' => '{{{ word }}}',
             ]
@@ -74,16 +80,16 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'headline_after',
             [
-                'label' => 'After Text',
+                'label' => __( 'After Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Beautiful Things',
+                'default' => __( 'Beautiful Things', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'headline_speed',
             [
-                'label' => 'Rotation Speed (ms)',
+                'label' => __( 'Rotation Speed (ms)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 2500,
                 'min' => 500,
@@ -98,7 +104,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_headline_general_style',
             [
-                'label' => 'General',
+                'label' => __( 'General', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -106,12 +112,12 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'headline_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -123,7 +129,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'headline_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -138,7 +144,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_headline_before_style',
             [
-                'label' => 'Before Text',
+                'label' => __( 'Before Text', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -154,7 +160,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'before_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -168,7 +174,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_headline_words_style',
             [
-                'label' => 'Rotating Words',
+                'label' => __( 'Rotating Words', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -184,7 +190,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'words_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -196,7 +202,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'words_highlight_color',
             [
-                'label' => 'Highlight Background',
+                'label' => __( 'Highlight Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-headline-words' => 'background-color: {{VALUE}};',
@@ -207,7 +213,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'words_padding',
             [
-                'label' => 'Highlight Padding',
+                'label' => __( 'Highlight Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -219,7 +225,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'words_radius',
             [
-                'label' => 'Highlight Border Radius',
+                'label' => __( 'Highlight Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -233,7 +239,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_headline_after_style',
             [
-                'label' => 'After Text',
+                'label' => __( 'After Text', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -249,7 +255,7 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'after_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [

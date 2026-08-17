@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_hotspot_section',
             [
-                'label' => 'Hotspot',
+                'label' => __( 'Hotspot', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'hotspot_image',
             [
-                'label' => 'Image',
+                'label' => __( 'Image', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
             ]
         );
@@ -45,7 +51,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'hotspot_left',
             [
-                'label' => 'Horizontal Position',
+                'label' => __( 'Horizontal Position', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '%' ],
                 'range' => [ '%' => [ 'min' => 0, 'max' => 100 ] ],
@@ -56,7 +62,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'hotspot_top',
             [
-                'label' => 'Vertical Position',
+                'label' => __( 'Vertical Position', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '%' ],
                 'range' => [ '%' => [ 'min' => 0, 'max' => 100 ] ],
@@ -67,16 +73,16 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'hotspot_label',
             [
-                'label' => 'Label',
+                'label' => __( 'Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Hotspot',
+                'default' => __( 'Hotspot', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'hotspot_description',
             [
-                'label' => 'Description',
+                'label' => __( 'Description', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'rows' => 4,
             ]
@@ -85,11 +91,11 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hotspot_markers',
             [
-                'label' => 'Hotspots',
+                'label' => __( 'Hotspots', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'hotspot_label' => 'Hotspot 1', 'hotspot_left' => [ 'size' => 30, 'unit' => '%' ], 'hotspot_top' => [ 'size' => 40, 'unit' => '%' ], 'hotspot_description' => 'This is the first hotspot description.' ],
+                    [ 'hotspot_label' => __( 'Hotspot 1', 'elementstack-elementor-addons' ), 'hotspot_left' => [ 'size' => 30, 'unit' => '%' ], 'hotspot_top' => [ 'size' => 40, 'unit' => '%' ], 'hotspot_description' => 'This is the first hotspot description.' ],
                 ],
                 'title_field' => '{{{ hotspot_label }}}',
             ]
@@ -101,7 +107,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_hotspot_dot_style',
             [
-                'label' => 'Marker',
+                'label' => __( 'Marker', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -109,7 +115,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hotspot_dot_color',
             [
-                'label' => 'Dot Color',
+                'label' => __( 'Dot Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -121,7 +127,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'hotspot_dot_size',
             [
-                'label' => 'Dot Size',
+                'label' => __( 'Dot Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 60 ] ],
@@ -135,7 +141,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pulse_color',
             [
-                'label' => 'Pulse Color',
+                'label' => __( 'Pulse Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-hotspot-dot::after' => 'background-color: {{VALUE}};',
@@ -146,7 +152,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'dot_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '%' ],
                 'range' => [ '%' => [ 'min' => 0, 'max' => 50 ] ],
@@ -163,7 +169,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_hotspot_label_style',
             [
-                'label' => 'Label',
+                'label' => __( 'Label', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -179,7 +185,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'label_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-hotspot-label' => 'color: {{VALUE}};',
@@ -190,7 +196,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'label_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-hotspot-label' => 'background-color: {{VALUE}};',
@@ -201,7 +207,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'label_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -213,7 +219,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'label_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -228,7 +234,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_hotspot_tooltip_style',
             [
-                'label' => 'Tooltip',
+                'label' => __( 'Tooltip', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -244,7 +250,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hotspot_tooltip_bg',
             [
-                'label' => 'Background Color',
+                'label' => __( 'Background Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -256,7 +262,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hotspot_tooltip_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7f7f7',
                 'selectors' => [
@@ -268,7 +274,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'tooltip_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -280,7 +286,7 @@ class BDEA_Hotspot_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'tooltip_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [

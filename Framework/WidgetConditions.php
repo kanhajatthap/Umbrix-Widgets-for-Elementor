@@ -1,4 +1,9 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 namespace BDEA\Framework;
 
 defined( 'ABSPATH' ) || exit;
@@ -75,7 +80,7 @@ class WidgetConditions {
                 'default' => 'include',
                 'options' => [
                     'include' => 'Include',
-                    'exclude' => 'Exclude',
+                    'exclude' => 'Exclude', // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Control option, not a query argument.
                 ],
             ]
         );
@@ -153,7 +158,7 @@ class WidgetConditions {
         if ( ! $this->condition_manager->evaluate( $conditions ) ) {
             if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
                 return '<div style="padding:14px;border:1px dashed #c2cbd2;background:#fbf8f1;color:#917c2f;font-size:13px;text-align:center;">'
-                        . esc_html__( 'This widget is hidden by its Display Conditions.', 'bdea' )
+                        . esc_html__( 'This widget is hidden by its Display Conditions.', 'elementstack-elementor-addons' )
                         . '</div>';
             }
 

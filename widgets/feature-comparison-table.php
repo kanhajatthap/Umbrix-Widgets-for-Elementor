@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => 'Feature Comparison',
+                'label' => __( 'Feature Comparison', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'left_heading',
             [
-                'label' => 'Left Column Heading',
+                'label' => __( 'Left Column Heading', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -44,7 +50,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'right_heading',
             [
-                'label' => 'Right Column Heading',
+                'label' => __( 'Right Column Heading', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -55,7 +61,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $row_repeater->add_control(
             'feature_text',
             [
-                'label' => 'Feature Text',
+                'label' => __( 'Feature Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -64,12 +70,12 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $row_repeater->add_control(
             'value_type',
             [
-                'label' => 'Value Type',
+                'label' => __( 'Value Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'text',
                 'options' => [
-                    'text' => 'Text',
-                    'icon' => 'Icon',
+                    'text' => __( 'Text', 'elementstack-elementor-addons' ),
+                    'icon' => __( 'Icon', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -77,7 +83,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $row_repeater->add_control(
             'value_text',
             [
-                'label' => 'Value Text',
+                'label' => __( 'Value Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
                 'condition' => [
@@ -89,7 +95,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $row_repeater->add_control(
             'value_icon',
             [
-                'label' => 'Value Icon',
+                'label' => __( 'Value Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'condition' => [
                     'value_type' => 'icon',
@@ -100,7 +106,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rows',
             [
-                'label' => 'Rows',
+                'label' => __( 'Rows', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $row_repeater->get_controls(),
                 'default' => [],
@@ -113,7 +119,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_table_section',
             [
-                'label' => 'Table',
+                'label' => __( 'Table', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -121,7 +127,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_background',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#c4d3df',
                 'selectors' => [
@@ -133,7 +139,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_border_color',
             [
-                'label' => 'Border Color',
+                'label' => __( 'Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#c4d3df',
                 'selectors' => [
@@ -145,7 +151,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_border_width',
             [
-                'label' => 'Border Width',
+                'label' => __( 'Border Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -164,7 +170,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -183,7 +189,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_overflow_hidden',
             [
-                'label' => 'Clip Inner Corners',
+                'label' => __( 'Clip Inner Corners', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'return_value' => 'yes',
@@ -200,7 +206,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_padding',
             [
-                'label' => 'Outer Padding',
+                'label' => __( 'Outer Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'default' => [
@@ -221,7 +227,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_header_section',
             [
-                'label' => 'Header',
+                'label' => __( 'Header', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -229,7 +235,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'header_background',
             [
-                'label' => 'Header Background',
+                'label' => __( 'Header Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#253979',
                 'selectors' => [
@@ -241,7 +247,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'header_padding',
             [
-                'label' => 'Header Padding',
+                'label' => __( 'Header Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'default' => [
@@ -268,7 +274,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'header_text_color',
             [
-                'label' => 'Header Text Color',
+                'label' => __( 'Header Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -280,20 +286,20 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'header_alignment',
             [
-                'label' => 'Header Alignment',
+                'label' => __( 'Header Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'left',
                 'options' => [
                     'left' => [
-                        'title' => 'Left',
+                        'title' => __( 'Left', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => 'Center',
+                        'title' => __( 'Center', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => 'Right',
+                        'title' => __( 'Right', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -308,7 +314,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_rows_section',
             [
-                'label' => 'Rows',
+                'label' => __( 'Rows', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -316,7 +322,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_background',
             [
-                'label' => 'Row Background',
+                'label' => __( 'Row Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#c4d3df',
                 'selectors' => [
@@ -328,7 +334,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_alt_background',
             [
-                'label' => 'Alternate Row Background',
+                'label' => __( 'Alternate Row Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#d3dde7',
                 'selectors' => [
@@ -340,7 +346,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_border_color',
             [
-                'label' => 'Row Border Color',
+                'label' => __( 'Row Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#c1ccd9',
                 'selectors' => [
@@ -352,7 +358,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_border_width',
             [
-                'label' => 'Row Border Width',
+                'label' => __( 'Row Border Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -371,7 +377,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_padding',
             [
-                'label' => 'Row Cell Padding',
+                'label' => __( 'Row Cell Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'default' => [
@@ -392,7 +398,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_feature_column_section',
             [
-                'label' => 'Feature Column',
+                'label' => __( 'Feature Column', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -408,7 +414,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'feature_text_color',
             [
-                'label' => 'Feature Text Color',
+                'label' => __( 'Feature Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1c2f4b',
                 'selectors' => [
@@ -420,20 +426,20 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'feature_alignment',
             [
-                'label' => 'Feature Alignment',
+                'label' => __( 'Feature Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'left',
                 'options' => [
                     'left' => [
-                        'title' => 'Left',
+                        'title' => __( 'Left', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => 'Center',
+                        'title' => __( 'Center', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => 'Right',
+                        'title' => __( 'Right', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -448,7 +454,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_value_column_section',
             [
-                'label' => 'Value Column',
+                'label' => __( 'Value Column', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -464,7 +470,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'value_text_color',
             [
-                'label' => 'Value Text Color',
+                'label' => __( 'Value Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#3cad60',
                 'selectors' => [
@@ -476,7 +482,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'value_icon_color',
             [
-                'label' => 'Icon Color',
+                'label' => __( 'Icon Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#3cad60',
                 'selectors' => [
@@ -492,20 +498,20 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'value_alignment',
             [
-                'label' => 'Value Alignment',
+                'label' => __( 'Value Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'center',
                 'options' => [
                     'left' => [
-                        'title' => 'Left',
+                        'title' => __( 'Left', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => 'Center',
+                        'title' => __( 'Center', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => 'Right',
+                        'title' => __( 'Right', 'elementstack-elementor-addons' ),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -518,7 +524,7 @@ class BDEA_Feature_Comparison_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'value_icon_size',
             [
-                'label' => 'Icon Size',
+                'label' => __( 'Icon Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [

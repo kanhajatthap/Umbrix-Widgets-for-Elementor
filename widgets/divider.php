@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Divider_Widget extends \Elementor\Widget_Base {
@@ -28,21 +34,21 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_divider_content_section',
             [
-                'label' => 'Divider',
+                'label' => __( 'Divider', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'divider_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'solid',
                 'options' => [
-                    'solid' => 'Solid',
-                    'dashed' => 'Dashed',
-                    'dotted' => 'Dotted',
-                    'double' => 'Double',
+                    'solid' => __( 'Solid', 'elementstack-elementor-addons' ),
+                    'dashed' => __( 'Dashed', 'elementstack-elementor-addons' ),
+                    'dotted' => __( 'Dotted', 'elementstack-elementor-addons' ),
+                    'double' => __( 'Double', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -52,7 +58,7 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_divider_style_section',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -60,7 +66,7 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'divider_width',
             [
-                'label' => 'Width',
+                'label' => __( 'Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 1, 'max' => 1200 ], '%' => [ 'min' => 1, 'max' => 100 ] ],
@@ -74,7 +80,7 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'divider_weight',
             [
-                'label' => 'Weight (Height)',
+                'label' => __( 'Weight (Height)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 1, 'max' => 20 ] ],
@@ -88,12 +94,12 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'divider_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -105,7 +111,7 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'divider_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#d9d9d9',
                 'selectors' => [
@@ -117,7 +123,7 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'divider_gap',
             [
-                'label' => 'Gap Around',
+                'label' => __( 'Gap Around', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -131,7 +137,7 @@ class BDEA_Divider_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'divider_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [

@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Search_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_search_section',
             [
-                'label' => 'Search',
+                'label' => __( 'Search', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'search_placeholder',
             [
-                'label' => 'Placeholder',
+                'label' => __( 'Placeholder', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'Search...',
             ]
@@ -44,16 +50,16 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'search_button_text',
             [
-                'label' => 'Button Text',
+                'label' => __( 'Button Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Search',
+                'default' => __( 'Search', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'search_show_icon',
             [
-                'label' => 'Show Icon',
+                'label' => __( 'Show Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -65,7 +71,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_search_input_style',
             [
-                'label' => 'Input',
+                'label' => __( 'Input', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -81,7 +87,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_text_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-search-field' => 'color: {{VALUE}};',
@@ -92,7 +98,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_placeholder_color',
             [
-                'label' => 'Placeholder Color',
+                'label' => __( 'Placeholder Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-search-field::placeholder' => 'color: {{VALUE}};',
@@ -103,7 +109,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_bg_color',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-search-field' => 'background-color: {{VALUE}};',
@@ -114,7 +120,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_border_color',
             [
-                'label' => 'Border Color',
+                'label' => __( 'Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-search-field' => 'border-color: {{VALUE}};',
@@ -125,7 +131,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_border_width',
             [
-                'label' => 'Border Width',
+                'label' => __( 'Border Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 10 ] ],
@@ -138,7 +144,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -157,7 +163,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -179,7 +185,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_search_btn_style',
             [
-                'label' => 'Button',
+                'label' => __( 'Button', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -195,7 +201,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'search_btn_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -207,7 +213,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_bg',
             [
-                'label' => 'Hover Background',
+                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-search-btn:hover' => 'background-color: {{VALUE}};',
@@ -218,7 +224,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'search_btn_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -230,7 +236,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_text',
             [
-                'label' => 'Hover Text Color',
+                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-search-btn:hover' => 'color: {{VALUE}};',
@@ -241,7 +247,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -260,7 +266,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -282,7 +288,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_search_form_style',
             [
-                'label' => 'Form',
+                'label' => __( 'Form', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -290,12 +296,12 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'form_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -307,7 +313,7 @@ class BDEA_Search_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'form_gap',
             [
-                'label' => 'Input/Button Gap',
+                'label' => __( 'Input/Button Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],

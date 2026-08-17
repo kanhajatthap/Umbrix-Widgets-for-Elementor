@@ -1,7 +1,13 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
+class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
         return 'bdea_progress_bar';
@@ -32,7 +38,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => 'Progress Bars',
+                'label' => __( 'Progress Bars', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -41,16 +47,16 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Skill Name',
+                'default' => __( 'Skill Name', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'percentage',
             [
-                'label' => 'Percentage',
+                'label' => __( 'Percentage', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 80,
                 'min' => 0,
@@ -61,12 +67,12 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bars',
             [
-                'label' => 'Items',
+                'label' => __( 'Items', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'title' => 'Design', 'percentage' => 90 ],
-                    [ 'title' => 'Development', 'percentage' => 80 ],
+                    [ 'title' => __( 'Design', 'elementstack-elementor-addons' ), 'percentage' => 90 ],
+                    [ 'title' => __( 'Development', 'elementstack-elementor-addons' ), 'percentage' => 80 ],
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -75,7 +81,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_percentage',
             [
-                'label' => 'Show Percentage',
+                'label' => __( 'Show Percentage', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -84,7 +90,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'animation_speed',
             [
-                'label' => 'Animation Speed (ms)',
+                'label' => __( 'Animation Speed (ms)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 1200,
             ]
@@ -96,7 +102,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_general_section',
             [
-                'label' => 'General',
+                'label' => __( 'General', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -104,7 +110,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [ 'min' => 4, 'max' => 50 ],
@@ -122,7 +128,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_spacing',
             [
-                'label' => 'Item Spacing',
+                'label' => __( 'Item Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [ 'min' => 0, 'max' => 60 ],
@@ -140,7 +146,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'bar_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -163,7 +169,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_background_section',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -171,7 +177,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bg_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#eeeeee',
                 'selectors' => [
@@ -194,7 +200,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_fill_section',
             [
-                'label' => 'Fill',
+                'label' => __( 'Fill', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -202,7 +208,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bar_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4CAF50',
                 'selectors' => [
@@ -214,7 +220,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bar_gradient',
             [
-                'label' => 'Gradient',
+                'label' => __( 'Gradient', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-progress-fill' => 'background: linear-gradient(90deg, {{VALUE}}, transparent);',
@@ -228,7 +234,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_typography_section',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -244,7 +250,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-progress-title span:first-child' => 'color: {{VALUE}};',
@@ -255,7 +261,7 @@ class Custom_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'percentage_color',
             [
-                'label' => 'Percentage Color',
+                'label' => __( 'Percentage Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-progress-title span:last-child' => 'color: {{VALUE}};',

@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Video_Widget extends \Elementor\Widget_Base {
@@ -28,20 +34,20 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_video_section',
             [
-                'label' => 'Video',
+                'label' => __( 'Video', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'video_source',
             [
-                'label' => 'Source',
+                'label' => __( 'Source', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'youtube',
                 'options' => [
-                    'youtube' => 'YouTube',
-                    'vimeo' => 'Vimeo',
-                    'self_hosted' => 'Self Hosted',
+                    'youtube' => __( 'YouTube', 'elementstack-elementor-addons' ),
+                    'vimeo' => __( 'Vimeo', 'elementstack-elementor-addons' ),
+                    'self_hosted' => __( 'Self Hosted', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -49,7 +55,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'youtube_url',
             [
-                'label' => 'YouTube URL',
+                'label' => __( 'YouTube URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://www.youtube.com/watch?v=VIDEO_ID',
                 'description' => 'Paste your YouTube video URL.',
@@ -60,7 +66,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vimeo_url',
             [
-                'label' => 'Vimeo URL',
+                'label' => __( 'Vimeo URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://vimeo.com/VIDEO_ID',
                 'description' => 'Paste your Vimeo video URL.',
@@ -71,7 +77,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'self_url',
             [
-                'label' => 'Video File URL (mp4 / webm / ogg)',
+                'label' => __( 'Video File URL (mp4 / webm / ogg)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com/video.mp4',
                 'condition' => [ 'video_source' => 'self_hosted' ],
@@ -81,7 +87,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'poster',
             [
-                'label' => 'Poster Image',
+                'label' => __( 'Poster Image', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'condition' => [ 'video_source' => 'self_hosted' ],
             ]
@@ -90,14 +96,14 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'aspect_ratio',
             [
-                'label' => 'Aspect Ratio',
+                'label' => __( 'Aspect Ratio', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '16-9',
                 'options' => [
                     '16-9' => '16:9',
                     '4-3' => '4:3',
                     '3-2' => '3:2',
-                    'custom' => 'Custom Height',
+                    'custom' => __( 'Custom Height', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -105,7 +111,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'custom_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 120, 'max' => 900 ] ],
@@ -123,14 +129,14 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_video_settings_section',
             [
-                'label' => 'Player Settings',
+                'label' => __( 'Player Settings', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'autoplay',
             [
-                'label' => 'Autoplay',
+                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -139,7 +145,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'mute',
             [
-                'label' => 'Mute',
+                'label' => __( 'Mute', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -148,7 +154,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'loop',
             [
-                'label' => 'Loop',
+                'label' => __( 'Loop', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -157,7 +163,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_controls',
             [
-                'label' => 'Show Player Controls',
+                'label' => __( 'Show Player Controls', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -169,7 +175,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_video_style_section',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -177,7 +183,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'video_width',
             [
-                'label' => 'Width',
+                'label' => __( 'Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 100, 'max' => 1200 ], '%' => [ 'min' => 10, 'max' => 100 ] ],
@@ -190,7 +196,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'video_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -203,7 +209,7 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'video_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -239,12 +245,12 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'video_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -308,12 +314,12 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
                         if ( $loop ) { $params['loop'] = 1; }
                         if ( ! $controls ) { $params['controls'] = 0; }
                         ?>
-                        <iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $video_id ); ?>?<?php echo http_build_query( $params ); ?>"
+                        <iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $video_id ); ?>?<?php echo http_build_query( $params ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Params are static integers. ?>"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                     <?php else : ?>
-                        <div class="bdea-loop-grid-empty">Invalid YouTube URL.</div>
+                        <div class="bdea-loop-grid-empty"><?php esc_html_e( 'Invalid YouTube URL.', 'elementstack-elementor-addons' ); ?></div>
                     <?php endif; ?>
                 <?php elseif ( 'vimeo' === $source ) : ?>
                     <?php
@@ -326,10 +332,10 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
                         if ( $loop ) { $params['loop'] = 1; }
                         if ( ! $controls ) { $params['controls'] = 0; }
                         ?>
-                        <iframe src="https://player.vimeo.com/video/<?php echo esc_attr( $video_id ); ?><?php echo $params ? '?' . http_build_query( $params ) : ''; ?>"
+                        <iframe src="https://player.vimeo.com/video/<?php echo esc_attr( $video_id ); ?><?php echo $params ? '?' . http_build_query( $params ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Params are static integers. ?>"
                                 frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     <?php else : ?>
-                        <div class="bdea-loop-grid-empty">Invalid Vimeo URL.</div>
+                        <div class="bdea-loop-grid-empty"><?php esc_html_e( 'Invalid Vimeo URL.', 'elementstack-elementor-addons' ); ?></div>
                     <?php endif; ?>
                 <?php elseif ( 'self_hosted' === $source ) : ?>
                     <?php
@@ -342,12 +348,12 @@ class BDEA_Video_Widget extends \Elementor\Widget_Base {
                         if ( $controls ) { $attrs .= ' controls'; }
                         $poster = ! empty( $settings['poster']['url'] ) ? $settings['poster']['url'] : '';
                         ?>
-                        <video<?php echo $attrs; ?><?php echo $poster ? ' poster="' . esc_attr( $poster ) . '"' : ''; ?>>
+                        <video<?php echo $attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static attribute tokens. ?><?php echo $poster ? ' poster="' . esc_attr( $poster ) . '"' : ''; ?>>
                             <source src="<?php echo esc_url( $video_url ); ?>" type="video/mp4">
-                            Your browser does not support the video tag.
+                            <?php esc_html_e( 'Your browser does not support the video tag.', 'elementstack-elementor-addons' ); ?>
                         </video>
                     <?php else : ?>
-                        <div class="bdea-loop-grid-empty">No video file selected.</div>
+                        <div class="bdea-loop-grid-empty"><?php esc_html_e( 'No video file selected.', 'elementstack-elementor-addons' ); ?></div>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>

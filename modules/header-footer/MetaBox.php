@@ -1,4 +1,9 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 namespace BDEA\Modules\HeaderFooter;
 
 use BDEA\Framework\Conditions\ConditionManager;
@@ -43,8 +48,8 @@ class MetaBox {
                     'conditions'   => $this->condition_manager->get_conditions_grouped(),
                     'nextIndex'    => $this->get_next_condition_index(),
                     'strings'      => [
-                        'include' => __( 'Include', 'bdea' ),
-                        'exclude' => __( 'Exclude', 'bdea' ),
+                        'include' => __( 'Include', 'elementstack-elementor-addons' ),
+                        'exclude' => __( 'Exclude', 'elementstack-elementor-addons' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- UI string, not a query argument.
                     ],
                 ]
             );
@@ -54,7 +59,7 @@ class MetaBox {
     public function register() {
         add_meta_box(
             'bdea_hf_template_type',
-            __( 'Template Type', 'bdea' ),
+            __( 'Template Type', 'elementstack-elementor-addons' ),
             [ $this, 'render_type_meta_box' ],
             'bdea_header_footer',
             'side',
@@ -63,7 +68,7 @@ class MetaBox {
 
         add_meta_box(
             'bdea_hf_display_conditions',
-            __( 'Display Conditions', 'bdea' ),
+            __( 'Display Conditions', 'elementstack-elementor-addons' ),
             [ $this, 'render_conditions_meta_box' ],
             'bdea_header_footer',
             'normal',
@@ -72,7 +77,7 @@ class MetaBox {
 
         add_meta_box(
             'bdea_hf_settings',
-            __( 'Template Settings', 'bdea' ),
+            __( 'Template Settings', 'elementstack-elementor-addons' ),
             [ $this, 'render_settings_meta_box' ],
             'bdea_header_footer',
             'side',
@@ -87,14 +92,14 @@ class MetaBox {
         ?>
         <p>
             <select name="bdea_hf_template_type" id="bdea-hf-template-type" style="width:100%;">
-                <option value=""><?php esc_html_e( '— Select —', 'bdea' ); ?></option>
-                <option value="header" <?php selected( $current, 'header' ); ?>><?php esc_html_e( 'Header', 'bdea' ); ?></option>
-                <option value="footer" <?php selected( $current, 'footer' ); ?>><?php esc_html_e( 'Footer', 'bdea' ); ?></option>
-                <option value="single" <?php selected( $current, 'single' ); ?>><?php esc_html_e( 'Single Post Template', 'bdea' ); ?></option>
-                <option value="archive" <?php selected( $current, 'archive' ); ?>><?php esc_html_e( 'Archive (Category / Tag / Loop)', 'bdea' ); ?></option>
-                <option value="404" <?php selected( $current, '404' ); ?>><?php esc_html_e( '404 Page', 'bdea' ); ?></option>
-                <option value="announcement" <?php selected( $current, 'announcement' ); ?>><?php esc_html_e( 'Announcement Bar', 'bdea' ); ?></option>
-                <option value="bottom_bar" <?php selected( $current, 'bottom_bar' ); ?>><?php esc_html_e( 'Bottom Bar', 'bdea' ); ?></option>
+                <option value=""><?php esc_html_e( '???????? Select ????????', 'elementstack-elementor-addons' ); ?></option>
+                <option value="header" <?php selected( $current, 'header' ); ?>><?php esc_html_e( 'Header', 'elementstack-elementor-addons' ); ?></option>
+                <option value="footer" <?php selected( $current, 'footer' ); ?>><?php esc_html_e( 'Footer', 'elementstack-elementor-addons' ); ?></option>
+                <option value="single" <?php selected( $current, 'single' ); ?>><?php esc_html_e( 'Single Post Template', 'elementstack-elementor-addons' ); ?></option>
+                <option value="archive" <?php selected( $current, 'archive' ); ?>><?php esc_html_e( 'Archive (Category / Tag / Loop)', 'elementstack-elementor-addons' ); ?></option>
+                <option value="404" <?php selected( $current, '404' ); ?>><?php esc_html_e( '404 Page', 'elementstack-elementor-addons' ); ?></option>
+                <option value="announcement" <?php selected( $current, 'announcement' ); ?>><?php esc_html_e( 'Announcement Bar', 'elementstack-elementor-addons' ); ?></option>
+                <option value="bottom_bar" <?php selected( $current, 'bottom_bar' ); ?>><?php esc_html_e( 'Bottom Bar', 'elementstack-elementor-addons' ); ?></option>
             </select>
         </p>
         <?php
@@ -108,13 +113,13 @@ class MetaBox {
         }
         ?>
         <div class="bdea-hf-conditions-wrap">
-            <p><?php esc_html_e( 'Choose where this template should appear:', 'bdea' ); ?></p>
+            <p><?php esc_html_e( 'Choose where this template should appear:', 'elementstack-elementor-addons' ); ?></p>
             <table class="widefat bdea-hf-conditions-table" id="bdea-hf-conditions-table">
                 <thead>
                     <tr>
-                        <th style="width:80px;"><?php esc_html_e( 'Type', 'bdea' ); ?></th>
-                        <th><?php esc_html_e( 'Condition', 'bdea' ); ?></th>
-                        <th style="width:60px;"><?php esc_html_e( 'Actions', 'bdea' ); ?></th>
+                        <th style="width:80px;"><?php esc_html_e( 'Type', 'elementstack-elementor-addons' ); ?></th>
+                        <th><?php esc_html_e( 'Condition', 'elementstack-elementor-addons' ); ?></th>
+                        <th style="width:60px;"><?php esc_html_e( 'Actions', 'elementstack-elementor-addons' ); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -122,24 +127,27 @@ class MetaBox {
                         <tr>
                             <td>
                                 <select name="bdea_hf_conditions[<?php echo esc_attr( $index ); ?>][type]" style="width:100%;">
-                                    <option value="include" <?php selected( $cond['type'], 'include' ); ?>><?php esc_html_e( 'Include', 'bdea' ); ?></option>
-                                    <option value="exclude" <?php selected( $cond['type'], 'exclude' ); ?>><?php esc_html_e( 'Exclude', 'bdea' ); ?></option>
+                                    <option value="include" <?php selected( $cond['type'], 'include' ); ?>><?php esc_html_e( 'Include', 'elementstack-elementor-addons' ); ?></option>
+                                    <option value="exclude" <?php selected( $cond['type'], 'exclude' ); ?>><?php esc_html_e( 'Exclude', 'elementstack-elementor-addons' ); ?></option>
                                 </select>
                             </td>
                             <td>
                                 <select name="bdea_hf_conditions[<?php echo esc_attr( $index ); ?>][condition]" style="width:100%;">
-                                    <?php echo $this->render_condition_options( $cond['condition'] ?? '' ); // WPCS: XSS OK. ?>
+                                    <?php
+                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Options are built from escaped term names.
+                                    echo $this->render_condition_options( $cond['condition'] ?? '' );
+                                    ?>
                                 </select>
                             </td>
                             <td>
-                                <button type="button" class="button bdea-hf-remove-condition" style="background:#dc3232;color:#fff;border-color:#dc3232;cursor:pointer;"><?php esc_html_e( 'x', 'bdea' ); ?></button>
+                                <button type="button" class="button bdea-hf-remove-condition" style="background:#dc3232;color:#fff;border-color:#dc3232;cursor:pointer;"><?php esc_html_e( 'x', 'elementstack-elementor-addons' ); ?></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
             <p>
-                <button type="button" class="button" id="bdea-hf-add-condition"><?php esc_html_e( 'Add Condition', 'bdea' ); ?></button>
+                <button type="button" class="button" id="bdea-hf-add-condition"><?php esc_html_e( 'Add Condition', 'elementstack-elementor-addons' ); ?></button>
             </p>
         </div>
         <?php
@@ -155,25 +163,25 @@ class MetaBox {
         $type = get_post_meta( $post->ID, '_bdea_hf_template_type', true );
         ?>
         <p class="description">
-            <?php esc_html_e( 'Sticky, transparent, logo switcher and schedule settings are managed inside the Elementor editor (Settings panel).', 'bdea' ); ?>
+            <?php esc_html_e( 'Sticky, transparent, logo switcher and schedule settings are managed inside the Elementor editor (Settings panel).', 'elementstack-elementor-addons' ); ?>
         </p>
         <?php if ( in_array( $type, [ 'header', 'footer' ], true ) ) : ?>
         <p>
             <label>
                 <input type="checkbox" name="bdea_hf_disable_theme" value="yes" <?php checked( get_post_meta( $post->ID, '_bdea_hf_disable_theme', true ), 'yes' ); ?> />
-                <?php esc_html_e( 'Disable default theme header/footer', 'bdea' ); ?>
+                <?php esc_html_e( 'Disable default theme header/footer', 'elementstack-elementor-addons' ); ?>
             </label>
         </p>
         <?php endif; ?>
         <p>
             <label for="bdea-hf-priority">
-                <?php esc_html_e( 'Priority (lower value = higher priority):', 'bdea' ); ?>
+                <?php esc_html_e( 'Priority (lower value = higher priority):', 'elementstack-elementor-addons' ); ?>
             </label>
             <input type="number" name="bdea_hf_priority" id="bdea-hf-priority"
                    value="<?php echo esc_attr( $priority ); ?>" min="0" max="999" style="width:100%;" />
         </p>
         <p class="description">
-            <?php esc_html_e( 'Templates with lower priority numbers are checked first.', 'bdea' ); ?>
+            <?php esc_html_e( 'Templates with lower priority numbers are checked first.', 'elementstack-elementor-addons' ); ?>
         </p>
         <?php
     }
@@ -184,7 +192,7 @@ class MetaBox {
         }
 
         if ( ! isset( $_POST['bdea_hf_meta_box_nonce'] )
-            || ! wp_verify_nonce( $_POST['bdea_hf_meta_box_nonce'], 'bdea_hf_meta_box' )
+            || ! wp_verify_nonce( wp_unslash( $_POST['bdea_hf_meta_box_nonce'] ), 'bdea_hf_meta_box' ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce comparison does not require sanitization.
         ) {
             return;
         }
@@ -210,7 +218,7 @@ class MetaBox {
         if ( isset( $_POST['bdea_hf_conditions'] ) && is_array( $_POST['bdea_hf_conditions'] ) ) {
             $conditions = [];
 
-            foreach ( $_POST['bdea_hf_conditions'] as $cond ) {
+            foreach ( wp_unslash( $_POST['bdea_hf_conditions'] ) as $cond ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Each value sanitized in the loop below.
                 $type      = isset( $cond['type'] ) ? sanitize_key( $cond['type'] ) : 'include';
                 $condition = isset( $cond['condition'] ) ? sanitize_text_field( $cond['condition'] ) : '';
 

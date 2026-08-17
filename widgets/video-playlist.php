@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
@@ -32,7 +38,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_video_playlist_section',
             [
-                'label' => 'Video Playlist',
+                'label' => __( 'Video Playlist', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -41,21 +47,21 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'vp_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Video Title',
+                'default' => __( 'Video Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'vp_source',
             [
-                'label' => 'Source',
+                'label' => __( 'Source', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'youtube',
                 'options' => [
-                    'youtube' => 'YouTube',
-                    'vimeo' => 'Vimeo',
+                    'youtube' => __( 'YouTube', 'elementstack-elementor-addons' ),
+                    'vimeo' => __( 'Vimeo', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -63,7 +69,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'vp_url',
             [
-                'label' => 'Video URL',
+                'label' => __( 'Video URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://www.youtube.com/watch?v=VIDEO_ID',
             ]
@@ -72,13 +78,13 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'playlist',
             [
-                'label' => 'Playlist',
+                'label' => __( 'Playlist', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'vp_title' => 'Intro Video' ],
-                    [ 'vp_title' => 'Getting Started' ],
-                    [ 'vp_title' => 'Advanced Tips' ],
+                    [ 'vp_title' => __( 'Intro Video', 'elementstack-elementor-addons' ) ],
+                    [ 'vp_title' => __( 'Getting Started', 'elementstack-elementor-addons' ) ],
+                    [ 'vp_title' => __( 'Advanced Tips', 'elementstack-elementor-addons' ) ],
                 ],
                 'title_field' => '{{{ vp_title }}}',
             ]
@@ -87,12 +93,12 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_layout',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'side',
                 'options' => [
-                    'side' => 'Player Left / List Right',
-                    'top' => 'Player Top / List Bottom',
+                    'side' => __( 'Player Left / List Right', 'elementstack-elementor-addons' ),
+                    'top' => __( 'Player Top / List Bottom', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -102,7 +108,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_video_playlist_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -110,7 +116,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_color',
             [
-                'label' => 'Item Text Color',
+                'label' => __( 'Item Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -122,7 +128,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_active_bg',
             [
-                'label' => 'Active Item Background',
+                'label' => __( 'Active Item Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#eef1ff',
                 'selectors' => [
@@ -134,7 +140,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_active_color',
             [
-                'label' => 'Active Item Text Color',
+                'label' => __( 'Active Item Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-playlist-item.is-active' => 'color: {{VALUE}};',
@@ -145,7 +151,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_hover_bg',
             [
-                'label' => 'Hover Background',
+                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-playlist-item:hover' => 'background-color: {{VALUE}};',
@@ -156,7 +162,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_hover_color',
             [
-                'label' => 'Hover Text Color',
+                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-playlist-item:hover' => 'color: {{VALUE}};',
@@ -175,7 +181,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'vp_item_padding',
             [
-                'label' => 'Item Padding',
+                'label' => __( 'Item Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -187,7 +193,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'vp_item_border_radius',
             [
-                'label' => 'Item Border Radius',
+                'label' => __( 'Item Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -199,7 +205,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'vp_player_border_radius',
             [
-                'label' => 'Player Border Radius',
+                'label' => __( 'Player Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [

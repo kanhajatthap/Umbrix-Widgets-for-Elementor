@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Shortcode_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Shortcode_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_shortcode_section',
             [
-                'label' => 'Shortcode',
+                'label' => __( 'Shortcode', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'shortcode',
             [
-                'label' => 'Shortcode',
+                'label' => __( 'Shortcode', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => '[gallery columns="3"]',
                 'rows' => 3,
@@ -46,12 +52,12 @@ class BDEA_Shortcode_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'shortcode_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [

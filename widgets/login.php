@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Login_Widget extends \Elementor\Widget_Base {
@@ -28,23 +34,23 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_login_section',
             [
-                'label' => 'Login',
+                'label' => __( 'Login', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'login_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Login',
+                'default' => __( 'Login', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_remember',
             [
-                'label' => 'Show Remember Me',
+                'label' => __( 'Show Remember Me', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -53,7 +59,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'login_redirect',
             [
-                'label' => 'Redirect URL',
+                'label' => __( 'Redirect URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'https://example.com/',
             ]
@@ -65,7 +71,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_login_title_style',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -81,7 +87,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'login_title_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -93,7 +99,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'login_title_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -109,7 +115,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_login_form_style',
             [
-                'label' => 'Form',
+                'label' => __( 'Form', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -117,7 +123,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'form_spacing',
             [
-                'label' => 'Form Gap',
+                'label' => __( 'Form Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -134,7 +140,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_login_input_style',
             [
-                'label' => 'Input Fields',
+                'label' => __( 'Input Fields', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -150,7 +156,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_text_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form input[type="text"], {{WRAPPER}} .bdea-login-form input[type="password"], {{WRAPPER}} .bdea-login-form input[type="email"]' => 'color: {{VALUE}};',
@@ -161,7 +167,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_bg_color',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form input[type="text"], {{WRAPPER}} .bdea-login-form input[type="password"], {{WRAPPER}} .bdea-login-form input[type="email"]' => 'background-color: {{VALUE}};',
@@ -172,7 +178,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'input_border_color',
             [
-                'label' => 'Border Color',
+                'label' => __( 'Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form input[type="text"], {{WRAPPER}} .bdea-login-form input[type="password"], {{WRAPPER}} .bdea-login-form input[type="email"]' => 'border-color: {{VALUE}};',
@@ -183,7 +189,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_border_width',
             [
-                'label' => 'Border Width',
+                'label' => __( 'Border Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 10 ] ],
@@ -197,7 +203,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -216,7 +222,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'input_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -238,7 +244,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_login_button_style',
             [
-                'label' => 'Button',
+                'label' => __( 'Button', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -254,7 +260,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_text_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -266,7 +272,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_bg_color',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -278,7 +284,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_bg',
             [
-                'label' => 'Hover Background',
+                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form input[type="submit"]:hover' => 'background-color: {{VALUE}};',
@@ -289,7 +295,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_text',
             [
-                'label' => 'Hover Text Color',
+                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form input[type="submit"]:hover' => 'color: {{VALUE}};',
@@ -300,7 +306,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -319,7 +325,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -338,7 +344,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_border_color',
             [
-                'label' => 'Border Color',
+                'label' => __( 'Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form input[type="submit"]' => 'border-color: {{VALUE}};',
@@ -352,7 +358,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_login_link_style',
             [
-                'label' => 'Links',
+                'label' => __( 'Links', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -360,7 +366,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form a' => 'color: {{VALUE}};',
@@ -371,7 +377,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-login-form a:hover' => 'color: {{VALUE}};',
@@ -401,7 +407,7 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
                         <?php echo esc_html( sprintf( 'Welcome back, %s!', $current_user->display_name ) ); ?>
                     </p>
                     <a class="bdea-login-logout" href="<?php echo esc_url( wp_logout_url( $redirect ? $redirect : get_permalink() ) ); ?>">
-                        <?php esc_html_e( 'Logout', 'bdea' ); ?>
+                        <?php esc_html_e( 'Logout', 'elementstack-elementor-addons' ); ?>
                     </a>
                 </div>
             <?php else : ?>
@@ -411,10 +417,10 @@ class BDEA_Login_Widget extends \Elementor\Widget_Base {
                         'echo'           => true,
                         'form_id'        => 'bdea-login-form',
                         'form_class'     => 'bdea-login-form',
-                        'label_username' => 'Username',
-                        'label_password' => 'Password',
-                        'label_remember' => 'Remember Me',
-                        'label_log_in'   => 'Log In',
+                        'label_username' => __( 'Username', 'elementstack-elementor-addons' ),
+                        'label_password' => __( 'Password', 'elementstack-elementor-addons' ),
+                        'label_remember' => __( 'Remember Me', 'elementstack-elementor-addons' ),
+                        'label_log_in'   => __( 'Log In', 'elementstack-elementor-addons' ),
                         'remember'       => $remember,
                     ];
                     if ( $redirect ) {

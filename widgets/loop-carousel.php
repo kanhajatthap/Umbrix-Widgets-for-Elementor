@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
@@ -32,14 +38,14 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_loop_template_section',
             [
-                'label' => 'Loop Template',
+                'label' => __( 'Loop Template', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'loop_template',
             [
-                'label' => 'Select Loop Template',
+                'label' => __( 'Select Loop Template', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => bdea_loop_template_options(),
                 'description' => 'Select an Elementor template to render each loop item. Leave empty to use the built-in card below.',
@@ -49,7 +55,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'post_type',
             [
-                'label' => 'Post Type',
+                'label' => __( 'Post Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'post',
                 'options' => bdea_widget_post_types(),
@@ -62,14 +68,14 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_query_section',
             [
-                'label' => 'Query',
+                'label' => __( 'Query', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'include_cats',
             [
-                'label' => 'Categories',
+                'label' => __( 'Categories', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'category' ),
@@ -80,7 +86,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'include_tags',
             [
-                'label' => 'Tags',
+                'label' => __( 'Tags', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'post_tag' ),
@@ -100,7 +106,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => 'Number of Posts',
+                'label' => __( 'Number of Posts', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 8,
                 'min' => 1,
@@ -111,15 +117,15 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'orderby',
             [
-                'label' => 'Order By',
+                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => 'Date',
-                    'modified' => 'Modified Date',
-                    'title' => 'Title',
-                    'menu_order' => 'Menu Order',
-                    'rand' => 'Random',
+                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
+                    'modified' => __( 'Modified Date', 'elementstack-elementor-addons' ),
+                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
+                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
+                    'rand' => __( 'Random', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -127,12 +133,12 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => 'Order',
+                'label' => __( 'Order', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'ASC' => 'Ascending',
-                    'DESC' => 'Descending',
+                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
+                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -142,14 +148,14 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_behavior_section',
             [
-                'label' => 'Behavior',
+                'label' => __( 'Behavior', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_responsive_control(
             'slides_per_view',
             [
-                'label' => 'Slides Per View',
+                'label' => __( 'Slides Per View', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 6,
@@ -162,7 +168,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'space_between',
             [
-                'label' => 'Space Between (px)',
+                'label' => __( 'Space Between (px)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -173,7 +179,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_arrows',
             [
-                'label' => 'Show Arrows',
+                'label' => __( 'Show Arrows', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -182,7 +188,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_dots',
             [
-                'label' => 'Show Dots',
+                'label' => __( 'Show Dots', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -191,7 +197,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'autoplay',
             [
-                'label' => 'Autoplay',
+                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -200,7 +206,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'autoplay_delay',
             [
-                'label' => 'Autoplay Speed (ms)',
+                'label' => __( 'Autoplay Speed (ms)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 3500,
                 'min' => 500,
@@ -213,7 +219,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pause_on_hover',
             [
-                'label' => 'Pause on Hover',
+                'label' => __( 'Pause on Hover', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'condition' => [ 'autoplay' => 'yes' ],
@@ -223,7 +229,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'loop',
             [
-                'label' => 'Loop',
+                'label' => __( 'Loop', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -232,7 +238,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'transition_speed',
             [
-                'label' => 'Transition Speed (ms)',
+                'label' => __( 'Transition Speed (ms)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 650,
                 'min' => 100,
@@ -244,7 +250,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'equal_height',
             [
-                'label' => 'Equal Height Cards',
+                'label' => __( 'Equal Height Cards', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -255,14 +261,14 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_content_section',
             [
-                'label' => 'Card Content',
+                'label' => __( 'Card Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_thumbnail',
             [
-                'label' => 'Show Thumbnail',
+                'label' => __( 'Show Thumbnail', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -271,7 +277,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_title',
             [
-                'label' => 'Show Title',
+                'label' => __( 'Show Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -280,7 +286,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => 'Show Excerpt',
+                'label' => __( 'Show Excerpt', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -289,7 +295,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => 'Excerpt Length (words)',
+                'label' => __( 'Excerpt Length (words)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 14,
                 'min' => 3,
@@ -301,7 +307,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_meta',
             [
-                'label' => 'Show Meta (date)',
+                'label' => __( 'Show Meta (date)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -312,7 +318,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_style_section',
             [
-                'label' => 'Card',
+                'label' => __( 'Card', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -320,7 +326,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-carousel-card' => 'background-color: {{VALUE}};',
@@ -339,7 +345,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -361,7 +367,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -375,7 +381,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_style_section',
             [
-                'label' => 'Thumbnail',
+                'label' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -383,7 +389,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
@@ -399,7 +405,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_typography_section',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -415,7 +421,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-carousel-title a' => 'color: {{VALUE}};',
@@ -434,7 +440,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_color',
             [
-                'label' => 'Excerpt Color',
+                'label' => __( 'Excerpt Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-carousel-excerpt' => 'color: {{VALUE}};',
@@ -453,7 +459,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'meta_color',
             [
-                'label' => 'Meta Color',
+                'label' => __( 'Meta Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-carousel-meta' => 'color: {{VALUE}};',
@@ -466,7 +472,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_navigation_section',
             [
-                'label' => 'Navigation',
+                'label' => __( 'Navigation', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -474,7 +480,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_color',
             [
-                'label' => 'Arrow Color',
+                'label' => __( 'Arrow Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-button-prev, {{WRAPPER}} .bdea-swiper-button-next' => 'color: {{VALUE}};',
@@ -485,7 +491,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_bg',
             [
-                'label' => 'Arrow Background',
+                'label' => __( 'Arrow Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-button-prev, {{WRAPPER}} .bdea-swiper-button-next' => 'background-color: {{VALUE}};',
@@ -496,7 +502,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'dots_color',
             [
-                'label' => 'Dots Color',
+                'label' => __( 'Dots Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-pagination .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
@@ -507,7 +513,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'dots_active_color',
             [
-                'label' => 'Active Dot Color',
+                'label' => __( 'Active Dot Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-swiper-pagination .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
@@ -567,7 +573,7 @@ class BDEA_Loop_Carousel_Widget extends \Elementor\Widget_Base {
                     <div class="swiper-wrapper">
                         <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                             <div class="swiper-slide">
-                                <?php echo $frontend->get_builder_content_for_display( $template_id, false ); ?>
+                                <?php echo $frontend->get_builder_content_for_display( $template_id, false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor template content is rendered HTML. ?>
                             </div>
                         <?php endwhile; ?>
                     </div>

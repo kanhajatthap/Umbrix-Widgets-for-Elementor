@@ -1,5 +1,11 @@
 <?php
 /**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/**
  * Shared helpers for ElementStack content widgets (Loop Grid, Loop Carousel, Posts, Portfolio).
  */
 
@@ -26,7 +32,7 @@ function bdea_widget_query_args( $settings ) {
     ];
 
     if ( ! empty( $settings['exclude_ids'] ) ) {
-        $args['post__not_in'] = array_map( 'intval', (array) $settings['exclude_ids'] );
+        $args['post__not_in'] = array_map( 'intval', (array) $settings['exclude_ids'] ); // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Intentional "Exclude posts" widget setting.
     }
 
     if ( ! empty( $settings['offset'] ) ) {
@@ -74,7 +80,7 @@ function bdea_widget_query_args( $settings ) {
     }
 
     if ( $tax_query ) {
-        $args['tax_query'] = $tax_query;
+        $args['tax_query'] = $tax_query; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Conditional logic requires taxonomy filtering.
     }
 
     return $args;
@@ -146,7 +152,7 @@ function bdea_loop_template_options() {
         'posts_per_page' => -1,
         'orderby'        => 'title',
         'order'          => 'ASC',
-        'meta_query'     => [
+        'meta_query'     => [ // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required to list only Elementor loop templates.
             [
                 'key'     => '_elementor_template_type',
                 'value'   => [ 'loop-item', 'loop' ],
@@ -259,7 +265,7 @@ function bdea_render_loop_items( $query, $settings ) {
  *
  * @param string $version SDK version to load.
  */
-function bdea_maybe_print_fb_sdk( $version = 'v18.0' ) {
+function bdea_maybe_print_fb_sdk( $version = 'v25.0' ) {
     static $scheduled = false;
 
     if ( $scheduled ) {
@@ -269,9 +275,11 @@ function bdea_maybe_print_fb_sdk( $version = 'v18.0' ) {
     $scheduled = true;
 
     add_action( 'wp_footer', function () use ( $version ) {
+        $fb_locale = get_locale();
         ?>
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=<?php echo esc_attr( $version ); ?>"></script>
+        <?php // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- Facebook SDK requires async, defer and crossorigin attributes that wp_enqueue_script() cannot output. ?>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/<?php echo esc_attr( $fb_locale ); ?>/sdk.js#xfbml=1&amp;version=<?php echo esc_attr( $version ); ?>"></script>
         <?php
     }, 99 );
 }

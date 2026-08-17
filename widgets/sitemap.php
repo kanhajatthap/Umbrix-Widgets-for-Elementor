@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_sitemap_section',
             [
-                'label' => 'Sitemap',
+                'label' => __( 'Sitemap', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'sitemap_post_types',
             [
-                'label' => 'Post Types',
+                'label' => __( 'Post Types', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'options' => bdea_widget_post_types(),
                 'default' => [ 'page' ],
@@ -46,7 +52,7 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_show_count',
             [
-                'label' => 'Show Post Count',
+                'label' => __( 'Show Post Count', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -55,13 +61,13 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_orderby',
             [
-                'label' => 'Order By',
+                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'menu_order',
                 'options' => [
-                    'menu_order' => 'Menu Order',
-                    'title' => 'Title',
-                    'date' => 'Date',
+                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
+                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
+                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -69,12 +75,12 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_order',
             [
-                'label' => 'Order',
+                'label' => __( 'Order', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'ASC',
                 'options' => [
-                    'ASC' => 'Ascending',
-                    'DESC' => 'Descending',
+                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
+                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -84,7 +90,7 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_sitemap_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -92,7 +98,7 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_link_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -104,7 +110,7 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_title_color',
             [
-                'label' => 'Post Type Title Color',
+                'label' => __( 'Post Type Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [

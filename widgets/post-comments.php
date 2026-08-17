@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_comments_content',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_count',
             [
-                'label' => 'Show Comment Count',
+                'label' => __( 'Show Comment Count', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -44,7 +50,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'avatar_size',
             [
-                'label' => 'Avatar Size',
+                'label' => __( 'Avatar Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 48,
                 'min' => 16,
@@ -58,7 +64,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_comments_title_style',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -74,7 +80,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -86,7 +92,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -102,7 +108,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_comments_comment_style',
             [
-                'label' => 'Comment',
+                'label' => __( 'Comment', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -118,7 +124,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'comment_text_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-comments .comment .comment-content, {{WRAPPER}} .bdea-post-comments .comment .comment-meta' => 'color: {{VALUE}};',
@@ -129,7 +135,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'comment_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-comments .comment' => 'background-color: {{VALUE}};',
@@ -140,7 +146,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'comment_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -152,7 +158,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'comment_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -165,7 +171,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'avatar_border_radius',
             [
-                'label' => 'Avatar Border Radius',
+                'label' => __( 'Avatar Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -181,7 +187,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_comments_form_style',
             [
-                'label' => 'Form',
+                'label' => __( 'Form', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -197,7 +203,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_input_bg',
             [
-                'label' => 'Input Background',
+                'label' => __( 'Input Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-comments input[type="text"], {{WRAPPER}} .bdea-post-comments input[type="email"], {{WRAPPER}} .bdea-post-comments input[type="url"], {{WRAPPER}} .bdea-post-comments textarea' => 'background-color: {{VALUE}};',
@@ -208,7 +214,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_input_border_color',
             [
-                'label' => 'Input Border Color',
+                'label' => __( 'Input Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-comments input[type="text"], {{WRAPPER}} .bdea-post-comments input[type="email"], {{WRAPPER}} .bdea-post-comments input[type="url"], {{WRAPPER}} .bdea-post-comments textarea' => 'border-color: {{VALUE}};',
@@ -219,7 +225,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_btn_bg',
             [
-                'label' => 'Button Background',
+                'label' => __( 'Button Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -231,7 +237,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_btn_color',
             [
-                'label' => 'Button Text Color',
+                'label' => __( 'Button Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [

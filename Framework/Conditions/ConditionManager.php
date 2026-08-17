@@ -1,4 +1,9 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 namespace BDEA\Framework\Conditions;
 
 defined( 'ABSPATH' ) || exit;
@@ -14,44 +19,44 @@ class ConditionManager {
     private function register_defaults() {
         $defaults = [
             'entire_site' => [
-                'label' => __( 'Entire Website', 'bdea' ),
-                'group' => __( 'General', 'bdea' ),
+                'label' => __( 'Entire Website', 'elementstack-elementor-addons' ),
+                'group' => __( 'General', 'elementstack-elementor-addons' ),
             ],
             'front_page'  => [
-                'label' => __( 'Front Page', 'bdea' ),
-                'group' => __( 'General', 'bdea' ),
+                'label' => __( 'Front Page', 'elementstack-elementor-addons' ),
+                'group' => __( 'General', 'elementstack-elementor-addons' ),
             ],
             'home_page'   => [
-                'label' => __( 'Home / Blog Page', 'bdea' ),
-                'group' => __( 'General', 'bdea' ),
+                'label' => __( 'Home / Blog Page', 'elementstack-elementor-addons' ),
+                'group' => __( 'General', 'elementstack-elementor-addons' ),
             ],
             'custom_url'  => [
-                'label' => __( 'Custom URL', 'bdea' ),
-                'group' => __( 'General', 'bdea' ),
+                'label' => __( 'Custom URL', 'elementstack-elementor-addons' ),
+                'group' => __( 'General', 'elementstack-elementor-addons' ),
             ],
             'singular'    => [
-                'label' => __( 'All Singular', 'bdea' ),
-                'group' => __( 'Singular', 'bdea' ),
+                'label' => __( 'All Singular', 'elementstack-elementor-addons' ),
+                'group' => __( 'Singular', 'elementstack-elementor-addons' ),
             ],
             'singular:post_type:post' => [
-                'label' => __( 'All Posts', 'bdea' ),
-                'group' => __( 'Singular', 'bdea' ),
+                'label' => __( 'All Posts', 'elementstack-elementor-addons' ),
+                'group' => __( 'Singular', 'elementstack-elementor-addons' ),
             ],
             'singular:post_type:page' => [
-                'label' => __( 'All Pages', 'bdea' ),
-                'group' => __( 'Singular', 'bdea' ),
+                'label' => __( 'All Pages', 'elementstack-elementor-addons' ),
+                'group' => __( 'Singular', 'elementstack-elementor-addons' ),
             ],
             'archive'     => [
-                'label' => __( 'All Archives', 'bdea' ),
-                'group' => __( 'Archives', 'bdea' ),
+                'label' => __( 'All Archives', 'elementstack-elementor-addons' ),
+                'group' => __( 'Archives', 'elementstack-elementor-addons' ),
             ],
             'search'      => [
-                'label' => __( 'Search Results', 'bdea' ),
-                'group' => __( 'Archives', 'bdea' ),
+                'label' => __( 'Search Results', 'elementstack-elementor-addons' ),
+                'group' => __( 'Archives', 'elementstack-elementor-addons' ),
             ],
             '404'         => [
-                'label' => __( '404 Page', 'bdea' ),
-                'group' => __( 'General', 'bdea' ),
+                'label' => __( '404 Page', 'elementstack-elementor-addons' ),
+                'group' => __( 'General', 'elementstack-elementor-addons' ),
             ],
         ];
 
@@ -68,8 +73,9 @@ class ConditionManager {
 
             $this->register(
                 'singular:post_type:' . $pt->name,
-                sprintf( __( 'Singular: %s', 'bdea' ), $pt->label ),
-                __( 'Singular', 'bdea' )
+                /* translators: %s: Post type singular label. */
+                sprintf( __( 'Singular: %s', 'elementstack-elementor-addons' ), $pt->label ),
+                __( 'Singular', 'elementstack-elementor-addons' )
             );
         }
 
@@ -92,8 +98,9 @@ class ConditionManager {
 
             $this->register(
                 'archive:taxonomy:' . $tax->name,
-                sprintf( __( 'All %s Archives', 'bdea' ), $tax->labels->name ),
-                __( 'Archives', 'bdea' )
+                /* translators: %s: Taxonomy name. */
+                sprintf( __( 'All %s Archives', 'elementstack-elementor-addons' ), $tax->labels->name ),
+                __( 'Archives', 'elementstack-elementor-addons' )
             );
 
             $terms = get_terms( [
@@ -110,7 +117,8 @@ class ConditionManager {
                 $this->register(
                     'archive:taxonomy:' . $tax->name . ':term:' . $term->slug,
                     $term->name,
-                    sprintf( __( '%s Archives', 'bdea' ), $tax->labels->name )
+                    /* translators: %s: Taxonomy name. */
+                    sprintf( __( '%s Archives', 'elementstack-elementor-addons' ), $tax->labels->name )
                 );
             }
         }
@@ -133,7 +141,7 @@ class ConditionManager {
         }
 
         if ( $has_wpml ) {
-            $active = apply_filters( 'wpml_active_languages', [] );
+            $active = apply_filters( 'wpml_active_languages', [] ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML core hook.
 
             foreach ( (array) $active as $lang ) {
                 if ( isset( $lang['code'] ) ) {
@@ -145,39 +153,41 @@ class ConditionManager {
         foreach ( $languages as $code ) {
             $this->register(
                 'language:' . $code,
-                sprintf( __( 'Language: %s', 'bdea' ), strtoupper( $code ) ),
-                __( 'Language', 'bdea' )
+                /* translators: %s: Language code. */
+                sprintf( __( 'Language: %s', 'elementstack-elementor-addons' ), strtoupper( $code ) ),
+                __( 'Language', 'elementstack-elementor-addons' )
             );
         }
     }
 
     private function register_user_role_conditions() {
-        $this->register( 'user_role:logged_in', __( 'Logged In', 'bdea' ), __( 'User Role', 'bdea' ) );
-        $this->register( 'user_role:logged_out', __( 'Logged Out', 'bdea' ), __( 'User Role', 'bdea' ) );
+        $this->register( 'user_role:logged_in', __( 'Logged In', 'elementstack-elementor-addons' ), __( 'User Role', 'elementstack-elementor-addons' ) );
+        $this->register( 'user_role:logged_out', __( 'Logged Out', 'elementstack-elementor-addons' ), __( 'User Role', 'elementstack-elementor-addons' ) );
 
         $roles = wp_roles()->get_names();
 
         foreach ( $roles as $role => $label ) {
             $this->register(
                 'user_role:' . $role,
-                sprintf( __( 'Role: %s', 'bdea' ), $label ),
-                __( 'User Role', 'bdea' )
+                /* translators: %s: User role name. */
+                sprintf( __( 'Role: %s', 'elementstack-elementor-addons' ), $label ),
+                __( 'User Role', 'elementstack-elementor-addons' )
             );
         }
     }
 
     private function register_woocommerce_conditions() {
         $woo = [
-            'woocommerce:shop'            => __( 'Shop Page', 'bdea' ),
-            'woocommerce:product'         => __( 'Product Page', 'bdea' ),
-            'woocommerce:cart'            => __( 'Cart Page', 'bdea' ),
-            'woocommerce:checkout'        => __( 'Checkout Page', 'bdea' ),
-            'woocommerce:account'         => __( 'My Account Page', 'bdea' ),
-            'woocommerce:product_archive' => __( 'Product Archive (Category/Tag)', 'bdea' ),
+            'woocommerce:shop'            => __( 'Shop Page', 'elementstack-elementor-addons' ),
+            'woocommerce:product'         => __( 'Product Page', 'elementstack-elementor-addons' ),
+            'woocommerce:cart'            => __( 'Cart Page', 'elementstack-elementor-addons' ),
+            'woocommerce:checkout'        => __( 'Checkout Page', 'elementstack-elementor-addons' ),
+            'woocommerce:account'         => __( 'My Account Page', 'elementstack-elementor-addons' ),
+            'woocommerce:product_archive' => __( 'Product Archive (Category/Tag)', 'elementstack-elementor-addons' ),
         ];
 
         foreach ( $woo as $id => $label ) {
-            $this->register( $id, $label, __( 'WooCommerce', 'bdea' ) );
+            $this->register( $id, $label, __( 'WooCommerce', 'elementstack-elementor-addons' ) );
         }
     }
 
@@ -338,7 +348,7 @@ class ConditionManager {
 
     private function check_custom_url( $parts ) {
         if ( 1 === count( $parts ) ) {
-            $current_path = wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+            $current_path = wp_parse_url( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ?? '' ) ), PHP_URL_PATH );
             $home_path    = wp_parse_url( home_url( '/' ), PHP_URL_PATH );
             $relative     = $home_path ? substr( $current_path, strlen( $home_path ) ) : ltrim( $current_path, '/' );
 
@@ -350,7 +360,7 @@ class ConditionManager {
             return false;
         }
 
-        $current_path = wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+        $current_path = wp_parse_url( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ?? '' ) ), PHP_URL_PATH );
         $home_path    = wp_parse_url( home_url( '/' ), PHP_URL_PATH );
         $relative     = $home_path ? substr( $current_path, strlen( $home_path ) ) : ltrim( $current_path, '/' );
 
@@ -393,7 +403,7 @@ class ConditionManager {
         $current = '';
 
         if ( has_filter( 'wpml_current_language' ) ) {
-            $current = apply_filters( 'wpml_current_language', $current );
+            $current = apply_filters( 'wpml_current_language', $current ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML core hook.
         } elseif ( function_exists( 'pll_current_language' ) ) {
             $current = pll_current_language();
         }

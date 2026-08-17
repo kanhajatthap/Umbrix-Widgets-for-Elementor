@@ -1,4 +1,9 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 namespace BDEA\Modules\HeaderFooter;
 
 use BDEA\Framework\Cache\Cache;
@@ -100,7 +105,7 @@ class FrontendRender {
 
         $detect = false;
         if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
-            $ua = $_SERVER['HTTP_USER_AGENT'];
+            $ua = sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
             $is_desktop_ua = ! preg_match( '/Mobile|Android|iPad|iPhone|iPod|Tablet/i', $ua );
             $is_tablet_ua  = preg_match( '/iPad|Tablet|Android(?!.*Mobile)/i', $ua );
             $is_mobile_ua  = preg_match( '/Mobile|iPhone|iPod|Android.*Mobile/i', $ua );
@@ -140,7 +145,7 @@ class FrontendRender {
         $this->renderer->render( $post_id );
 
         if ( $dismissible ) {
-            echo '<button type="button" class="bdea-hf-announcement-close" aria-label="' . esc_attr__( 'Dismiss', 'bdea' ) . '" data-days="' . esc_attr( $cookie_days ) . '">';
+            echo '<button type="button" class="bdea-hf-announcement-close" aria-label="' . esc_attr__( 'Dismiss', 'elementstack-elementor-addons' ) . '" data-days="' . esc_attr( $cookie_days ) . '">';
             echo '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7"/></svg>';
             echo '</button>';
         }
@@ -199,7 +204,7 @@ class FrontendRender {
             $attrs .= ' data-offset="' . esc_attr( $offset ) . '"';
         }
 
-        echo '<header class="' . esc_attr( $classes ) . '"' . $attrs . '>';
+        echo '<header class="' . esc_attr( $classes ) . '"' . $attrs . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attributes built with esc_attr() above.
         $this->renderer->render( $post_id );
         echo '</header>';
     }

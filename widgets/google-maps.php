@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
@@ -32,17 +38,17 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_maps_content_section',
             [
-                'label' => 'Map',
+                'label' => __( 'Map', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'map_address',
             [
-                'label' => 'Address',
+                'label' => __( 'Address', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'Times Square, New York',
-                'placeholder' => 'Enter address or coordinates',
+                'placeholder' => __( 'Enter address or coordinates', 'elementstack-elementor-addons' ),
                 'description' => 'Use a full address, place name or "lat,lng" coordinates.',
             ]
         );
@@ -50,7 +56,7 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'map_zoom',
             [
-                'label' => 'Zoom',
+                'label' => __( 'Zoom', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [ '' => [ 'min' => 1, 'max' => 20, 'step' => 1 ] ],
@@ -61,7 +67,7 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'map_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'vh' ],
                 'range' => [ 'px' => [ 'min' => 100, 'max' => 1000 ], 'vh' => [ 'min' => 10, 'max' => 100 ] ],
@@ -75,12 +81,12 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'map_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -92,7 +98,7 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'prevent_scroll',
             [
-                'label' => 'Prevent Scroll While Zooming',
+                'label' => __( 'Prevent Scroll While Zooming', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'description' => 'Requires holding Ctrl/Cmd to scroll-zoom over the map.',
@@ -104,7 +110,7 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_maps_style_section',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -112,7 +118,7 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'map_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -126,14 +132,14 @@ class BDEA_Google_Maps_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'map_filter',
             [
-                'label' => 'Map Style Filter',
+                'label' => __( 'Map Style Filter', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
-                    'none' => 'Normal',
-                    'grayscale' => 'Grayscale',
-                    'invert' => 'Inverted',
-                    'sepia' => 'Sepia',
+                    'none' => __( 'Normal', 'elementstack-elementor-addons' ),
+                    'grayscale' => __( 'Grayscale', 'elementstack-elementor-addons' ),
+                    'invert' => __( 'Inverted', 'elementstack-elementor-addons' ),
+                    'sepia' => __( 'Sepia', 'elementstack-elementor-addons' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-map-embed iframe' => 'filter: {{VALUE}};',

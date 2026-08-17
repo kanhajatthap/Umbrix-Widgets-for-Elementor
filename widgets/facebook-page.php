@@ -1,4 +1,9 @@
-﻿<?php
+<?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
@@ -28,14 +33,14 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_fb_page_content',
             [
-                'label' => 'Facebook Page',
+                'label' => __( 'Facebook Page', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'url',
             [
-                'label' => 'Page URL',
+                'label' => __( 'Page URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'https://www.facebook.com/facebook',
             ]
@@ -44,14 +49,14 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tabs',
             [
-                'label' => 'Tabs',
+                'label' => __( 'Tabs', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'default' => [ 'timeline' ],
                 'options' => [
-                    'timeline' => 'Timeline',
-                    'events' => 'Events',
-                    'messages' => 'Messages',
+                    'timeline' => __( 'Timeline', 'elementstack-elementor-addons' ),
+                    'events' => __( 'Events', 'elementstack-elementor-addons' ),
+                    'messages' => __( 'Messages', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -59,7 +64,7 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 70, 'max' => 1000 ] ],
@@ -70,7 +75,7 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'small_header',
             [
-                'label' => 'Small Header',
+                'label' => __( 'Small Header', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'no',
             ]
@@ -79,7 +84,7 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hide_cover',
             [
-                'label' => 'Hide Cover Photo',
+                'label' => __( 'Hide Cover Photo', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'no',
             ]
@@ -88,7 +93,7 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hide_cta',
             [
-                'label' => 'Hide CTA Button',
+                'label' => __( 'Hide CTA Button', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'no',
             ]
@@ -99,7 +104,7 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_fb_page_style',
             [
-                'label' => 'Wrap',
+                'label' => __( 'Wrap', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -107,12 +112,12 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'wrap_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -124,7 +129,7 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'wrap_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -144,7 +149,7 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'wrap_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -186,6 +191,6 @@ class BDEA_Facebook_Page_Widget extends \Elementor\Widget_Base {
     }
 
     private function maybe_render_fb_sdk() {
-        bdea_maybe_print_fb_sdk( 'v18.0' );
+        bdea_maybe_print_fb_sdk( 'v25.0' );
     }
 }

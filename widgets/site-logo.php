@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_site_logo_section',
             [
-                'label' => 'Site Logo',
+                'label' => __( 'Site Logo', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'logo_width',
             [
-                'label' => 'Width',
+                'label' => __( 'Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 20, 'max' => 400 ] ],
@@ -49,7 +55,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'logo_fallback',
             [
-                'label' => 'Show Site Name if No Logo',
+                'label' => __( 'Show Site Name if No Logo', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -58,7 +64,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'logo_link',
             [
-                'label' => 'Link to Homepage',
+                'label' => __( 'Link to Homepage', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -67,12 +73,12 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'logo_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -86,7 +92,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_site_logo_style',
             [
-                'label' => 'Logo',
+                'label' => __( 'Logo', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -102,7 +108,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'logo_fallback_color',
             [
-                'label' => 'Fallback Text Color',
+                'label' => __( 'Fallback Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-logo-fallback' => 'color: {{VALUE}};',
@@ -113,7 +119,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'logo_border_radius',
             [
-                'label' => 'Image Border Radius',
+                'label' => __( 'Image Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -125,7 +131,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'logo_opacity',
             [
-                'label' => 'Image Opacity',
+                'label' => __( 'Image Opacity', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [ 'min' => 0, 'max' => 1, 'step' => 0.05 ],
@@ -140,7 +146,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'logo_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -170,7 +176,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         }
         ?>
         <div class="bdea-site-logo">
-            <?php echo $logo; ?>
+            <?php echo $logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Logo markup built with esc_url()/esc_html()/get_custom_logo(). ?>
         </div>
         <?php
     }

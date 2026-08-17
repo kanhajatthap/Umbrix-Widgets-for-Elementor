@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
@@ -32,14 +38,14 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_countdown_section',
             [
-                'label' => 'Countdown',
+                'label' => __( 'Countdown', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'countdown_date',
             [
-                'label' => 'Target Date',
+                'label' => __( 'Target Date', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DATE_TIME,
                 'default' => '2026-12-31 23:59',
             ]
@@ -48,7 +54,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'countdown_show_days',
             [
-                'label' => 'Show Days',
+                'label' => __( 'Show Days', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -57,7 +63,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'countdown_show_hours',
             [
-                'label' => 'Show Hours',
+                'label' => __( 'Show Hours', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -66,7 +72,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'countdown_show_minutes',
             [
-                'label' => 'Show Minutes',
+                'label' => __( 'Show Minutes', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -75,7 +81,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'countdown_show_seconds',
             [
-                'label' => 'Show Seconds',
+                'label' => __( 'Show Seconds', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -84,36 +90,36 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'countdown_days_label',
             [
-                'label' => 'Days Label',
+                'label' => __( 'Days Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Days',
+                'default' => __( 'Days', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'countdown_hours_label',
             [
-                'label' => 'Hours Label',
+                'label' => __( 'Hours Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Hours',
+                'default' => __( 'Hours', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'countdown_minutes_label',
             [
-                'label' => 'Minutes Label',
+                'label' => __( 'Minutes Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Minutes',
+                'default' => __( 'Minutes', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'countdown_seconds_label',
             [
-                'label' => 'Seconds Label',
+                'label' => __( 'Seconds Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Seconds',
+                'default' => __( 'Seconds', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -123,7 +129,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_countdown_box_style',
             [
-                'label' => 'Box',
+                'label' => __( 'Box', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -131,12 +137,12 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'box_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -148,7 +154,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'box_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-countdown-box' => 'background-color: {{VALUE}};',
@@ -167,7 +173,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'box_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -187,7 +193,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'box_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -206,7 +212,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'box_gap',
             [
-                'label' => 'Gap',
+                'label' => __( 'Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -222,7 +228,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_countdown_number_style',
             [
-                'label' => 'Numbers',
+                'label' => __( 'Numbers', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -238,7 +244,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'countdown_number_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -253,7 +259,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_countdown_label_style',
             [
-                'label' => 'Labels',
+                'label' => __( 'Labels', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -269,7 +275,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'countdown_label_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -281,7 +287,7 @@ class BDEA_Countdown_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'label_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 20 ] ],

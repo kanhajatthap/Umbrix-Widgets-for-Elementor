@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
@@ -32,14 +38,14 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_loop_template_section',
             [
-                'label' => 'Loop Template',
+                'label' => __( 'Loop Template', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'loop_template',
             [
-                'label' => 'Select Loop Template',
+                'label' => __( 'Select Loop Template', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => bdea_loop_template_options(),
                 'description' => 'Select an Elementor template to render each loop item. Leave empty to use the built-in card below.',
@@ -49,7 +55,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'post_type',
             [
-                'label' => 'Post Type',
+                'label' => __( 'Post Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'post',
                 'options' => bdea_widget_post_types(),
@@ -62,14 +68,14 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_query_section',
             [
-                'label' => 'Query',
+                'label' => __( 'Query', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'include_cats',
             [
-                'label' => 'Categories',
+                'label' => __( 'Categories', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'category' ),
@@ -80,7 +86,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'include_tags',
             [
-                'label' => 'Tags',
+                'label' => __( 'Tags', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'post_tag' ),
@@ -91,7 +97,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'exclude_cats',
             [
-                'label' => 'Exclude Categories',
+                'label' => __( 'Exclude Categories', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'category' ),
@@ -110,7 +116,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => 'Posts Per Page',
+                'label' => __( 'Posts Per Page', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 6,
                 'min' => 1,
@@ -121,7 +127,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'offset',
             [
-                'label' => 'Offset',
+                'label' => __( 'Offset', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 0,
                 'min' => 0,
@@ -132,16 +138,16 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'orderby',
             [
-                'label' => 'Order By',
+                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => 'Date',
-                    'modified' => 'Modified Date',
-                    'title' => 'Title',
-                    'menu_order' => 'Menu Order',
-                    'rand' => 'Random',
-                    'comment_count' => 'Comment Count',
+                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
+                    'modified' => __( 'Modified Date', 'elementstack-elementor-addons' ),
+                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
+                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
+                    'rand' => __( 'Random', 'elementstack-elementor-addons' ),
+                    'comment_count' => __( 'Comment Count', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -149,12 +155,12 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => 'Order',
+                'label' => __( 'Order', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'ASC' => 'Ascending',
-                    'DESC' => 'Descending',
+                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
+                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -164,14 +170,14 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_layout_section',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_responsive_control(
             'columns',
             [
-                'label' => 'Columns',
+                'label' => __( 'Columns', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '3',
                 'tablet_default' => '2',
@@ -193,7 +199,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'column_gap',
             [
-                'label' => 'Column Gap',
+                'label' => __( 'Column Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [
@@ -209,7 +215,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'row_gap',
             [
-                'label' => 'Row Gap',
+                'label' => __( 'Row Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [
@@ -227,22 +233,22 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_pagination_section',
             [
-                'label' => 'Pagination',
+                'label' => __( 'Pagination', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'pagination_type',
             [
-                'label' => 'Pagination Type',
+                'label' => __( 'Pagination Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
                     'none'            => 'None',
-                    'numbers'         => 'Numbers',
-                    'prev_next'       => 'Previous / Next',
-                    'load_more'       => 'Load on Demand',
-                    'infinite_scroll' => 'Infinite Scroll',
+                    'numbers'         => __( 'Numbers', 'elementstack-elementor-addons' ),
+                    'prev_next'       => __( 'Previous / Next', 'elementstack-elementor-addons' ),
+                    'load_more'       => __( 'Load on Demand', 'elementstack-elementor-addons' ),
+                    'infinite_scroll' => __( 'Infinite Scroll', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -250,9 +256,9 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'load_more_text',
             [
-                'label' => 'Load More Text',
+                'label' => __( 'Load More Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Load More',
+                'default' => __( 'Load More', 'elementstack-elementor-addons' ),
                 'condition' => [ 'pagination_type' => 'load_more' ],
             ]
         );
@@ -260,9 +266,9 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'prev_text',
             [
-                'label' => 'Previous Text',
+                'label' => __( 'Previous Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Previous',
+                'default' => __( 'Previous', 'elementstack-elementor-addons' ),
                 'condition' => [ 'pagination_type' => [ 'numbers', 'prev_next' ] ],
             ]
         );
@@ -270,9 +276,9 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'next_text',
             [
-                'label' => 'Next Text',
+                'label' => __( 'Next Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Next',
+                'default' => __( 'Next', 'elementstack-elementor-addons' ),
                 'condition' => [ 'pagination_type' => [ 'numbers', 'prev_next' ] ],
             ]
         );
@@ -282,14 +288,14 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_content_section',
             [
-                'label' => 'Card Content',
+                'label' => __( 'Card Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_thumbnail',
             [
-                'label' => 'Show Thumbnail',
+                'label' => __( 'Show Thumbnail', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -298,7 +304,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_title',
             [
-                'label' => 'Show Title',
+                'label' => __( 'Show Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -307,7 +313,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_tag',
             [
-                'label' => 'Title Tag',
+                'label' => __( 'Title Tag', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'h3',
                 'options' => [
@@ -324,7 +330,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => 'Show Excerpt',
+                'label' => __( 'Show Excerpt', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -333,7 +339,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => 'Excerpt Length (words)',
+                'label' => __( 'Excerpt Length (words)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 18,
                 'min' => 3,
@@ -345,7 +351,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_meta',
             [
-                'label' => 'Show Meta (date / category)',
+                'label' => __( 'Show Meta (date / category)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -354,7 +360,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_read_more',
             [
-                'label' => 'Show Read More',
+                'label' => __( 'Show Read More', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -363,9 +369,9 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'read_more_text',
             [
-                'label' => 'Read More Text',
+                'label' => __( 'Read More Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Read More',
+                'default' => __( 'Read More', 'elementstack-elementor-addons' ),
                 'condition' => [ 'show_read_more' => 'yes' ],
             ]
         );
@@ -375,7 +381,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_style_section',
             [
-                'label' => 'Card',
+                'label' => __( 'Card', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -383,7 +389,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-card' => 'background-color: {{VALUE}};',
@@ -402,7 +408,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -424,7 +430,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -438,7 +444,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_style_section',
             [
-                'label' => 'Thumbnail',
+                'label' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -446,7 +452,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
@@ -460,13 +466,13 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => 'Object Fit',
+                'label' => __( 'Object Fit', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => 'Cover',
-                    'contain' => 'Contain',
-                    'fill' => 'Fill',
+                    'cover' => __( 'Cover', 'elementstack-elementor-addons' ),
+                    'contain' => __( 'Contain', 'elementstack-elementor-addons' ),
+                    'fill' => __( 'Fill', 'elementstack-elementor-addons' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-thumb img' => 'object-fit: {{VALUE}};',
@@ -479,7 +485,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_typography_section',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -495,7 +501,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-title a' => 'color: {{VALUE}};',
@@ -514,7 +520,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_color',
             [
-                'label' => 'Excerpt Color',
+                'label' => __( 'Excerpt Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-excerpt' => 'color: {{VALUE}};',
@@ -533,7 +539,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'meta_color',
             [
-                'label' => 'Meta Color',
+                'label' => __( 'Meta Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-meta' => 'color: {{VALUE}};',
@@ -552,7 +558,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_color',
             [
-                'label' => 'Button Text Color',
+                'label' => __( 'Button Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-more' => 'color: {{VALUE}};',
@@ -563,7 +569,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_bg',
             [
-                'label' => 'Button Background',
+                'label' => __( 'Button Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-more' => 'background-color: {{VALUE}};',
@@ -576,7 +582,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_pagination_style_section',
             [
-                'label' => 'Pagination',
+                'label' => __( 'Pagination', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -584,12 +590,12 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'pagination_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'   => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right'  => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left'   => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right'  => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -601,7 +607,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pagination_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-pagination .page-numbers' => 'color: {{VALUE}};',
@@ -613,7 +619,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pagination_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-pagination .page-numbers' => 'background-color: {{VALUE}};',
@@ -625,7 +631,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pagination_active_color',
             [
-                'label' => 'Active / Hover Color',
+                'label' => __( 'Active / Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-pagination .page-numbers.current' => 'color: {{VALUE}};',
@@ -638,7 +644,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pagination_active_bg',
             [
-                'label' => 'Active / Hover Background',
+                'label' => __( 'Active / Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-loop-pagination .page-numbers.current' => 'background-color: {{VALUE}};',
@@ -651,7 +657,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'pagination_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -666,7 +672,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'pagination_gap',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 40 ] ],
@@ -708,7 +714,7 @@ class BDEA_Loop_Grid_Widget extends \Elementor\Widget_Base {
 
         if ( in_array( $pagination_type, [ 'numbers', 'prev_next' ], true ) ) {
             $param        = 'bdea_page_' . $widget_id;
-            $current_page = isset( $_GET[ $param ] ) ? max( 1, absint( wp_unslash( $_GET[ $param ] ) ) ) : 1;
+            $current_page = isset( $_GET[ $param ] ) ? max( 1, absint( wp_unslash( $_GET[ $param ] ) ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Pagination GET parameter, read-only.
         }
 
         $query_args = bdea_widget_query_args( $settings );

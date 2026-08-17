@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_blockquote_section',
             [
-                'label' => 'Blockquote',
+                'label' => __( 'Blockquote', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'quote_content',
             [
-                'label' => 'Quote',
+                'label' => __( 'Quote', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Design is not just what it looks like and feels like. Design is how it works.',
                 'rows' => 5,
@@ -45,30 +51,30 @@ class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'quote_author',
             [
-                'label' => 'Author Name',
+                'label' => __( 'Author Name', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Steve Jobs',
+                'default' => __( 'Steve Jobs', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'quote_role',
             [
-                'label' => 'Author Role',
+                'label' => __( 'Author Role', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Entrepreneur',
+                'default' => __( 'Entrepreneur', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_responsive_control(
             'quote_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -82,7 +88,7 @@ class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_blockquote_quote_style',
             [
-                'label' => 'Quote',
+                'label' => __( 'Quote', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -98,7 +104,7 @@ class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'quote_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -112,7 +118,7 @@ class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_blockquote_author_style',
             [
-                'label' => 'Author',
+                'label' => __( 'Author', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -128,7 +134,7 @@ class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'author_color',
             [
-                'label' => 'Name Color',
+                'label' => __( 'Name Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -148,7 +154,7 @@ class BDEA_Blockquote_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'author_role_color',
             [
-                'label' => 'Role Color',
+                'label' => __( 'Role Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [

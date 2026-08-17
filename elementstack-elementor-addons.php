@@ -1,9 +1,17 @@
 <?php
 /**
- * Plugin Name: ElementStack Elementor Addons
- * Description: Custom widgets and UI modules for Elementor.
+ * Plugin Name: ElementStack Addons for Elementor
+ * Plugin URI: https://github.com/kanhajatthap/Elementstack-Elementor-Addons
+ * Description: 73 lightweight widgets and a Theme Builder for Elementor, built on 12 years of WordPress industry experience.
  * Version: 1.1.0
- * Author: ElementStack
+ * Author: Kanha Jatthap
+ * Author URI: https://github.com/kanhajatthap
+ * Requires at least: 6.0
+ * Requires PHP: 7.4
+ * Requires Plugins: elementor
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: elementstack-elementor-addons
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -53,7 +61,7 @@ function bdea_check_elementor_loaded() {
 function bdea_elementor_missing_notice() {
     ?>
     <div class="notice notice-warning is-dismissible">
-        <p><strong>ElementStack Elementor Addons</strong> requires Elementor to be installed and activated.</p>
+        <p><strong>ElementStack Addons for Elementor</strong> <?php esc_html_e( 'requires Elementor to be installed and activated.', 'elementstack-elementor-addons' ); ?></p>
     </div>
     <?php
 }
@@ -162,7 +170,7 @@ function bdea_get_widget_definitions() {
     return [
         'progress_bar' => [
             'label' => 'Progress Bar',
-            'class' => 'Custom_Progress_Bar_Widget',
+            'class' => 'BDEA_Progress_Bar_Widget',
         ],
         'data_table'  => [
             'label' => 'Data Table',
@@ -555,16 +563,10 @@ add_action( 'elementor/widgets/register', 'bdea_register_widgets' );
 
 function bdea_sanitize_widget_status( $input ) {
     $defaults = bdea_get_default_widget_status();
-
-    if ( ! is_array( $input ) || empty( $input ) ) {
-        $current = get_option( 'bdea_widget_status', $defaults );
-        return wp_parse_args( is_array( $current ) ? $current : [], $defaults );
-    }
-
-    $output = [];
+    $output   = [];
 
     foreach ( $defaults as $key => $value ) {
-        $output[ $key ] = ! empty( $input[ $key ] ) ? 1 : 0;
+        $output[ $key ] = ( is_array( $input ) && ! empty( $input[ $key ] ) ) ? 1 : 0;
     }
 
     return $output;
@@ -674,13 +676,13 @@ function bdea_handle_form_submit() {
     $nonce = isset( $_POST['bdea_form_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['bdea_form_nonce'] ) ) : '';
 
     if ( ! wp_verify_nonce( $nonce, 'bdea_form_submit' ) ) {
-        wp_send_json_error( [ 'message' => 'Invalid form submission. Please refresh the page and try again.' ], 400 );
+        wp_send_json_error( [ 'message' => __( 'Invalid form submission. Please refresh the page and try again.', 'elementstack-elementor-addons' ) ], 400 );
     }
 
     $form_id = isset( $_POST['bdea_form_id'] ) ? sanitize_text_field( wp_unslash( $_POST['bdea_form_id'] ) ) : '';
 
     $email_to    = isset( $_POST['bdea_email_to'] ) ? sanitize_email( wp_unslash( $_POST['bdea_email_to'] ) ) : get_option( 'admin_email' );
-    $email_subject = isset( $_POST['bdea_email_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['bdea_email_subject'] ) ) : 'New Form Submission';
+    $email_subject = isset( $_POST['bdea_email_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['bdea_email_subject'] ) ) : __( 'New Form Submission', 'elementstack-elementor-addons' );
 
     $body_lines = [];
     foreach ( $_POST as $key => $value ) {
@@ -701,10 +703,11 @@ function bdea_handle_form_submit() {
     }
 
     if ( empty( $body_lines ) ) {
-        wp_send_json_error( [ 'message' => 'The form does not contain any fields.' ], 400 );
+        wp_send_json_error( [ 'message' => __( 'The form does not contain any fields.', 'elementstack-elementor-addons' ) ], 400 );
     }
 
-    $body = implode( "\n\n", $body_lines ) . "\n\n---\nSubmitted via ElementStack Form (ID: " . $form_id . ")\n";
+    /* translators: %s: Form ID. */
+    $body = implode( "\n\n", $body_lines ) . "\n\n---\n" . sprintf( __( 'Submitted via ElementStack Form (ID: %s)', 'elementstack-elementor-addons' ), $form_id ) . "\n";
 
     $sent = wp_mail(
         $email_to,
@@ -717,7 +720,7 @@ function bdea_handle_form_submit() {
         wp_send_json_success( [ 'message' => 'success' ] );
     }
 
-    wp_send_json_error( [ 'message' => 'The message could not be sent. Please try again.' ], 500 );
+    wp_send_json_error( [ 'message' => __( 'The message could not be sent. Please try again.', 'elementstack-elementor-addons' ) ], 500 );
 }
 add_action( 'admin_post_nopriv_bdea_form_submit', 'bdea_handle_form_submit' );
 add_action( 'admin_post_bdea_form_submit', 'bdea_handle_form_submit' );
@@ -737,6 +740,7 @@ function bdea_handle_loop_load() {
 
     $settings = [];
     if ( isset( $_POST['settings'] ) ) {
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- Decoded settings are sanitized per-field by bdea_widget_query_args().
         $settings = json_decode( wp_unslash( $_POST['settings'] ), true );
         if ( ! is_array( $settings ) ) {
             $settings = [];
@@ -783,7 +787,7 @@ function bdea_create_loop_template() {
     check_ajax_referer( 'bdea_editor', 'nonce' );
 
     if ( ! current_user_can( 'edit_posts' ) ) {
-        wp_send_json_error( [ 'message' => 'You do not have permission to create templates.' ], 403 );
+        wp_send_json_error( [ 'message' => __( 'You do not have permission to create templates.', 'elementstack-elementor-addons' ) ], 403 );
     }
 
     $type = 'loop-item';
@@ -791,7 +795,8 @@ function bdea_create_loop_template() {
     $post_id = wp_insert_post( [
         'post_type'    => 'elementor_library',
         'post_status'  => 'publish',
-        'post_title'   => 'Loop Template ' . gmdate( 'Y-m-d H:i' ),
+        /* translators: %s: Date and time. */
+        'post_title'   => sprintf( __( 'Loop Template %s', 'elementstack-elementor-addons' ), gmdate( 'Y-m-d H:i' ) ),
     ] );
 
     if ( is_wp_error( $post_id ) ) {
@@ -822,8 +827,8 @@ add_action( 'wp_ajax_bdea_create_loop_template', 'bdea_create_loop_template' );
 
 function bdea_admin_menu() {
     add_menu_page(
-        'ElementStack Settings',
-        'ElementStack',
+        __( 'ElementStack Settings', 'elementstack-elementor-addons' ),
+        __( 'ElementStack', 'elementstack-elementor-addons' ),
         'manage_options',
         'elementstack-settings',
         'bdea_render_admin_page',
@@ -866,17 +871,17 @@ function bdea_render_admin_page() {
     }
 
     $features = [
-        'Enable or disable each widget from one place.',
-        'Modern Elementor-native widgets with full style controls.',
-        'Responsive and lightweight - zero bloat.',
-        'Works seamlessly with any Elementor theme.',
-        'Individual padding, margin, font and color controls per widget.',
+        __( 'Enable or disable each widget from one place.', 'elementstack-elementor-addons' ),
+        __( 'Modern Elementor-native widgets with full style controls.', 'elementstack-elementor-addons' ),
+        __( 'Responsive and lightweight - zero bloat.', 'elementstack-elementor-addons' ),
+        __( 'Works seamlessly with any Elementor theme.', 'elementstack-elementor-addons' ),
+        __( 'Individual padding, margin, font and color controls per widget.', 'elementstack-elementor-addons' ),
     ];
 
     $tips = [
-        'Toggle widgets on or off and click Save Settings.',
-        'Then open the Elementor editor and refresh the panel.',
-        'Only enabled widgets will appear under ElementStack Elements.',
+        __( 'Toggle widgets on or off and click Save Settings.', 'elementstack-elementor-addons' ),
+        __( 'Then open the Elementor editor and refresh the panel.', 'elementstack-elementor-addons' ),
+        __( 'Only enabled widgets will appear under ElementStack Elements.', 'elementstack-elementor-addons' ),
     ];
 
     $widgets       = bdea_get_widget_definitions();
@@ -888,22 +893,25 @@ function bdea_render_admin_page() {
 
     ?>
     <div class="wrap bdea-admin-wrap">
-        <h1 class="bdea-admin-page-heading-catch">ElementStack Settings</h1>
+        <h1 class="bdea-admin-page-heading-catch"><?php esc_html_e( 'ElementStack Settings', 'elementstack-elementor-addons' ); ?></h1>
         <div class="bdea-admin-shell">
             <div class="bdea-admin-hero">
                 <div class="bdea-admin-hero-left">
                     <div class="bdea-admin-hero-icon dashicons dashicons-screenoptions" aria-hidden="true"></div>
                     <div>
-                        <div class="bdea-admin-hero-title">ElementStack Addons</div>
-                        <p>Manage and configure your custom Elementor widgets</p>
+                        <div class="bdea-admin-hero-title"><?php esc_html_e( 'ElementStack Addons', 'elementstack-elementor-addons' ); ?></div>
+                        <p><?php esc_html_e( 'Manage and configure your custom Elementor widgets', 'elementstack-elementor-addons' ); ?></p>
                     </div>
                 </div>
                 <span class="bdea-admin-version">v<?php echo esc_html( BDEA_VERSION ); ?></span>
             </div>
 
-            <?php if ( isset( $_GET['settings-updated'] ) && 'true' === $_GET['settings-updated'] ) : ?>
+            <?php
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- settings-updated is a redirect marker set by the Settings API.
+            $settings_updated = isset( $_GET['settings-updated'] ) && 'true' === sanitize_text_field( wp_unslash( $_GET['settings-updated'] ) );
+            if ( $settings_updated ) : ?>
                 <div class="notice notice-success is-dismissible bdea-admin-notice">
-                    <p>Settings saved successfully.</p>
+                    <p><?php esc_html_e( 'Settings saved successfully.', 'elementstack-elementor-addons' ); ?></p>
                 </div>
             <?php endif; ?>
 
@@ -912,7 +920,7 @@ function bdea_render_admin_page() {
                     <div class="bdea-admin-stat-icon bdea-admin-stat-icon-blue dashicons dashicons-grid-view"></div>
                     <div>
                         <strong><?php echo esc_html( $total_widgets ); ?></strong>
-                        <span>Total Widgets</span>
+                        <span><?php esc_html_e( 'Total Widgets', 'elementstack-elementor-addons' ); ?></span>
                     </div>
                 </div>
 
@@ -920,7 +928,7 @@ function bdea_render_admin_page() {
                     <div class="bdea-admin-stat-icon bdea-admin-stat-icon-green dashicons dashicons-yes-alt"></div>
                     <div>
                         <strong><?php echo esc_html( $enabled_count ); ?></strong>
-                        <span>Active</span>
+                        <span><?php esc_html_e( 'Active', 'elementstack-elementor-addons' ); ?></span>
                     </div>
                 </div>
 
@@ -928,7 +936,7 @@ function bdea_render_admin_page() {
                     <div class="bdea-admin-stat-icon bdea-admin-stat-icon-orange dashicons dashicons-dismiss"></div>
                     <div>
                         <strong><?php echo esc_html( $inactive_count ); ?></strong>
-                        <span>Inactive</span>
+                        <span><?php esc_html_e( 'Inactive', 'elementstack-elementor-addons' ); ?></span>
                     </div>
                 </div>
             </div>
@@ -940,10 +948,42 @@ function bdea_render_admin_page() {
                     <input type="hidden" name="bdea_widget_status" value="" />
                     <input type="hidden" name="bdea_module_status" value="" />
 
-                    <div class="bdea-admin-panel bdea-admin-panel-widgets">
-                        <h2 class="bdea-admin-panel-title">Widget Manager</h2>
-
+                    <?php
+                    $module_status = wp_parse_args( get_option( 'bdea_module_status', [] ), \BDEA\Modules\HeaderFooter\Module::get_default_module_status() );
+                    $hf_enabled    = ! empty( $module_status['header_footer'] );
+                    ?>
+                    <div class="bdea-admin-panel bdea-admin-panel-modules">
+                        <h2 class="bdea-admin-panel-title"><?php esc_html_e( 'Modules', 'elementstack-elementor-addons' ); ?></h2>
                         <div class="bdea-admin-widget-list">
+                            <div class="bdea-admin-widget-card">
+                                <div class="bdea-admin-widget-card-head">
+                                    <div class="bdea-admin-widget-icon dashicons dashicons-editor-kitchensink" aria-hidden="true"></div>
+                                    <div class="bdea-admin-widget-details">
+                                        <h3><?php esc_html_e( 'Theme Builder', 'elementstack-elementor-addons' ); ?></h3>
+                                        <p><?php esc_html_e( 'Create and manage custom header, footer, and theme templates with Elementor.', 'elementstack-elementor-addons' ); ?></p>
+                                    </div>
+                                </div>
+                                <div class="bdea-admin-widget-toggle-wrap">
+                                    <span class="bdea-admin-widget-state<?php echo $hf_enabled ? ' is-on' : ' is-off'; ?>"><?php echo $hf_enabled ? esc_html__( 'Active', 'elementstack-elementor-addons' ) : esc_html__( 'Inactive', 'elementstack-elementor-addons' ); ?></span>
+                                    <label class="bdea-switch" for="bdea_module_status_header_footer">
+                                        <input
+                                            type="checkbox"
+                                            id="bdea_module_status_header_footer"
+                                            name="bdea_module_status[header_footer]"
+                                            value="1"
+                                            <?php checked( $hf_enabled ); ?>
+                                        />
+                                        <span class="bdea-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bdea-admin-panel bdea-admin-panel-widgets">
+                        <h2 class="bdea-admin-panel-title"><?php esc_html_e( 'Widget Manager', 'elementstack-elementor-addons' ); ?></h2>
+
+                        <div class="bdea-admin-widget-list bdea-admin-widget-list--grid-2">
                             <?php foreach ( $widgets as $slug => $widget ) : ?>
                                 <?php
                                 $is_active = ! empty( $widget_status[ $slug ] );
@@ -959,7 +999,7 @@ function bdea_render_admin_page() {
                                     </div>
 
                                     <div class="bdea-admin-widget-toggle-wrap">
-                                        <span class="bdea-admin-widget-state<?php echo $is_active ? ' is-on' : ' is-off'; ?>"><?php echo $is_active ? 'Active' : 'Inactive'; ?></span>
+                                        <span class="bdea-admin-widget-state<?php echo $is_active ? ' is-on' : ' is-off'; ?>"><?php echo $is_active ? esc_html__( 'Active', 'elementstack-elementor-addons' ) : esc_html__( 'Inactive', 'elementstack-elementor-addons' ); ?></span>
                                         <label class="bdea-switch" for="bdea_widget_status_<?php echo esc_attr( $slug ); ?>">
                                             <input
                                                 type="checkbox"
@@ -976,47 +1016,15 @@ function bdea_render_admin_page() {
                         </div>
                     </div>
 
-                    <?php
-                    $module_status = get_option( 'bdea_module_status', [] );
-                    $hf_enabled    = ! empty( $module_status['header_footer'] );
-                    ?>
-                    <div class="bdea-admin-panel bdea-admin-panel-modules">
-                        <h2 class="bdea-admin-panel-title">Modules</h2>
-                        <div class="bdea-admin-widget-list">
-                            <div class="bdea-admin-widget-card">
-                                <div class="bdea-admin-widget-card-head">
-                                    <div class="bdea-admin-widget-icon dashicons dashicons-editor-kitchensink" aria-hidden="true"></div>
-                                    <div class="bdea-admin-widget-details">
-                                        <h3>Theme Builder</h3>
-                                        <p>Create and manage custom header, footer, and theme templates with Elementor.</p>
-                                    </div>
-                                </div>
-                                <div class="bdea-admin-widget-toggle-wrap">
-                                    <span class="bdea-admin-widget-state<?php echo $hf_enabled ? ' is-on' : ' is-off'; ?>"><?php echo $hf_enabled ? 'Active' : 'Inactive'; ?></span>
-                                    <label class="bdea-switch" for="bdea_module_status_header_footer">
-                                        <input
-                                            type="checkbox"
-                                            id="bdea_module_status_header_footer"
-                                            name="bdea_module_status[header_footer]"
-                                            value="1"
-                                            <?php checked( $hf_enabled ); ?>
-                                        />
-                                        <span class="bdea-slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="bdea-admin-form-actions">
-                        <button type="submit" class="button button-primary bdea-admin-save-btn">Save Settings</button>
-                        <span class="bdea-admin-form-hint">Saves widget and module changes together</span>
+                        <button type="submit" class="button button-primary bdea-admin-save-btn"><?php esc_html_e( 'Save Settings', 'elementstack-elementor-addons' ); ?></button>
+                        <span class="bdea-admin-form-hint"><?php esc_html_e( 'Saves widget and module changes together', 'elementstack-elementor-addons' ); ?></span>
                     </div>
                 </form>
 
                 <div class="bdea-admin-sidebar">
                     <div class="bdea-admin-panel">
-                        <h2 class="bdea-admin-panel-title">Plugin Features</h2>
+                        <h2 class="bdea-admin-panel-title"><?php esc_html_e( 'Plugin Features', 'elementstack-elementor-addons' ); ?></h2>
                         <ul class="bdea-admin-list">
                             <?php foreach ( $features as $feature ) : ?>
                                 <li><?php echo esc_html( $feature ); ?></li>
@@ -1025,7 +1033,7 @@ function bdea_render_admin_page() {
                     </div>
 
                     <div class="bdea-admin-panel bdea-admin-panel-tips">
-                        <h2 class="bdea-admin-panel-title">Quick Tips</h2>
+                        <h2 class="bdea-admin-panel-title"><?php esc_html_e( 'Quick Tips', 'elementstack-elementor-addons' ); ?></h2>
                         <ul class="bdea-admin-list">
                             <?php foreach ( $tips as $tip ) : ?>
                                 <li><?php echo esc_html( $tip ); ?></li>
@@ -1036,8 +1044,8 @@ function bdea_render_admin_page() {
             </div>
 
             <div class="bdea-admin-footer">
-                <span class="bdea-admin-footer-brand">ElementStack Addons</span>
-                <span class="bdea-admin-footer-note"><?php echo esc_html( $total_widgets ); ?> widgets &middot; <?php echo esc_html( $enabled_count ); ?> active &middot; Crafted for Elementor</span>
+                <span class="bdea-admin-footer-brand"><?php esc_html_e( 'ElementStack Addons', 'elementstack-elementor-addons' ); ?></span>
+                <span class="bdea-admin-footer-note"><?php echo esc_html( $total_widgets ); ?> <?php esc_html_e( 'widgets', 'elementstack-elementor-addons' ); ?> &middot; <?php echo esc_html( $enabled_count ); ?> <?php esc_html_e( 'active', 'elementstack-elementor-addons' ); ?> &middot; <?php esc_html_e( 'Crafted for Elementor', 'elementstack-elementor-addons' ); ?></span>
             </div>
         </div>
     </div>
@@ -1073,28 +1081,28 @@ function bdea_register_assets() {
         'bdea-style',
         BDEA_URL . 'assets/css/style.css',
         [],
-        '1.0.0'
+        BDEA_VERSION
     );
 
     wp_register_style(
         'bdea-share-it-style',
         BDEA_URL . 'assets/css/share-it.css',
         [],
-        '1.0.0'
+        BDEA_VERSION
     );
 
     wp_register_style(
         'bdea-content-style',
         BDEA_URL . 'assets/css/content-widgets.css',
         [],
-        '1.0.0'
+        BDEA_VERSION
     );
 
     wp_register_script(
         'bdea-script',
         BDEA_URL . 'assets/js/script.js',
         [ 'jquery' ],
-        '1.0.0',
+        BDEA_VERSION,
         true
     );
 
@@ -1102,7 +1110,7 @@ function bdea_register_assets() {
         'bdea-carousel-script',
         BDEA_URL . 'assets/js/carousel.js',
         [ 'swiper' ],
-        '1.0.0',
+        BDEA_VERSION,
         true
     );
 
@@ -1110,7 +1118,7 @@ function bdea_register_assets() {
         'bdea-share-it-script',
         BDEA_URL . 'assets/js/share-it.js',
         [],
-        '1.0.0',
+        BDEA_VERSION,
         true
     );
 
@@ -1118,7 +1126,7 @@ function bdea_register_assets() {
         'bdea-content-script',
         BDEA_URL . 'assets/js/content-widgets.js',
         [],
-        '1.0.0',
+        BDEA_VERSION,
         true
     );
 }
@@ -1129,7 +1137,7 @@ function bdea_enqueue_editor_assets() {
         'bdea-editor-badge',
         BDEA_URL . 'assets/js/editor.js',
         ['jquery'],
-        '1.4.0',
+        BDEA_VERSION,
         true
     );
 
@@ -1144,27 +1152,7 @@ function bdea_enqueue_editor_assets() {
         'bdea-editor-style',
         BDEA_URL . 'assets/css/editor.css',
         [],
-        '1.0.0'
+        BDEA_VERSION
     );
 }
 add_action( 'elementor/editor/after_enqueue_scripts', 'bdea_enqueue_editor_assets' );
-
-/**
- * Register Demo Landing page template
- */
-function bdea_register_demo_template( $templates ) {
-    $templates['templates/demo-landing.php'] = 'BDEA Widget Demo Landing';
-    return $templates;
-}
-add_filter( 'page_templates', 'bdea_register_demo_template' );
-
-function bdea_demo_template_include( $template ) {
-    if ( is_page_template( 'templates/demo-landing.php' ) ) {
-        $new_template = BDEA_PATH . 'templates/demo-landing.php';
-        if ( file_exists( $new_template ) ) {
-            return $new_template;
-        }
-    }
-    return $template;
-}
-add_filter( 'template_include', 'bdea_demo_template_include' );

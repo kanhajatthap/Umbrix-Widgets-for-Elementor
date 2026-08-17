@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_spacer_section',
             [
-                'label' => 'Spacer',
+                'label' => __( 'Spacer', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_responsive_control(
             'spacer_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'vh' ],
                 'range' => [
@@ -54,7 +60,7 @@ class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_mobile_helper',
             [
-                'label' => 'Show helper text in editor only',
+                'label' => __( 'Show helper text in editor only', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]

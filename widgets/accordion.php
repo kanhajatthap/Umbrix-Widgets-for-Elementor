@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
@@ -32,7 +38,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_accordion_section',
             [
-                'label' => 'Accordion',
+                'label' => __( 'Accordion', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -41,16 +47,16 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'acc_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Accordion Title',
+                'default' => __( 'Accordion Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'acc_content',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::WYSIWYG,
                 'default' => 'Accordion content goes here.',
             ]
@@ -59,7 +65,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'acc_active',
             [
-                'label' => 'Open by Default',
+                'label' => __( 'Open by Default', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -68,13 +74,13 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'accordion_items',
             [
-                'label' => 'Items',
+                'label' => __( 'Items', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'acc_title' => 'What is your return policy?', 'acc_content' => 'You can return any item within 30 days for a full refund.', 'acc_active' => 'yes' ],
-                    [ 'acc_title' => 'How fast is shipping?', 'acc_content' => 'Orders ship within 24 hours and arrive in 2 to 5 business days.' ],
-                    [ 'acc_title' => 'Do you offer support?', 'acc_content' => 'Yes, our team is available around the clock via chat and email.' ],
+                    [ 'acc_title' => __( 'What is your return policy?', 'elementstack-elementor-addons' ), 'acc_content' => __( 'You can return any item within 30 days for a full refund.', 'elementstack-elementor-addons' ), 'acc_active' => 'yes' ],
+                    [ 'acc_title' => __( 'How fast is shipping?', 'elementstack-elementor-addons' ), 'acc_content' => __( 'Orders ship within 24 hours and arrive in 2 to 5 business days.', 'elementstack-elementor-addons' ) ],
+                    [ 'acc_title' => __( 'Do you offer support?', 'elementstack-elementor-addons' ), 'acc_content' => __( 'Yes, our team is available around the clock via chat and email.', 'elementstack-elementor-addons' ) ],
                 ],
                 'title_field' => '{{{ acc_title }}}',
             ]
@@ -83,7 +89,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_icon',
             [
-                'label' => 'Show Icon',
+                'label' => __( 'Show Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -94,7 +100,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_accordion_header_style',
             [
-                'label' => 'Header',
+                'label' => __( 'Header', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -110,7 +116,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'header_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -122,7 +128,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'header_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f5f5f5',
                 'selectors' => [
@@ -134,7 +140,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'header_active_bg',
             [
-                'label' => 'Active Background',
+                'label' => __( 'Active Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#eef1ff',
                 'selectors' => [
@@ -146,7 +152,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'header_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -158,7 +164,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'header_radius',
             [
-                'label' => 'Radius',
+                'label' => __( 'Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 40 ] ],
@@ -174,7 +180,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_accordion_content_style',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -190,7 +196,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -202,7 +208,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-accordion-content' => 'background-color: {{VALUE}};',
@@ -213,7 +219,7 @@ class BDEA_Accordion_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [

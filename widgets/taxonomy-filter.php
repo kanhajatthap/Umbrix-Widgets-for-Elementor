@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_taxonomy_filter_section',
             [
-                'label' => 'Taxonomy Filter',
+                'label' => __( 'Taxonomy Filter', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'filter_taxonomy',
             [
-                'label' => 'Taxonomy',
+                'label' => __( 'Taxonomy', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => bdea_widget_taxonomies(),
                 'default' => 'category',
@@ -45,12 +51,12 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_layout',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'buttons',
                 'options' => [
-                    'buttons' => 'Buttons',
-                    'dropdown' => 'Dropdown',
+                    'buttons' => __( 'Buttons', 'elementstack-elementor-addons' ),
+                    'dropdown' => __( 'Dropdown', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -58,7 +64,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_show_count',
             [
-                'label' => 'Show Term Count',
+                'label' => __( 'Show Term Count', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -69,7 +75,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
             [
                 'label' => '"All" Label',
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'All',
+                'default' => __( 'All', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -78,7 +84,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_taxonomy_filter_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -86,7 +92,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_active_bg',
             [
-                'label' => 'Active Background',
+                'label' => __( 'Active Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -98,7 +104,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_active_color',
             [
-                'label' => 'Active Text Color',
+                'label' => __( 'Active Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -110,7 +116,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -122,7 +128,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-tax-filter a:hover' => 'color: {{VALUE}};',
@@ -133,7 +139,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_hover_bg',
             [
-                'label' => 'Hover Background',
+                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-tax-filter a:hover' => 'background-color: {{VALUE}};',
@@ -152,7 +158,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'filter_padding',
             [
-                'label' => 'Item Padding',
+                'label' => __( 'Item Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -172,7 +178,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'filter_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -185,7 +191,7 @@ class BDEA_Taxonomy_Filter_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'filter_gap',
             [
-                'label' => 'Item Spacing',
+                'label' => __( 'Item Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],

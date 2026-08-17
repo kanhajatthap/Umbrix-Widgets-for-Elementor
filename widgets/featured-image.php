@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_featured_image_content',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'link_to_post',
             [
-                'label' => 'Link to Post',
+                'label' => __( 'Link to Post', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -44,14 +50,14 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_size',
             [
-                'label' => 'Image Size',
+                'label' => __( 'Image Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'large',
                 'options' => [
-                    'thumbnail' => 'Thumbnail',
-                    'medium' => 'Medium',
-                    'large' => 'Large',
-                    'full' => 'Full',
+                    'thumbnail' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
+                    'medium' => __( 'Medium', 'elementstack-elementor-addons' ),
+                    'large' => __( 'Large', 'elementstack-elementor-addons' ),
+                    'full' => __( 'Full', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -61,7 +67,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_featured_image_style',
             [
-                'label' => 'Image',
+                'label' => __( 'Image', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -69,7 +75,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_width',
             [
-                'label' => 'Width',
+                'label' => __( 'Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 1, 'max' => 1200 ], '%' => [ 'min' => 1, 'max' => 100 ] ],
@@ -82,7 +88,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 1, 'max' => 1200 ], '%' => [ 'min' => 1, 'max' => 100 ] ],
@@ -95,14 +101,14 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'object_fit',
             [
-                'label' => 'Object Fit',
+                'label' => __( 'Object Fit', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '',
                 'options' => [
-                    '' => 'Default',
-                    'cover' => 'Cover',
-                    'contain' => 'Contain',
-                    'fill' => 'Fill',
+                    '' => __( 'Default', 'elementstack-elementor-addons' ),
+                    'cover' => __( 'Cover', 'elementstack-elementor-addons' ),
+                    'contain' => __( 'Contain', 'elementstack-elementor-addons' ),
+                    'fill' => __( 'Fill', 'elementstack-elementor-addons' ),
                 ],
                 'condition' => [
                     'image_height!' => '',
@@ -116,7 +122,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -146,7 +152,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
@@ -159,12 +165,12 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -179,7 +185,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_featured_image_hover_style',
             [
-                'label' => 'Hover',
+                'label' => __( 'Hover', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -187,7 +193,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hover_scale',
             [
-                'label' => 'Hover Scale',
+                'label' => __( 'Hover Scale', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [ '' => [ 'min' => 1, 'max' => 2, 'step' => 0.01 ] ],
@@ -201,7 +207,7 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hover_opacity',
             [
-                'label' => 'Hover Opacity',
+                'label' => __( 'Hover Opacity', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [ '' => [ 'min' => 0.1, 'max' => 1, 'step' => 0.01 ] ],
@@ -246,9 +252,9 @@ class BDEA_Featured_Image_Widget extends \Elementor\Widget_Base {
         $image = get_the_post_thumbnail( $post_id, $size, [ 'class' => 'bdea-featured-image-img' ] );
 
         if ( 'yes' === $settings['link_to_post'] ) {
-            echo '<a class="bdea-featured-image" href="' . esc_url( get_permalink( $post_id ) ) . '">' . $image . '</a>';
+            echo '<a class="bdea-featured-image" href="' . esc_url( get_permalink( $post_id ) ) . '">' . $image . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_the_post_thumbnail() output is safe.
         } else {
-            echo '<div class="bdea-featured-image">' . $image . '</div>';
+            echo '<div class="bdea-featured-image">' . $image . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_the_post_thumbnail() output is safe.
         }
     }
 }

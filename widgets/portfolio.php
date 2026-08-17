@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
@@ -32,14 +38,14 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_query_section',
             [
-                'label' => 'Query',
+                'label' => __( 'Query', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'post_type',
             [
-                'label' => 'Post Type',
+                'label' => __( 'Post Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'portfolio',
                 'options' => bdea_widget_post_types(),
@@ -49,7 +55,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'include_cats',
             [
-                'label' => 'Categories',
+                'label' => __( 'Categories', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'category' ),
@@ -69,7 +75,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => 'Number of Items',
+                'label' => __( 'Number of Items', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 9,
                 'min' => 1,
@@ -80,15 +86,15 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'orderby',
             [
-                'label' => 'Order By',
+                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => 'Date',
-                    'modified' => 'Modified Date',
-                    'title' => 'Title',
-                    'menu_order' => 'Menu Order',
-                    'rand' => 'Random',
+                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
+                    'modified' => __( 'Modified Date', 'elementstack-elementor-addons' ),
+                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
+                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
+                    'rand' => __( 'Random', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -96,12 +102,12 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => 'Order',
+                'label' => __( 'Order', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'ASC' => 'Ascending',
-                    'DESC' => 'Descending',
+                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
+                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -111,14 +117,14 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_filter_section',
             [
-                'label' => 'Filter',
+                'label' => __( 'Filter', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_filter',
             [
-                'label' => 'Show Filter Bar',
+                'label' => __( 'Show Filter Bar', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -127,7 +133,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_taxonomy',
             [
-                'label' => 'Filter Taxonomy',
+                'label' => __( 'Filter Taxonomy', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => bdea_widget_taxonomies(),
                 'default' => 'category',
@@ -139,7 +145,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
             [
                 'label' => '"All" Button Label',
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'All',
+                'default' => __( 'All', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -148,14 +154,14 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_layout_section',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_responsive_control(
             'columns',
             [
-                'label' => 'Columns',
+                'label' => __( 'Columns', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 6,
@@ -168,7 +174,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'column_gap',
             [
-                'label' => 'Column Gap',
+                'label' => __( 'Column Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -182,7 +188,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'row_gap',
             [
-                'label' => 'Row Gap',
+                'label' => __( 'Row Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -198,14 +204,14 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_content_section',
             [
-                'label' => 'Card Content',
+                'label' => __( 'Card Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_thumbnail',
             [
-                'label' => 'Show Thumbnail',
+                'label' => __( 'Show Thumbnail', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -214,14 +220,14 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'thumbnail_size',
             [
-                'label' => 'Thumbnail Size',
+                'label' => __( 'Thumbnail Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'thumbnail' => 'Thumbnail',
-                    'medium' => 'Medium',
-                    'large' => 'Large',
-                    'medium_large' => 'Medium Large',
-                    'full' => 'Full',
+                    'thumbnail' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
+                    'medium' => __( 'Medium', 'elementstack-elementor-addons' ),
+                    'large' => __( 'Large', 'elementstack-elementor-addons' ),
+                    'medium_large' => __( 'Medium Large', 'elementstack-elementor-addons' ),
+                    'full' => __( 'Full', 'elementstack-elementor-addons' ),
                 ],
                 'default' => 'medium',
                 'condition' => [ 'show_thumbnail' => 'yes' ],
@@ -231,7 +237,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_title',
             [
-                'label' => 'Show Title',
+                'label' => __( 'Show Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -240,7 +246,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => 'Show Excerpt',
+                'label' => __( 'Show Excerpt', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -249,7 +255,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => 'Excerpt Length (words)',
+                'label' => __( 'Excerpt Length (words)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 14,
                 'min' => 3,
@@ -263,7 +269,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_filter_style_section',
             [
-                'label' => 'Filter Bar',
+                'label' => __( 'Filter Bar', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -279,12 +285,12 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'filter_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -297,13 +303,13 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
 
         $this->start_controls_tab(
             'filter_btn_normal',
-            [ 'label' => 'Normal' ]
+            [ 'label' => __( 'Normal', 'elementstack-elementor-addons' ) ]
         );
 
         $this->add_control(
             'filter_btn_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-filter-btn' => 'color: {{VALUE}};',
@@ -314,7 +320,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_btn_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-filter-btn' => 'background-color: {{VALUE}};',
@@ -326,13 +332,13 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
 
         $this->start_controls_tab(
             'filter_btn_active',
-            [ 'label' => 'Active' ]
+            [ 'label' => __( 'Active', 'elementstack-elementor-addons' ) ]
         );
 
         $this->add_control(
             'filter_btn_active_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-filter-btn.is-active' => 'color: {{VALUE}};',
@@ -343,7 +349,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'filter_btn_active_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-filter-btn.is-active' => 'background-color: {{VALUE}};',
@@ -366,7 +372,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'filter_btn_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -379,7 +385,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'filter_btn_gap',
             [
-                'label' => 'Button Gap',
+                'label' => __( 'Button Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 40 ] ],
@@ -394,7 +400,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_style_section',
             [
-                'label' => 'Card',
+                'label' => __( 'Card', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -402,7 +408,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-card' => 'background-color: {{VALUE}};',
@@ -421,7 +427,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -443,7 +449,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -457,7 +463,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_style_section',
             [
-                'label' => 'Thumbnail',
+                'label' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -465,7 +471,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
@@ -479,13 +485,13 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => 'Object Fit',
+                'label' => __( 'Object Fit', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => 'Cover',
-                    'contain' => 'Contain',
-                    'fill' => 'Fill',
+                    'cover' => __( 'Cover', 'elementstack-elementor-addons' ),
+                    'contain' => __( 'Contain', 'elementstack-elementor-addons' ),
+                    'fill' => __( 'Fill', 'elementstack-elementor-addons' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-thumb img' => 'object-fit: {{VALUE}};',
@@ -498,7 +504,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_typography_section',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -514,7 +520,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-title a' => 'color: {{VALUE}};',
@@ -533,7 +539,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_color',
             [
-                'label' => 'Excerpt Color',
+                'label' => __( 'Excerpt Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-portfolio-excerpt' => 'color: {{VALUE}};',
@@ -604,7 +610,7 @@ class BDEA_Portfolio_Widget extends \Elementor\Widget_Base {
             </div>
         <?php endif; ?>
 
-        <div <?php echo $this->get_render_attribute_string( 'grid' ); ?>>
+        <div <?php echo $this->get_render_attribute_string( 'grid' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
             <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                 <?php
                 $post_id = get_the_ID();

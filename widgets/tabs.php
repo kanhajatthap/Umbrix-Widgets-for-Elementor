@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
@@ -32,7 +38,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_tabs_section',
             [
-                'label' => 'Tabs',
+                'label' => __( 'Tabs', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -41,16 +47,16 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'tab_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Tab Title',
+                'default' => __( 'Tab Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'tab_content',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::WYSIWYG,
                 'default' => 'Tab content goes here.',
             ]
@@ -59,7 +65,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'tab_icon',
             [
-                'label' => 'Icon',
+                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [],
             ]
@@ -68,13 +74,13 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tabs',
             [
-                'label' => 'Tabs',
+                'label' => __( 'Tabs', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'tab_title' => 'Features', 'tab_content' => 'Everything you need to get started quickly and scale as you grow.' ],
-                    [ 'tab_title' => 'Pricing', 'tab_content' => 'Simple, transparent pricing with no hidden fees.' ],
-                    [ 'tab_title' => 'Support', 'tab_content' => 'Our team is available 24/7 to help you succeed.' ],
+                    [ 'tab_title' => __( 'Features', 'elementstack-elementor-addons' ), 'tab_content' => 'Everything you need to get started quickly and scale as you grow.' ],
+                    [ 'tab_title' => __( 'Pricing', 'elementstack-elementor-addons' ), 'tab_content' => 'Simple, transparent pricing with no hidden fees.' ],
+                    [ 'tab_title' => __( 'Support', 'elementstack-elementor-addons' ), 'tab_content' => 'Our team is available 24/7 to help you succeed.' ],
                 ],
                 'title_field' => '{{{ tab_title }}}',
             ]
@@ -83,12 +89,12 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tab_position',
             [
-                'label' => 'Position',
+                'label' => __( 'Position', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'top',
                 'options' => [
-                    'top' => 'Top',
-                    'left' => 'Left',
+                    'top' => __( 'Top', 'elementstack-elementor-addons' ),
+                    'left' => __( 'Left', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -96,12 +102,12 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'tabs_align',
             [
-                'label' => 'Tabs Alignment',
+                'label' => __( 'Tabs Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -115,7 +121,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_tabs_nav_style',
             [
-                'label' => 'Tab Navigation',
+                'label' => __( 'Tab Navigation', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -131,7 +137,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tab_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#6b7280',
                 'selectors' => [
@@ -143,7 +149,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tab_active_color',
             [
-                'label' => 'Active Color',
+                'label' => __( 'Active Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -155,7 +161,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tab_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-tab-item' => 'background-color: {{VALUE}};',
@@ -166,7 +172,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tab_active_bg',
             [
-                'label' => 'Active Background',
+                'label' => __( 'Active Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f5f7ff',
                 'selectors' => [
@@ -178,7 +184,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'tab_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -190,7 +196,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'tab_gap',
             [
-                'label' => 'Gap Between Tabs',
+                'label' => __( 'Gap Between Tabs', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 40 ] ],
@@ -206,7 +212,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_tabs_content_style',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -222,7 +228,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -234,7 +240,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'content_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -254,7 +260,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -268,7 +274,7 @@ class BDEA_Tabs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [

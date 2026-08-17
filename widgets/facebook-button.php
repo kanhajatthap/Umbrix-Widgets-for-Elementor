@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_facebook_button_section',
             [
-                'label' => 'Facebook Button',
+                'label' => __( 'Facebook Button', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'fb_button_url',
             [
-                'label' => 'Page URL',
+                'label' => __( 'Page URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://facebook.com/yourpage',
             ]
@@ -44,14 +50,14 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'fb_button_layout',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'standard',
                 'options' => [
-                    'standard' => 'Standard',
-                    'box_count' => 'Box Count',
-                    'button_count' => 'Button Count',
-                    'button' => 'Button',
+                    'standard' => __( 'Standard', 'elementstack-elementor-addons' ),
+                    'box_count' => __( 'Box Count', 'elementstack-elementor-addons' ),
+                    'button_count' => __( 'Button Count', 'elementstack-elementor-addons' ),
+                    'button' => __( 'Button', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -59,12 +65,12 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'fb_button_action',
             [
-                'label' => 'Action',
+                'label' => __( 'Action', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'like',
                 'options' => [
-                    'like' => 'Like',
-                    'recommend' => 'Recommend',
+                    'like' => __( 'Like', 'elementstack-elementor-addons' ),
+                    'recommend' => __( 'Recommend', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -72,7 +78,7 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'fb_button_show_faces',
             [
-                'label' => 'Show Faces',
+                'label' => __( 'Show Faces', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -83,7 +89,7 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_facebook_button_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -91,12 +97,12 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'fb_button_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -108,7 +114,7 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'fb_button_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -128,7 +134,7 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'fb_button_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [

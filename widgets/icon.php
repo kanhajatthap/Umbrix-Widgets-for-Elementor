@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Icon_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_icon_section',
             [
-                'label' => 'Icon',
+                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'selected_icon',
             [
-                'label' => 'Icon',
+                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-star',
@@ -47,7 +53,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_link',
             [
-                'label' => 'Link',
+                'label' => __( 'Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
                 'dynamic' => [ 'active' => true ],
@@ -57,12 +63,12 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -76,7 +82,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_icon_style_section',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -84,7 +90,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -96,7 +102,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-box:hover' => 'color: {{VALUE}};',
@@ -107,7 +113,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => 'Size',
+                'label' => __( 'Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 200 ], 'em' => [ 'min' => 0.5, 'max' => 12 ] ],
@@ -121,7 +127,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_rotate',
             [
-                'label' => 'Rotate (deg)',
+                'label' => __( 'Rotate (deg)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'deg' ],
                 'range' => [ 'deg' => [ 'min' => 0, 'max' => 360 ] ],
@@ -134,7 +140,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-box' => 'background-color: {{VALUE}};',
@@ -145,7 +151,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg_hover',
             [
-                'label' => 'Background Hover',
+                'label' => __( 'Background Hover', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-box:hover' => 'background-color: {{VALUE}};',
@@ -156,7 +162,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
@@ -168,7 +174,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ], '%' => [ 'min' => 0, 'max' => 100 ] ],
@@ -201,11 +207,11 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         <div class="bdea-icon-wrap">
             <?php if ( $icon ) : ?>
                 <?php if ( $has_link ) : ?>
-                    <a <?php echo $this->get_render_attribute_string( 'icon' ); ?>>
+                    <a <?php echo $this->get_render_attribute_string( 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
                         <i class="<?php echo esc_attr( $icon ); ?>"></i>
                     </a>
                 <?php else : ?>
-                    <span <?php echo $this->get_render_attribute_string( 'icon' ); ?>>
+                    <span <?php echo $this->get_render_attribute_string( 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
                         <i class="<?php echo esc_attr( $icon ); ?>"></i>
                     </span>
                 <?php endif; ?>

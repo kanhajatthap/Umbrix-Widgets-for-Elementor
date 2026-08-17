@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_info_content',
             [
-                'label' => 'Content',
+                'label' => __( 'Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'show_author',
             [
-                'label' => 'Show Author',
+                'label' => __( 'Show Author', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -44,7 +50,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_date',
             [
-                'label' => 'Show Date',
+                'label' => __( 'Show Date', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -53,7 +59,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_comments',
             [
-                'label' => 'Show Comments',
+                'label' => __( 'Show Comments', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -62,7 +68,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_categories',
             [
-                'label' => 'Show Categories',
+                'label' => __( 'Show Categories', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -71,7 +77,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_tags',
             [
-                'label' => 'Show Tags',
+                'label' => __( 'Show Tags', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -80,7 +86,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'separator',
             [
-                'label' => 'Separator',
+                'label' => __( 'Separator', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '|',
             ]
@@ -89,12 +95,12 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'layout',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'inline',
                 'options' => [
-                    'inline' => 'Inline',
-                    'block' => 'Block (Stacked)',
+                    'inline' => __( 'Inline', 'elementstack-elementor-addons' ),
+                    'block' => __( 'Block (Stacked)', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -105,7 +111,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_info_typo',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -121,7 +127,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'info_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -133,12 +139,12 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'info_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -153,7 +159,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_info_links',
             [
-                'label' => 'Links',
+                'label' => __( 'Links', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -161,7 +167,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'info_link_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -173,7 +179,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'info_link_hover',
             [
-                'label' => 'Link Hover Color',
+                'label' => __( 'Link Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-info a:hover' => 'color: {{VALUE}};',
@@ -187,7 +193,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_info_sep_style',
             [
-                'label' => 'Separator',
+                'label' => __( 'Separator', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -195,7 +201,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sep_color',
             [
-                'label' => 'Separator Color',
+                'label' => __( 'Separator Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#9ca3af',
                 'selectors' => [
@@ -207,7 +213,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sep_typography_size',
             [
-                'label' => 'Separator Font Size',
+                'label' => __( 'Separator Font Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 40 ] ],
                 'selectors' => [
@@ -219,7 +225,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'sep_gap',
             [
-                'label' => 'Gap Around Separator',
+                'label' => __( 'Gap Around Separator', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],
@@ -235,7 +241,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_post_info_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -243,7 +249,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_gap',
             [
-                'label' => 'Item Gap',
+                'label' => __( 'Item Gap', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -256,7 +262,7 @@ class BDEA_Post_Info_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],

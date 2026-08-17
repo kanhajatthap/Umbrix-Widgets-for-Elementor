@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
@@ -32,23 +38,23 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_toc_section',
             [
-                'label' => 'Table Of Content',
+                'label' => __( 'Table Of Content', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'toc_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Table of Contents',
+                'default' => __( 'Table of Contents', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'toc_heading',
             [
-                'label' => 'Heading to Include',
+                'label' => __( 'Heading to Include', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => [
@@ -64,7 +70,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_selector',
             [
-                'label' => 'Heading Selector',
+                'label' => __( 'Heading Selector', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '.entry-content h2, h2',
             ]
@@ -75,7 +81,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_toc_title_style',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -91,7 +97,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_title_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -105,7 +111,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_toc_item_style',
             [
-                'label' => 'Items',
+                'label' => __( 'Items', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -121,7 +127,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_item_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -133,7 +139,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_item_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -145,7 +151,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_item_padding',
             [
-                'label' => 'Item Padding',
+                'label' => __( 'Item Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -157,7 +163,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_item_border_radius',
             [
-                'label' => 'Item Border Radius',
+                'label' => __( 'Item Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -169,7 +175,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_item_spacing',
             [
-                'label' => 'Item Spacing',
+                'label' => __( 'Item Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 20 ] ],
@@ -184,7 +190,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_toc_wrapper_style',
             [
-                'label' => 'Wrapper',
+                'label' => __( 'Wrapper', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -192,7 +198,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_wrapper_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-toc' => 'background-color: {{VALUE}};',
@@ -203,7 +209,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_wrapper_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -223,7 +229,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_wrapper_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [

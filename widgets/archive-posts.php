@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
@@ -28,16 +34,16 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_archive_query_section',
             [
-                'label' => 'Query',
+                'label' => __( 'Query', 'elementstack-elementor-addons' ),
             ]
         );
 
-        $post_types = [ '' => 'Auto (Archive / Main Query)' ] + bdea_widget_post_types();
+        $post_types = [ '' => __( 'Auto (Archive / Main Query)', 'elementstack-elementor-addons' ) ] + bdea_widget_post_types();
 
         $this->add_control(
             'post_type',
             [
-                'label' => 'Post Type',
+                'label' => __( 'Post Type', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '',
                 'options' => $post_types,
@@ -47,7 +53,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => 'Posts Per Page',
+                'label' => __( 'Posts Per Page', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 9,
                 'min' => 1,
@@ -58,16 +64,16 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'orderby',
             [
-                'label' => 'Order By',
+                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => 'Date',
-                    'modified' => 'Modified Date',
-                    'title' => 'Title',
-                    'menu_order' => 'Menu Order',
-                    'rand' => 'Random',
-                    'comment_count' => 'Comment Count',
+                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
+                    'modified' => __( 'Modified Date', 'elementstack-elementor-addons' ),
+                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
+                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
+                    'rand' => __( 'Random', 'elementstack-elementor-addons' ),
+                    'comment_count' => __( 'Comment Count', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -75,12 +81,12 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => 'Order',
+                'label' => __( 'Order', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'ASC' => 'Ascending',
-                    'DESC' => 'Descending',
+                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
+                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -90,14 +96,14 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_archive_layout_section',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'columns',
             [
-                'label' => 'Columns',
+                'label' => __( 'Columns', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 2,
                 'min' => 1,
@@ -108,7 +114,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_thumbnail',
             [
-                'label' => 'Show Thumbnail',
+                'label' => __( 'Show Thumbnail', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -117,14 +123,14 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'thumbnail_size',
             [
-                'label' => 'Thumbnail Size',
+                'label' => __( 'Thumbnail Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'thumbnail' => 'Thumbnail',
-                    'medium' => 'Medium',
-                    'large' => 'Large',
-                    'medium_large' => 'Medium Large',
-                    'full' => 'Full',
+                    'thumbnail' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
+                    'medium' => __( 'Medium', 'elementstack-elementor-addons' ),
+                    'large' => __( 'Large', 'elementstack-elementor-addons' ),
+                    'medium_large' => __( 'Medium Large', 'elementstack-elementor-addons' ),
+                    'full' => __( 'Full', 'elementstack-elementor-addons' ),
                 ],
                 'default' => 'medium_large',
                 'condition' => [ 'show_thumbnail' => 'yes' ],
@@ -134,7 +140,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_date',
             [
-                'label' => 'Show Date',
+                'label' => __( 'Show Date', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -143,7 +149,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => 'Show Excerpt',
+                'label' => __( 'Show Excerpt', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -152,7 +158,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => 'Excerpt Length (words)',
+                'label' => __( 'Excerpt Length (words)', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 18,
                 'min' => 3,
@@ -164,7 +170,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'enable_pagination',
             [
-                'label' => 'Enable Pagination',
+                'label' => __( 'Enable Pagination', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'no',
             ]
@@ -175,7 +181,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_archive_style_section',
             [
-                'label' => 'Cards',
+                'label' => __( 'Cards', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -183,7 +189,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -195,7 +201,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -217,7 +223,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -237,7 +243,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_color',
             [
-                'label' => 'Excerpt Color',
+                'label' => __( 'Excerpt Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -258,14 +264,16 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
 
         if ( $is_main ) {
             global $wp_query;
-            $query = $wp_query;
+
+            $query_args       = $wp_query->query_vars;
+            $query_args['paged'] = max( 1, get_query_var( 'paged' ) );
+            $query            = new \WP_Query( $query_args );
         } else {
             $query = new \WP_Query( bdea_widget_query_args( $settings ) );
         }
 
         if ( ! $query->have_posts() ) {
             echo '<div class="bdea-loop-grid-empty">No posts found.</div>';
-            wp_reset_postdata();
             return;
         }
 
@@ -306,17 +314,15 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
             <?php if ( 'yes' === $settings['enable_pagination'] ) : ?>
                 <div class="bdea-archive-pagination">
                     <?php
-                    if ( $is_main ) {
-                        the_posts_pagination();
-                    } elseif ( $query->max_num_pages > 1 ) {
+                    if ( $query->max_num_pages > 1 ) {
                         $big   = 999999999;
                         $paged = max( 1, get_query_var( 'paged' ) );
-                        echo paginate_links( [
+                        echo wp_kses_post( paginate_links( [
                             'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
                             'format'  => '?paged=%#%',
                             'current' => $paged,
                             'total'   => $query->max_num_pages,
-                        ] );
+                        ] ) );
                     }
                     ?>
                 </div>
@@ -324,8 +330,6 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         </div>
         <?php
 
-        if ( ! $is_main ) {
-            wp_reset_postdata();
-        }
+        wp_reset_postdata();
     }
 }

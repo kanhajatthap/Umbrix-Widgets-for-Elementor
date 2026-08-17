@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
@@ -28,7 +34,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_icon_list_section',
             [
-                'label' => 'Icon List',
+                'label' => __( 'Icon List', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -37,16 +43,16 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'list_text',
             [
-                'label' => 'Text',
+                'label' => __( 'Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'List Item',
+                'default' => __( 'List Item', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'list_icon',
             [
-                'label' => 'Icon',
+                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-check',
@@ -58,7 +64,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'list_link',
             [
-                'label' => 'Link',
+                'label' => __( 'Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -67,12 +73,12 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_list',
             [
-                'label' => 'Items',
+                'label' => __( 'Items', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'list_text' => 'Fast and reliable' ],
-                    [ 'list_text' => 'No hidden fees' ],
+                    [ 'list_text' => __( 'Fast and reliable', 'elementstack-elementor-addons' ) ],
+                    [ 'list_text' => __( 'No hidden fees', 'elementstack-elementor-addons' ) ],
                     [ 'list_text' => 'Support, 24/7' ],
                 ],
                 'title_field' => '{{{ list_text }}}',
@@ -85,7 +91,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_icon_list_layout_style',
             [
-                'label' => 'Layout',
+                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -93,12 +99,12 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -110,7 +116,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'space_between',
             [
-                'label' => 'Space Between Items',
+                'label' => __( 'Space Between Items', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -124,7 +130,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_padding',
             [
-                'label' => 'Item Padding',
+                'label' => __( 'Item Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -144,7 +150,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -159,7 +165,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_icon_list_icon_style',
             [
-                'label' => 'Icon',
+                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -167,7 +173,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -179,7 +185,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-list-item:hover .bdea-icon-list-icon' => 'color: {{VALUE}};',
@@ -190,7 +196,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-list-icon' => 'background-color: {{VALUE}};',
@@ -201,7 +207,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => 'Size',
+                'label' => __( 'Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 50 ] ],
@@ -215,7 +221,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -232,7 +238,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_icon_list_text_style',
             [
-                'label' => 'Text',
+                'label' => __( 'Text', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -248,7 +254,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'text_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-list-text' => 'color: {{VALUE}};',
@@ -259,7 +265,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-list-link' => 'color: {{VALUE}};',
@@ -270,7 +276,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_hover_color',
             [
-                'label' => 'Link Hover Color',
+                'label' => __( 'Link Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-icon-list-link:hover' => 'color: {{VALUE}};',

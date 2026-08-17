@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_breadcrumbs_section',
             [
-                'label' => 'Breadcrumbs',
+                'label' => __( 'Breadcrumbs', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'breadcrumb_separator',
             [
-                'label' => 'Separator',
+                'label' => __( 'Separator', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '/',
             ]
@@ -44,16 +50,16 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_home_label',
             [
-                'label' => 'Home Label',
+                'label' => __( 'Home Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Home',
+                'default' => __( 'Home', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'breadcrumb_hide_on_front',
             [
-                'label' => 'Hide on Homepage',
+                'label' => __( 'Hide on Homepage', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -65,7 +71,7 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_breadcrumbs_typo',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -81,12 +87,12 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'breadcrumb_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -98,7 +104,7 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'breadcrumb_spacing',
             [
-                'label' => 'Spacing',
+                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -115,7 +121,7 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_breadcrumbs_colors',
             [
-                'label' => 'Colors',
+                'label' => __( 'Colors', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -123,7 +129,7 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -135,7 +141,7 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_hover_color',
             [
-                'label' => 'Link Hover Color',
+                'label' => __( 'Link Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-breadcrumbs a:hover' => 'color: {{VALUE}};',
@@ -146,7 +152,7 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_current_color',
             [
-                'label' => 'Current Color',
+                'label' => __( 'Current Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -158,7 +164,7 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_sep_color',
             [
-                'label' => 'Separator Color',
+                'label' => __( 'Separator Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#9ca3af',
                 'selectors' => [

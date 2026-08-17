@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
@@ -41,19 +47,19 @@ class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_wp_menu_section',
             [
-                'label' => 'WordPress Menu',
+                'label' => __( 'WordPress Menu', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'wp_menu_source',
             [
-                'label' => 'Source',
+                'label' => __( 'Source', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'menu',
                 'options' => [
-                    'menu' => 'Specific Menu',
-                    'location' => 'Theme Location',
+                    'menu' => __( 'Specific Menu', 'elementstack-elementor-addons' ),
+                    'location' => __( 'Theme Location', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -61,7 +67,7 @@ class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'wp_menu_id',
             [
-                'label' => 'Select Menu',
+                'label' => __( 'Select Menu', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_menus(),
                 'condition' => [ 'wp_menu_source' => 'menu' ],
@@ -71,7 +77,7 @@ class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'wp_menu_location',
             [
-                'label' => 'Theme Location',
+                'label' => __( 'Theme Location', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_locations(),
                 'condition' => [ 'wp_menu_source' => 'location' ],
@@ -81,12 +87,12 @@ class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'wp_menu_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -100,7 +106,7 @@ class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_wp_menu_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -116,7 +122,7 @@ class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'wp_menu_color',
             [
-                'label' => 'Link Color',
+                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -128,7 +134,7 @@ class BDEA_Wp_Menu_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'wp_menu_hover_color',
             [
-                'label' => 'Hover Color',
+                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [

@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
@@ -28,14 +34,14 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_link_in_bio_section',
             [
-                'label' => 'Link in Bio',
+                'label' => __( 'Link in Bio', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'bio_avatar',
             [
-                'label' => 'Avatar',
+                'label' => __( 'Avatar', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
             ]
         );
@@ -43,16 +49,16 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_name',
             [
-                'label' => 'Name',
+                'label' => __( 'Name', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Jane Doe',
+                'default' => __( 'Jane Doe', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'bio_handle',
             [
-                'label' => 'Handle / Subtitle',
+                'label' => __( 'Handle / Subtitle', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '@janedoe',
             ]
@@ -61,7 +67,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_text',
             [
-                'label' => 'Bio',
+                'label' => __( 'Bio', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Welcome to my little corner of the internet.',
             ]
@@ -72,16 +78,16 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'bio_link_label',
             [
-                'label' => 'Label',
+                'label' => __( 'Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'My Link',
+                'default' => __( 'My Link', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'bio_link_url',
             [
-                'label' => 'URL',
+                'label' => __( 'URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -90,7 +96,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'bio_link_icon',
             [
-                'label' => 'Icon',
+                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-link',
@@ -102,7 +108,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'bio_link_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
             ]
@@ -111,13 +117,13 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_links',
             [
-                'label' => 'Links',
+                'label' => __( 'Links', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'bio_link_label' => 'My Website', 'bio_link_url' => [ 'url' => 'https://example.com' ] ],
-                    [ 'bio_link_label' => 'My Portfolio', 'bio_link_url' => [ 'url' => 'https://example.com/portfolio' ] ],
-                    [ 'bio_link_label' => 'Contact Me', 'bio_link_url' => [ 'url' => 'https://example.com/contact' ] ],
+                    [ 'bio_link_label' => __( 'My Website', 'elementstack-elementor-addons' ), 'bio_link_url' => [ 'url' => 'https://example.com' ] ],
+                    [ 'bio_link_label' => __( 'My Portfolio', 'elementstack-elementor-addons' ), 'bio_link_url' => [ 'url' => 'https://example.com/portfolio' ] ],
+                    [ 'bio_link_label' => __( 'Contact Me', 'elementstack-elementor-addons' ), 'bio_link_url' => [ 'url' => 'https://example.com/contact' ] ],
                 ],
                 'title_field' => '{{{ bio_link_label }}}',
             ]
@@ -126,7 +132,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_social_icons',
             [
-                'label' => 'Show Social Icons Row',
+                'label' => __( 'Show Social Icons Row', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -137,7 +143,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_link_in_bio_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -145,7 +151,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_page_bg',
             [
-                'label' => 'Page Background',
+                'label' => __( 'Page Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7f7f7',
                 'selectors' => [
@@ -157,7 +163,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_name_color',
             [
-                'label' => 'Name Color',
+                'label' => __( 'Name Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -169,7 +175,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_text_color',
             [
-                'label' => 'Bio Text Color',
+                'label' => __( 'Bio Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -181,7 +187,7 @@ class BDEA_Link_In_Bio_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bio_link_color',
             [
-                'label' => 'Link Text Color',
+                'label' => __( 'Link Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [

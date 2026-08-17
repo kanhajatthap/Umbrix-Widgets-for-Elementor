@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
@@ -32,19 +38,19 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_lottie_section',
             [
-                'label' => 'Lottie',
+                'label' => __( 'Lottie', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'lottie_source',
             [
-                'label' => 'Source',
+                'label' => __( 'Source', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'url',
                 'options' => [
-                    'url' => 'Animation URL',
-                    'json' => 'JSON File',
+                    'url' => __( 'Animation URL', 'elementstack-elementor-addons' ),
+                    'json' => __( 'JSON File', 'elementstack-elementor-addons' ),
                 ],
             ]
         );
@@ -52,7 +58,7 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'lottie_url',
             [
-                'label' => 'Animation URL',
+                'label' => __( 'Animation URL', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://assets.mixkit.co/.../animation.json',
                 'description' => 'Paste a direct link to a .json Lottie animation.',
@@ -63,7 +69,7 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'lottie_json',
             [
-                'label' => 'JSON File',
+                'label' => __( 'JSON File', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'description' => 'Upload your .json Lottie file.',
                 'condition' => [ 'lottie_source' => 'json' ],
@@ -73,7 +79,7 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'lottie_loop',
             [
-                'label' => 'Loop',
+                'label' => __( 'Loop', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -82,7 +88,7 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'lottie_autoplay',
             [
-                'label' => 'Autoplay',
+                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -91,7 +97,7 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'lottie_speed',
             [
-                'label' => 'Speed',
+                'label' => __( 'Speed', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0.1, 'max' => 3, 'step' => 0.1 ] ],
@@ -102,7 +108,7 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'lottie_size',
             [
-                'label' => 'Size',
+                'label' => __( 'Size', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 50, 'max' => 800 ], '%' => [ 'min' => 10, 'max' => 100 ] ],
@@ -116,12 +122,12 @@ class BDEA_Lottie_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'lottie_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [

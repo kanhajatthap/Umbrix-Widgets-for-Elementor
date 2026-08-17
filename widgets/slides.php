@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Slides_Widget extends \Elementor\Widget_Base {
@@ -32,7 +38,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_slides_section',
             [
-                'label' => 'Slides',
+                'label' => __( 'Slides', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -41,7 +47,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'slide_bg',
             [
-                'label' => 'Background Image',
+                'label' => __( 'Background Image', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
             ]
         );
@@ -49,16 +55,16 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'slide_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Slide Title',
+                'default' => __( 'Slide Title', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'slide_subtitle',
             [
-                'label' => 'Subtitle',
+                'label' => __( 'Subtitle', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'Slide subtitle text here.',
             ]
@@ -67,16 +73,16 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'slide_btn_text',
             [
-                'label' => 'Button Text',
+                'label' => __( 'Button Text', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Learn More',
+                'default' => __( 'Learn More', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'slide_btn_url',
             [
-                'label' => 'Button Link',
+                'label' => __( 'Button Link', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -85,12 +91,12 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slides',
             [
-                'label' => 'Slides',
+                'label' => __( 'Slides', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'slide_title' => 'Slide One', 'slide_subtitle' => 'Welcome to our first slide.' ],
-                    [ 'slide_title' => 'Slide Two', 'slide_subtitle' => 'Here is the second slide.' ],
+                    [ 'slide_title' => __( 'Slide One', 'elementstack-elementor-addons' ), 'slide_subtitle' => 'Welcome to our first slide.' ],
+                    [ 'slide_title' => __( 'Slide Two', 'elementstack-elementor-addons' ), 'slide_subtitle' => 'Here is the second slide.' ],
                 ],
                 'title_field' => '{{{ slide_title }}}',
             ]
@@ -99,7 +105,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slides_autoplay',
             [
-                'label' => 'Autoplay',
+                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -108,7 +114,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slides_dots',
             [
-                'label' => 'Show Dots',
+                'label' => __( 'Show Dots', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -117,7 +123,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slides_arrows',
             [
-                'label' => 'Show Arrows',
+                'label' => __( 'Show Arrows', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -128,7 +134,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_slides_height_section',
             [
-                'label' => 'Height',
+                'label' => __( 'Height', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -136,7 +142,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'slides_height',
             [
-                'label' => 'Slide Height',
+                'label' => __( 'Slide Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'vh' ],
                 'range' => [ 'px' => [ 'min' => 200, 'max' => 900 ], 'vh' => [ 'min' => 30, 'max' => 100 ] ],
@@ -150,7 +156,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slides_overlay',
             [
-                'label' => 'Overlay Color',
+                'label' => __( 'Overlay Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(15, 23, 42, 0.45)',
                 'selectors' => [
@@ -164,7 +170,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_slides_title_style',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -180,7 +186,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slide_title_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -194,7 +200,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_slides_subtitle_style',
             [
-                'label' => 'Subtitle',
+                'label' => __( 'Subtitle', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -210,7 +216,7 @@ class BDEA_Slides_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'slide_subtitle_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#e5e7eb',
                 'selectors' => [

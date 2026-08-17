@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
@@ -29,16 +35,16 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => 'Data Table',
+                'label' => __( 'Data Table', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'table_title',
             [
-                'label' => 'Table Title',
+                'label' => __( 'Table Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'ALL INVESTORS',
+                'default' => __( 'ALL INVESTORS', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -47,16 +53,16 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $row_repeater->add_control(
             'row_label',
             [
-                'label' => 'Label',
+                'label' => __( 'Label', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Buy from Other Investors',
+                'default' => __( 'Buy from Other Investors', 'elementstack-elementor-addons' ),
             ]
         );
 
         $row_repeater->add_control(
             'row_value',
             [
-                'label' => 'Value',
+                'label' => __( 'Value', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '12.94%',
             ]
@@ -65,14 +71,14 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_rows',
             [
-                'label' => 'Rows',
+                'label' => __( 'Rows', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $row_repeater->get_controls(),
                 'default' => [
-                    [ 'row_label' => 'Buy from Other Investors', 'row_value' => '12.94%' ],
-                    [ 'row_label' => 'Sell to Other Investors', 'row_value' => '39%' ],
-                    [ 'row_label' => 'Sell to Traditional Buyers', 'row_value' => '62%' ],
-                    [ 'row_label' => 'Buy/Sell Ratio', 'row_value' => '3.6x' ],
+                    [ 'row_label' => __( 'Buy from Other Investors', 'elementstack-elementor-addons' ), 'row_value' => '12.94%' ],
+                    [ 'row_label' => __( 'Sell to Other Investors', 'elementstack-elementor-addons' ), 'row_value' => '39%' ],
+                    [ 'row_label' => __( 'Sell to Traditional Buyers', 'elementstack-elementor-addons' ), 'row_value' => '62%' ],
+                    [ 'row_label' => __( 'Buy/Sell Ratio', 'elementstack-elementor-addons' ), 'row_value' => '3.6x' ],
                 ],
                 'title_field' => '{{{ row_label }}}',
             ]
@@ -84,7 +90,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_general_section',
             [
-                'label' => 'General',
+                'label' => __( 'General', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -92,7 +98,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_bg',
             [
-                'label' => 'Table Background',
+                'label' => __( 'Table Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -104,7 +110,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_border',
             [
-                'label' => 'Table Border Color',
+                'label' => __( 'Table Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#d8e0ed',
                 'selectors' => [
@@ -116,7 +122,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [ 'min' => 0, 'max' => 100 ],
@@ -134,7 +140,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'table_content_padding',
             [
-                'label' => 'Content Padding',
+                'label' => __( 'Content Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'default' => [
@@ -155,7 +161,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_title_section',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -164,7 +170,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => 'Title Typography',
+                'label' => __( 'Title Typography', 'elementstack-elementor-addons' ),
                 'selector' => '{{WRAPPER}} .bdea-table-card-title',
             ]
         );
@@ -172,7 +178,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#0d234a',
                 'selectors' => [
@@ -184,7 +190,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_underline_color',
             [
-                'label' => 'Title Underline Color',
+                'label' => __( 'Title Underline Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#0d234a',
                 'selectors' => [
@@ -196,7 +202,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_underline_height',
             [
-                'label' => 'Title Underline Height',
+                'label' => __( 'Title Underline Height', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -215,7 +221,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_underline_width',
             [
-                'label' => 'Title Underline Width',
+                'label' => __( 'Title Underline Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [
@@ -237,7 +243,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_row_section',
             [
-                'label' => 'Row',
+                'label' => __( 'Row', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -245,7 +251,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_bg',
             [
-                'label' => 'Row Background',
+                'label' => __( 'Row Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -257,7 +263,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_alt_bg',
             [
-                'label' => 'Row Highlight Color',
+                'label' => __( 'Row Highlight Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7fbff',
                 'selectors' => [
@@ -269,7 +275,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_border_color',
             [
-                'label' => 'Row Border Color',
+                'label' => __( 'Row Border Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#e5ecf7',
                 'selectors' => [
@@ -281,7 +287,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_border_width',
             [
-                'label' => 'Row Border Width',
+                'label' => __( 'Row Border Width', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -300,7 +306,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'row_padding',
             [
-                'label' => 'Row Padding',
+                'label' => __( 'Row Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'default' => [
@@ -321,7 +327,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_column_section',
             [
-                'label' => 'Column',
+                'label' => __( 'Column', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -330,7 +336,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'label_typography',
-                'label' => 'Label Typography',
+                'label' => __( 'Label Typography', 'elementstack-elementor-addons' ),
                 'selector' => '{{WRAPPER}} .bdea-table-label',
             ]
         );
@@ -338,7 +344,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'label_color',
             [
-                'label' => 'Label Color',
+                'label' => __( 'Label Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1a2d51',
                 'selectors' => [
@@ -351,7 +357,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'value_typography',
-                'label' => 'Value Typography',
+                'label' => __( 'Value Typography', 'elementstack-elementor-addons' ),
                 'selector' => '{{WRAPPER}} .bdea-table-value',
             ]
         );
@@ -359,7 +365,7 @@ class BDEA_Data_Table_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'value_color',
             [
-                'label' => 'Value Color',
+                'label' => __( 'Value Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#0f3a80',
                 'selectors' => [

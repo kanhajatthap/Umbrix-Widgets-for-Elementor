@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
@@ -28,7 +34,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_price_list_section',
             [
-                'label' => 'Price List',
+                'label' => __( 'Price List', 'elementstack-elementor-addons' ),
             ]
         );
 
@@ -37,16 +43,16 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'pl_title',
             [
-                'label' => 'Title',
+                'label' => __( 'Title', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Item Name',
+                'default' => __( 'Item Name', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'pl_price',
             [
-                'label' => 'Price',
+                'label' => __( 'Price', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '$10',
             ]
@@ -55,16 +61,16 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'pl_badge',
             [
-                'label' => 'Badge',
+                'label' => __( 'Badge', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'placeholder' => 'Popular',
+                'placeholder' => __( 'Popular', 'elementstack-elementor-addons' ),
             ]
         );
 
         $repeater->add_control(
             'pl_description',
             [
-                'label' => 'Description',
+                'label' => __( 'Description', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Item description goes here.',
             ]
@@ -73,7 +79,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'pl_featured',
             [
-                'label' => 'Featured',
+                'label' => __( 'Featured', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -82,13 +88,13 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'price_list_items',
             [
-                'label' => 'Items',
+                'label' => __( 'Items', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'pl_title' => 'Classic Burger', 'pl_price' => '$9' ],
-                    [ 'pl_title' => 'Cheese Burger', 'pl_price' => '$11', 'pl_badge' => 'Popular' ],
-                    [ 'pl_title' => 'Veggie Burger', 'pl_price' => '$8' ],
+                    [ 'pl_title' => __( 'Classic Burger', 'elementstack-elementor-addons' ), 'pl_price' => '$9' ],
+                    [ 'pl_title' => __( 'Cheese Burger', 'elementstack-elementor-addons' ), 'pl_price' => '$11', 'pl_badge' => __( 'Popular', 'elementstack-elementor-addons' ) ],
+                    [ 'pl_title' => __( 'Veggie Burger', 'elementstack-elementor-addons' ), 'pl_price' => '$8' ],
                 ],
                 'title_field' => '{{{ pl_title }}}',
             ]
@@ -100,7 +106,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_pl_general_style',
             [
-                'label' => 'General',
+                'label' => __( 'General', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -108,12 +114,12 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'pl_align',
             [
-                'label' => 'Alignment',
+                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => 'Left', 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => 'Center', 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => 'Right', 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -133,7 +139,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_border_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -145,7 +151,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_spacing',
             [
-                'label' => 'Item Spacing',
+                'label' => __( 'Item Spacing', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -158,7 +164,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -180,7 +186,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_pl_typo',
             [
-                'label' => 'Typography',
+                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -196,7 +202,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pl_title_color',
             [
-                'label' => 'Title Color',
+                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
@@ -216,7 +222,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pl_price_color',
             [
-                'label' => 'Price Color',
+                'label' => __( 'Price Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -236,7 +242,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pl_desc_color',
             [
-                'label' => 'Description Color',
+                'label' => __( 'Description Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
@@ -251,7 +257,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_pl_line_style',
             [
-                'label' => 'Divider Line',
+                'label' => __( 'Divider Line', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -259,7 +265,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'line_color',
             [
-                'label' => 'Color',
+                'label' => __( 'Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#e5e7eb',
                 'selectors' => [
@@ -271,13 +277,13 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'line_style',
             [
-                'label' => 'Style',
+                'label' => __( 'Style', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'dotted',
                 'options' => [
-                    'solid' => 'Solid',
-                    'dashed' => 'Dashed',
-                    'dotted' => 'Dotted',
+                    'solid' => __( 'Solid', 'elementstack-elementor-addons' ),
+                    'dashed' => __( 'Dashed', 'elementstack-elementor-addons' ),
+                    'dotted' => __( 'Dotted', 'elementstack-elementor-addons' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-price-list-line' => 'border-bottom-style: {{VALUE}};',
@@ -291,7 +297,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_pl_badge_style',
             [
-                'label' => 'Badge',
+                'label' => __( 'Badge', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -299,7 +305,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pl_badge_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -311,7 +317,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'badge_color',
             [
-                'label' => 'Text Color',
+                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -331,7 +337,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'badge_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -350,7 +356,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'badge_padding',
             [
-                'label' => 'Padding',
+                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -365,7 +371,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_pl_featured_style',
             [
-                'label' => 'Featured Item',
+                'label' => __( 'Featured Item', 'elementstack-elementor-addons' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -373,7 +379,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'featured_bg',
             [
-                'label' => 'Background',
+                'label' => __( 'Background', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-price-list-item.is-featured' => 'background-color: {{VALUE}};',
@@ -384,7 +390,7 @@ class BDEA_Price_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'featured_radius',
             [
-                'label' => 'Border Radius',
+                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [

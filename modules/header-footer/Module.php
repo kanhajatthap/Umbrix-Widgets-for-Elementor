@@ -1,4 +1,9 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 namespace BDEA\Modules\HeaderFooter;
 
 defined( 'ABSPATH' ) || exit;
@@ -50,16 +55,10 @@ class Module {
 
     public static function sanitize_module_status( $input ) {
         $defaults = self::get_default_module_status();
-
-        if ( ! is_array( $input ) || empty( $input ) ) {
-            $current = get_option( 'bdea_module_status', $defaults );
-            return wp_parse_args( is_array( $current ) ? $current : [], $defaults );
-        }
-
-        $output = [];
+        $output   = [];
 
         foreach ( $defaults as $key => $value ) {
-            $output[ $key ] = ! empty( $input[ $key ] ) ? 1 : 0;
+            $output[ $key ] = ( is_array( $input ) && ! empty( $input[ $key ] ) ) ? 1 : 0;
         }
 
         return $output;

@@ -1,4 +1,10 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class BDEA_Template_Widget extends \Elementor\Widget_Base {
@@ -49,14 +55,14 @@ class BDEA_Template_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_template_section',
             [
-                'label' => 'Template',
+                'label' => __( 'Template', 'elementstack-elementor-addons' ),
             ]
         );
 
         $this->add_control(
             'template_id',
             [
-                'label' => 'Select Template',
+                'label' => __( 'Select Template', 'elementstack-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_templates(),
             ]
@@ -72,7 +78,7 @@ class BDEA_Template_Widget extends \Elementor\Widget_Base {
 
         if ( ! $template_id || 'publish' !== get_post_status( $template_id ) ) {
             ?>
-            <div class="bdea-loop-grid-empty">Select a template to display.</div>
+            <div class="bdea-loop-grid-empty"><?php esc_html_e( 'Select a template to display.', 'elementstack-elementor-addons' ); ?></div>
             <?php
             return;
         }
@@ -80,7 +86,7 @@ class BDEA_Template_Widget extends \Elementor\Widget_Base {
         $content = \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id, true );
         ?>
         <div class="bdea-template-widget">
-            <?php echo $content; ?>
+            <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor template content is rendered HTML. ?>
         </div>
         <?php
     }

@@ -1,4 +1,9 @@
 <?php
+/**
+ * ElementStack Addons for Elementor
+ * GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
 namespace BDEA\Modules\HeaderFooter;
 
 defined( 'ABSPATH' ) || exit;
@@ -12,16 +17,16 @@ class PostType {
 
     public function register() {
         $labels = [
-            'name'               => __( 'Theme Builder', 'bdea' ),
-            'singular_name'      => __( 'Template', 'bdea' ),
-            'add_new'            => __( 'Add New', 'bdea' ),
-            'add_new_item'       => __( 'Add New Template', 'bdea' ),
-            'edit_item'          => __( 'Edit Template', 'bdea' ),
-            'view_item'          => __( 'View Template', 'bdea' ),
-            'search_items'       => __( 'Search Templates', 'bdea' ),
-            'not_found'          => __( 'No templates found', 'bdea' ),
-            'not_found_in_trash' => __( 'No templates found in Trash', 'bdea' ),
-            'all_items'          => __( 'Theme Builder', 'bdea' ),
+            'name'               => __( 'Theme Builder', 'elementstack-elementor-addons' ),
+            'singular_name'      => __( 'Template', 'elementstack-elementor-addons' ),
+            'add_new'            => __( 'Add New', 'elementstack-elementor-addons' ),
+            'add_new_item'       => __( 'Add New Template', 'elementstack-elementor-addons' ),
+            'edit_item'          => __( 'Edit Template', 'elementstack-elementor-addons' ),
+            'view_item'          => __( 'View Template', 'elementstack-elementor-addons' ),
+            'search_items'       => __( 'Search Templates', 'elementstack-elementor-addons' ),
+            'not_found'          => __( 'No templates found', 'elementstack-elementor-addons' ),
+            'not_found_in_trash' => __( 'No templates found in Trash', 'elementstack-elementor-addons' ),
+            'all_items'          => __( 'Theme Builder', 'elementstack-elementor-addons' ),
         ];
 
         $args = [
