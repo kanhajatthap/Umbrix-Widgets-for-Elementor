@@ -1,6 +1,6 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementKey Lite
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -22,7 +22,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementkey-lite-elements' ];
     }
 
     public function get_style_depends() {
@@ -34,14 +34,14 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_box_section',
             [
-                'label' => __( 'Image Box', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image Box', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'image',
             [
-                'label' => __( 'Image', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -52,15 +52,15 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_size',
             [
-                'label' => __( 'Image Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image Size', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'medium',
                 'options' => [
-                    'thumbnail' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
-                    'medium' => __( 'Medium', 'elementstack-elementor-addons' ),
-                    'large' => __( 'Large', 'elementstack-elementor-addons' ),
-                    'medium_large' => __( 'Medium Large', 'elementstack-elementor-addons' ),
-                    'full' => __( 'Full', 'elementstack-elementor-addons' ),
+                    'thumbnail' => __( 'Thumbnail', 'elementkey-lite' ),
+                    'medium' => __( 'Medium', 'elementkey-lite' ),
+                    'large' => __( 'Large', 'elementkey-lite' ),
+                    'medium_large' => __( 'Medium Large', 'elementkey-lite' ),
+                    'full' => __( 'Full', 'elementkey-lite' ),
                 ],
             ]
         );
@@ -68,17 +68,17 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Feature Title', 'elementstack-elementor-addons' ),
-                'placeholder' => __( 'Enter title', 'elementstack-elementor-addons' ),
+                'default' => __( 'Feature Title', 'elementkey-lite' ),
+                'placeholder' => __( 'Enter title', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'description',
             [
-                'label' => __( 'Description', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Describe the feature or benefit in a couple of lines.',
                 'rows' => 4,
@@ -88,7 +88,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link',
             [
-                'label' => __( 'Link (optional)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link (optional)', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -97,12 +97,12 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -114,9 +114,39 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
+            'bdea_image_box_card_style',
+            [
+                'label' => __( 'Card', 'elementkey-lite' ),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'card_bg',
+            [
+                'label' => __( 'Background', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-image-box' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'card_border',
+                'selector' => '{{WRAPPER}} .bdea-image-box',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'bdea_image_box_image_style',
             [
-                'label' => __( 'Image', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -124,7 +154,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_width',
             [
-                'label' => __( 'Image Width', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image Width', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 50, 'max' => 1200 ], '%' => [ 'min' => 10, 'max' => 100 ] ],
@@ -137,7 +167,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => __( 'Image Height', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image Height', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 50, 'max' => 700 ] ],
@@ -150,7 +180,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -171,7 +201,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_spacing',
             [
-                'label' => __( 'Spacing Below Image', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing Below Image', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -187,7 +217,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_box_content_style',
             [
-                'label' => __( 'Content', 'elementstack-elementor-addons' ),
+                'label' => __( 'Content', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -203,7 +233,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-image-box-title' => 'color: {{VALUE}};',
@@ -222,7 +252,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'desc_color',
             [
-                'label' => __( 'Description Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-image-box-desc' => 'color: {{VALUE}};',

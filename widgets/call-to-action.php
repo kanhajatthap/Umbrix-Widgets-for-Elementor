@@ -1,6 +1,6 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementKey Lite
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -22,7 +22,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementkey-lite-elements' ];
     }
 
     public function get_style_depends() {
@@ -34,14 +34,14 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_cta_section',
             [
-                'label' => __( 'Call to Action', 'elementstack-elementor-addons' ),
+                'label' => __( 'Call to Action', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'cta_bg',
             [
-                'label' => __( 'Background Image', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background Image', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
             ]
         );
@@ -49,7 +49,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_title',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'Ready to Get Started?',
             ]
@@ -58,7 +58,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_description',
             [
-                'label' => __( 'Description', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Join thousands of happy customers today.',
             ]
@@ -67,16 +67,16 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_btn_text',
             [
-                'label' => __( 'Button Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button Text', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Get Started', 'elementstack-elementor-addons' ),
+                'default' => __( 'Get Started', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'cta_btn_url',
             [
-                'label' => __( 'Button Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button Link', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -85,7 +85,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_btn2_text',
             [
-                'label' => __( 'Second Button Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Second Button Text', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
             ]
         );
@@ -93,7 +93,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_btn2_url',
             [
-                'label' => __( 'Second Button Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Second Button Link', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -105,7 +105,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_cta_general_style',
             [
-                'label' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'General', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -113,7 +113,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_overlay',
             [
-                'label' => __( 'Overlay Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Overlay Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(31, 41, 55, 0.75)',
                 'selectors' => [
@@ -125,12 +125,12 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'cta_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
@@ -142,7 +142,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_padding',
             [
-                'label' => __( 'Content Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Content Padding', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -169,7 +169,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'cta_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -192,7 +192,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_cta_typo',
             [
-                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
+                'label' => __( 'Typography', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -200,7 +200,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_title_color',
             [
-                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -220,7 +220,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_desc_color',
             [
-                'label' => __( 'Description Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#e5e7eb',
                 'selectors' => [
@@ -240,7 +240,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'desc_spacing',
             [
-                'label' => __( 'Description Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description Spacing', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -256,7 +256,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_cta_btn_style',
             [
-                'label' => __( 'Button', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -264,7 +264,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'cta_btn_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
@@ -276,7 +276,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_text_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -288,7 +288,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_bg',
             [
-                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Background', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-cta-btn:hover' => 'background-color: {{VALUE}};',
@@ -299,10 +299,86 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_text',
             [
-                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Text Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-cta-btn:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn2_bg',
+            [
+                'label' => __( 'Secondary Background', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'transparent',
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-cta-btn-secondary' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn2_text_color',
+            [
+                'label' => __( 'Secondary Text Color', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-cta-btn-secondary' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn2_border_color',
+            [
+                'label' => __( 'Secondary Border Color', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(255, 255, 255, 0.7)',
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-cta-btn-secondary' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'btn2_border_width',
+            [
+                'label' => __( 'Secondary Border Width', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'default' => [
+                    'size' => 1,
+                    'unit' => 'px',
+                ],
+                'range' => [ 'px' => [ 'min' => 0, 'max' => 5 ] ],
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-cta-btn-secondary' => 'border-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn2_hover_bg',
+            [
+                'label' => __( 'Secondary Hover Background', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(255, 255, 255, 0.15)',
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-cta-btn-secondary:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn2_hover_text',
+            [
+                'label' => __( 'Secondary Hover Text Color', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-cta-btn-secondary:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -318,7 +394,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -337,7 +413,7 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -356,12 +432,29 @@ class BDEA_Call_To_Action_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_spacing',
             [
-                'label' => __( 'Button Gap', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button Gap', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-cta-buttons' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'btn_align',
+            [
+                'label' => __( 'Button Alignment', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'flex-start' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
+                    'flex-end' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-cta-buttons' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );

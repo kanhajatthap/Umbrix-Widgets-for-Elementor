@@ -1,6 +1,6 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementKey Lite
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -22,7 +22,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementkey-lite-elements' ];
     }
 
     public function get_style_depends() {
@@ -38,7 +38,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_carousel_section',
             [
-                'label' => __( 'Images', 'elementstack-elementor-addons' ),
+                'label' => __( 'Images', 'elementkey-lite' ),
             ]
         );
 
@@ -47,7 +47,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'carousel_image',
             [
-                'label' => __( 'Image', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -58,7 +58,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'carousel_caption',
             [
-                'label' => __( 'Caption', 'elementstack-elementor-addons' ),
+                'label' => __( 'Caption', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -67,7 +67,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'carousel_link',
             [
-                'label' => __( 'Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -76,13 +76,13 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'carousel_images',
             [
-                'label' => __( 'Images', 'elementstack-elementor-addons' ),
+                'label' => __( 'Images', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'carousel_caption' => __( 'Slide 1', 'elementstack-elementor-addons' ) ],
-                    [ 'carousel_caption' => __( 'Slide 2', 'elementstack-elementor-addons' ) ],
-                    [ 'carousel_caption' => __( 'Slide 3', 'elementstack-elementor-addons' ) ],
+                    [ 'carousel_caption' => __( 'Slide 1', 'elementkey-lite' ) ],
+                    [ 'carousel_caption' => __( 'Slide 2', 'elementkey-lite' ) ],
+                    [ 'carousel_caption' => __( 'Slide 3', 'elementkey-lite' ) ],
                 ],
                 'title_field' => '{{{ carousel_caption }}}',
             ]
@@ -91,7 +91,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'slides_per_view',
             [
-                'label' => __( 'Slides Per View', 'elementstack-elementor-addons' ),
+                'label' => __( 'Slides Per View', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 6,
@@ -105,7 +105,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'space_between',
             [
-                'label' => __( 'Space Between (px)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Space Between (px)', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -118,14 +118,14 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_carousel_behavior',
             [
-                'label' => __( 'Behavior', 'elementstack-elementor-addons' ),
+                'label' => __( 'Behavior', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'show_arrows',
             [
-                'label' => __( 'Show Arrows', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Arrows', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -134,7 +134,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_dots',
             [
-                'label' => __( 'Show Dots', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Dots', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -143,7 +143,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'autoplay',
             [
-                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
+                'label' => __( 'Autoplay', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -152,7 +152,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'autoplay_delay',
             [
-                'label' => __( 'Autoplay Speed (ms)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Autoplay Speed (ms)', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 3500,
                 'min' => 500,
@@ -165,7 +165,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'pause_on_hover',
             [
-                'label' => __( 'Pause on Hover', 'elementstack-elementor-addons' ),
+                'label' => __( 'Pause on Hover', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'condition' => [ 'autoplay' => 'yes' ],
@@ -175,7 +175,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'loop',
             [
-                'label' => __( 'Loop', 'elementstack-elementor-addons' ),
+                'label' => __( 'Loop', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -184,7 +184,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'transition_speed',
             [
-                'label' => __( 'Transition Speed (ms)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Transition Speed (ms)', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 650,
                 'min' => 100,
@@ -196,7 +196,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'drag_swipe',
             [
-                'label' => __( 'Drag / Swipe', 'elementstack-elementor-addons' ),
+                'label' => __( 'Drag / Swipe', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -207,7 +207,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_carousel_image_style',
             [
-                'label' => __( 'Image', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -215,7 +215,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => __( 'Image Height', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image Height', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
@@ -228,12 +228,12 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => __( 'Object Fit', 'elementstack-elementor-addons' ),
+                'label' => __( 'Object Fit', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => __( 'Cover', 'elementstack-elementor-addons' ),
-                    'contain' => __( 'Contain', 'elementstack-elementor-addons' ),
+                    'cover' => __( 'Cover', 'elementkey-lite' ),
+                    'contain' => __( 'Contain', 'elementkey-lite' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-image-carousel-slide img' => 'object-fit: {{VALUE}};',
@@ -244,7 +244,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -259,7 +259,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_carousel_caption_style',
             [
-                'label' => __( 'Caption', 'elementstack-elementor-addons' ),
+                'label' => __( 'Caption', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -275,8 +275,9 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'caption_color',
             [
-                'label' => __( 'Caption Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Caption Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .bdea-image-carousel-caption' => 'color: {{VALUE}};',
                 ],
@@ -288,7 +289,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_carousel_nav_style',
             [
-                'label' => __( 'Navigation', 'elementstack-elementor-addons' ),
+                'label' => __( 'Navigation', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -296,7 +297,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'arrow_size',
             [
-                'label' => __( 'Arrow Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Arrow Size', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 24, 'max' => 120 ] ],
@@ -309,8 +310,9 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_color',
             [
-                'label' => __( 'Arrow Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Arrow Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .bdea-image-carousel-prev, {{WRAPPER}} .bdea-image-carousel-next' => 'color: {{VALUE}};',
                 ],
@@ -320,7 +322,7 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_bg',
             [
-                'label' => __( 'Arrow Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Arrow Background', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,0.4)',
                 'selectors' => [
@@ -332,10 +334,23 @@ class BDEA_Image_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'dots_color',
             [
-                'label' => __( 'Dots Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Dots Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#d9d9d9',
                 'selectors' => [
                     '{{WRAPPER}} .bdea-image-carousel-pagination .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'dots_active_color',
+            [
+                'label' => __( 'Active Dot Color', 'elementkey-lite' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#4361ee',
+                'selectors' => [
+                    '{{WRAPPER}} .bdea-image-carousel-pagination .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );

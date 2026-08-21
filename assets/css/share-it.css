@@ -6,7 +6,6 @@
     margin: 0 0 12px;
     font-size: 18px;
     line-height: 1.4;
-    color: #1f2d3d;
 }
 
 .bdea-share-it-links {
@@ -22,8 +21,6 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #ffffff;
-    background-color: #1f3a76;
     border-radius: 999px;
     box-sizing: border-box;
     transition: color 0.2s ease, background-color 0.2s ease;
@@ -31,8 +28,6 @@
 
 .bdea-share-it-link:hover,
 .bdea-share-it-link:focus {
-    color: #ffffff;
-    background-color: #365ea8;
 }
 
 .bdea-share-it-icon {

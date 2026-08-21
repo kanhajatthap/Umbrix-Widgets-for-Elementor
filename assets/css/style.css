@@ -12,7 +12,6 @@
 .bdea-progress-bar {
     width: 100%;
     height: 8px;
-    background: #eeeeee;
     border-radius: 50px;
     overflow: hidden;
 }
@@ -20,7 +19,6 @@
 .bdea-progress-fill {
     width: 0;
     height: 100%;
-    background: #4CAF50;
     border-radius: 50px;
 }
 
@@ -41,19 +39,15 @@
 }
 
 .bdea-table th {
-    background: #333;
-    color: #fff;
 }
 
 .bdea-table td {
-    background: #f9f9f9;
 }
 
 .bdea-table-card {
     width: 100%;
     border: 1px solid #d8e0ed;
     border-radius: 24px;
-    background: #ffffff;
     padding: 0;
     box-sizing: border-box;
 }
@@ -64,7 +58,6 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #0d234a;
     position: relative;
     padding-bottom: 12px;
 }
@@ -74,7 +67,6 @@
     display: block;
     width: 52px;
     height: 2px;
-    background: #0d234a;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -97,21 +89,15 @@
     border-bottom: none;
 }
 
-.bdea-table-row:nth-child(even) {
-    background: #f7fbff;
-}
-
 .bdea-table-row>div {
     min-width: 0;
 }
 
 .bdea-table-label {
-    color: #1a2d51;
     font-size: 14px;
 }
 
 .bdea-table-value {
-    color: #0f3a80;
     font-size: 14px;
     font-weight: 700;
 }
@@ -154,21 +140,17 @@
     margin: 0 0 10px;
     font-size: 30px;
     font-weight: 700;
-    color: #1b366f;
 }
 
 .bdea-carousel-description {
     margin: 0;
     font-size: 16px;
     line-height: 1.6;
-    color: #49546a;
 }
 
 .bdea-carousel-button {
     display: inline-block;
     margin-top: 16px;
-    background: #d85c78;
-    color: #fff;
     text-decoration: none;
     border-radius: 999px;
     padding: 10px 22px;
@@ -197,8 +179,6 @@
     height: 40px;
     border-radius: 50%;
     border: 0;
-    background: #1f3a76;
-    color: #fff;
     cursor: pointer;
     z-index: 5;
     display: inline-flex;
@@ -234,12 +214,10 @@
 .bdea-swiper-pagination .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background: #bdc4ce;
     opacity: 1;
 }
 
 .bdea-swiper-pagination .swiper-pagination-bullet-active {
-    background: #2f80c2;
 }
 
 .bdea-feature-comparison-card {
@@ -265,23 +243,19 @@
 }
 
 .bdea-feature-comparison-table thead th {
-    background: #253979;
 }
 
 .bdea-feature-comparison-heading {
     padding: 16px 18px;
-    color: #ffffff;
     font-size: 24px;
     font-weight: 700;
     line-height: 1.2;
 }
 
 .bdea-feature-comparison-row {
-    background: #c4d3df;
 }
 
 .bdea-feature-comparison-row:nth-child(even) {
-    background: #d3dde7;
 }
 
 .bdea-feature-comparison-row td {
@@ -291,13 +265,11 @@
 }
 
 .bdea-feature-comparison-feature {
-    color: #1c2f4b;
     font-size: 18px;
     line-height: 1.35;
 }
 
 .bdea-feature-comparison-value {
-    color: #3cad60;
     text-align: center;
     font-size: 20px;
     font-weight: 700;

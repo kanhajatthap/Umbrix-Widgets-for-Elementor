@@ -1,6 +1,6 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementKey Lite
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -22,7 +22,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementkey-lite-elements' ];
     }
 
     public function get_style_depends() {
@@ -34,14 +34,14 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_rating_content_section',
             [
-                'label' => __( 'Rating', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rating', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'rating_value',
             [
-                'label' => __( 'Rating', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rating', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [
@@ -54,12 +54,12 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rating_scale',
             [
-                'label' => __( 'Scale', 'elementstack-elementor-addons' ),
+                'label' => __( 'Scale', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '5',
                 'options' => [
-                    '5' => '0 – 5',
-                    '10' => '0 – 10',
+                    '5' => '0 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ 5',
+                    '10' => '0 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ 10',
                 ],
             ]
         );
@@ -67,7 +67,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_number',
             [
-                'label' => __( 'Show Rating Number', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Rating Number', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -76,7 +76,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rating_label',
             [
-                'label' => __( 'Label (optional)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Label (optional)', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'e.g. 5.0 out of 5',
             ]
@@ -85,12 +85,12 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'rating_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -104,7 +104,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_rating_style_section',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -112,7 +112,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'star_color',
             [
-                'label' => __( 'Star Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Star Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7b500',
                 'selectors' => [
@@ -125,7 +125,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'empty_star_color',
             [
-                'label' => __( 'Empty Star Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Empty Star Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#d9d9d9',
                 'selectors' => [
@@ -137,7 +137,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'star_size',
             [
-                'label' => __( 'Star Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Star Size', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 80 ], 'em' => [ 'min' => 0.5, 'max' => 5 ] ],
@@ -151,7 +151,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'star_gap',
             [
-                'label' => __( 'Star Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Star Spacing', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],
@@ -173,8 +173,9 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'number_color',
             [
-                'label' => __( 'Number Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Number Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#555555',
                 'selectors' => [
                     '{{WRAPPER}} .bdea-star-rating .bdea-rating-number' => 'color: {{VALUE}};',
                 ],
@@ -192,8 +193,9 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'label_color',
             [
-                'label' => __( 'Label Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Label Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#555555',
                 'selectors' => [
                     '{{WRAPPER}} .bdea-star-rating .bdea-rating-label' => 'color: {{VALUE}};',
                 ],
@@ -203,7 +205,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'rating_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [

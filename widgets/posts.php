@@ -1,6 +1,6 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementKey Lite
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -22,7 +22,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementkey-lite-elements' ];
     }
 
     public function get_style_depends() {
@@ -34,14 +34,14 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_query_section',
             [
-                'label' => __( 'Query', 'elementstack-elementor-addons' ),
+                'label' => __( 'Query', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'post_type',
             [
-                'label' => __( 'Post Type', 'elementstack-elementor-addons' ),
+                'label' => __( 'Post Type', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'post',
                 'options' => bdea_widget_post_types(),
@@ -51,7 +51,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'include_cats',
             [
-                'label' => __( 'Categories', 'elementstack-elementor-addons' ),
+                'label' => __( 'Categories', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'category' ),
@@ -62,7 +62,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'include_tags',
             [
-                'label' => __( 'Tags', 'elementstack-elementor-addons' ),
+                'label' => __( 'Tags', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => bdea_widget_terms_list( 'post_tag' ),
@@ -82,7 +82,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => __( 'Number of Posts', 'elementstack-elementor-addons' ),
+                'label' => __( 'Number of Posts', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 6,
                 'min' => 1,
@@ -93,15 +93,15 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'orderby',
             [
-                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
+                'label' => __( 'Order By', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
-                    'modified' => __( 'Modified Date', 'elementstack-elementor-addons' ),
-                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
-                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
-                    'rand' => __( 'Random', 'elementstack-elementor-addons' ),
+                    'date' => __( 'Date', 'elementkey-lite' ),
+                    'modified' => __( 'Modified Date', 'elementkey-lite' ),
+                    'title' => __( 'Title', 'elementkey-lite' ),
+                    'menu_order' => __( 'Menu Order', 'elementkey-lite' ),
+                    'rand' => __( 'Random', 'elementkey-lite' ),
                 ],
             ]
         );
@@ -109,12 +109,12 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => __( 'Order', 'elementstack-elementor-addons' ),
+                'label' => __( 'Order', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
-                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
+                    'ASC' => __( 'Ascending', 'elementkey-lite' ),
+                    'DESC' => __( 'Descending', 'elementkey-lite' ),
                 ],
             ]
         );
@@ -124,19 +124,19 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_layout_section',
             [
-                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
+                'label' => __( 'Layout', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'layout',
             [
-                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
+                'label' => __( 'Layout', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'grid',
                 'options' => [
-                    'grid' => __( 'Grid', 'elementstack-elementor-addons' ),
-                    'list' => __( 'List', 'elementstack-elementor-addons' ),
+                    'grid' => __( 'Grid', 'elementkey-lite' ),
+                    'list' => __( 'List', 'elementkey-lite' ),
                 ],
             ]
         );
@@ -144,7 +144,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'columns',
             [
-                'label' => __( 'Columns', 'elementstack-elementor-addons' ),
+                'label' => __( 'Columns', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 6,
@@ -158,7 +158,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'column_gap',
             [
-                'label' => __( 'Column Gap', 'elementstack-elementor-addons' ),
+                'label' => __( 'Column Gap', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -172,7 +172,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'row_gap',
             [
-                'label' => __( 'Row Gap', 'elementstack-elementor-addons' ),
+                'label' => __( 'Row Gap', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
@@ -188,14 +188,14 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_content_section',
             [
-                'label' => __( 'Card Content', 'elementstack-elementor-addons' ),
+                'label' => __( 'Card Content', 'elementkey-lite' ),
             ]
         );
 
         $this->add_control(
             'show_thumbnail',
             [
-                'label' => __( 'Show Thumbnail', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Thumbnail', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -204,14 +204,14 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'thumbnail_size',
             [
-                'label' => __( 'Thumbnail Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Thumbnail Size', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'thumbnail' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
-                    'medium' => __( 'Medium', 'elementstack-elementor-addons' ),
-                    'large' => __( 'Large', 'elementstack-elementor-addons' ),
-                    'medium_large' => __( 'Medium Large', 'elementstack-elementor-addons' ),
-                    'full' => __( 'Full', 'elementstack-elementor-addons' ),
+                    'thumbnail' => __( 'Thumbnail', 'elementkey-lite' ),
+                    'medium' => __( 'Medium', 'elementkey-lite' ),
+                    'large' => __( 'Large', 'elementkey-lite' ),
+                    'medium_large' => __( 'Medium Large', 'elementkey-lite' ),
+                    'full' => __( 'Full', 'elementkey-lite' ),
                 ],
                 'default' => 'medium',
                 'condition' => [ 'show_thumbnail' => 'yes' ],
@@ -221,7 +221,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_meta',
             [
-                'label' => __( 'Show Meta', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Meta', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -230,7 +230,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_title',
             [
-                'label' => __( 'Show Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Title', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -239,7 +239,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => __( 'Show Excerpt', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Excerpt', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -248,7 +248,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => __( 'Excerpt Length (words)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Excerpt Length (words)', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 18,
                 'min' => 3,
@@ -260,7 +260,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_read_more',
             [
-                'label' => __( 'Show Read More', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Read More', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -269,9 +269,9 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'read_more_text',
             [
-                'label' => __( 'Read More Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Read More Text', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Read More', 'elementstack-elementor-addons' ),
+                'default' => __( 'Read More', 'elementkey-lite' ),
                 'condition' => [ 'show_read_more' => 'yes' ],
             ]
         );
@@ -281,7 +281,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_card_style_section',
             [
-                'label' => __( 'Card', 'elementstack-elementor-addons' ),
+                'label' => __( 'Card', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -289,8 +289,9 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-card' => 'background-color: {{VALUE}};',
                 ],
@@ -308,7 +309,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
@@ -330,7 +331,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -344,7 +345,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_image_style_section',
             [
-                'label' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
+                'label' => __( 'Thumbnail', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -352,7 +353,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => __( 'Height', 'elementstack-elementor-addons' ),
+                'label' => __( 'Height', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
@@ -366,13 +367,13 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => __( 'Object Fit', 'elementstack-elementor-addons' ),
+                'label' => __( 'Object Fit', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => __( 'Cover', 'elementstack-elementor-addons' ),
-                    'contain' => __( 'Contain', 'elementstack-elementor-addons' ),
-                    'fill' => __( 'Fill', 'elementstack-elementor-addons' ),
+                    'cover' => __( 'Cover', 'elementkey-lite' ),
+                    'contain' => __( 'Contain', 'elementkey-lite' ),
+                    'fill' => __( 'Fill', 'elementkey-lite' ),
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-thumb img' => 'object-fit: {{VALUE}};',
@@ -385,7 +386,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'bdea_typography_section',
             [
-                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
+                'label' => __( 'Typography', 'elementkey-lite' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -401,7 +402,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-title a' => 'color: {{VALUE}};',
@@ -412,7 +413,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_hover_color',
             [
-                'label' => __( 'Title Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title Hover Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-title a:hover' => 'color: {{VALUE}};',
@@ -431,7 +432,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_color',
             [
-                'label' => __( 'Excerpt Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Excerpt Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-excerpt' => 'color: {{VALUE}};',
@@ -450,7 +451,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'meta_color',
             [
-                'label' => __( 'Meta Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Meta Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-meta' => 'color: {{VALUE}};',
@@ -469,7 +470,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'readmore_color',
             [
-                'label' => __( 'Read More Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Read More Color', 'elementkey-lite' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdea-post-more' => 'color: {{VALUE}};',
