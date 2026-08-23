@@ -76,6 +76,8 @@ Yes, the widgets work with any WordPress theme that supports Elementor.
 2. ElementsKey widgets available in the Elementor editor.
 3. Widget Container style controls for an ElementsKey widget.
 4. ElementsKey Theme Builder with Header, Footer and Section templates.
+5. ElementsKey carousel navigation controls with custom arrows and dots.
+6. ElementsKey widgets displayed in a responsive layout.
 
 == Changelog ==
 
