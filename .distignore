@@ -1,0 +1,15 @@
+.git
+.github
+.gitignore
+.playwright-mcp
+AGENTS.md
+opencode.json
+node_modules
+vendor
+composer.json
+composer.lock
+package.json
+package-lock.json
+phpunit.xml
+phpunit.xml.dist
+tests

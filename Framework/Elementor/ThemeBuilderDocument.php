@@ -1,10 +1,10 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Framework\Elementor;
+namespace ElementsKey\Framework\Elementor;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -26,12 +26,12 @@ abstract class ThemeBuilderDocument extends \Elementor\Core\DocumentTypes\PageBa
     abstract protected static function get_cpt();
 
     public function get_container_classes() {
-        return 'bdea-theme-builder';
+        return 'elementskey-theme-builder';
     }
 
     public function print_content() {
         if ( \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
-            echo '<style>.elementor-editor-active .bdea-theme-builder { margin:0!important;padding:0!important; }</style>';
+            echo '<style>.elementor-editor-active .elementskey-theme-builder { margin:0!important;padding:0!important; }</style>';
         }
 
         parent::print_content();

@@ -1,10 +1,10 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Modules\HeaderFooter;
+namespace ElementsKey\Modules\HeaderFooter;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -17,16 +17,16 @@ class PostType {
 
     public function register() {
         $labels = [
-            'name'               => __( 'Theme Builder', 'elementstack-elementor-addons' ),
-            'singular_name'      => __( 'Template', 'elementstack-elementor-addons' ),
-            'add_new'            => __( 'Add New', 'elementstack-elementor-addons' ),
-            'add_new_item'       => __( 'Add New Template', 'elementstack-elementor-addons' ),
-            'edit_item'          => __( 'Edit Template', 'elementstack-elementor-addons' ),
-            'view_item'          => __( 'View Template', 'elementstack-elementor-addons' ),
-            'search_items'       => __( 'Search Templates', 'elementstack-elementor-addons' ),
-            'not_found'          => __( 'No templates found', 'elementstack-elementor-addons' ),
-            'not_found_in_trash' => __( 'No templates found in Trash', 'elementstack-elementor-addons' ),
-            'all_items'          => __( 'Theme Builder', 'elementstack-elementor-addons' ),
+            'name'               => __( 'Theme Builder', 'elementskey' ),
+            'singular_name'      => __( 'Template', 'elementskey' ),
+            'add_new'            => __( 'Add New', 'elementskey' ),
+            'add_new_item'       => __( 'Add New Template', 'elementskey' ),
+            'edit_item'          => __( 'Edit Template', 'elementskey' ),
+            'view_item'          => __( 'View Template', 'elementskey' ),
+            'search_items'       => __( 'Search Templates', 'elementskey' ),
+            'not_found'          => __( 'No templates found', 'elementskey' ),
+            'not_found_in_trash' => __( 'No templates found in Trash', 'elementskey' ),
+            'all_items'          => __( 'Theme Builder', 'elementskey' ),
         ];
 
         $args = [
@@ -47,15 +47,15 @@ class PostType {
             'query_var'           => false,
         ];
 
-        register_post_type( 'bdea_header_footer', $args );
+        register_post_type( 'elementskey_header_footer', $args );
 
-        add_post_type_support( 'bdea_header_footer', 'elementor' );
+        add_post_type_support( 'elementskey_header_footer', 'elementor' );
     }
 
     public function hide_editor_support() {
-        remove_post_type_support( 'bdea_header_footer', 'editor' );
-        remove_post_type_support( 'bdea_header_footer', 'comments' );
-        remove_post_type_support( 'bdea_header_footer', 'custom-fields' );
-        remove_post_type_support( 'bdea_header_footer', 'trackbacks' );
+        remove_post_type_support( 'elementskey_header_footer', 'editor' );
+        remove_post_type_support( 'elementskey_header_footer', 'comments' );
+        remove_post_type_support( 'elementskey_header_footer', 'custom-fields' );
+        remove_post_type_support( 'elementskey_header_footer', 'trackbacks' );
     }
 }

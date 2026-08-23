@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Template_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Template_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_template';
+        return 'elementskey_template';
     }
 
     public function get_title() {
@@ -22,11 +22,11 @@ class BDEA_Template_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function get_templates() {
@@ -53,18 +53,28 @@ class BDEA_Template_Widget extends \Elementor\Widget_Base {
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_template_section',
+            'elementskey_template_section',
             [
-                'label' => __( 'Template', 'elementstack-elementor-addons' ),
+                'label' => __( 'Template', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'template_id',
             [
-                'label' => __( 'Select Template', 'elementstack-elementor-addons' ),
+                'label' => __( 'Select Template', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_templates(),
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'elementskey_template_style_section',
+            [
+                'label' => __( 'Style', 'elementskey' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
@@ -78,14 +88,14 @@ class BDEA_Template_Widget extends \Elementor\Widget_Base {
 
         if ( ! $template_id || 'publish' !== get_post_status( $template_id ) ) {
             ?>
-            <div class="bdea-loop-grid-empty"><?php esc_html_e( 'Select a template to display.', 'elementstack-elementor-addons' ); ?></div>
+            <div class="elementskey-loop-grid-empty"><?php esc_html_e( 'Select a template to display.', 'elementskey' ); ?></div>
             <?php
             return;
         }
 
         $content = \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id, true );
         ?>
-        <div class="bdea-template-widget">
+        <div class="elementskey-template-widget">
             <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor template content is rendered HTML. ?>
         </div>
         <?php

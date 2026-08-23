@@ -2,11 +2,11 @@
     'use strict';
 
     function initCarousel(widget) {
-        if (!widget || widget.dataset.bdeaCarouselInit === 'yes') {
+        if (!widget || widget.dataset.elementskeyCarouselInit === 'yes') {
             return;
         }
 
-        var swiperEl = widget.querySelector('.bdea-swiper');
+        var swiperEl = widget.querySelector('.elementskey-swiper');
         if (!swiperEl || typeof Swiper === 'undefined') {
             return;
         }
@@ -53,14 +53,14 @@
 
         if (data.showArrows) {
             options.navigation = {
-                nextEl: widget.querySelector('.bdea-swiper-button-next'),
-                prevEl: widget.querySelector('.bdea-swiper-button-prev')
+                nextEl: widget.querySelector('.elementskey-swiper-button-next'),
+                prevEl: widget.querySelector('.elementskey-swiper-button-prev')
             };
         }
 
         if (data.showDots) {
             options.pagination = {
-                el: widget.querySelector('.bdea-swiper-pagination'),
+                el: widget.querySelector('.elementskey-swiper-pagination'),
                 clickable: true
             };
         }
@@ -77,7 +77,7 @@
 
         if (data.equalHeight) {
             var setEqualHeights = function () {
-                var cards = widget.querySelectorAll('.bdea-carousel-slide-inner, .bdea-loop-carousel-card');
+                var cards = widget.querySelectorAll('.elementskey-carousel-slide-inner, .elementskey-loop-carousel-card');
                 var maxHeight = 0;
 
                 cards.forEach(function (card) {
@@ -97,12 +97,12 @@
             setTimeout(setEqualHeights, 60);
         }
 
-        widget.dataset.bdeaCarouselInit = 'yes';
+        widget.dataset.elementskeyCarouselInit = 'yes';
     }
 
     function initAllCarousels(scope) {
         var root = scope && scope.querySelectorAll ? scope : document;
-        var widgets = root.querySelectorAll('.bdea-carousel-widget');
+        var widgets = root.querySelectorAll('.elementskey-carousel-widget');
         widgets.forEach(initCarousel);
     }
 
@@ -114,7 +114,7 @@
         window.jQuery(window).on('elementor/frontend/init', function () {
             if (window.elementorFrontend && window.elementorFrontend.hooks) {
                 window.elementorFrontend.hooks.addAction(
-                    'frontend/element_ready/bdea_swiper_carousel.default',
+                    'frontend/element_ready/elementskey_swiper_carousel.default',
                     function (scope) {
                         var root = scope && scope[0] ? scope[0] : document;
                         initAllCarousels(root);
@@ -122,7 +122,7 @@
                 );
 
                 window.elementorFrontend.hooks.addAction(
-                    'frontend/element_ready/bdea_loop_carousel.default',
+                    'frontend/element_ready/elementskey_loop_carousel.default',
                     function (scope) {
                         var root = scope && scope[0] ? scope[0] : document;
                         initAllCarousels(root);
@@ -130,7 +130,7 @@
                 );
 
                 window.elementorFrontend.hooks.addAction(
-                    'frontend/element_ready/bdea_image_carousel.default',
+                    'frontend/element_ready/elementskey_image_carousel.default',
                     function (scope) {
                         var root = scope && scope[0] ? scope[0] : document;
                         initAllCarousels(root);

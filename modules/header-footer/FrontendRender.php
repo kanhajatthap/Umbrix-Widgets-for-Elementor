@@ -1,13 +1,13 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Modules\HeaderFooter;
+namespace ElementsKey\Modules\HeaderFooter;
 
-use BDEA\Framework\Cache\Cache;
-use BDEA\Framework\Renderer\TemplateRenderer;
+use ElementsKey\Framework\Cache\Cache;
+use ElementsKey\Framework\Renderer\TemplateRenderer;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -33,9 +33,9 @@ class FrontendRender {
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
         add_filter( 'the_content', [ $this, 'filter_single_content' ], 10 );
         add_filter( 'template_include', [ $this, 'override_archive_template' ], 15 );
-        add_action( 'bdea_hf_render_archive', [ $this, 'render_archive_content' ] );
+        add_action( 'elementskey_hf_render_archive', [ $this, 'render_archive_content' ] );
         add_filter( 'template_include', [ $this, 'override_404_template' ], 20 );
-        add_action( 'bdea_hf_render_404', [ $this, 'render_404_content' ] );
+        add_action( 'elementskey_hf_render_404', [ $this, 'render_404_content' ] );
     }
 
     public function check_disable_theme() {
@@ -64,11 +64,11 @@ class FrontendRender {
             return;
         }
 
-        if ( ! wp_style_is( 'bdea-hf-frontend', 'enqueued' ) ) {
+        if ( ! wp_style_is( 'elementskey-hf-frontend', 'enqueued' ) ) {
             return;
         }
 
-        wp_add_inline_style( 'bdea-hf-frontend', '
+        wp_add_inline_style( 'elementskey-hf-frontend', '
             header.site-header, .site-header, #site-header, #masthead, .header,
             footer.site-footer, .site-footer, #site-footer, #colophon, .footer {
                 display: none !important;
@@ -83,13 +83,13 @@ class FrontendRender {
             return '' !== $page_settings[ $key ] ? $page_settings[ $key ] : $default;
         }
 
-        $legacy = get_post_meta( $post_id, '_bdea_hf_' . $key, true );
+        $legacy = get_post_meta( $post_id, '_elementskey_hf_' . $key, true );
 
         return '' !== $legacy ? $legacy : $default;
     }
 
     private function check_device_visibility( $post_id ) {
-        $device_vis = get_post_meta( $post_id, '_bdea_hf_device_visibility', true );
+        $device_vis = get_post_meta( $post_id, '_elementskey_hf_device_visibility', true );
 
         if ( ! is_array( $device_vis ) ) {
             return true;
@@ -139,13 +139,13 @@ class FrontendRender {
 
         $dismissible = 'yes' === $this->get_setting( $post_id, 'dismissible' );
         $cookie_days = max( 1, (int) $this->get_setting( $post_id, 'cookie_days', 1 ) );
-        $classes     = 'bdea-hf-announcement';
+        $classes     = 'elementskey-hf-announcement';
 
         echo '<div class="' . esc_attr( $classes ) . '" data-id="' . esc_attr( $post_id ) . '">';
         $this->renderer->render( $post_id );
 
         if ( $dismissible ) {
-            echo '<button type="button" class="bdea-hf-announcement-close" aria-label="' . esc_attr__( 'Dismiss', 'elementstack-elementor-addons' ) . '" data-days="' . esc_attr( $cookie_days ) . '">';
+            echo '<button type="button" class="elementskey-hf-announcement-close" aria-label="' . esc_attr__( 'Dismiss', 'elementskey' ) . '" data-days="' . esc_attr( $cookie_days ) . '">';
             echo '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7"/></svg>';
             echo '</button>';
         }
@@ -172,30 +172,30 @@ class FrontendRender {
         $scroll_anim  = 'yes' === $this->get_setting( $post_id, 'scroll_animation' );
         $offset       = absint( $this->get_setting( $post_id, 'sticky_offset', 0 ) );
 
-        $classes = 'bdea-hf-header';
+        $classes = 'elementskey-hf-header';
 
         if ( $sticky ) {
-            $classes .= ' bdea-hf-sticky';
+            $classes .= ' elementskey-hf-sticky';
         }
 
         if ( $transparent ) {
-            $classes .= ' bdea-hf-transparent';
+            $classes .= ' elementskey-hf-transparent';
         }
 
         if ( $shrink ) {
-            $classes .= ' bdea-hf-shrink';
+            $classes .= ' elementskey-hf-shrink';
         }
 
         if ( $hide_scroll ) {
-            $classes .= ' bdea-hf-hide-scroll';
+            $classes .= ' elementskey-hf-hide-scroll';
         }
 
         if ( $logo_switch ) {
-            $classes .= ' bdea-hf-logo-switch';
+            $classes .= ' elementskey-hf-logo-switch';
         }
 
         if ( $scroll_anim ) {
-            $classes .= ' bdea-hf-scroll-anim';
+            $classes .= ' elementskey-hf-scroll-anim';
         }
 
         $attrs = ' data-id="' . esc_attr( $post_id ) . '"';
@@ -220,7 +220,7 @@ class FrontendRender {
             return;
         }
 
-        echo '<footer class="bdea-hf-footer">';
+        echo '<footer class="elementskey-hf-footer">';
         $this->renderer->render( $post_id );
         echo '</footer>';
     }
@@ -236,7 +236,7 @@ class FrontendRender {
             return;
         }
 
-        echo '<div class="bdea-hf-bottom-bar">';
+        echo '<div class="elementskey-hf-bottom-bar">';
         $this->renderer->render( $post_id );
         echo '</div>';
     }
@@ -261,7 +261,7 @@ class FrontendRender {
         $template = ob_get_clean();
 
         if ( $template ) {
-            return '<div class="bdea-hf-single">' . $template . '</div>';
+            return '<div class="elementskey-hf-single">' . $template . '</div>';
         }
 
         return $content;
@@ -368,7 +368,7 @@ class FrontendRender {
     }
 
     private function is_announcement_dismissed( $post_id ) {
-        $cookie_name = 'bdea_hf_dismiss_' . (int) $post_id;
+        $cookie_name = 'elementskey_hf_dismiss_' . (int) $post_id;
 
         return isset( $_COOKIE[ $cookie_name ] );
     }
@@ -400,63 +400,63 @@ class FrontendRender {
         $css_file = __DIR__ . '/assets/css/frontend.css';
         if ( file_exists( $css_file ) ) {
             wp_enqueue_style(
-                'bdea-hf-frontend',
+                'elementskey-hf-frontend',
                 plugin_dir_url( __FILE__ ) . 'assets/css/frontend.css',
                 [],
-                BDEA_VERSION
+                ELEMENTSKEY_VERSION
             );
         }
 
         $js_file = __DIR__ . '/assets/js/frontend.js';
         if ( $needs_js && file_exists( $js_file ) ) {
             wp_enqueue_script(
-                'bdea-hf-frontend-js',
+                'elementskey-hf-frontend-js',
                 plugin_dir_url( __FILE__ ) . 'assets/js/frontend.js',
                 [],
-                BDEA_VERSION,
+                ELEMENTSKEY_VERSION,
                 true
             );
         }
 
-        wp_add_inline_style( 'bdea-hf-frontend', '
-            .bdea-hf-sticky {
+        wp_add_inline_style( 'elementskey-hf-frontend', '
+            .elementskey-hf-sticky {
                 position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
                 z-index: 9999;
             }
-            .admin-bar .bdea-hf-sticky {
+            .admin-bar .elementskey-hf-sticky {
                 top: 32px;
             }
             @media screen and (max-width: 782px) {
-                .admin-bar .bdea-hf-sticky {
+                .admin-bar .elementskey-hf-sticky {
                     top: 46px;
                 }
             }
-            .bdea-hf-scroll-anim {
+            .elementskey-hf-scroll-anim {
                 transition: transform 0.3s ease;
             }
-            .bdea-hf-scroll-anim.bdea-hf-hidden {
+            .elementskey-hf-scroll-anim.elementskey-hf-hidden {
                 transform: translateY(-100%);
             }
-            .bdea-hf-hide-scroll {
+            .elementskey-hf-hide-scroll {
                 transition: transform 0.3s ease;
             }
-            .bdea-hf-hide-scroll.bdea-hf-scroll-down {
+            .elementskey-hf-hide-scroll.elementskey-hf-scroll-down {
                 transform: translateY(-100%);
             }
-            .bdea-hf-shrink .elementor-section,
-            .bdea-hf-shrink .elementor-container {
+            .elementskey-hf-shrink .elementor-section,
+            .elementskey-hf-shrink .elementor-container {
                 transition: min-height 0.3s ease, padding 0.3s ease;
             }
-            .bdea-hf-shrink.bdea-hf-scrolled .elementor-section,
-            .bdea-hf-shrink.bdea-hf-scrolled .elementor-container {
+            .elementskey-hf-shrink.elementskey-hf-scrolled .elementor-section,
+            .elementskey-hf-shrink.elementskey-hf-scrolled .elementor-container {
                 min-height: 60px !important;
                 padding-top: 0 !important;
                 padding-bottom: 0 !important;
             }
-            .bdea-hf-transparent {
+            .elementskey-hf-transparent {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -464,26 +464,26 @@ class FrontendRender {
                 z-index: 9998;
                 background: transparent;
             }
-            .admin-bar .bdea-hf-transparent {
+            .admin-bar .elementskey-hf-transparent {
                 top: 32px;
             }
             @media screen and (max-width: 782px) {
-                .admin-bar .bdea-hf-transparent {
+                .admin-bar .elementskey-hf-transparent {
                     top: 46px;
                 }
             }
-            .bdea-hf-transparent.bdea-hf-scrolled {
+            .elementskey-hf-transparent.elementskey-hf-scrolled {
                 position: fixed;
                 background: #ffffff;
                 box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             }
-            .bdea-hf-logo-switch .bdea-hf-logo-sticky {
+            .elementskey-hf-logo-switch .elementskey-hf-logo-sticky {
                 display: none !important;
             }
-            .bdea-hf-logo-switch.bdea-hf-scrolled .bdea-hf-logo-default {
+            .elementskey-hf-logo-switch.elementskey-hf-scrolled .elementskey-hf-logo-default {
                 display: none !important;
             }
-            .bdea-hf-logo-switch.bdea-hf-scrolled .bdea-hf-logo-sticky {
+            .elementskey-hf-logo-switch.elementskey-hf-scrolled .elementskey-hf-logo-sticky {
                 display: block !important;
             }
         ' );

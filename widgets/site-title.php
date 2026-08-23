@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Site_Title_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Site_Title_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_site_title';
+        return 'elementskey_site_title';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Site_Title_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_site_title_section',
+            'elementskey_site_title_section',
             [
-                'label' => __( 'Site Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Site Title', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'site_title_tag',
             [
-                'label' => __( 'HTML Tag', 'elementstack-elementor-addons' ),
+                'label' => __( 'HTML Tag', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'h1',
                 'options' => [
@@ -60,7 +60,7 @@ class BDEA_Site_Title_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'site_title_link',
             [
-                'label' => __( 'Link to Homepage', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link to Homepage', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -69,9 +69,9 @@ class BDEA_Site_Title_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_site_title_style',
+            'elementskey_site_title_style',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -80,19 +80,19 @@ class BDEA_Site_Title_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'site_title_typography',
-                'selector' => '{{WRAPPER}} .bdea-site-title',
+                'selector' => '{{WRAPPER}} .elementskey-site-title',
             ]
         );
 
         $this->add_control(
             'site_title_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-site-title' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .bdea-site-title a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-site-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-site-title a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -100,16 +100,16 @@ class BDEA_Site_Title_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'site_title_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-site-title' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-site-title' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -127,7 +127,7 @@ class BDEA_Site_Title_Widget extends \Elementor\Widget_Base {
 
         $title = get_bloginfo( 'name' );
         ?>
-        <<?php echo esc_attr( $tag ); ?> class="bdea-site-title">
+        <<?php echo esc_attr( $tag ); ?> class="elementskey-site-title">
             <?php if ( 'yes' === $settings['site_title_link'] ) : ?>
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo esc_html( $title ); ?></a>
             <?php else : ?>

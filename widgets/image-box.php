@@ -7,10 +7,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Image_Box_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_image_box';
+        return 'elementskey_image_box';
     }
 
     public function get_title() {
@@ -26,22 +26,22 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_image_box_section',
+            'elementskey_image_box_section',
             [
-                'label' => __( 'Image Box', 'elementkey-lite' ),
+                'label' => __( 'Image Box', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'image',
             [
-                'label' => __( 'Image', 'elementkey-lite' ),
+                'label' => __( 'Image', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -52,15 +52,15 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_size',
             [
-                'label' => __( 'Image Size', 'elementkey-lite' ),
+                'label' => __( 'Image Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'medium',
                 'options' => [
-                    'thumbnail' => __( 'Thumbnail', 'elementkey-lite' ),
-                    'medium' => __( 'Medium', 'elementkey-lite' ),
-                    'large' => __( 'Large', 'elementkey-lite' ),
-                    'medium_large' => __( 'Medium Large', 'elementkey-lite' ),
-                    'full' => __( 'Full', 'elementkey-lite' ),
+                    'thumbnail' => __( 'Thumbnail', 'elementskey' ),
+                    'medium' => __( 'Medium', 'elementskey' ),
+                    'large' => __( 'Large', 'elementskey' ),
+                    'medium_large' => __( 'Medium Large', 'elementskey' ),
+                    'full' => __( 'Full', 'elementskey' ),
                 ],
             ]
         );
@@ -68,17 +68,17 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title',
             [
-                'label' => __( 'Title', 'elementkey-lite' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Feature Title', 'elementkey-lite' ),
-                'placeholder' => __( 'Enter title', 'elementkey-lite' ),
+                'default' => __( 'Feature Title', 'elementskey' ),
+                'placeholder' => __( 'Enter title', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'description',
             [
-                'label' => __( 'Description', 'elementkey-lite' ),
+                'label' => __( 'Description', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Describe the feature or benefit in a couple of lines.',
                 'rows' => 4,
@@ -88,7 +88,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link',
             [
-                'label' => __( 'Link (optional)', 'elementkey-lite' ),
+                'label' => __( 'Link (optional)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -97,16 +97,16 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'align',
             [
-                'label' => __( 'Alignment', 'elementkey-lite' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-image-box' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -114,9 +114,9 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_image_box_card_style',
+            'elementskey_image_box_card_style',
             [
-                'label' => __( 'Card', 'elementkey-lite' ),
+                'label' => __( 'Card', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -124,11 +124,11 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => __( 'Background', 'elementkey-lite' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-image-box' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -137,16 +137,16 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'card_border',
-                'selector' => '{{WRAPPER}} .bdea-image-box',
+                'selector' => '{{WRAPPER}} .elementskey-image-box',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_image_box_image_style',
+            'elementskey_image_box_image_style',
             [
-                'label' => __( 'Image', 'elementkey-lite' ),
+                'label' => __( 'Image', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -154,12 +154,12 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_width',
             [
-                'label' => __( 'Image Width', 'elementkey-lite' ),
+                'label' => __( 'Image Width', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 50, 'max' => 1200 ], '%' => [ 'min' => 10, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box-figure img' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-image-box-figure img' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -167,12 +167,12 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => __( 'Image Height', 'elementkey-lite' ),
+                'label' => __( 'Image Height', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 50, 'max' => 700 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box-figure img' => 'height: {{SIZE}}{{UNIT}}; object-fit: cover;',
+                    '{{WRAPPER}} .elementskey-image-box-figure img' => 'height: {{SIZE}}{{UNIT}}; object-fit: cover;',
                 ],
             ]
         );
@@ -180,12 +180,12 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_radius',
             [
-                'label' => __( 'Border Radius', 'elementkey-lite' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box-figure img' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-image-box-figure img' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -194,20 +194,20 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'image_shadow',
-                'selector' => '{{WRAPPER}} .bdea-image-box-figure img',
+                'selector' => '{{WRAPPER}} .elementskey-image-box-figure img',
             ]
         );
 
         $this->add_responsive_control(
             'image_spacing',
             [
-                'label' => __( 'Spacing Below Image', 'elementkey-lite' ),
+                'label' => __( 'Spacing Below Image', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
                 'default' => [ 'size' => 16, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box-figure' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-image-box-figure' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -215,9 +215,9 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_image_box_content_style',
+            'elementskey_image_box_content_style',
             [
-                'label' => __( 'Content', 'elementkey-lite' ),
+                'label' => __( 'Content', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -226,17 +226,17 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .bdea-image-box-title',
+                'selector' => '{{WRAPPER}} .elementskey-image-box-title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'elementkey-lite' ),
+                'label' => __( 'Title Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-image-box-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -245,17 +245,17 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'desc_typography',
-                'selector' => '{{WRAPPER}} .bdea-image-box-desc',
+                'selector' => '{{WRAPPER}} .elementskey-image-box-desc',
             ]
         );
 
         $this->add_control(
             'desc_color',
             [
-                'label' => __( 'Description Color', 'elementkey-lite' ),
+                'label' => __( 'Description Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-image-box-desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-image-box-desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -273,7 +273,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
         $image_url = ! empty( $settings['image']['url'] ) ? $settings['image']['url'] : '';
         $size      = ! empty( $settings['image_size'] ) ? $settings['image_size'] : 'medium';
 
-        $figure_attrs = [ 'class' => 'bdea-image-box-figure' ];
+        $figure_attrs = [ 'class' => 'elementskey-image-box-figure' ];
 
         if ( $has_link ) {
             $this->add_render_attribute( 'link', 'href', $settings['link']['url'] );
@@ -285,7 +285,7 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
             }
         }
         ?>
-        <div class="bdea-image-box">
+        <div class="elementskey-image-box">
             <?php if ( $image_url || $image_id ) : ?>
                 <figure <?php echo implode( ' ', array_map( function ( $k, $v ) { return $k . '="' . esc_attr( $v ) . '"'; }, array_keys( $figure_attrs ), $figure_attrs ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Attribute values escaped with esc_attr(). ?>>
                     <?php
@@ -298,17 +298,17 @@ class BDEA_Image_Box_Widget extends \Elementor\Widget_Base {
                 </figure>
             <?php endif; ?>
 
-            <div class="bdea-image-box-body">
+            <div class="elementskey-image-box-body">
                 <?php if ( $title ) : ?>
-                    <h3 class="bdea-image-box-title"><?php echo esc_html( $title ); ?></h3>
+                    <h3 class="elementskey-image-box-title"><?php echo esc_html( $title ); ?></h3>
                 <?php endif; ?>
 
                 <?php if ( $desc ) : ?>
-                    <p class="bdea-image-box-desc"><?php echo esc_html( $desc ); ?></p>
+                    <p class="elementskey-image-box-desc"><?php echo esc_html( $desc ); ?></p>
                 <?php endif; ?>
 
                 <?php if ( $has_link ) : ?>
-                    <a class="bdea-image-box-link" <?php echo $this->get_render_attribute_string( 'link' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>Learn More &#8594;</a>
+                    <a class="elementskey-image-box-link" <?php echo $this->get_render_attribute_string( 'link' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>Learn More &#8594;</a>
                 <?php endif; ?>
             </div>
         </div>

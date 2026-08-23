@@ -6,12 +6,12 @@
             return;
         }
 
-        // Category view - badge only in "ElementStack Elements" category
+        // Category view - badge only in "ElementsKey Elements" category
         $('.elementor-panel-category').each(function () {
             var $cat = $(this);
             var catTitle = $cat.find('.elementor-panel-heading-title').first().text().trim();
 
-            if (catTitle !== 'ElementStack Elements') {
+            if (catTitle !== 'ElementsKey Elements') {
                 return;
             }
 
@@ -27,10 +27,10 @@
             });
         });
 
-        // Search view - badge on widgets with bdea_ prefix
+        // Search view - badge on widgets with elementskey_ prefix
         $('.elementor-element[data-library-element-type]').each(function () {
             var type = $(this).attr('data-library-element-type');
-            if (type && type.indexOf('bdea_') === 0) {
+            if (type && type.indexOf('elementskey_') === 0) {
                 var $title = $(this).find('.title-wrapper .title').first();
                 if ($title.length && !$title.find('.es-badge').length) {
                     $title.append('<span class="es-badge">ES</span>');

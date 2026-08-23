@@ -7,10 +7,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Basic_Gallery_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_basic_gallery';
+        return 'elementskey_basic_gallery';
     }
 
     public function get_title() {
@@ -26,19 +26,19 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     public function get_script_depends() {
-        return [ 'bdea-content-script' ];
+        return [ 'elementskey-content-script' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_gallery_section',
+            'elementskey_gallery_section',
             [
-                'label' => __( 'Gallery', 'elementkey-lite' ),
+                'label' => __( 'Gallery', 'elementskey' ),
             ]
         );
 
@@ -47,7 +47,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'gallery_image',
             [
-                'label' => __( 'Image', 'elementkey-lite' ),
+                'label' => __( 'Image', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -58,7 +58,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'gallery_caption',
             [
-                'label' => __( 'Caption', 'elementkey-lite' ),
+                'label' => __( 'Caption', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '',
             ]
@@ -67,7 +67,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'gallery_link',
             [
-                'label' => __( 'Link', 'elementkey-lite' ),
+                'label' => __( 'Link', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -76,13 +76,13 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'galleries',
             [
-                'label' => __( 'Images', 'elementkey-lite' ),
+                'label' => __( 'Images', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'gallery_caption' => __( 'Gallery Image 1', 'elementkey-lite' ) ],
-                    [ 'gallery_caption' => __( 'Gallery Image 2', 'elementkey-lite' ) ],
-                    [ 'gallery_caption' => __( 'Gallery Image 3', 'elementkey-lite' ) ],
+                    [ 'gallery_caption' => __( 'Gallery Image 1', 'elementskey' ) ],
+                    [ 'gallery_caption' => __( 'Gallery Image 2', 'elementskey' ) ],
+                    [ 'gallery_caption' => __( 'Gallery Image 3', 'elementskey' ) ],
                 ],
                 'title_field' => '{{{ gallery_caption }}}',
             ]
@@ -91,7 +91,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'columns',
             [
-                'label' => __( 'Columns', 'elementkey-lite' ),
+                'label' => __( 'Columns', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '3',
                 'tablet_default' => '2',
@@ -110,13 +110,13 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'gallery_gap',
             [
-                'label' => __( 'Gap', 'elementkey-lite' ),
+                'label' => __( 'Gap', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
                 'default' => [ 'size' => 12, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-grid' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-gallery-grid' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -124,10 +124,10 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'lightbox_enable',
             [
-                'label' => __( 'Lightbox', 'elementkey-lite' ),
+                'label' => __( 'Lightbox', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
-                'description' => __( 'Open images in a lightbox popup when clicked.', 'elementkey-lite' ),
+                'description' => __( 'Open images in a lightbox popup when clicked.', 'elementskey' ),
             ]
         );
 
@@ -135,9 +135,9 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
 
         // Image Style
         $this->start_controls_section(
-            'bdea_gallery_image_style',
+            'elementskey_gallery_image_style',
             [
-                'label' => __( 'Image', 'elementkey-lite' ),
+                'label' => __( 'Image', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -145,13 +145,13 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => __( 'Image Height', 'elementkey-lite' ),
+                'label' => __( 'Image Height', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
                 'default' => [ 'size' => 220, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-item img' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-gallery-item img' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -159,15 +159,15 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => __( 'Object Fit', 'elementkey-lite' ),
+                'label' => __( 'Object Fit', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => __( 'Cover', 'elementkey-lite' ),
-                    'contain' => __( 'Contain', 'elementkey-lite' ),
+                    'cover' => __( 'Cover', 'elementskey' ),
+                    'contain' => __( 'Contain', 'elementskey' ),
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-item img' => 'object-fit: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-gallery-item img' => 'object-fit: {{VALUE}};',
                 ],
             ]
         );
@@ -175,12 +175,12 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_radius',
             [
-                'label' => __( 'Border Radius', 'elementkey-lite' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-item img' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-gallery-item img' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -189,7 +189,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'image_shadow',
-                'selector' => '{{WRAPPER}} .bdea-gallery-item img',
+                'selector' => '{{WRAPPER}} .elementskey-gallery-item img',
             ]
         );
 
@@ -197,9 +197,9 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
 
         // Hover Style
         $this->start_controls_section(
-            'bdea_gallery_hover_style',
+            'elementskey_gallery_hover_style',
             [
-                'label' => __( 'Hover', 'elementkey-lite' ),
+                'label' => __( 'Hover', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -207,13 +207,13 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hover_scale',
             [
-                'label' => __( 'Hover Scale', 'elementkey-lite' ),
+                'label' => __( 'Hover Scale', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [ '' => [ 'min' => 1, 'max' => 1.5, 'step' => 0.01 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-item img' => 'transition: transform 0.3s ease;',
-                    '{{WRAPPER}} .bdea-gallery-item:hover img' => 'transform: scale({{SIZE}});',
+                    '{{WRAPPER}} .elementskey-gallery-item img' => 'transition: transform 0.3s ease;',
+                    '{{WRAPPER}} .elementskey-gallery-item:hover img' => 'transform: scale({{SIZE}});',
                 ],
             ]
         );
@@ -221,13 +221,13 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'hover_opacity',
             [
-                'label' => __( 'Hover Opacity', 'elementkey-lite' ),
+                'label' => __( 'Hover Opacity', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [ '' => [ 'min' => 0.1, 'max' => 1, 'step' => 0.01 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-item img' => 'transition: opacity 0.3s ease;',
-                    '{{WRAPPER}} .bdea-gallery-item:hover img' => 'opacity: {{SIZE}};',
+                    '{{WRAPPER}} .elementskey-gallery-item img' => 'transition: opacity 0.3s ease;',
+                    '{{WRAPPER}} .elementskey-gallery-item:hover img' => 'opacity: {{SIZE}};',
                 ],
             ]
         );
@@ -236,9 +236,9 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
 
         // Caption Style
         $this->start_controls_section(
-            'bdea_gallery_caption_style',
+            'elementskey_gallery_caption_style',
             [
-                'label' => __( 'Caption', 'elementkey-lite' ),
+                'label' => __( 'Caption', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -247,18 +247,18 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'caption_typography',
-                'selector' => '{{WRAPPER}} .bdea-gallery-caption',
+                'selector' => '{{WRAPPER}} .elementskey-gallery-caption',
             ]
         );
 
         $this->add_control(
             'caption_color',
             [
-                'label' => __( 'Caption Color', 'elementkey-lite' ),
+                'label' => __( 'Caption Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-caption' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-gallery-caption' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -266,15 +266,15 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'caption_align',
             [
-                'label' => __( 'Caption Alignment', 'elementkey-lite' ),
+                'label' => __( 'Caption Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-caption' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-gallery-caption' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -282,12 +282,12 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'caption_spacing',
             [
-                'label' => __( 'Spacing Above Caption', 'elementkey-lite' ),
+                'label' => __( 'Spacing Above Caption', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-gallery-caption' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-gallery-caption' => 'margin-top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -305,9 +305,9 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
         $columns = ! empty( $settings['columns'] ) ? $settings['columns'] : '3';
         $lightbox = ( 'yes' === $settings['lightbox_enable'] );
 
-        $grid_classes = [ 'bdea-gallery-grid', 'bdea-gallery-columns-' . $columns ];
+        $grid_classes = [ 'elementskey-gallery-grid', 'elementskey-gallery-columns-' . $columns ];
         if ( $lightbox ) {
-            $grid_classes[] = 'bdea-gallery-lightbox';
+            $grid_classes[] = 'elementskey-gallery-lightbox';
         }
         ?>
         <div class="<?php echo esc_attr( implode( ' ', array_filter( $grid_classes ) ) ); ?>">
@@ -318,9 +318,9 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
                 $caption   = ! empty( $item['gallery_caption'] ) ? $item['gallery_caption'] : '';
                 $has_link  = ! empty( $item['gallery_link']['url'] );
                 ?>
-                <figure class="bdea-gallery-item">
+                <figure class="elementskey-gallery-item">
                     <?php if ( $lightbox && ! $has_link ) : ?>
-                        <a class="bdea-gallery-lightbox-link" href="<?php echo esc_url( $image_url ); ?>" data-caption="<?php echo esc_attr( $caption ); ?>">
+                        <a class="elementskey-gallery-lightbox-link" href="<?php echo esc_url( $image_url ); ?>" data-caption="<?php echo esc_attr( $caption ); ?>">
                     <?php elseif ( $has_link ) : ?>
                         <a href="<?php echo esc_url( $item['gallery_link']['url'] ); ?>"
                            <?php echo ! empty( $item['gallery_link']['is_external'] ) ? 'target="_blank"' : ''; ?>
@@ -340,7 +340,7 @@ class BDEA_Basic_Gallery_Widget extends \Elementor\Widget_Base {
                     <?php endif; ?>
 
                     <?php if ( $caption ) : ?>
-                        <figcaption class="bdea-gallery-caption"><?php echo esc_html( $caption ); ?></figcaption>
+                        <figcaption class="elementskey-gallery-caption"><?php echo esc_html( $caption ); ?></figcaption>
                     <?php endif; ?>
                 </figure>
             <?php endforeach; ?>

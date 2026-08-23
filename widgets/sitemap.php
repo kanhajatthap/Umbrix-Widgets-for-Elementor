@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Sitemap_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_sitemap';
+        return 'elementskey_sitemap';
     }
 
     public function get_title() {
@@ -22,28 +22,28 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_sitemap_section',
+            'elementskey_sitemap_section',
             [
-                'label' => __( 'Sitemap', 'elementstack-elementor-addons' ),
+                'label' => __( 'Sitemap', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'sitemap_post_types',
             [
-                'label' => __( 'Post Types', 'elementstack-elementor-addons' ),
+                'label' => __( 'Post Types', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
-                'options' => bdea_widget_post_types(),
+                'options' => elementskey_widget_post_types(),
                 'default' => [ 'page' ],
                 'multiple' => true,
             ]
@@ -52,7 +52,7 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_show_count',
             [
-                'label' => __( 'Show Post Count', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Post Count', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -61,13 +61,13 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_orderby',
             [
-                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
+                'label' => __( 'Order By', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'menu_order',
                 'options' => [
-                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
-                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
-                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
+                    'menu_order' => __( 'Menu Order', 'elementskey' ),
+                    'title' => __( 'Title', 'elementskey' ),
+                    'date' => __( 'Date', 'elementskey' ),
                 ],
             ]
         );
@@ -75,12 +75,12 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_order',
             [
-                'label' => __( 'Order', 'elementstack-elementor-addons' ),
+                'label' => __( 'Order', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'ASC',
                 'options' => [
-                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
-                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
+                    'ASC' => __( 'Ascending', 'elementskey' ),
+                    'DESC' => __( 'Descending', 'elementskey' ),
                 ],
             ]
         );
@@ -88,9 +88,9 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_sitemap_style',
+            'elementskey_sitemap_style',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -98,11 +98,11 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_link_color',
             [
-                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-sitemap a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-sitemap a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -110,11 +110,35 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sitemap_title_color',
             [
-                'label' => __( 'Post Type Title Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Post Type Title Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-sitemap-type-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-sitemap-type-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'count_color',
+            [
+                'label' => __( 'Count Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#9ca3af',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-sitemap-count' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'item_border_color',
+            [
+                'label' => __( 'Item Border Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#f3f4f6',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-sitemap-list li' => 'border-bottom-color: {{VALUE}};',
                 ],
             ]
         );
@@ -147,22 +171,22 @@ class BDEA_Sitemap_Widget extends \Elementor\Widget_Base {
 
         if ( empty( $items_by_type ) ) {
             ?>
-            <div class="bdea-loop-grid-empty">No items to display.</div>
+            <div class="elementskey-loop-grid-empty">No items to display.</div>
             <?php
             return;
         }
         ?>
-        <div class="bdea-sitemap">
+        <div class="elementskey-sitemap">
             <?php foreach ( $items_by_type as $post_type => $posts ) : ?>
                 <?php $type_obj = get_post_type_object( $post_type ); ?>
-                <div class="bdea-sitemap-group">
-                    <h3 class="bdea-sitemap-type-title">
+                <div class="elementskey-sitemap-group">
+                    <h3 class="elementskey-sitemap-type-title">
                         <?php echo esc_html( $type_obj ? $type_obj->labels->name : $post_type ); ?>
                         <?php if ( 'yes' === $settings['sitemap_show_count'] ) : ?>
-                            <span class="bdea-sitemap-count">(<?php echo esc_html( count( $posts ) ); ?>)</span>
+                            <span class="elementskey-sitemap-count">(<?php echo esc_html( count( $posts ) ); ?>)</span>
                         <?php endif; ?>
                     </h3>
-                    <ul class="bdea-sitemap-list">
+                    <ul class="elementskey-sitemap-list">
                         <?php foreach ( $posts as $post ) : ?>
                             <li><a href="<?php echo esc_url( get_permalink( $post ) ); ?>"><?php echo esc_html( get_the_title( $post ) ); ?></a></li>
                         <?php endforeach; ?>

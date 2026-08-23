@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_testimonial_carousel';
+        return 'elementskey_testimonial_carousel';
     }
 
     public function get_title() {
@@ -22,23 +22,23 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     public function get_script_depends() {
-        return [ 'swiper', 'bdea-content-script' ];
+        return [ 'swiper', 'elementskey-content-script' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_testimonial_carousel_section',
+            'elementskey_testimonial_carousel_section',
             [
-                'label' => __( 'Testimonials', 'elementstack-elementor-addons' ),
+                'label' => __( 'Testimonials', 'elementskey' ),
             ]
         );
 
@@ -47,7 +47,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'tc_avatar',
             [
-                'label' => __( 'Avatar', 'elementstack-elementor-addons' ),
+                'label' => __( 'Avatar', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
             ]
         );
@@ -55,25 +55,25 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'tc_name',
             [
-                'label' => __( 'Name', 'elementstack-elementor-addons' ),
+                'label' => __( 'Name', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'John Doe', 'elementstack-elementor-addons' ),
+                'default' => __( 'John Doe', 'elementskey' ),
             ]
         );
 
         $repeater->add_control(
             'tc_role',
             [
-                'label' => __( 'Role', 'elementstack-elementor-addons' ),
+                'label' => __( 'Role', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'CEO', 'elementstack-elementor-addons' ),
+                'default' => __( 'CEO', 'elementskey' ),
             ]
         );
 
         $repeater->add_control(
             'tc_content',
             [
-                'label' => __( 'Testimonial', 'elementstack-elementor-addons' ),
+                'label' => __( 'Testimonial', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Amazing service, highly recommended!',
             ]
@@ -82,7 +82,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'tc_rating',
             [
-                'label' => __( 'Rating', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rating', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 5,
                 'min' => 1,
@@ -94,13 +94,13 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials',
             [
-                'label' => __( 'Testimonials', 'elementstack-elementor-addons' ),
+                'label' => __( 'Testimonials', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'tc_name' => __( 'Sarah Johnson', 'elementstack-elementor-addons' ), 'tc_role' => __( 'Designer', 'elementstack-elementor-addons' ) ],
-                    [ 'tc_name' => __( 'Mike Chen', 'elementstack-elementor-addons' ), 'tc_role' => __( 'Developer', 'elementstack-elementor-addons' ) ],
-                    [ 'tc_name' => __( 'Emma Wilson', 'elementstack-elementor-addons' ), 'tc_role' => __( 'Manager', 'elementstack-elementor-addons' ) ],
+                    [ 'tc_name' => __( 'Sarah Johnson', 'elementskey' ), 'tc_role' => __( 'Designer', 'elementskey' ) ],
+                    [ 'tc_name' => __( 'Mike Chen', 'elementskey' ), 'tc_role' => __( 'Developer', 'elementskey' ) ],
+                    [ 'tc_name' => __( 'Emma Wilson', 'elementskey' ), 'tc_role' => __( 'Manager', 'elementskey' ) ],
                 ],
                 'title_field' => '{{{ tc_name }}}',
             ]
@@ -109,7 +109,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tc_slides_view',
             [
-                'label' => __( 'Slides to Show', 'elementstack-elementor-addons' ),
+                'label' => __( 'Slides to Show', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 2,
                 'min' => 1,
@@ -120,7 +120,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tc_autoplay',
             [
-                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
+                'label' => __( 'Autoplay', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -129,7 +129,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tc_dots',
             [
-                'label' => __( 'Show Dots', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Dots', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -138,7 +138,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tc_arrows',
             [
-                'label' => __( 'Show Arrows', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Arrows', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -148,9 +148,9 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
 
         // Card Style
         $this->start_controls_section(
-            'bdea_tc_card_style',
+            'elementskey_tc_card_style',
             [
-                'label' => __( 'Card', 'elementstack-elementor-addons' ),
+                'label' => __( 'Card', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -158,11 +158,11 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tc_card_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -171,18 +171,18 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'card_border',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-card',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-card',
             ]
         );
 
         $this->add_responsive_control(
             'card_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -191,14 +191,14 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'card_shadow',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-card',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-card',
             ]
         );
 
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -209,7 +209,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -217,7 +217,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_gap',
             [
-                'label' => __( 'Slide Gap', 'elementstack-elementor-addons' ),
+                'label' => __( 'Slide Gap', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
@@ -231,9 +231,9 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
 
         // Avatar Style
         $this->start_controls_section(
-            'bdea_tc_avatar_style',
+            'elementskey_tc_avatar_style',
             [
-                'label' => __( 'Avatar', 'elementstack-elementor-addons' ),
+                'label' => __( 'Avatar', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -241,12 +241,12 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'avatar_size',
             [
-                'label' => __( 'Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 16, 'max' => 120 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-author img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-author img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -254,12 +254,12 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'avatar_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-author img' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-author img' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -268,19 +268,19 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'avatar_border',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-author img',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-author img',
             ]
         );
 
         $this->add_responsive_control(
             'avatar_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-author img' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-author img' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -289,9 +289,9 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
 
         // Typography
         $this->start_controls_section(
-            'bdea_tc_typo',
+            'elementskey_tc_typo',
             [
-                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
+                'label' => __( 'Typography', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -299,11 +299,11 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tc_text_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-content' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-content' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -312,18 +312,18 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'content_typo',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-content',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-content',
             ]
         );
 
         $this->add_control(
             'tc_name_color',
             [
-                'label' => __( 'Name Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Name Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-name' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-name' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -332,17 +332,17 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'name_typo',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-name',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-name',
             ]
         );
 
         $this->add_control(
             'tc_role_color',
             [
-                'label' => __( 'Role Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Role Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-role' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-role' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -351,9 +351,9 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
 
         // Stars
         $this->start_controls_section(
-            'bdea_tc_stars_style',
+            'elementskey_tc_stars_style',
             [
-                'label' => __( 'Stars', 'elementstack-elementor-addons' ),
+                'label' => __( 'Stars', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -361,11 +361,11 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tc_star_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f59e0b',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-stars' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-stars' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -373,12 +373,12 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'star_size',
             [
-                'label' => __( 'Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 40 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-stars' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-stars' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -386,12 +386,12 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'star_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 10 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-stars' => 'letter-spacing: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-stars' => 'letter-spacing: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -400,9 +400,9 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
 
         // Navigation Style
         $this->start_controls_section(
-            'bdea_tc_nav_style',
+            'elementskey_tc_nav_style',
             [
-                'label' => __( 'Navigation', 'elementstack-elementor-addons' ),
+                'label' => __( 'Navigation', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -410,7 +410,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'arrow_color',
             [
-                'label' => __( 'Arrow Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Arrow Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'color: {{VALUE}};',
@@ -418,23 +418,96 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'arrow_background',
+            [
+                'label'     => __( 'Arrow Background', 'elementskey' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-custom-arrow' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'     => 'arrow_border',
+                'selector' => '{{WRAPPER}} .elementskey-custom-arrow',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'arrow_radius',
+            [
+                'label'      => __( 'Arrow Border Radius', 'elementskey' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .elementskey-custom-arrow' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrow_border_color',
+            [
+                'label'     => __( 'Arrow Border Color', 'elementskey' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-custom-arrow' => 'border-style: solid; border-width: 1px; border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'arrow_size',
             [
-                'label' => __( 'Arrow Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Arrow Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 40 ] ],
                 'selectors' => [
+                    '{{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'arrow_icon_size',
+            [
+                'label'      => __( 'Arrow Icon Size', 'elementskey' ),
+                'type'       => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [ 'px' => [ 'min' => 10, 'max' => 60 ] ],
+                'selectors'  => [
                     '{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->add_control(
+            'prev_arrow_icon',
+            [
+                'label'   => __( 'Previous Arrow Icon', 'elementskey' ),
+                'type'    => \Elementor\Controls_Manager::ICONS,
+                'default' => [ 'value' => 'fas fa-chevron-left', 'library' => 'fa-solid' ],
+            ]
+        );
+
+        $this->add_control(
+            'next_arrow_icon',
+            [
+                'label'   => __( 'Next Arrow Icon', 'elementskey' ),
+                'type'    => \Elementor\Controls_Manager::ICONS,
+                'default' => [ 'value' => 'fas fa-chevron-right', 'library' => 'fa-solid' ],
+            ]
+        );
+
+        $this->add_control(
             'dot_color',
             [
-                'label' => __( 'Dot Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Dot Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .swiper-pagination-bullet' => 'background: {{VALUE}};',
@@ -445,7 +518,7 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'dot_active_color',
             [
-                'label' => __( 'Active Dot Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Active Dot Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
@@ -463,6 +536,9 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             return;
         }
 
+        $previous_icon = ! empty( $settings['prev_arrow_icon'] ) ? $settings['prev_arrow_icon'] : [ 'value' => 'fas fa-chevron-left', 'library' => 'fa-solid' ];
+        $next_icon     = ! empty( $settings['next_arrow_icon'] ) ? $settings['next_arrow_icon'] : [ 'value' => 'fas fa-chevron-right', 'library' => 'fa-solid' ];
+
         $slider_data = [
             'autoplay' => ( 'yes' === $settings['tc_autoplay'] ),
             'dots'     => ( 'yes' === $settings['tc_dots'] ),
@@ -472,13 +548,13 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             'slidesMobile' => 1,
         ];
         ?>
-        <div class="bdea-testimonial-carousel-widget">
-            <div class="bdea-testimonial-carousel swiper" data-settings='<?php echo esc_attr( wp_json_encode( $slider_data ) ); ?>'>
+        <div class="elementskey-testimonial-carousel-widget">
+            <div class="elementskey-testimonial-carousel swiper" data-settings='<?php echo esc_attr( wp_json_encode( $slider_data ) ); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ( $settings['testimonials'] as $item ) : ?>
                         <div class="swiper-slide">
-                            <div class="bdea-testimonial-card">
-                                <div class="bdea-testimonial-stars">
+                            <div class="elementskey-testimonial-card">
+                                <div class="elementskey-testimonial-stars">
                                     <?php
                                     $rating = max( 1, min( 5, (int) $item['tc_rating'] ) );
                                     for ( $i = 1; $i <= 5; $i++ ) {
@@ -486,15 +562,15 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
                                     }
                                     ?>
                                 </div>
-                                <p class="bdea-testimonial-content"><?php echo esc_html( $item['tc_content'] ); ?></p>
-                                <div class="bdea-testimonial-author">
+                                <p class="elementskey-testimonial-content"><?php echo esc_html( $item['tc_content'] ); ?></p>
+                                <div class="elementskey-testimonial-author">
                                     <?php if ( ! empty( $item['tc_avatar']['url'] ) ) : ?>
                                         <img src="<?php echo esc_url( $item['tc_avatar']['url'] ); ?>" alt="<?php echo esc_attr( $item['tc_name'] ); ?>" loading="lazy" />
                                     <?php endif; ?>
                                     <div>
-                                        <div class="bdea-testimonial-name"><?php echo esc_html( $item['tc_name'] ); ?></div>
+                                        <div class="elementskey-testimonial-name"><?php echo esc_html( $item['tc_name'] ); ?></div>
                                         <?php if ( ! empty( $item['tc_role'] ) ) : ?>
-                                            <div class="bdea-testimonial-role"><?php echo esc_html( $item['tc_role'] ); ?></div>
+                                            <div class="elementskey-testimonial-role"><?php echo esc_html( $item['tc_role'] ); ?></div>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -503,8 +579,8 @@ class BDEA_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
                     <?php endforeach; ?>
                 </div>
                 <?php if ( $slider_data['arrows'] ) : ?>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <button type="button" class="swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+                    <button type="button" class="swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
                 <?php endif; ?>
                 <?php if ( $slider_data['dots'] ) : ?>
                     <div class="swiper-pagination"></div>

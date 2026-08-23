@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Table_Of_Content_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_table_of_content';
+        return 'elementskey_table_of_content';
     }
 
     public function get_title() {
@@ -22,39 +22,39 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     public function get_script_depends() {
-        return [ 'bdea-content-script' ];
+        return [ 'elementskey-content-script' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_toc_section',
+            'elementskey_toc_section',
             [
-                'label' => __( 'Table Of Content', 'elementstack-elementor-addons' ),
+                'label' => __( 'Table Of Content', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'toc_title',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Table of Contents', 'elementstack-elementor-addons' ),
+                'default' => __( 'Table of Contents', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'toc_heading',
             [
-                'label' => __( 'Heading to Include', 'elementstack-elementor-addons' ),
+                'label' => __( 'Heading to Include', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => [
@@ -70,7 +70,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_selector',
             [
-                'label' => __( 'Heading Selector', 'elementstack-elementor-addons' ),
+                'label' => __( 'Heading Selector', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '.entry-content h2, h2',
             ]
@@ -79,9 +79,9 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_toc_title_style',
+            'elementskey_toc_title_style',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -90,18 +90,18 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'toc_title_typography',
-                'selector' => '{{WRAPPER}} .bdea-toc-title',
+                'selector' => '{{WRAPPER}} .elementskey-toc-title',
             ]
         );
 
         $this->add_control(
             'toc_title_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-toc-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -109,9 +109,9 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_toc_item_style',
+            'elementskey_toc_item_style',
             [
-                'label' => __( 'Items', 'elementstack-elementor-addons' ),
+                'label' => __( 'Items', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -120,18 +120,18 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'toc_item_typography',
-                'selector' => '{{WRAPPER}} .bdea-toc-list a',
+                'selector' => '{{WRAPPER}} .elementskey-toc-list a',
             ]
         );
 
         $this->add_control(
             'toc_item_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc-list a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-toc-list a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -139,11 +139,11 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_item_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc-list a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-toc-list a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -151,11 +151,11 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_item_padding',
             [
-                'label' => __( 'Item Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc-list li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-toc-list li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -163,11 +163,11 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_item_border_radius',
             [
-                'label' => __( 'Item Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc-list a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-toc-list a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -175,12 +175,12 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_item_spacing',
             [
-                'label' => __( 'Item Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 20 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc-list li + li' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-toc-list li + li' => 'margin-top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -188,9 +188,9 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_toc_wrapper_style',
+            'elementskey_toc_wrapper_style',
             [
-                'label' => __( 'Wrapper', 'elementstack-elementor-addons' ),
+                'label' => __( 'Wrapper', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -198,10 +198,10 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'toc_wrapper_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-toc' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -209,11 +209,11 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'toc_wrapper_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-toc' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -222,18 +222,18 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'toc_wrapper_border',
-                'selector' => '{{WRAPPER}} .bdea-toc',
+                'selector' => '{{WRAPPER}} .elementskey-toc',
             ]
         );
 
         $this->add_responsive_control(
             'toc_wrapper_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-toc' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-toc' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -242,7 +242,7 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'toc_wrapper_shadow',
-                'selector' => '{{WRAPPER}} .bdea-toc',
+                'selector' => '{{WRAPPER}} .elementskey-toc',
             ]
         );
 
@@ -257,13 +257,13 @@ class BDEA_Table_Of_Content_Widget extends \Elementor\Widget_Base {
         $headings = array_map( 'sanitize_text_field', $headings );
         $selector = ! empty( $settings['toc_selector'] ) ? $settings['toc_selector'] : '.entry-content h2, h2';
         ?>
-        <div class="bdea-toc"
+        <div class="elementskey-toc"
              data-headings="<?php echo esc_attr( implode( ',', $headings ) ); ?>"
              data-selector="<?php echo esc_attr( $selector ); ?>">
             <?php if ( $title ) : ?>
-                <div class="bdea-toc-title"><?php echo esc_html( $title ); ?></div>
+                <div class="elementskey-toc-title"><?php echo esc_html( $title ); ?></div>
             <?php endif; ?>
-            <ul class="bdea-toc-list"></ul>
+            <ul class="elementskey-toc-list"></ul>
         </div>
         <?php
     }

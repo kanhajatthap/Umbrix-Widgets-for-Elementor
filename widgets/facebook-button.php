@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Facebook_Button_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_facebook_button';
+        return 'elementskey_facebook_button';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_facebook_button_section',
+            'elementskey_facebook_button_section',
             [
-                'label' => __( 'Facebook Button', 'elementstack-elementor-addons' ),
+                'label' => __( 'Facebook Button', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'fb_button_url',
             [
-                'label' => __( 'Page URL', 'elementstack-elementor-addons' ),
+                'label' => __( 'Page URL', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://facebook.com/yourpage',
             ]
@@ -50,14 +50,14 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'fb_button_layout',
             [
-                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
+                'label' => __( 'Layout', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'standard',
                 'options' => [
-                    'standard' => __( 'Standard', 'elementstack-elementor-addons' ),
-                    'box_count' => __( 'Box Count', 'elementstack-elementor-addons' ),
-                    'button_count' => __( 'Button Count', 'elementstack-elementor-addons' ),
-                    'button' => __( 'Button', 'elementstack-elementor-addons' ),
+                    'standard' => __( 'Standard', 'elementskey' ),
+                    'box_count' => __( 'Box Count', 'elementskey' ),
+                    'button_count' => __( 'Button Count', 'elementskey' ),
+                    'button' => __( 'Button', 'elementskey' ),
                 ],
             ]
         );
@@ -65,12 +65,12 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'fb_button_action',
             [
-                'label' => __( 'Action', 'elementstack-elementor-addons' ),
+                'label' => __( 'Action', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'like',
                 'options' => [
-                    'like' => __( 'Like', 'elementstack-elementor-addons' ),
-                    'recommend' => __( 'Recommend', 'elementstack-elementor-addons' ),
+                    'like' => __( 'Like', 'elementskey' ),
+                    'recommend' => __( 'Recommend', 'elementskey' ),
                 ],
             ]
         );
@@ -78,7 +78,7 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'fb_button_show_faces',
             [
-                'label' => __( 'Show Faces', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Faces', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -87,9 +87,9 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_facebook_button_style',
+            'elementskey_facebook_button_style',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -97,16 +97,16 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'fb_button_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-facebook-button' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-facebook-button' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -114,11 +114,11 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'fb_button_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-facebook-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-facebook-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -127,18 +127,18 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'fb_button_border',
-                'selector' => '{{WRAPPER}} .bdea-facebook-button',
+                'selector' => '{{WRAPPER}} .elementskey-facebook-button',
             ]
         );
 
         $this->add_responsive_control(
             'fb_button_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-facebook-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-facebook-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -147,7 +147,7 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
     }
 
     private function output_sdk() {
-        bdea_maybe_print_fb_sdk( 'v17.0' );
+        elementskey_maybe_print_fb_sdk( 'v17.0' );
     }
 
     protected function render() {
@@ -161,7 +161,7 @@ class BDEA_Facebook_Button_Widget extends \Elementor\Widget_Base {
 
         $this->output_sdk();
         ?>
-        <div class="bdea-facebook-button">
+        <div class="elementskey-facebook-button">
             <div class="fb-like"
                  data-href="<?php echo esc_url( $url ); ?>"
                  data-layout="<?php echo esc_attr( $settings['fb_button_layout'] ); ?>"

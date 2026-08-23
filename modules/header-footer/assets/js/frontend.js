@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    var header      = document.querySelector('.bdea-hf-header');
-    var announcement = document.querySelector('.bdea-hf-announcement');
+    var header      = document.querySelector('.elementskey-hf-header');
+    var announcement = document.querySelector('.elementskey-hf-announcement');
 
     function getOffset(header) {
         return header && header.getAttribute('data-offset') ? parseInt(header.getAttribute('data-offset'), 10) : 0;
@@ -15,9 +15,9 @@
             var offset = getOffset(header);
 
             if (y > offset) {
-                header.classList.add('bdea-hf-scrolled');
+                header.classList.add('elementskey-hf-scrolled');
             } else {
-                header.classList.remove('bdea-hf-scrolled');
+                header.classList.remove('elementskey-hf-scrolled');
             }
         }
     }
@@ -27,13 +27,13 @@
     function onScrollDirection() {
         var y = window.pageYOffset || document.documentElement.scrollTop || 0;
 
-        if (header && header.classList.contains('bdea-hf-hide-scroll')) {
+        if (header && header.classList.contains('elementskey-hf-hide-scroll')) {
             var offset = getOffset(header);
 
             if (y > offset && y > lastY) {
-                header.classList.add('bdea-hf-scroll-down');
+                header.classList.add('elementskey-hf-scroll-down');
             } else {
-                header.classList.remove('bdea-hf-scroll-down');
+                header.classList.remove('elementskey-hf-scroll-down');
             }
         }
 
@@ -52,7 +52,7 @@
     }
 
     if (announcement) {
-        var closeBtn = announcement.querySelector('.bdea-hf-announcement-close');
+        var closeBtn = announcement.querySelector('.elementskey-hf-announcement-close');
 
         if (closeBtn) {
             closeBtn.addEventListener('click', function () {
@@ -60,7 +60,7 @@
                 var days = parseInt(closeBtn.getAttribute('data-days'), 10) || 1;
 
                 if (id) {
-                    document.cookie = 'bdea_hf_dismiss_' + id + '=1; max-age=' + (days * 86400) + '; path=/; SameSite=Lax';
+                    document.cookie = 'elementskey_hf_dismiss_' + id + '=1; max-age=' + (days * 86400) + '; path=/; SameSite=Lax';
                 }
 
                 announcement.style.display = 'none';

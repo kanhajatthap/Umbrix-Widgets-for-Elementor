@@ -7,10 +7,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Posts_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Posts_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_posts';
+        return 'elementskey_posts';
     }
 
     public function get_title() {
@@ -26,35 +26,35 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_query_section',
+            'elementskey_query_section',
             [
-                'label' => __( 'Query', 'elementkey-lite' ),
+                'label' => __( 'Query', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'post_type',
             [
-                'label' => __( 'Post Type', 'elementkey-lite' ),
+                'label' => __( 'Post Type', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'post',
-                'options' => bdea_widget_post_types(),
+                'options' => elementskey_widget_post_types(),
             ]
         );
 
         $this->add_control(
             'include_cats',
             [
-                'label' => __( 'Categories', 'elementkey-lite' ),
+                'label' => __( 'Categories', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
-                'options' => bdea_widget_terms_list( 'category' ),
+                'options' => elementskey_widget_terms_list( 'category' ),
                 'description' => 'Leave empty for all categories.',
             ]
         );
@@ -62,10 +62,10 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'include_tags',
             [
-                'label' => __( 'Tags', 'elementkey-lite' ),
+                'label' => __( 'Tags', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
-                'options' => bdea_widget_terms_list( 'post_tag' ),
+                'options' => elementskey_widget_terms_list( 'post_tag' ),
                 'description' => 'Leave empty for all tags.',
             ]
         );
@@ -82,7 +82,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => __( 'Number of Posts', 'elementkey-lite' ),
+                'label' => __( 'Number of Posts', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 6,
                 'min' => 1,
@@ -93,15 +93,15 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'orderby',
             [
-                'label' => __( 'Order By', 'elementkey-lite' ),
+                'label' => __( 'Order By', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => __( 'Date', 'elementkey-lite' ),
-                    'modified' => __( 'Modified Date', 'elementkey-lite' ),
-                    'title' => __( 'Title', 'elementkey-lite' ),
-                    'menu_order' => __( 'Menu Order', 'elementkey-lite' ),
-                    'rand' => __( 'Random', 'elementkey-lite' ),
+                    'date' => __( 'Date', 'elementskey' ),
+                    'modified' => __( 'Modified Date', 'elementskey' ),
+                    'title' => __( 'Title', 'elementskey' ),
+                    'menu_order' => __( 'Menu Order', 'elementskey' ),
+                    'rand' => __( 'Random', 'elementskey' ),
                 ],
             ]
         );
@@ -109,12 +109,12 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => __( 'Order', 'elementkey-lite' ),
+                'label' => __( 'Order', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'ASC' => __( 'Ascending', 'elementkey-lite' ),
-                    'DESC' => __( 'Descending', 'elementkey-lite' ),
+                    'ASC' => __( 'Ascending', 'elementskey' ),
+                    'DESC' => __( 'Descending', 'elementskey' ),
                 ],
             ]
         );
@@ -122,21 +122,21 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_layout_section',
+            'elementskey_layout_section',
             [
-                'label' => __( 'Layout', 'elementkey-lite' ),
+                'label' => __( 'Layout', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'layout',
             [
-                'label' => __( 'Layout', 'elementkey-lite' ),
+                'label' => __( 'Layout', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'grid',
                 'options' => [
-                    'grid' => __( 'Grid', 'elementkey-lite' ),
-                    'list' => __( 'List', 'elementkey-lite' ),
+                    'grid' => __( 'Grid', 'elementskey' ),
+                    'list' => __( 'List', 'elementskey' ),
                 ],
             ]
         );
@@ -144,7 +144,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'columns',
             [
-                'label' => __( 'Columns', 'elementkey-lite' ),
+                'label' => __( 'Columns', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 6,
@@ -158,13 +158,13 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'column_gap',
             [
-                'label' => __( 'Column Gap', 'elementkey-lite' ),
+                'label' => __( 'Column Gap', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
                 'default' => [ 'size' => 24, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-posts-grid' => 'column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-posts-grid' => 'column-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -172,13 +172,13 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'row_gap',
             [
-                'label' => __( 'Row Gap', 'elementkey-lite' ),
+                'label' => __( 'Row Gap', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
                 'default' => [ 'size' => 24, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-posts-grid' => 'row-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-posts-grid' => 'row-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -186,16 +186,16 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_card_content_section',
+            'elementskey_card_content_section',
             [
-                'label' => __( 'Card Content', 'elementkey-lite' ),
+                'label' => __( 'Card Content', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'show_thumbnail',
             [
-                'label' => __( 'Show Thumbnail', 'elementkey-lite' ),
+                'label' => __( 'Show Thumbnail', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -204,14 +204,14 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'thumbnail_size',
             [
-                'label' => __( 'Thumbnail Size', 'elementkey-lite' ),
+                'label' => __( 'Thumbnail Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'thumbnail' => __( 'Thumbnail', 'elementkey-lite' ),
-                    'medium' => __( 'Medium', 'elementkey-lite' ),
-                    'large' => __( 'Large', 'elementkey-lite' ),
-                    'medium_large' => __( 'Medium Large', 'elementkey-lite' ),
-                    'full' => __( 'Full', 'elementkey-lite' ),
+                    'thumbnail' => __( 'Thumbnail', 'elementskey' ),
+                    'medium' => __( 'Medium', 'elementskey' ),
+                    'large' => __( 'Large', 'elementskey' ),
+                    'medium_large' => __( 'Medium Large', 'elementskey' ),
+                    'full' => __( 'Full', 'elementskey' ),
                 ],
                 'default' => 'medium',
                 'condition' => [ 'show_thumbnail' => 'yes' ],
@@ -221,7 +221,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_meta',
             [
-                'label' => __( 'Show Meta', 'elementkey-lite' ),
+                'label' => __( 'Show Meta', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -230,7 +230,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_title',
             [
-                'label' => __( 'Show Title', 'elementkey-lite' ),
+                'label' => __( 'Show Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -239,7 +239,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => __( 'Show Excerpt', 'elementkey-lite' ),
+                'label' => __( 'Show Excerpt', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -248,7 +248,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => __( 'Excerpt Length (words)', 'elementkey-lite' ),
+                'label' => __( 'Excerpt Length (words)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 18,
                 'min' => 3,
@@ -260,7 +260,7 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_read_more',
             [
-                'label' => __( 'Show Read More', 'elementkey-lite' ),
+                'label' => __( 'Show Read More', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -269,9 +269,9 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'read_more_text',
             [
-                'label' => __( 'Read More Text', 'elementkey-lite' ),
+                'label' => __( 'Read More Text', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Read More', 'elementkey-lite' ),
+                'default' => __( 'Read More', 'elementskey' ),
                 'condition' => [ 'show_read_more' => 'yes' ],
             ]
         );
@@ -279,9 +279,9 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_card_style_section',
+            'elementskey_card_style_section',
             [
-                'label' => __( 'Card', 'elementkey-lite' ),
+                'label' => __( 'Card', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -289,11 +289,11 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => __( 'Background', 'elementkey-lite' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -302,20 +302,20 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'card_border',
-                'selector' => '{{WRAPPER}} .bdea-post-card',
+                'selector' => '{{WRAPPER}} .elementskey-post-card',
             ]
         );
 
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => __( 'Border Radius', 'elementkey-lite' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-card' => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .bdea-post-thumb img' => 'border-radius: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0 0;',
+                    '{{WRAPPER}} .elementskey-post-card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-thumb img' => 'border-radius: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0 0;',
                 ],
             ]
         );
@@ -324,18 +324,18 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'card_shadow',
-                'selector' => '{{WRAPPER}} .bdea-post-card',
+                'selector' => '{{WRAPPER}} .elementskey-post-card',
             ]
         );
 
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => __( 'Padding', 'elementkey-lite' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -343,9 +343,9 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_image_style_section',
+            'elementskey_image_style_section',
             [
-                'label' => __( 'Thumbnail', 'elementkey-lite' ),
+                'label' => __( 'Thumbnail', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -353,13 +353,13 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'image_height',
             [
-                'label' => __( 'Height', 'elementkey-lite' ),
+                'label' => __( 'Height', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 80, 'max' => 700 ] ],
                 'default' => [ 'size' => 180, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-thumb img' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-thumb img' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -367,16 +367,16 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'image_fit',
             [
-                'label' => __( 'Object Fit', 'elementkey-lite' ),
+                'label' => __( 'Object Fit', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'cover',
                 'options' => [
-                    'cover' => __( 'Cover', 'elementkey-lite' ),
-                    'contain' => __( 'Contain', 'elementkey-lite' ),
-                    'fill' => __( 'Fill', 'elementkey-lite' ),
+                    'cover' => __( 'Cover', 'elementskey' ),
+                    'contain' => __( 'Contain', 'elementskey' ),
+                    'fill' => __( 'Fill', 'elementskey' ),
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-thumb img' => 'object-fit: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-thumb img' => 'object-fit: {{VALUE}};',
                 ],
             ]
         );
@@ -384,9 +384,9 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_typography_section',
+            'elementskey_typography_section',
             [
-                'label' => __( 'Typography', 'elementkey-lite' ),
+                'label' => __( 'Typography', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -395,17 +395,17 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-title',
+                'selector' => '{{WRAPPER}} .elementskey-post-title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'elementkey-lite' ),
+                'label' => __( 'Title Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-title a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-title a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -413,10 +413,10 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title_hover_color',
             [
-                'label' => __( 'Title Hover Color', 'elementkey-lite' ),
+                'label' => __( 'Title Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-title a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-title a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -425,17 +425,17 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'excerpt_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-excerpt',
+                'selector' => '{{WRAPPER}} .elementskey-post-excerpt',
             ]
         );
 
         $this->add_control(
             'excerpt_color',
             [
-                'label' => __( 'Excerpt Color', 'elementkey-lite' ),
+                'label' => __( 'Excerpt Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-excerpt' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-excerpt' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -444,17 +444,17 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'meta_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-meta',
+                'selector' => '{{WRAPPER}} .elementskey-post-meta',
             ]
         );
 
         $this->add_control(
             'meta_color',
             [
-                'label' => __( 'Meta Color', 'elementkey-lite' ),
+                'label' => __( 'Meta Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-meta' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-meta' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -463,17 +463,17 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'readmore_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-more',
+                'selector' => '{{WRAPPER}} .elementskey-post-more',
             ]
         );
 
         $this->add_control(
             'readmore_color',
             [
-                'label' => __( 'Read More Color', 'elementkey-lite' ),
+                'label' => __( 'Read More Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-more' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-more' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -488,10 +488,10 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
             $settings['exclude_ids'] = array_map( 'trim', explode( ',', $settings['exclude_ids'] ) );
         }
 
-        $query = new \WP_Query( bdea_widget_query_args( $settings ) );
+        $query = new \WP_Query( elementskey_widget_query_args( $settings ) );
 
         if ( ! $query->have_posts() ) {
-            echo '<div class="bdea-loop-grid-empty">No posts found.</div>';
+            echo '<div class="elementskey-loop-grid-empty">No posts found.</div>';
             return;
         }
 
@@ -504,38 +504,38 @@ class BDEA_Posts_Widget extends \Elementor\Widget_Base {
         $thumbnail_size = ! empty( $settings['thumbnail_size'] ) ? $settings['thumbnail_size'] : 'medium';
         $read_more_text = ! empty( $settings['read_more_text'] ) ? $settings['read_more_text'] : 'Read More';
 
-        $wrapper_class = ( 'list' === $layout ) ? 'bdea-posts-list' : 'bdea-posts-grid';
+        $wrapper_class = ( 'list' === $layout ) ? 'elementskey-posts-list' : 'elementskey-posts-grid';
 
         $this->add_render_attribute( 'wrapper', 'class', $wrapper_class );
-        $this->add_render_attribute( 'wrapper', 'style', "--bdea-cols: {$columns_desktop}; --bdea-cols-tablet: {$columns_tablet}; --bdea-cols-mobile: {$columns_mobile};" );
+        $this->add_render_attribute( 'wrapper', 'style', "--elementskey-cols: {$columns_desktop}; --elementskey-cols-tablet: {$columns_tablet}; --elementskey-cols-mobile: {$columns_mobile};" );
         ?>
         <div <?php echo $this->get_render_attribute_string( 'wrapper' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
             <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                 <?php $post_id = get_the_ID(); ?>
-                <article class="bdea-post-card">
+                <article class="elementskey-post-card">
                     <?php if ( 'yes' === $settings['show_thumbnail'] && has_post_thumbnail( $post_id ) ) : ?>
-                        <a class="bdea-post-thumb" href="<?php the_permalink(); ?>">
+                        <a class="elementskey-post-thumb" href="<?php the_permalink(); ?>">
                             <?php echo get_the_post_thumbnail( $post_id, $thumbnail_size ); ?>
                         </a>
                     <?php endif; ?>
 
-                    <div class="bdea-post-body">
+                    <div class="elementskey-post-body">
                         <?php if ( 'yes' === $settings['show_meta'] ) : ?>
-                            <div class="bdea-post-meta"><?php echo esc_html( get_the_date() ); ?></div>
+                            <div class="elementskey-post-meta"><?php echo esc_html( get_the_date() ); ?></div>
                         <?php endif; ?>
 
                         <?php if ( 'yes' === $settings['show_title'] ) : ?>
-                            <h3 class="bdea-post-title">
+                            <h3 class="elementskey-post-title">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h3>
                         <?php endif; ?>
 
                         <?php if ( 'yes' === $settings['show_excerpt'] ) : ?>
-                            <p class="bdea-post-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), $excerpt_length ) ); ?></p>
+                            <p class="elementskey-post-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), $excerpt_length ) ); ?></p>
                         <?php endif; ?>
 
                         <?php if ( 'yes' === $settings['show_read_more'] ) : ?>
-                            <a class="bdea-post-more" href="<?php the_permalink(); ?>">
+                            <a class="elementskey-post-more" href="<?php the_permalink(); ?>">
                                 <?php echo esc_html( $read_more_text ); ?> &#8594;
                             </a>
                         <?php endif; ?>

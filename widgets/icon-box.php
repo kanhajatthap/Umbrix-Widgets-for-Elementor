@@ -7,10 +7,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Icon_Box_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_icon_box';
+        return 'elementskey_icon_box';
     }
 
     public function get_title() {
@@ -26,22 +26,22 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_icon_box_section',
+            'elementskey_icon_box_section',
             [
-                'label' => __( 'Icon Box', 'elementkey-lite' ),
+                'label' => __( 'Icon Box', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'selected_icon',
             [
-                'label' => __( 'Icon', 'elementkey-lite' ),
+                'label' => __( 'Icon', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-rocket',
@@ -53,17 +53,17 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'title',
             [
-                'label' => __( 'Title', 'elementkey-lite' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Our Value Prop', 'elementkey-lite' ),
-                'placeholder' => __( 'Enter title', 'elementkey-lite' ),
+                'default' => __( 'Our Value Prop', 'elementskey' ),
+                'placeholder' => __( 'Enter title', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'description',
             [
-                'label' => __( 'Description', 'elementkey-lite' ),
+                'label' => __( 'Description', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Add a short, compelling description for this value proposition.',
                 'rows' => 4,
@@ -73,7 +73,7 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link',
             [
-                'label' => __( 'Link (optional)', 'elementkey-lite' ),
+                'label' => __( 'Link (optional)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -82,11 +82,11 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'position',
             [
-                'label' => __( 'Position', 'elementkey-lite' ),
+                'label' => __( 'Position', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'top' => [ 'title' => __( 'Top', 'elementkey-lite' ), 'icon' => 'eicon-v-align-top' ],
-                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-h-align-left' ],
+                    'top' => [ 'title' => __( 'Top', 'elementskey' ), 'icon' => 'eicon-v-align-top' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-h-align-left' ],
                 ],
                 'default' => 'top',
             ]
@@ -95,16 +95,16 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'align',
             [
-                'label' => __( 'Alignment', 'elementkey-lite' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-widget' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box-widget' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -112,9 +112,9 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_icon_box_card_style',
+            'elementskey_icon_box_card_style',
             [
-                'label' => __( 'Card', 'elementkey-lite' ),
+                'label' => __( 'Card', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -122,11 +122,11 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => __( 'Background', 'elementkey-lite' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-widget' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box-widget' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -135,16 +135,16 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'card_border',
-                'selector' => '{{WRAPPER}} .bdea-icon-box-widget',
+                'selector' => '{{WRAPPER}} .elementskey-icon-box-widget',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_icon_box_icon_style',
+            'elementskey_icon_box_icon_style',
             [
-                'label' => __( 'Icon', 'elementkey-lite' ),
+                'label' => __( 'Icon', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -152,11 +152,11 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => __( 'Color', 'elementkey-lite' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box-icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -164,10 +164,10 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg',
             [
-                'label' => __( 'Background', 'elementkey-lite' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box-icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -175,13 +175,13 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => __( 'Size', 'elementkey-lite' ),
+                'label' => __( 'Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 14, 'max' => 120 ] ],
                 'default' => [ 'size' => 30, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box-icon i, {{WRAPPER}} .elementskey-icon-box-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -189,11 +189,11 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_padding',
             [
-                'label' => __( 'Padding', 'elementkey-lite' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -201,12 +201,12 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_radius',
             [
-                'label' => __( 'Border Radius', 'elementkey-lite' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ], '%' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-icon' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box-icon' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -214,11 +214,11 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_margin',
             [
-                'label' => __( 'Spacing / Margin', 'elementkey-lite' ),
+                'label' => __( 'Spacing / Margin', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -226,9 +226,9 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_icon_box_content_style',
+            'elementskey_icon_box_content_style',
             [
-                'label' => __( 'Content', 'elementkey-lite' ),
+                'label' => __( 'Content', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -237,17 +237,17 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .bdea-icon-box-title',
+                'selector' => '{{WRAPPER}} .elementskey-icon-box-title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'elementkey-lite' ),
+                'label' => __( 'Title Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -255,12 +255,12 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'title_gap',
             [
-                'label' => __( 'Title Spacing', 'elementkey-lite' ),
+                'label' => __( 'Title Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -269,17 +269,17 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'desc_typography',
-                'selector' => '{{WRAPPER}} .bdea-icon-box-desc',
+                'selector' => '{{WRAPPER}} .elementskey-icon-box-desc',
             ]
         );
 
         $this->add_control(
             'desc_color',
             [
-                'label' => __( 'Description Color', 'elementkey-lite' ),
+                'label' => __( 'Description Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box-desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box-desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -290,13 +290,13 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
 
-        $icon     = ! empty( $settings['selected_icon']['value'] ) ? $settings['selected_icon']['value'] : '';
+        $icon     = ! empty( $settings['selected_icon']['value'] ) ? $settings['selected_icon'] : '';
         $title    = $settings['title'];
         $desc     = $settings['description'];
         $position = ! empty( $settings['position'] ) ? $settings['position'] : 'top';
         $has_link = ! empty( $settings['link']['url'] );
 
-        $class = 'bdea-icon-box-widget bdea-icon-box-pos-' . $position;
+        $class = 'elementskey-icon-box-widget elementskey-icon-box-pos-' . $position;
 
         if ( $has_link ) {
             $this->add_render_attribute( 'link', 'href', $settings['link']['url'] );
@@ -310,20 +310,20 @@ class BDEA_Icon_Box_Widget extends \Elementor\Widget_Base {
         ?>
         <div class="<?php echo esc_attr( $class ); ?>">
             <?php if ( $icon ) : ?>
-                <span class="bdea-icon-box-icon"><i class="<?php echo esc_attr( $icon ); ?>"></i></span>
+                <span class="elementskey-icon-box-icon"><?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?></span>
             <?php endif; ?>
 
-            <div class="bdea-icon-box-content">
+            <div class="elementskey-icon-box-content">
                 <?php if ( $title ) : ?>
-                    <h3 class="bdea-icon-box-title"><?php echo esc_html( $title ); ?></h3>
+                    <h3 class="elementskey-icon-box-title"><?php echo esc_html( $title ); ?></h3>
                 <?php endif; ?>
 
                 <?php if ( $desc ) : ?>
-                    <p class="bdea-icon-box-desc"><?php echo esc_html( $desc ); ?></p>
+                    <p class="elementskey-icon-box-desc"><?php echo esc_html( $desc ); ?></p>
                 <?php endif; ?>
 
                 <?php if ( $has_link ) : ?>
-                    <a class="bdea-icon-box-link" <?php echo $this->get_render_attribute_string( 'link' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>Learn More &#8594;</a>
+                    <a class="elementskey-icon-box-link" <?php echo $this->get_render_attribute_string( 'link' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>Learn More &#8594;</a>
                 <?php endif; ?>
             </div>
         </div>

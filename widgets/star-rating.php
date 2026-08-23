@@ -7,10 +7,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Star_Rating_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_star_rating';
+        return 'elementskey_star_rating';
     }
 
     public function get_title() {
@@ -26,22 +26,22 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_rating_content_section',
+            'elementskey_rating_content_section',
             [
-                'label' => __( 'Rating', 'elementkey-lite' ),
+                'label' => __( 'Rating', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'rating_value',
             [
-                'label' => __( 'Rating', 'elementkey-lite' ),
+                'label' => __( 'Rating', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ '' ],
                 'range' => [
@@ -54,12 +54,12 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rating_scale',
             [
-                'label' => __( 'Scale', 'elementkey-lite' ),
+                'label' => __( 'Scale', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '5',
                 'options' => [
-                    '5' => '0 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ 5',
-                    '10' => '0 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ 10',
+                    '5' => '0 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ 5',
+                    '10' => '0 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ 10',
                 ],
             ]
         );
@@ -67,7 +67,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_number',
             [
-                'label' => __( 'Show Rating Number', 'elementkey-lite' ),
+                'label' => __( 'Show Rating Number', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -76,7 +76,7 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'rating_label',
             [
-                'label' => __( 'Label (optional)', 'elementkey-lite' ),
+                'label' => __( 'Label (optional)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'placeholder' => 'e.g. 5.0 out of 5',
             ]
@@ -85,16 +85,16 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'rating_align',
             [
-                'label' => __( 'Alignment', 'elementkey-lite' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementkey-lite' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementkey-lite' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementkey-lite' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-star-rating' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -102,9 +102,9 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_rating_style_section',
+            'elementskey_rating_style_section',
             [
-                'label' => __( 'Style', 'elementkey-lite' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -112,12 +112,12 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'star_color',
             [
-                'label' => __( 'Star Color', 'elementkey-lite' ),
+                'label' => __( 'Star Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7b500',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating .bdea-star-filled' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .bdea-star-rating .bdea-star-half-fill' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-star-rating .elementskey-star-filled' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-star-rating .elementskey-star-half-fill' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -125,11 +125,11 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'empty_star_color',
             [
-                'label' => __( 'Empty Star Color', 'elementkey-lite' ),
+                'label' => __( 'Empty Star Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#d9d9d9',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating .bdea-star-empty' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-star-rating .elementskey-star-empty' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -137,13 +137,13 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'star_size',
             [
-                'label' => __( 'Star Size', 'elementkey-lite' ),
+                'label' => __( 'Star Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 80 ], 'em' => [ 'min' => 0.5, 'max' => 5 ] ],
                 'default' => [ 'size' => 22, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating .bdea-star-icons .bdea-star' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-star-rating .elementskey-star-icons .elementskey-star' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -151,13 +151,13 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'star_gap',
             [
-                'label' => __( 'Star Spacing', 'elementkey-lite' ),
+                'label' => __( 'Star Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],
                 'default' => [ 'size' => 4, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating .bdea-star-icons .bdea-star' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-star-rating .elementskey-star-icons .elementskey-star' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -166,18 +166,18 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'number_typography',
-                'selector' => '{{WRAPPER}} .bdea-star-rating .bdea-rating-number',
+                'selector' => '{{WRAPPER}} .elementskey-star-rating .elementskey-rating-number',
             ]
         );
 
         $this->add_control(
             'number_color',
             [
-                'label' => __( 'Number Color', 'elementkey-lite' ),
+                'label' => __( 'Number Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#555555',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating .bdea-rating-number' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-star-rating .elementskey-rating-number' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -186,18 +186,18 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'label_typography',
-                'selector' => '{{WRAPPER}} .bdea-star-rating .bdea-rating-label',
+                'selector' => '{{WRAPPER}} .elementskey-star-rating .elementskey-rating-label',
             ]
         );
 
         $this->add_control(
             'label_color',
             [
-                'label' => __( 'Label Color', 'elementkey-lite' ),
+                'label' => __( 'Label Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#555555',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating .bdea-rating-label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-star-rating .elementskey-rating-label' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -205,11 +205,11 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'rating_padding',
             [
-                'label' => __( 'Padding', 'elementkey-lite' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-star-rating' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-star-rating' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -235,29 +235,29 @@ class BDEA_Star_Rating_Widget extends \Elementor\Widget_Base {
         $show_number = ( 'yes' === $settings['show_number'] );
         $label       = ! empty( $settings['rating_label'] ) ? $settings['rating_label'] : '';
         ?>
-        <div class="bdea-star-rating" role="img" aria-label="<?php echo esc_attr( sprintf( 'Rated %s out of %d', number_format( $value, 1 ), $star_count ) ); ?>">
-            <div class="bdea-star-rating-row">
-                <span class="bdea-star-icons">
+        <div class="elementskey-star-rating" role="img" aria-label="<?php echo esc_attr( sprintf( 'Rated %s out of %d', number_format( $value, 1 ), $star_count ) ); ?>">
+            <div class="elementskey-star-rating-row">
+                <span class="elementskey-star-icons">
                     <?php for ( $i = 0; $i < $star_count; $i++ ) : ?>
                         <?php if ( $i < $full_stars ) : ?>
-                            <span class="bdea-star bdea-star-filled">&#9733;</span>
+                            <span class="elementskey-star elementskey-star-filled">&#9733;</span>
                         <?php elseif ( $i === $full_stars && $fraction >= 0.25 ) : ?>
-                            <span class="bdea-star bdea-star-half" aria-hidden="true">
-                                <span class="bdea-star-half-bg">&#9733;</span>
-                                <span class="bdea-star-half-fill">&#9733;</span>
+                            <span class="elementskey-star elementskey-star-half" aria-hidden="true">
+                                <span class="elementskey-star-half-bg">&#9733;</span>
+                                <span class="elementskey-star-half-fill">&#9733;</span>
                             </span>
                         <?php else : ?>
-                            <span class="bdea-star bdea-star-empty">&#9733;</span>
+                            <span class="elementskey-star elementskey-star-empty">&#9733;</span>
                         <?php endif; ?>
                     <?php endfor; ?>
                 </span>
 
                 <?php if ( $show_number ) : ?>
-                    <span class="bdea-rating-number"><?php echo esc_html( number_format( $value, 1 ) ); ?></span>
+                    <span class="elementskey-rating-number"><?php echo esc_html( number_format( $value, 1 ) ); ?></span>
                 <?php endif; ?>
 
                 <?php if ( $label ) : ?>
-                    <span class="bdea-rating-label"><?php echo esc_html( $label ); ?></span>
+                    <span class="elementskey-rating-label"><?php echo esc_html( $label ); ?></span>
                 <?php endif; ?>
             </div>
         </div>

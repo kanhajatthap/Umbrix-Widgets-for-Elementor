@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Button_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Button_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_button';
+        return 'elementskey_button';
     }
 
     public function get_title() {
@@ -22,36 +22,36 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_button_content_section',
+            'elementskey_button_content_section',
             [
-                'label' => __( 'Button', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'button_text',
             [
-                'label' => __( 'Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Click Here', 'elementstack-elementor-addons' ),
-                'placeholder' => __( 'Click Here', 'elementstack-elementor-addons' ),
+                'default' => __( 'Click Here', 'elementskey' ),
+                'placeholder' => __( 'Click Here', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'button_link',
             [
-                'label' => __( 'Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
                 'dynamic' => [ 'active' => true ],
@@ -61,7 +61,7 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_icon',
             [
-                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
             ]
         );
@@ -69,12 +69,12 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_position',
             [
-                'label' => __( 'Icon Position', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon Position', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'before',
                 'options' => [
-                    'before' => __( 'Before Text', 'elementstack-elementor-addons' ),
-                    'after' => __( 'After Text', 'elementstack-elementor-addons' ),
+                    'before' => __( 'Before Text', 'elementskey' ),
+                    'after' => __( 'After Text', 'elementskey' ),
                 ],
                 'condition' => [ 'button_icon[value]!' => '' ],
             ]
@@ -83,14 +83,14 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_gap',
             [
-                'label' => __( 'Icon Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 30 ] ],
                 'default' => [ 'size' => 8, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button .bdea-button-icon.bdea-icon-before' => 'margin-right: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .bdea-button .bdea-button-icon.bdea-icon-after' => 'margin-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-button .elementskey-button-icon.elementskey-icon-before' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-button .elementskey-button-icon.elementskey-icon-after' => 'margin-left: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [ 'button_icon[value]!' => '' ],
             ]
@@ -99,13 +99,13 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_size',
             [
-                'label' => __( 'Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'md',
                 'options' => [
-                    'sm' => __( 'Small', 'elementstack-elementor-addons' ),
-                    'md' => __( 'Medium', 'elementstack-elementor-addons' ),
-                    'lg' => __( 'Large', 'elementstack-elementor-addons' ),
+                    'sm' => __( 'Small', 'elementskey' ),
+                    'md' => __( 'Medium', 'elementskey' ),
+                    'lg' => __( 'Large', 'elementskey' ),
                 ],
             ]
         );
@@ -113,7 +113,7 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'full_width',
             [
-                'label' => __( 'Full Width', 'elementstack-elementor-addons' ),
+                'label' => __( 'Full Width', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -122,9 +122,9 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_button_style_section',
+            'elementskey_button_style_section',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -133,7 +133,7 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'button_typography',
-                'selector' => '{{WRAPPER}} .bdea-button',
+                'selector' => '{{WRAPPER}} .elementskey-button',
             ]
         );
 
@@ -141,16 +141,16 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
 
         $this->start_controls_tab(
             'button_normal',
-            [ 'label' => __( 'Normal', 'elementstack-elementor-addons' ) ]
+            [ 'label' => __( 'Normal', 'elementskey' ) ]
         );
 
         $this->add_control(
             'button_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -158,10 +158,10 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-button' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -170,7 +170,7 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'button_shadow',
-                'selector' => '{{WRAPPER}} .bdea-button',
+                'selector' => '{{WRAPPER}} .elementskey-button',
             ]
         );
 
@@ -178,16 +178,16 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
 
         $this->start_controls_tab(
             'button_hover',
-            [ 'label' => __( 'Hover', 'elementstack-elementor-addons' ) ]
+            [ 'label' => __( 'Hover', 'elementskey' ) ]
         );
 
         $this->add_control(
             'button_hover_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-button:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -195,10 +195,10 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_hover_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-button:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -206,10 +206,10 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_hover_border',
             [
-                'label' => __( 'Border Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-button:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -217,15 +217,15 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'button_hover_translate',
             [
-                'label' => __( 'Hover Animation', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Animation', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
                     'none' => 'None',
-                    'grow' => __( 'Grow', 'elementstack-elementor-addons' ),
-                    'shrink' => __( 'Shrink', 'elementstack-elementor-addons' ),
-                    'lift' => __( 'Lift Up', 'elementstack-elementor-addons' ),
-                    'fade' => __( 'Fade', 'elementstack-elementor-addons' ),
+                    'grow' => __( 'Grow', 'elementskey' ),
+                    'shrink' => __( 'Shrink', 'elementskey' ),
+                    'lift' => __( 'Lift Up', 'elementskey' ),
+                    'fade' => __( 'Fade', 'elementskey' ),
                 ],
             ]
         );
@@ -238,20 +238,20 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'button_border',
-                'selector' => '{{WRAPPER}} .bdea-button',
+                'selector' => '{{WRAPPER}} .elementskey-button',
             ]
         );
 
         $this->add_responsive_control(
             'button_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'default' => [ 'size' => 6, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-button' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -259,11 +259,11 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'button_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -271,12 +271,12 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'button_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
@@ -295,18 +295,18 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
         $link         = ! empty( $settings['button_link']['url'] ) ? $settings['button_link']['url'] : '#';
         $is_external  = ! empty( $settings['button_link']['is_external'] );
         $nofollow     = ! empty( $settings['button_link']['nofollow'] );
-        $icon         = ! empty( $settings['button_icon']['value'] ) ? $settings['button_icon']['value'] : '';
+        $icon         = ! empty( $settings['button_icon']['value'] ) ? $settings['button_icon'] : '';
         $icon_pos     = ! empty( $settings['icon_position'] ) ? $settings['icon_position'] : 'before';
         $size         = ! empty( $settings['button_size'] ) ? $settings['button_size'] : 'md';
         $full_width   = ( 'yes' === $settings['full_width'] );
         $hover_anim   = ! empty( $settings['button_hover_translate'] ) ? $settings['button_hover_translate'] : 'none';
 
-        $classes = [ 'bdea-button', 'bdea-button-size-' . $size ];
+        $classes = [ 'elementskey-button', 'elementskey-button-size-' . $size ];
         if ( $full_width ) {
-            $classes[] = 'bdea-button-full';
+            $classes[] = 'elementskey-button-full';
         }
         if ( 'none' !== $hover_anim ) {
-            $classes[] = 'bdea-button-hover-' . $hover_anim;
+            $classes[] = 'elementskey-button-hover-' . $hover_anim;
         }
 
         $this->add_render_attribute( 'button', 'class', $classes );
@@ -323,14 +323,14 @@ class BDEA_Button_Widget extends \Elementor\Widget_Base {
             $this->add_render_attribute( 'button', 'role', 'button' );
         }
         ?>
-        <div class="bdea-button-wrap">
+        <div class="elementskey-button-wrap">
             <a <?php echo $this->get_render_attribute_string( 'button' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
                 <?php if ( $icon && 'before' === $icon_pos ) : ?>
-                    <span class="bdea-button-icon bdea-icon-before"><i class="<?php echo esc_attr( $icon ); ?>"></i></span>
+                    <span class="elementskey-button-icon elementskey-icon-before"><?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?></span>
                 <?php endif; ?>
-                <span class="bdea-button-text"><?php echo esc_html( $text ); ?></span>
+                <span class="elementskey-button-text"><?php echo esc_html( $text ); ?></span>
                 <?php if ( $icon && 'after' === $icon_pos ) : ?>
-                    <span class="bdea-button-icon bdea-icon-after"><i class="<?php echo esc_attr( $icon ); ?>"></i></span>
+                    <span class="elementskey-button-icon elementskey-icon-after"><?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?></span>
                 <?php endif; ?>
             </a>
         </div>

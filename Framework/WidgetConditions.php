@@ -1,14 +1,14 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Framework;
+namespace ElementsKey\Framework;
 
 defined( 'ABSPATH' ) || exit;
 
-use BDEA\Framework\Conditions\ConditionManager;
+use ElementsKey\Framework\Conditions\ConditionManager;
 
 /**
  * Elementor Pro style per-widget display conditions.
@@ -53,7 +53,7 @@ class WidgetConditions {
         $processed[ $name ] = true;
 
         $element->start_controls_section(
-            'bdea_widget_conditions_section',
+            'elementskey_widget_conditions_section',
             [
                 'label' => 'Display Conditions',
                 'tab'   => \Elementor\Controls_Manager::TAB_ADVANCED,
@@ -61,7 +61,7 @@ class WidgetConditions {
         );
 
         $element->add_control(
-            'bdea_widget_conditions_enable',
+            'elementskey_widget_conditions_enable',
             [
                 'label'        => 'Enable Display Conditions',
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
@@ -109,14 +109,14 @@ class WidgetConditions {
         );
 
         $element->add_control(
-            'bdea_widget_conditions',
+            'elementskey_widget_conditions',
             [
                 'label'       => 'Conditions',
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'title_field' => '{{{ condition_type === "exclude" ? "Exclude" : "Include" }}}: {{{ condition }}}',
                 'condition'   => [
-                    'bdea_widget_conditions_enable' => 'yes',
+                    'elementskey_widget_conditions_enable' => 'yes',
                 ],
             ]
         );
@@ -127,11 +127,11 @@ class WidgetConditions {
     public function maybe_hide_widget( $content, $widget ) {
         $settings = $widget->get_settings();
 
-        if ( empty( $settings['bdea_widget_conditions_enable'] ) || 'yes' !== $settings['bdea_widget_conditions_enable'] ) {
+        if ( empty( $settings['elementskey_widget_conditions_enable'] ) || 'yes' !== $settings['elementskey_widget_conditions_enable'] ) {
             return $content;
         }
 
-        $rows = ! empty( $settings['bdea_widget_conditions'] ) ? $settings['bdea_widget_conditions'] : [];
+        $rows = ! empty( $settings['elementskey_widget_conditions'] ) ? $settings['elementskey_widget_conditions'] : [];
 
         $conditions = [];
 
@@ -158,7 +158,7 @@ class WidgetConditions {
         if ( ! $this->condition_manager->evaluate( $conditions ) ) {
             if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
                 return '<div style="padding:14px;border:1px dashed #c2cbd2;background:#fbf8f1;color:#917c2f;font-size:13px;text-align:center;">'
-                        . esc_html__( 'This widget is hidden by its Display Conditions.', 'elementstack-elementor-addons' )
+                        . esc_html__( 'This widget is hidden by its Display Conditions.', 'elementskey' )
                         . '</div>';
             }
 

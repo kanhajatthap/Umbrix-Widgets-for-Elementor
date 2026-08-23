@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Social_Icons_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_social_icons';
+        return 'elementskey_social_icons';
     }
 
     public function get_title() {
@@ -22,38 +22,38 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function get_social_icons() {
         return [
-            'facebook' => [ 'label' => __( 'Facebook', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-facebook-f' ],
-            'x' => [ 'label' => __( 'X / Twitter', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-x-twitter' ],
-            'twitter' => [ 'label' => __( 'Twitter', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-twitter' ],
-            'instagram' => [ 'label' => __( 'Instagram', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-instagram' ],
-            'linkedin' => [ 'label' => __( 'LinkedIn', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-linkedin-in' ],
-            'youtube' => [ 'label' => __( 'YouTube', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-youtube' ],
-            'whatsapp' => [ 'label' => __( 'WhatsApp', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-whatsapp' ],
-            'pinterest' => [ 'label' => __( 'Pinterest', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-pinterest-p' ],
-            'tiktok' => [ 'label' => __( 'TikTok', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-tiktok' ],
-            'telegram' => [ 'label' => __( 'Telegram', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-telegram-plane' ],
-            'email' => [ 'label' => __( 'Email', 'elementstack-elementor-addons' ), 'icon' => 'fas fa-envelope' ],
-            'github' => [ 'label' => __( 'GitHub', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-github' ],
-            'dribbble' => [ 'label' => __( 'Dribbble', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-dribbble' ],
-            'behance' => [ 'label' => __( 'Behance', 'elementstack-elementor-addons' ), 'icon' => 'fab fa-behance' ],
+            'facebook' => [ 'label' => __( 'Facebook', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-facebook-f', 'library' => 'fa-brands' ] ],
+            'x' => [ 'label' => __( 'X / Twitter', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-x-twitter', 'library' => 'fa-brands' ] ],
+            'twitter' => [ 'label' => __( 'Twitter', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-twitter', 'library' => 'fa-brands' ] ],
+            'instagram' => [ 'label' => __( 'Instagram', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-instagram', 'library' => 'fa-brands' ] ],
+            'linkedin' => [ 'label' => __( 'LinkedIn', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-linkedin-in', 'library' => 'fa-brands' ] ],
+            'youtube' => [ 'label' => __( 'YouTube', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-youtube', 'library' => 'fa-brands' ] ],
+            'whatsapp' => [ 'label' => __( 'WhatsApp', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-whatsapp', 'library' => 'fa-brands' ] ],
+            'pinterest' => [ 'label' => __( 'Pinterest', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-pinterest-p', 'library' => 'fa-brands' ] ],
+            'tiktok' => [ 'label' => __( 'TikTok', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-tiktok', 'library' => 'fa-brands' ] ],
+            'telegram' => [ 'label' => __( 'Telegram', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-telegram-plane', 'library' => 'fa-brands' ] ],
+            'email' => [ 'label' => __( 'Email', 'elementskey' ), 'icon' => [ 'value' => 'fas fa-envelope', 'library' => 'fa-solid' ] ],
+            'github' => [ 'label' => __( 'GitHub', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-github', 'library' => 'fa-brands' ] ],
+            'dribbble' => [ 'label' => __( 'Dribbble', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-dribbble', 'library' => 'fa-brands' ] ],
+            'behance' => [ 'label' => __( 'Behance', 'elementskey' ), 'icon' => [ 'value' => 'fab fa-behance', 'library' => 'fa-brands' ] ],
         ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_social_icons_section',
+            'elementskey_social_icons_section',
             [
-                'label' => __( 'Social Icons', 'elementstack-elementor-addons' ),
+                'label' => __( 'Social Icons', 'elementskey' ),
             ]
         );
 
@@ -69,7 +69,7 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'social_type',
             [
-                'label' => __( 'Social Network', 'elementstack-elementor-addons' ),
+                'label' => __( 'Social Network', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $options,
                 'default' => 'facebook',
@@ -79,7 +79,7 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'social_link',
             [
-                'label' => __( 'Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://facebook.com/yourpage',
             ]
@@ -88,7 +88,7 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'social_icons',
             [
-                'label' => __( 'Icons', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icons', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
@@ -104,16 +104,16 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'social_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icons-widget' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-social-icons-widget' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -121,9 +121,9 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_social_icons_style',
+            'elementskey_social_icons_style',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -131,13 +131,13 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => __( 'Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 14, 'max' => 80 ] ],
                 'default' => [ 'size' => 16, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-social-icon i, {{WRAPPER}} .elementskey-social-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -145,11 +145,11 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-social-icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -157,11 +157,11 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-social-icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -169,10 +169,10 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icon:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-social-icon:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -180,11 +180,11 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_hover_bg',
             [
-                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#324ac7',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icon:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-social-icon:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -192,13 +192,13 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ], '%' => [ 'min' => 0, 'max' => 50 ] ],
                 'default' => [ 'size' => 50, 'unit' => '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icon' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-social-icon' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -206,11 +206,11 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-social-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -218,13 +218,13 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_gap',
             [
-                'label' => __( 'Gap', 'elementstack-elementor-addons' ),
+                'label' => __( 'Gap', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'default' => [ 'size' => 10, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-social-icons-widget' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-social-icons-widget' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -241,25 +241,26 @@ class BDEA_Social_Icons_Widget extends \Elementor\Widget_Base {
 
         $icons = $this->get_social_icons();
         ?>
-        <div class="bdea-social-icons-widget">
+        <div class="elementskey-social-icons-widget">
             <?php foreach ( $settings['social_icons'] as $item ) : ?>
                 <?php
                 $type  = ! empty( $item['social_type'] ) ? $item['social_type'] : 'facebook';
-                $icon  = isset( $icons[ $type ] ) ? $icons[ $type ]['icon'] : 'fas fa-circle';
+                $icon_data = isset( $icons[ $type ] ) ? $icons[ $type ]['icon'] : [ 'value' => 'fas fa-circle', 'library' => 'fa-solid' ];
+                $icon      = is_array( $icon_data ) ? $icon_data : [ 'value' => $icon_data, 'library' => 'fa-brands' ];
                 $label = isset( $icons[ $type ] ) ? $icons[ $type ]['label'] : $type;
                 $has_link = ! empty( $item['social_link']['url'] );
                 ?>
                 <?php if ( $has_link ) : ?>
-                    <a class="bdea-social-icon"
+                    <a class="elementskey-social-icon"
                        href="<?php echo esc_url( $item['social_link']['url'] ); ?>"
                        <?php echo ! empty( $item['social_link']['is_external'] ) ? 'target="_blank"' : ''; ?>
                        <?php echo ! empty( $item['social_link']['nofollow'] ) ? 'rel="nofollow"' : ''; ?>
                        aria-label="<?php echo esc_attr( $label ); ?>">
-                        <i class="<?php echo esc_attr( $icon ); ?>"></i>
+                        <?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
                     </a>
                 <?php else : ?>
-                    <span class="bdea-social-icon" aria-label="<?php echo esc_attr( $label ); ?>">
-                        <i class="<?php echo esc_attr( $icon ); ?>"></i>
+                    <span class="elementskey-social-icon" aria-label="<?php echo esc_attr( $label ); ?>">
+                        <?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
                     </span>
                 <?php endif; ?>
             <?php endforeach; ?>

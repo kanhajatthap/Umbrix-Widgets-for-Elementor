@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Animated_Headline_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_animated_headline';
+        return 'elementskey_animated_headline';
     }
 
     public function get_title() {
@@ -22,30 +22,30 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     public function get_script_depends() {
-        return [ 'bdea-content-script' ];
+        return [ 'elementskey-content-script' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_animated_headline_section',
+            'elementskey_animated_headline_section',
             [
-                'label' => __( 'Animated Headline', 'elementstack-elementor-addons' ),
+                'label' => __( 'Animated Headline', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'headline_before',
             [
-                'label' => __( 'Before Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Before Text', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'We',
             ]
@@ -56,22 +56,22 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'word',
             [
-                'label' => __( 'Word', 'elementstack-elementor-addons' ),
+                'label' => __( 'Word', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Design', 'elementstack-elementor-addons' ),
+                'default' => __( 'Design', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'headline_words',
             [
-                'label' => __( 'Rotating Words', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rotating Words', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'word' => __( 'Design', 'elementstack-elementor-addons' ) ],
-                    [ 'word' => __( 'Create', 'elementstack-elementor-addons' ) ],
-                    [ 'word' => __( 'Inspire', 'elementstack-elementor-addons' ) ],
+                    [ 'word' => __( 'Design', 'elementskey' ) ],
+                    [ 'word' => __( 'Create', 'elementskey' ) ],
+                    [ 'word' => __( 'Inspire', 'elementskey' ) ],
                 ],
                 'title_field' => '{{{ word }}}',
             ]
@@ -80,16 +80,16 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'headline_after',
             [
-                'label' => __( 'After Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'After Text', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Beautiful Things', 'elementstack-elementor-addons' ),
+                'default' => __( 'Beautiful Things', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'headline_speed',
             [
-                'label' => __( 'Rotation Speed (ms)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rotation Speed (ms)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 2500,
                 'min' => 500,
@@ -102,9 +102,9 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
 
         // Alignment
         $this->start_controls_section(
-            'bdea_headline_general_style',
+            'elementskey_headline_general_style',
             [
-                'label' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'General', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -112,16 +112,16 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'headline_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-animated-headline' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-animated-headline' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -129,12 +129,12 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'headline_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-animated-headline' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-animated-headline' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -142,9 +142,9 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_headline_before_style',
+            'elementskey_headline_before_style',
             [
-                'label' => __( 'Before Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Before Text', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -153,18 +153,18 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'before_typography',
-                'selector' => '{{WRAPPER}} .bdea-headline-before',
+                'selector' => '{{WRAPPER}} .elementskey-headline-before',
             ]
         );
 
         $this->add_control(
             'before_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-headline-before' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-headline-before' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -172,9 +172,9 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_headline_words_style',
+            'elementskey_headline_words_style',
             [
-                'label' => __( 'Rotating Words', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rotating Words', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -183,18 +183,18 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'words_typography',
-                'selector' => '{{WRAPPER}} .bdea-headline-words',
+                'selector' => '{{WRAPPER}} .elementskey-headline-words',
             ]
         );
 
         $this->add_control(
             'words_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-headline-words' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-headline-words' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -202,10 +202,10 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'words_highlight_color',
             [
-                'label' => __( 'Highlight Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Highlight Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-headline-words' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-headline-words' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -213,11 +213,11 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'words_padding',
             [
-                'label' => __( 'Highlight Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Highlight Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-headline-words' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-headline-words' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -225,11 +225,11 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'words_radius',
             [
-                'label' => __( 'Highlight Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Highlight Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-headline-words' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-headline-words' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -237,9 +237,9 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_headline_after_style',
+            'elementskey_headline_after_style',
             [
-                'label' => __( 'After Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'After Text', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -248,18 +248,18 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'after_typography',
-                'selector' => '{{WRAPPER}} .bdea-headline-after',
+                'selector' => '{{WRAPPER}} .elementskey-headline-after',
             ]
         );
 
         $this->add_control(
             'after_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-headline-after' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-headline-after' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -275,17 +275,17 @@ class BDEA_Animated_Headline_Widget extends \Elementor\Widget_Base {
         $speed  = ! empty( $settings['headline_speed'] ) ? (int) $settings['headline_speed'] : 2500;
         $words  = ! empty( $settings['headline_words'] ) ? $settings['headline_words'] : [];
         ?>
-        <div class="bdea-animated-headline">
+        <div class="elementskey-animated-headline">
             <?php if ( $before ) : ?>
-                <span class="bdea-headline-before"><?php echo esc_html( $before ); ?></span>
+                <span class="elementskey-headline-before"><?php echo esc_html( $before ); ?></span>
             <?php endif; ?>
-            <span class="bdea-headline-words" data-speed="<?php echo esc_attr( $speed ); ?>">
+            <span class="elementskey-headline-words" data-speed="<?php echo esc_attr( $speed ); ?>">
                 <?php foreach ( $words as $index => $word ) : ?>
-                    <span class="bdea-headline-word<?php echo 0 === $index ? ' is-active' : ''; ?>"><?php echo esc_html( $word['word'] ); ?></span>
+                    <span class="elementskey-headline-word<?php echo 0 === $index ? ' is-active' : ''; ?>"><?php echo esc_html( $word['word'] ); ?></span>
                 <?php endforeach; ?>
             </span>
             <?php if ( $after ) : ?>
-                <span class="bdea-headline-after"><?php echo esc_html( $after ); ?></span>
+                <span class="elementskey-headline-after"><?php echo esc_html( $after ); ?></span>
             <?php endif; ?>
         </div>
         <?php

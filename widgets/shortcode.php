@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Shortcode_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Shortcode_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_shortcode';
+        return 'elementskey_shortcode';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Shortcode_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_shortcode_section',
+            'elementskey_shortcode_section',
             [
-                'label' => __( 'Shortcode', 'elementstack-elementor-addons' ),
+                'label' => __( 'Shortcode', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'shortcode',
             [
-                'label' => __( 'Shortcode', 'elementstack-elementor-addons' ),
+                'label' => __( 'Shortcode', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => '[gallery columns="3"]',
                 'rows' => 3,
@@ -52,17 +52,27 @@ class BDEA_Shortcode_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'shortcode_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-shortcode-widget' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-shortcode-widget' => 'text-align: {{VALUE}};',
                 ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'elementskey_shortcode_style_section',
+            [
+                'label' => __( 'Style', 'elementskey' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
@@ -77,7 +87,7 @@ class BDEA_Shortcode_Widget extends \Elementor\Widget_Base {
             return;
         }
         ?>
-        <div class="bdea-shortcode-widget">
+        <div class="elementskey-shortcode-widget">
             <?php echo do_shortcode( $shortcode ); ?>
         </div>
         <?php

@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Code_Highlight_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_code_highlight';
+        return 'elementskey_code_highlight';
     }
 
     public function get_title() {
@@ -22,35 +22,35 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_code_section',
+            'elementskey_code_section',
             [
-                'label' => __( 'Code', 'elementstack-elementor-addons' ),
+                'label' => __( 'Code', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'code_language',
             [
-                'label' => __( 'Language', 'elementstack-elementor-addons' ),
+                'label' => __( 'Language', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'javascript',
                 'options' => [
-                    'html' => __( 'HTML', 'elementstack-elementor-addons' ),
-                    'css' => __( 'CSS', 'elementstack-elementor-addons' ),
-                    'javascript' => __( 'JavaScript', 'elementstack-elementor-addons' ),
-                    'php' => __( 'PHP', 'elementstack-elementor-addons' ),
-                    'json' => __( 'JSON', 'elementstack-elementor-addons' ),
-                    'plain' => __( 'Plain Text', 'elementstack-elementor-addons' ),
+                    'html' => __( 'HTML', 'elementskey' ),
+                    'css' => __( 'CSS', 'elementskey' ),
+                    'javascript' => __( 'JavaScript', 'elementskey' ),
+                    'php' => __( 'PHP', 'elementskey' ),
+                    'json' => __( 'JSON', 'elementskey' ),
+                    'plain' => __( 'Plain Text', 'elementskey' ),
                 ],
             ]
         );
@@ -58,7 +58,7 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'code_content',
             [
-                'label' => __( 'Code', 'elementstack-elementor-addons' ),
+                'label' => __( 'Code', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'console.log( "Hello World" );',
                 'rows' => 10,
@@ -69,7 +69,7 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_copy_btn',
             [
-                'label' => __( 'Show Copy Button', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Copy Button', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -79,9 +79,9 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
 
         // Code Style
         $this->start_controls_section(
-            'bdea_code_style',
+            'elementskey_code_style',
             [
-                'label' => __( 'Code', 'elementstack-elementor-addons' ),
+                'label' => __( 'Code', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -89,11 +89,11 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'code_bg_color',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-highlight' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-code-highlight' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -101,11 +101,11 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'code_text_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7f7f7',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-highlight code' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-code-highlight code' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -114,14 +114,14 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'code_typography',
-                'selector' => '{{WRAPPER}} .bdea-code-highlight code',
+                'selector' => '{{WRAPPER}} .elementskey-code-highlight code',
             ]
         );
 
         $this->add_responsive_control(
             'code_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -132,7 +132,7 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-highlight' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-code-highlight' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -141,14 +141,14 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'code_border',
-                'selector' => '{{WRAPPER}} .bdea-code-highlight',
+                'selector' => '{{WRAPPER}} .elementskey-code-highlight',
             ]
         );
 
         $this->add_responsive_control(
             'code_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -159,7 +159,7 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-highlight' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-code-highlight' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -168,7 +168,7 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'code_shadow',
-                'selector' => '{{WRAPPER}} .bdea-code-highlight',
+                'selector' => '{{WRAPPER}} .elementskey-code-highlight',
             ]
         );
 
@@ -176,9 +176,9 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
 
         // Copy Button Style
         $this->start_controls_section(
-            'bdea_code_copy_style',
+            'elementskey_code_copy_style',
             [
-                'label' => __( 'Copy Button', 'elementstack-elementor-addons' ),
+                'label' => __( 'Copy Button', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -186,10 +186,10 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'copy_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-copy' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-code-copy' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -197,10 +197,10 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'copy_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-copy' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-code-copy' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -209,18 +209,18 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'copy_typography',
-                'selector' => '{{WRAPPER}} .bdea-code-copy',
+                'selector' => '{{WRAPPER}} .elementskey-code-copy',
             ]
         );
 
         $this->add_responsive_control(
             'copy_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-copy' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-code-copy' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -228,11 +228,11 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'copy_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-code-copy' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-code-copy' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -246,11 +246,11 @@ class BDEA_Code_Highlight_Widget extends \Elementor\Widget_Base {
         $language = ! empty( $settings['code_language'] ) ? $settings['code_language'] : 'plain';
         $code     = isset( $settings['code_content'] ) ? $settings['code_content'] : '';
         ?>
-        <div class="bdea-code-highlight" data-language="<?php echo esc_attr( $language ); ?>">
+        <div class="elementskey-code-highlight" data-language="<?php echo esc_attr( $language ); ?>">
             <?php if ( 'yes' === $settings['show_copy_btn'] ) : ?>
-                <span class="bdea-code-copy"><?php esc_html_e( 'Copy', 'elementstack-elementor-addons' ); ?></span>
+                <span class="elementskey-code-copy"><?php esc_html_e( 'Copy', 'elementskey' ); ?></span>
             <?php endif; ?>
-            <pre class="bdea-code-pre"><code class="language-<?php echo esc_attr( $language ); ?>"><?php echo esc_html( $code ); ?></code></pre>
+            <pre class="elementskey-code-pre"><code class="language-<?php echo esc_attr( $language ); ?>"><?php echo esc_html( $code ); ?></code></pre>
         </div>
         <?php
     }

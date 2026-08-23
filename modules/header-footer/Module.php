@@ -1,10 +1,10 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Modules\HeaderFooter;
+namespace ElementsKey\Modules\HeaderFooter;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -43,7 +43,7 @@ class Module {
     }
 
     public function is_module_enabled() {
-        $settings = get_option( 'bdea_module_status', [] );
+        $settings = get_option( 'elementskey_module_status', [] );
         $defaults = self::get_default_module_status();
         $status   = wp_parse_args( $settings, $defaults );
         return ! empty( $status[ self::MODULE_SLUG ] );
@@ -65,13 +65,13 @@ class Module {
     }
 
     private function init_components() {
-        $this->cache             = new \BDEA\Framework\Cache\Cache();
-        $this->condition_manager = new \BDEA\Framework\Conditions\ConditionManager();
+        $this->cache             = new \ElementsKey\Framework\Cache\Cache();
+        $this->condition_manager = new \ElementsKey\Framework\Conditions\ConditionManager();
 
         $this->load_class( 'PostType' );
         $this->post_type = new PostType();
 
-        add_action( 'save_post_bdea_header_footer', [ $this, 'bust_cache_on_save' ] );
+        add_action( 'save_post_elementskey_header_footer', [ $this, 'bust_cache_on_save' ] );
         add_action( 'wp_trash_post', [ $this, 'bust_cache_on_trash' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_assets' ] );
 
@@ -95,7 +95,7 @@ class Module {
     }
 
     private function load_public_components() {
-        $this->renderer = new \BDEA\Framework\Renderer\TemplateRenderer(
+        $this->renderer = new \ElementsKey\Framework\Renderer\TemplateRenderer(
             $this->condition_manager,
             $this->cache
         );
@@ -117,8 +117,8 @@ class Module {
             $documents_manager = \Elementor\Plugin::$instance->documents;
         }
 
-        if ( $documents_manager && ! $documents_manager->get_document_type( 'bdea-hf-document', false ) ) {
-            $documents_manager->register_document_type( 'bdea-hf-document', Document::class );
+        if ( $documents_manager && ! $documents_manager->get_document_type( 'elementskey-hf-document', false ) ) {
+            $documents_manager->register_document_type( 'elementskey-hf-document', Document::class );
         }
     }
 
@@ -127,7 +127,7 @@ class Module {
     }
 
     public function bust_cache_on_trash( $post_id ) {
-        if ( 'bdea_header_footer' === get_post_type( $post_id ) ) {
+        if ( 'elementskey_header_footer' === get_post_type( $post_id ) ) {
             $this->cache->flush_all();
         }
     }
@@ -140,10 +140,10 @@ class Module {
         $css_file = __DIR__ . '/assets/css/frontend.css';
         if ( file_exists( $css_file ) ) {
             wp_enqueue_style(
-                'bdea-hf-frontend',
+                'elementskey-hf-frontend',
                 plugin_dir_url( __FILE__ ) . 'assets/css/frontend.css',
                 [],
-                BDEA_VERSION
+                ELEMENTSKEY_VERSION
             );
         }
     }

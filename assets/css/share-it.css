@@ -1,20 +1,20 @@
-.bdea-share-it-widget {
+.elementskey-share-it-widget {
     width: 100%;
 }
 
-.bdea-share-it-title {
+.elementskey-share-it-title {
     margin: 0 0 12px;
     font-size: 18px;
     line-height: 1.4;
 }
 
-.bdea-share-it-links {
+.elementskey-share-it-links {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-.bdea-share-it-link {
+.elementskey-share-it-link {
     width: 40px;
     height: 40px;
     display: inline-flex;
@@ -26,22 +26,22 @@
     transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.bdea-share-it-link:hover,
-.bdea-share-it-link:focus {
+.elementskey-share-it-link:hover,
+.elementskey-share-it-link:focus {
 }
 
-.bdea-share-it-icon {
+.elementskey-share-it-icon {
     font-size: 13px;
     font-weight: 700;
     line-height: 1;
     text-transform: uppercase;
 }
 
-.bdea-share-it-copy.is-copied {
+.elementskey-share-it-copy.is-copied {
     background-color: #198754;
 }
 
-.bdea-share-it-editor-notice {
+.elementskey-share-it-editor-notice {
     padding: 12px 14px;
     border-radius: 8px;
     color: #6b4f00;

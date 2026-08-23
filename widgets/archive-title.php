@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Archive_Title_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Archive_Title_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_archive_title';
+        return 'elementskey_archive_title';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Archive_Title_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_archive_title_section',
+            'elementskey_archive_title_section',
             [
-                'label' => __( 'Archive Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Archive Title', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'archive_title_tag',
             [
-                'label' => __( 'HTML Tag', 'elementstack-elementor-addons' ),
+                'label' => __( 'HTML Tag', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'h1',
                 'options' => [
@@ -60,18 +60,18 @@ class BDEA_Archive_Title_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'archive_title_fallback',
             [
-                'label' => __( 'Fallback Text (non-archive pages)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Fallback Text (non-archive pages)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Archives', 'elementstack-elementor-addons' ),
+                'default' => __( 'Archives', 'elementskey' ),
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_archive_title_style',
+            'elementskey_archive_title_style',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -80,18 +80,18 @@ class BDEA_Archive_Title_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'archive_title_typography',
-                'selector' => '{{WRAPPER}} .bdea-archive-title',
+                'selector' => '{{WRAPPER}} .elementskey-archive-title',
             ]
         );
 
         $this->add_control(
             'archive_title_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-archive-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-archive-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -100,19 +100,19 @@ class BDEA_Archive_Title_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Text_Shadow::get_type(),
             [
                 'name' => 'title_shadow',
-                'selector' => '{{WRAPPER}} .bdea-archive-title',
+                'selector' => '{{WRAPPER}} .elementskey-archive-title',
             ]
         );
 
         $this->add_responsive_control(
             'archive_title_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-archive-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-archive-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -120,16 +120,16 @@ class BDEA_Archive_Title_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'archive_title_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-archive-title' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-archive-title' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -147,7 +147,7 @@ class BDEA_Archive_Title_Widget extends \Elementor\Widget_Base {
 
         $title = is_archive() ? get_the_archive_title() : ( ! empty( $settings['archive_title_fallback'] ) ? $settings['archive_title_fallback'] : 'Archives' );
         ?>
-        <<?php echo esc_attr( $tag ); ?> class="bdea-archive-title">
+        <<?php echo esc_attr( $tag ); ?> class="elementskey-archive-title">
             <?php echo esc_html( $title ); ?>
         </<?php echo esc_attr( $tag ); ?>>
         <?php

@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Testimonial_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_testimonial';
+        return 'elementskey_testimonial';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_testimonial_section',
+            'elementskey_testimonial_section',
             [
-                'label' => __( 'Testimonial', 'elementstack-elementor-addons' ),
+                'label' => __( 'Testimonial', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'testimonial_quote',
             [
-                'label' => __( 'Testimonial', 'elementstack-elementor-addons' ),
+                'label' => __( 'Testimonial', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'This product completely changed how we work. Setup was easy and the support team is fantastic.',
                 'rows' => 5,
@@ -51,16 +51,16 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonial_author',
             [
-                'label' => __( 'Author', 'elementstack-elementor-addons' ),
+                'label' => __( 'Author', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'John Smith', 'elementstack-elementor-addons' ),
+                'default' => __( 'John Smith', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'testimonial_role',
             [
-                'label' => __( 'Role / Company', 'elementstack-elementor-addons' ),
+                'label' => __( 'Role / Company', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => 'CEO, Example Inc.',
             ]
@@ -69,7 +69,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonial_avatar',
             [
-                'label' => __( 'Avatar', 'elementstack-elementor-addons' ),
+                'label' => __( 'Avatar', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [],
             ]
@@ -78,7 +78,7 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonial_rating',
             [
-                'label' => __( 'Rating', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rating', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '5',
                 'options' => [
@@ -95,16 +95,16 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'testimonial_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-widget' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-widget' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -112,9 +112,9 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_testimonial_card_style',
+            'elementskey_testimonial_card_style',
             [
-                'label' => __( 'Card', 'elementstack-elementor-addons' ),
+                'label' => __( 'Card', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -122,11 +122,11 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -135,20 +135,20 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'card_border',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-card',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-card',
             ]
         );
 
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'default' => [ 'size' => 12, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-card' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -157,18 +157,18 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'card_shadow',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-card',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-card',
             ]
         );
 
         $this->add_responsive_control(
             'card_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-testimonial-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -176,9 +176,9 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_testimonial_content_style',
+            'elementskey_testimonial_content_style',
             [
-                'label' => __( 'Content', 'elementstack-elementor-addons' ),
+                'label' => __( 'Content', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -187,17 +187,17 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'quote_typography',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-quote',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-quote',
             ]
         );
 
         $this->add_control(
             'quote_color',
             [
-                'label' => __( 'Quote Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Quote Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-quote' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-quote' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -205,11 +205,11 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'quote_mark_color',
             [
-                'label' => __( 'Quote Mark Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Quote Mark Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-mark' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-mark' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -218,17 +218,17 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'author_typography',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-author',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-author',
             ]
         );
 
         $this->add_control(
             'author_color',
             [
-                'label' => __( 'Author Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Author Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-author' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-author' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -237,17 +237,17 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'role_typography',
-                'selector' => '{{WRAPPER}} .bdea-testimonial-role',
+                'selector' => '{{WRAPPER}} .elementskey-testimonial-role',
             ]
         );
 
         $this->add_control(
             'role_color',
             [
-                'label' => __( 'Role Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Role Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-testimonial-role' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-testimonial-role' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -264,32 +264,32 @@ class BDEA_Testimonial_Widget extends \Elementor\Widget_Base {
         $rating = ! empty( $settings['testimonial_rating'] ) ? $settings['testimonial_rating'] : 'none';
         $avatar = ! empty( $settings['testimonial_avatar']['url'] ) ? $settings['testimonial_avatar']['url'] : '';
         ?>
-        <div class="bdea-testimonial-widget">
-            <div class="bdea-testimonial-card">
-                <span class="bdea-testimonial-mark">&#8220;</span>
+        <div class="elementskey-testimonial-widget">
+            <div class="elementskey-testimonial-card">
+                <span class="elementskey-testimonial-mark">&#8220;</span>
 
                 <?php if ( 'none' !== $rating ) : ?>
-                    <div class="bdea-testimonial-rating" aria-label="<?php echo esc_attr( $rating ); ?> star rating">
+                    <div class="elementskey-testimonial-rating" aria-label="<?php echo esc_attr( $rating ); ?> star rating">
                         <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
-                            <span class="bdea-testimonial-star<?php echo $i <= (int) $rating ? ' is-filled' : ''; ?>">&#9733;</span>
+                            <span class="elementskey-testimonial-star<?php echo $i <= (int) $rating ? ' is-filled' : ''; ?>">&#9733;</span>
                         <?php endfor; ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if ( $quote ) : ?>
-                    <p class="bdea-testimonial-quote"><?php echo esc_html( $quote ); ?></p>
+                    <p class="elementskey-testimonial-quote"><?php echo esc_html( $quote ); ?></p>
                 <?php endif; ?>
 
-                <div class="bdea-testimonial-author-row">
+                <div class="elementskey-testimonial-author-row">
                     <?php if ( $avatar ) : ?>
-                        <img class="bdea-testimonial-avatar" src="<?php echo esc_url( $avatar ); ?>" alt="<?php echo esc_attr( $author ); ?>" loading="lazy" />
+                        <img class="elementskey-testimonial-avatar" src="<?php echo esc_url( $avatar ); ?>" alt="<?php echo esc_attr( $author ); ?>" loading="lazy" />
                     <?php endif; ?>
-                    <div class="bdea-testimonial-author-meta">
+                    <div class="elementskey-testimonial-author-meta">
                         <?php if ( $author ) : ?>
-                            <div class="bdea-testimonial-author"><?php echo esc_html( $author ); ?></div>
+                            <div class="elementskey-testimonial-author"><?php echo esc_html( $author ); ?></div>
                         <?php endif; ?>
                         <?php if ( $role ) : ?>
-                            <div class="bdea-testimonial-role"><?php echo esc_html( $role ); ?></div>
+                            <div class="elementskey-testimonial-role"><?php echo esc_html( $role ); ?></div>
                         <?php endif; ?>
                     </div>
                 </div>

@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Video_Playlist_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_video_playlist';
+        return 'elementskey_video_playlist';
     }
 
     public function get_title() {
@@ -22,23 +22,23 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     public function get_script_depends() {
-        return [ 'bdea-content-script' ];
+        return [ 'elementskey-content-script' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_video_playlist_section',
+            'elementskey_video_playlist_section',
             [
-                'label' => __( 'Video Playlist', 'elementstack-elementor-addons' ),
+                'label' => __( 'Video Playlist', 'elementskey' ),
             ]
         );
 
@@ -47,21 +47,21 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'vp_title',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Video Title', 'elementstack-elementor-addons' ),
+                'default' => __( 'Video Title', 'elementskey' ),
             ]
         );
 
         $repeater->add_control(
             'vp_source',
             [
-                'label' => __( 'Source', 'elementstack-elementor-addons' ),
+                'label' => __( 'Source', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'youtube',
                 'options' => [
-                    'youtube' => __( 'YouTube', 'elementstack-elementor-addons' ),
-                    'vimeo' => __( 'Vimeo', 'elementstack-elementor-addons' ),
+                    'youtube' => __( 'YouTube', 'elementskey' ),
+                    'vimeo' => __( 'Vimeo', 'elementskey' ),
                 ],
             ]
         );
@@ -69,7 +69,7 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'vp_url',
             [
-                'label' => __( 'Video URL', 'elementstack-elementor-addons' ),
+                'label' => __( 'Video URL', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://www.youtube.com/watch?v=VIDEO_ID',
             ]
@@ -78,13 +78,13 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'playlist',
             [
-                'label' => __( 'Playlist', 'elementstack-elementor-addons' ),
+                'label' => __( 'Playlist', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'vp_title' => __( 'Intro Video', 'elementstack-elementor-addons' ) ],
-                    [ 'vp_title' => __( 'Getting Started', 'elementstack-elementor-addons' ) ],
-                    [ 'vp_title' => __( 'Advanced Tips', 'elementstack-elementor-addons' ) ],
+                    [ 'vp_title' => __( 'Intro Video', 'elementskey' ) ],
+                    [ 'vp_title' => __( 'Getting Started', 'elementskey' ) ],
+                    [ 'vp_title' => __( 'Advanced Tips', 'elementskey' ) ],
                 ],
                 'title_field' => '{{{ vp_title }}}',
             ]
@@ -93,12 +93,12 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_layout',
             [
-                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
+                'label' => __( 'Layout', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'side',
                 'options' => [
-                    'side' => __( 'Player Left / List Right', 'elementstack-elementor-addons' ),
-                    'top' => __( 'Player Top / List Bottom', 'elementstack-elementor-addons' ),
+                    'side' => __( 'Player Left / List Right', 'elementskey' ),
+                    'top' => __( 'Player Top / List Bottom', 'elementskey' ),
                 ],
             ]
         );
@@ -106,9 +106,9 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_video_playlist_style',
+            'elementskey_video_playlist_style',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -116,11 +116,11 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_color',
             [
-                'label' => __( 'Item Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-playlist-item' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-playlist-item' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -128,11 +128,11 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_active_bg',
             [
-                'label' => __( 'Active Item Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Active Item Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#eef1ff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-playlist-item.is-active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-playlist-item.is-active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -140,10 +140,10 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_active_color',
             [
-                'label' => __( 'Active Item Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Active Item Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-playlist-item.is-active' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-playlist-item.is-active' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -151,10 +151,10 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_hover_bg',
             [
-                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-playlist-item:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-playlist-item:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -162,10 +162,10 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'vp_item_hover_color',
             [
-                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-playlist-item:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-playlist-item:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -174,18 +174,18 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'vp_item_typography',
-                'selector' => '{{WRAPPER}} .bdea-playlist-item',
+                'selector' => '{{WRAPPER}} .elementskey-playlist-item',
             ]
         );
 
         $this->add_responsive_control(
             'vp_item_padding',
             [
-                'label' => __( 'Item Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-playlist-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-playlist-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -193,11 +193,11 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'vp_item_border_radius',
             [
-                'label' => __( 'Item Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-playlist-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-playlist-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -205,11 +205,11 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'vp_player_border_radius',
             [
-                'label' => __( 'Player Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Player Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-video-player iframe' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-video-player iframe' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -265,26 +265,26 @@ class BDEA_Video_Playlist_Widget extends \Elementor\Widget_Base {
         $first  = $settings['playlist'][0];
         $first_src = ! empty( $first['vp_url']['url'] ) ? $this->build_embed( $first['vp_source'], $first['vp_url']['url'] ) : '';
         ?>
-        <div class="bdea-video-playlist-widget<?php echo esc_attr( $layout ); ?>">
-            <div class="bdea-video-player">
+        <div class="elementskey-video-playlist-widget<?php echo esc_attr( $layout ); ?>">
+            <div class="elementskey-video-player">
                 <?php if ( $first_src ) : ?>
                     <iframe src="<?php echo esc_url( $first_src ); ?>" frameborder="0" allowfullscreen
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             title="<?php echo esc_attr( $first['vp_title'] ); ?>"></iframe>
                 <?php else : ?>
-                    <div class="bdea-loop-grid-empty">No video found.</div>
+                    <div class="elementskey-loop-grid-empty">No video found.</div>
                 <?php endif; ?>
             </div>
-            <div class="bdea-video-playlist-list">
+            <div class="elementskey-video-playlist-list">
                 <?php foreach ( $settings['playlist'] as $index => $item ) : ?>
                     <?php
                     $embed = ! empty( $item['vp_url']['url'] ) ? $this->build_embed( $item['vp_source'], $item['vp_url']['url'] ) : '';
                     ?>
-                    <div class="bdea-playlist-item<?php echo 0 === $index ? ' is-active' : ''; ?>"
+                    <div class="elementskey-playlist-item<?php echo 0 === $index ? ' is-active' : ''; ?>"
                          data-src="<?php echo esc_attr( $embed ); ?>"
                          role="button" tabindex="0">
-                        <span class="bdea-playlist-icon" aria-hidden="true">&#9654;</span>
-                        <span class="bdea-playlist-title"><?php echo esc_html( $item['vp_title'] ); ?></span>
+                        <span class="elementskey-playlist-icon" aria-hidden="true">&#9654;</span>
+                        <span class="elementskey-playlist-title"><?php echo esc_html( $item['vp_title'] ); ?></span>
                     </div>
                 <?php endforeach; ?>
             </div>

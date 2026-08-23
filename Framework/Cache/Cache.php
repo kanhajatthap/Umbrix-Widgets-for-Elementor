@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Framework\Cache;
+namespace ElementsKey\Framework\Cache;
 
 defined( 'ABSPATH' ) || exit;
 
 class Cache {
 
-    private $prefix = 'bdea_';
+    private $prefix = 'elementskey_';
     private $default_expiry = 43200;
 
     public function get( $key ) {

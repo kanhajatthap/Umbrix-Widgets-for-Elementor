@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Post_Content_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_post_content';
+        return 'elementskey_post_content';
     }
 
     public function get_title() {
@@ -22,19 +22,19 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_post_content_style',
+            'elementskey_post_content_style',
             [
-                'label' => __( 'Content', 'elementstack-elementor-addons' ),
+                'label' => __( 'Content', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -43,18 +43,18 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'content_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-content',
+                'selector' => '{{WRAPPER}} .elementskey-post-content',
             ]
         );
 
         $this->add_control(
             'content_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-content' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -62,16 +62,16 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
-                    'justify' => [ 'title' => __( 'Justified', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-justify' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
+                    'justify' => [ 'title' => __( 'Justified', 'elementskey' ), 'icon' => 'eicon-text-align-justify' ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-content' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -79,12 +79,12 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'content_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -93,9 +93,9 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
 
         // Links
         $this->start_controls_section(
-            'bdea_post_content_links_style',
+            'elementskey_post_content_links_style',
             [
-                'label' => __( 'Links', 'elementstack-elementor-addons' ),
+                'label' => __( 'Links', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -103,11 +103,11 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_color',
             [
-                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-content a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -115,10 +115,10 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-content a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -126,15 +126,15 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_decoration',
             [
-                'label' => __( 'Text Decoration', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Decoration', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'underline',
                 'options' => [
                     'none' => 'None',
-                    'underline' => __( 'Underline', 'elementstack-elementor-addons' ),
+                    'underline' => __( 'Underline', 'elementskey' ),
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content a' => 'text-decoration: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-content a' => 'text-decoration: {{VALUE}};',
                 ],
             ]
         );
@@ -143,9 +143,9 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
 
         // Lists
         $this->start_controls_section(
-            'bdea_post_content_lists_style',
+            'elementskey_post_content_lists_style',
             [
-                'label' => __( 'Lists', 'elementstack-elementor-addons' ),
+                'label' => __( 'Lists', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -153,10 +153,10 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'list_color',
             [
-                'label' => __( 'List Marker Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'List Marker Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content ul li::marker' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-content ul li::marker' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -164,12 +164,12 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'list_spacing',
             [
-                'label' => __( 'List Item Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'List Item Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-content ul li' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-content ul li' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -188,20 +188,20 @@ class BDEA_Post_Content_Widget extends \Elementor\Widget_Base {
         }
 
         if ( ! $post_id ) {
-            echo '<div class="bdea-loop-grid-empty">No post found.</div>';
+            echo '<div class="elementskey-loop-grid-empty">No post found.</div>';
             return;
         }
 
         $content = get_post_field( 'post_content', $post_id );
 
         if ( '' === trim( $content ) ) {
-            echo '<div class="bdea-loop-grid-empty">Post content is empty.</div>';
+            echo '<div class="elementskey-loop-grid-empty">Post content is empty.</div>';
             return;
         }
 
         $content = do_shortcode( $content );
         ?>
-        <div class="bdea-post-content"><?php echo wp_kses_post( $content ); ?></div>
+        <div class="elementskey-post-content"><?php echo wp_kses_post( $content ); ?></div>
         <?php
     }
 }

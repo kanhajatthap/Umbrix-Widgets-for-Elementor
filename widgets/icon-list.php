@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Icon_List_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_icon_list';
+        return 'elementskey_icon_list';
     }
 
     public function get_title() {
@@ -22,19 +22,19 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_icon_list_section',
+            'elementskey_icon_list_section',
             [
-                'label' => __( 'Icon List', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon List', 'elementskey' ),
             ]
         );
 
@@ -43,16 +43,16 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'list_text',
             [
-                'label' => __( 'Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'List Item', 'elementstack-elementor-addons' ),
+                'default' => __( 'List Item', 'elementskey' ),
             ]
         );
 
         $repeater->add_control(
             'list_icon',
             [
-                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-check',
@@ -64,7 +64,7 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'list_link',
             [
-                'label' => __( 'Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -73,12 +73,12 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_list',
             [
-                'label' => __( 'Items', 'elementstack-elementor-addons' ),
+                'label' => __( 'Items', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'list_text' => __( 'Fast and reliable', 'elementstack-elementor-addons' ) ],
-                    [ 'list_text' => __( 'No hidden fees', 'elementstack-elementor-addons' ) ],
+                    [ 'list_text' => __( 'Fast and reliable', 'elementskey' ) ],
+                    [ 'list_text' => __( 'No hidden fees', 'elementskey' ) ],
                     [ 'list_text' => 'Support, 24/7' ],
                 ],
                 'title_field' => '{{{ list_text }}}',
@@ -89,9 +89,9 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
 
         // Layout Style
         $this->start_controls_section(
-            'bdea_icon_list_layout_style',
+            'elementskey_icon_list_layout_style',
             [
-                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
+                'label' => __( 'Layout', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -99,16 +99,16 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-widget' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-list-widget' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -116,13 +116,13 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'space_between',
             [
-                'label' => __( 'Space Between Items', 'elementstack-elementor-addons' ),
+                'label' => __( 'Space Between Items', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'default' => [ 'size' => 12, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-item + .bdea-icon-list-item' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-list-item + .elementskey-icon-list-item' => 'margin-top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -130,11 +130,11 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_padding',
             [
-                'label' => __( 'Item Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-list-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -143,18 +143,18 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'item_border',
-                'selector' => '{{WRAPPER}} .bdea-icon-list-item',
+                'selector' => '{{WRAPPER}} .elementskey-icon-list-item',
             ]
         );
 
         $this->add_responsive_control(
             'item_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-list-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -163,9 +163,9 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
 
         // Icon Style
         $this->start_controls_section(
-            'bdea_icon_list_icon_style',
+            'elementskey_icon_list_icon_style',
             [
-                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -173,11 +173,11 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-list-icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -185,10 +185,10 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-item:hover .bdea-icon-list-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-list-item:hover .elementskey-icon-list-icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -196,10 +196,10 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-list-icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -207,13 +207,13 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => __( 'Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 50 ] ],
                 'default' => [ 'size' => 16, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-list-icon i, {{WRAPPER}} .elementskey-icon-list-icon svg' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -221,13 +221,13 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'default' => [ 'size' => 10, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-item' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-list-item' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -236,9 +236,9 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
 
         // Text Style
         $this->start_controls_section(
-            'bdea_icon_list_text_style',
+            'elementskey_icon_list_text_style',
             [
-                'label' => __( 'Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -247,17 +247,17 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'text_typography',
-                'selector' => '{{WRAPPER}} .bdea-icon-list-text',
+                'selector' => '{{WRAPPER}} .elementskey-icon-list-text',
             ]
         );
 
         $this->add_control(
             'text_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-list-text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -265,10 +265,10 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_color',
             [
-                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-list-link' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -276,10 +276,10 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'link_hover_color',
             [
-                'label' => __( 'Link Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-list-link:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-list-link:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -294,21 +294,21 @@ class BDEA_Icon_List_Widget extends \Elementor\Widget_Base {
             return;
         }
         ?>
-        <ul class="bdea-icon-list-widget">
+        <ul class="elementskey-icon-list-widget">
             <?php foreach ( $settings['icon_list'] as $item ) : ?>
                 <?php
-                $icon = ! empty( $item['list_icon']['value'] ) ? $item['list_icon']['value'] : 'fas fa-check';
+                $icon = ! empty( $item['list_icon']['value'] ) ? $item['list_icon'] : [ 'value' => 'fas fa-check', 'library' => 'fa-solid' ];
                 $has_link = ! empty( $item['list_link']['url'] );
                 ?>
-                <li class="bdea-icon-list-item">
+                <li class="elementskey-icon-list-item">
                     <?php if ( $has_link ) : ?>
-                        <a class="bdea-icon-list-link" href="<?php echo esc_url( $item['list_link']['url'] ); ?>"
+                        <a class="elementskey-icon-list-link" href="<?php echo esc_url( $item['list_link']['url'] ); ?>"
                            <?php echo ! empty( $item['list_link']['is_external'] ) ? 'target="_blank"' : ''; ?>
                            <?php echo ! empty( $item['list_link']['nofollow'] ) ? 'rel="nofollow"' : ''; ?>>
                     <?php endif; ?>
 
-                    <span class="bdea-icon-list-icon"><i class="<?php echo esc_attr( $icon ); ?>"></i></span>
-                    <span class="bdea-icon-list-text"><?php echo esc_html( $item['list_text'] ); ?></span>
+                    <span class="elementskey-icon-list-icon"><?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?></span>
+                    <span class="elementskey-icon-list-text"><?php echo esc_html( $item['list_text'] ); ?></span>
 
                     <?php if ( $has_link ) : ?>
                         </a>

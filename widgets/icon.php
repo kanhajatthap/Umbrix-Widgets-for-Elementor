@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Icon_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Icon_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_icon';
+        return 'elementskey_icon';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_icon_section',
+            'elementskey_icon_section',
             [
-                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'selected_icon',
             [
-                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-star',
@@ -53,7 +53,7 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_link',
             [
-                'label' => __( 'Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
                 'dynamic' => [ 'active' => true ],
@@ -63,16 +63,16 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-wrap' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-wrap' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -80,9 +80,9 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_icon_style_section',
+            'elementskey_icon_style_section',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -90,11 +90,11 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -102,10 +102,10 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -113,13 +113,13 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => __( 'Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'em' ],
                 'range' => [ 'px' => [ 'min' => 10, 'max' => 200 ], 'em' => [ 'min' => 0.5, 'max' => 12 ] ],
                 'default' => [ 'size' => 34, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box i, {{WRAPPER}} .elementskey-icon-box svg' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -127,12 +127,12 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_rotate',
             [
-                'label' => __( 'Rotate (deg)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Rotate (deg)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'deg' ],
                 'range' => [ 'deg' => [ 'min' => 0, 'max' => 360 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box i' => 'transform: rotate({{SIZE}}deg);',
+                    '{{WRAPPER}} .elementskey-icon-box i, {{WRAPPER}} .elementskey-icon-box svg' => 'transform: rotate({{SIZE}}deg);',
                 ],
             ]
         );
@@ -140,10 +140,10 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -151,10 +151,10 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_bg_hover',
             [
-                'label' => __( 'Background Hover', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background Hover', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-icon-box:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -162,11 +162,11 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -174,12 +174,12 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'icon_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ], '%' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-icon-box' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-icon-box' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -190,10 +190,10 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
 
-        $icon   = ! empty( $settings['selected_icon']['value'] ) ? $settings['selected_icon']['value'] : '';
+        $icon   = ! empty( $settings['selected_icon']['value'] ) ? $settings['selected_icon'] : '';
         $has_link = ! empty( $settings['icon_link']['url'] );
 
-        $this->add_render_attribute( 'icon', 'class', 'bdea-icon-box' );
+        $this->add_render_attribute( 'icon', 'class', 'elementskey-icon-box' );
         if ( $has_link ) {
             $this->add_render_attribute( 'icon', 'href', $settings['icon_link']['url'] );
             if ( ! empty( $settings['icon_link']['is_external'] ) ) {
@@ -204,15 +204,15 @@ class BDEA_Icon_Widget extends \Elementor\Widget_Base {
             }
         }
         ?>
-        <div class="bdea-icon-wrap">
+        <div class="elementskey-icon-wrap">
             <?php if ( $icon ) : ?>
                 <?php if ( $has_link ) : ?>
                     <a <?php echo $this->get_render_attribute_string( 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
-                        <i class="<?php echo esc_attr( $icon ); ?>"></i>
+                        <?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
                     </a>
                 <?php else : ?>
                     <span <?php echo $this->get_render_attribute_string( 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor render attributes are escaped internally. ?>>
-                        <i class="<?php echo esc_attr( $icon ); ?>"></i>
+                        <?php \Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
                     </span>
                 <?php endif; ?>
             <?php endif; ?>

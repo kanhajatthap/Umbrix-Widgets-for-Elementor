@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Progress_Bar_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_progress_bar';
+        return 'elementskey_progress_bar';
     }
 
     public function get_title() {
@@ -22,15 +22,15 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-style' ];
+        return [ 'elementskey-style' ];
     }
 
     public function get_script_depends() {
-        return [ 'bdea-script' ];
+        return [ 'elementskey-script' ];
     }
 
     protected function register_controls() {
@@ -38,7 +38,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __( 'Progress Bars', 'elementstack-elementor-addons' ),
+                'label' => __( 'Progress Bars', 'elementskey' ),
             ]
         );
 
@@ -47,16 +47,16 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'title',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Skill Name', 'elementstack-elementor-addons' ),
+                'default' => __( 'Skill Name', 'elementskey' ),
             ]
         );
 
         $repeater->add_control(
             'percentage',
             [
-                'label' => __( 'Percentage', 'elementstack-elementor-addons' ),
+                'label' => __( 'Percentage', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 80,
                 'min' => 0,
@@ -67,12 +67,12 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bars',
             [
-                'label' => __( 'Items', 'elementstack-elementor-addons' ),
+                'label' => __( 'Items', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
-                    [ 'title' => __( 'Design', 'elementstack-elementor-addons' ), 'percentage' => 90 ],
-                    [ 'title' => __( 'Development', 'elementstack-elementor-addons' ), 'percentage' => 80 ],
+                    [ 'title' => __( 'Design', 'elementskey' ), 'percentage' => 90 ],
+                    [ 'title' => __( 'Development', 'elementskey' ), 'percentage' => 80 ],
                 ],
                 'title_field' => '{{{ title }}}',
             ]
@@ -81,7 +81,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_percentage',
             [
-                'label' => __( 'Show Percentage', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Percentage', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -90,7 +90,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'animation_speed',
             [
-                'label' => __( 'Animation Speed (ms)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Animation Speed (ms)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 1200,
             ]
@@ -102,7 +102,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_general_section',
             [
-                'label' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'General', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -110,7 +110,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'height',
             [
-                'label' => __( 'Height', 'elementstack-elementor-addons' ),
+                'label' => __( 'Height', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [ 'min' => 4, 'max' => 50 ],
@@ -120,7 +120,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-bar' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-progress-bar' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -128,7 +128,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_spacing',
             [
-                'label' => __( 'Item Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Item Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [ 'min' => 0, 'max' => 60 ],
@@ -138,7 +138,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-progress-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -146,7 +146,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'bar_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -157,8 +157,8 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-bar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .bdea-progress-fill' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-progress-bar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-progress-fill' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -169,7 +169,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_background_section',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -177,11 +177,11 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bg_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#eeeeee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-bar' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-progress-bar' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -190,7 +190,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'bar_shadow',
-                'selector' => '{{WRAPPER}} .bdea-progress-bar',
+                'selector' => '{{WRAPPER}} .elementskey-progress-bar',
             ]
         );
 
@@ -200,7 +200,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_fill_section',
             [
-                'label' => __( 'Fill', 'elementstack-elementor-addons' ),
+                'label' => __( 'Fill', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -208,11 +208,11 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bar_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4CAF50',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-fill' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-progress-fill' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -220,10 +220,10 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'bar_gradient',
             [
-                'label' => __( 'Gradient', 'elementstack-elementor-addons' ),
+                'label' => __( 'Gradient', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-fill' => 'background: linear-gradient(90deg, {{VALUE}}, transparent);',
+                    '{{WRAPPER}} .elementskey-progress-fill' => 'background: linear-gradient(90deg, {{VALUE}}, transparent);',
                 ],
             ]
         );
@@ -234,7 +234,7 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'style_typography_section',
             [
-                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
+                'label' => __( 'Typography', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -243,17 +243,17 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .bdea-progress-title span',
+                'selector' => '{{WRAPPER}} .elementskey-progress-title span',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-title span:first-child' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-progress-title span:first-child' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -261,10 +261,10 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'percentage_color',
             [
-                'label' => __( 'Percentage Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Percentage Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-progress-title span:last-child' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-progress-title span:last-child' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -281,14 +281,14 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
 
         ?>
 
-        <div class="bdea-progress-wrapper"
+        <div class="elementskey-progress-wrapper"
              data-speed="<?php echo esc_attr( $settings['animation_speed'] ); ?>">
 
             <?php foreach ( $settings['bars'] as $item ) : ?>
 
-                <div class="bdea-progress-item">
+                <div class="elementskey-progress-item">
 
-                    <div class="bdea-progress-title">
+                    <div class="elementskey-progress-title">
                         <span><?php echo esc_html( $item['title'] ); ?></span>
 
                         <?php if ( $settings['show_percentage'] === 'yes' ) : ?>
@@ -296,9 +296,9 @@ class BDEA_Progress_Bar_Widget extends \Elementor\Widget_Base {
                         <?php endif; ?>
                     </div>
 
-                    <div class="bdea-progress-bar">
+                    <div class="elementskey-progress-bar">
 
-                        <div class="bdea-progress-fill"
+                        <div class="elementskey-progress-fill"
                             data-width="<?php echo esc_attr( $item['percentage'] ); ?>">
                         </div>
 

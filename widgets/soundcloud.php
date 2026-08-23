@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Sound_Cloud_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_soundcloud';
+        return 'elementskey_soundcloud';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_soundcloud_section',
+            'elementskey_soundcloud_section',
             [
-                'label' => __( 'SoundCloud', 'elementstack-elementor-addons' ),
+                'label' => __( 'SoundCloud', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'soundcloud_url',
             [
-                'label' => __( 'Track URL', 'elementstack-elementor-addons' ),
+                'label' => __( 'Track URL', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://soundcloud.com/artist/track',
                 'default' => [
@@ -53,7 +53,7 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sc_visual',
             [
-                'label' => __( 'Visual Player', 'elementstack-elementor-addons' ),
+                'label' => __( 'Visual Player', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
                 'description' => 'Show the large visual player with artwork.',
@@ -63,7 +63,7 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sc_autoplay',
             [
-                'label' => __( 'Autoplay', 'elementstack-elementor-addons' ),
+                'label' => __( 'Autoplay', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
             ]
@@ -72,7 +72,7 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'sc_comments',
             [
-                'label' => __( 'Show Comments', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Comments', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -81,7 +81,7 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'sc_height',
             [
-                'label' => __( 'Height', 'elementstack-elementor-addons' ),
+                'label' => __( 'Height', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 100, 'max' => 800 ] ],
@@ -92,9 +92,9 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_soundcloud_style',
+            'elementskey_soundcloud_style',
             [
-                'label' => __( 'Style', 'elementstack-elementor-addons' ),
+                'label' => __( 'Style', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -102,16 +102,16 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'sc_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-soundcloud-widget' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-soundcloud-widget' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -119,12 +119,12 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'sc_max_width',
             [
-                'label' => __( 'Max Width', 'elementstack-elementor-addons' ),
+                'label' => __( 'Max Width', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 200, 'max' => 1600 ], '%' => [ 'min' => 20, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-soundcloud-embed' => 'max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-soundcloud-embed' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -132,12 +132,12 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'sc_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 40 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-soundcloud-embed iframe' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-soundcloud-embed iframe' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -151,7 +151,7 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
         $track_url = ! empty( $settings['soundcloud_url']['url'] ) ? $settings['soundcloud_url']['url'] : '';
         if ( empty( $track_url ) || false === strpos( $track_url, 'soundcloud.com' ) ) {
             ?>
-            <div class="bdea-loop-grid-empty">Invalid SoundCloud URL.</div>
+            <div class="elementskey-loop-grid-empty">Invalid SoundCloud URL.</div>
             <?php
             return;
         }
@@ -172,12 +172,12 @@ class BDEA_Sound_Cloud_Widget extends \Elementor\Widget_Base {
             'https://w.soundcloud.com/player/'
         );
 
-        $embed_classes = [ 'bdea-soundcloud-embed' ];
+        $embed_classes = [ 'elementskey-soundcloud-embed' ];
         if ( $visual ) {
             $embed_classes[] = 'is-visual';
         }
         ?>
-        <div class="bdea-soundcloud-widget">
+        <div class="elementskey-soundcloud-widget">
             <div class="<?php echo esc_attr( implode( ' ', $embed_classes ) ); ?>">
                 <iframe src="<?php echo esc_url( $embed_url ); ?>"
                         width="100%"

@@ -1,7 +1,7 @@
 (function ($) {
     'use strict';
 
-    var data      = window.bdeaHFData || {};
+    var data      = window.elementskeyHFData || {};
     var grouped   = data.conditions || {};
 
     var typeLabels = {
@@ -12,7 +12,8 @@
         '404': '404 Page',
         announcement: 'Announcement',
         bottom_bar: 'Bottom Bar',
-        'loop': 'Loop Item'
+        'loop': 'Loop Item',
+        section: 'Section'
     };
 
     function typeLabel(type) {
@@ -20,51 +21,51 @@
     }
 
     // Open create modal
-    $(document).on('click', '.bdea-hf-create-btn', function (e) {
+    $(document).on('click', '.elementskey-hf-create-btn', function (e) {
         e.preventDefault();
         var type = $(this).data('type');
         if (!type) return;
-        $('#bdea-hf-create-modal').find('.bdea-hf-modal-type-label').text(typeLabel(type));
-        $('#bdea-hf-create-modal input[name="type"]').val(type);
-        $('#bdea-hf-create-modal select[name="template_type"]').val(type);
+        $('#elementskey-hf-create-modal').find('.elementskey-hf-modal-type-label').text(typeLabel(type));
+        $('#elementskey-hf-create-modal input[name="type"]').val(type);
+        $('#elementskey-hf-create-modal select[name="template_type"]').val(type);
         updateCreateModalForType(type);
-        $('#bdea-hf-create-modal').show();
+        $('#elementskey-hf-create-modal').show();
     });
 
     // Type select inside create modal
-    $(document).on('change', '#bdea-hf-create-modal select[name="template_type"]', function () {
+    $(document).on('change', '#elementskey-hf-create-modal select[name="template_type"]', function () {
         var type = $(this).val();
-        $('#bdea-hf-create-modal input[name="type"]').val(type);
-        $('#bdea-hf-create-modal').find('.bdea-hf-modal-type-label').text(typeLabel(type));
+        $('#elementskey-hf-create-modal input[name="type"]').val(type);
+        $('#elementskey-hf-create-modal').find('.elementskey-hf-modal-type-label').text(typeLabel(type));
         updateCreateModalForType(type);
     });
 
     function updateCreateModalForType(type) {
         var showDisable = (type === 'header' || type === 'footer');
-        var showConditions = (type !== 'loop');
-        $('#bdea-hf-create-modal input[name="disable_theme"]').closest('.bdea-hf-field').toggle(showDisable);
-        $('#bdea-hf-create-modal .bdea-hf-field-row').toggle(showConditions);
+        var showConditions = (type !== 'loop' && type !== 'section');
+        $('#elementskey-hf-create-modal input[name="disable_theme"]').closest('.elementskey-hf-field').toggle(showDisable);
+        $('#elementskey-hf-create-modal .elementskey-hf-field-row').toggle(showConditions);
         var condMap = { single: 'singular:post_type:post', archive: 'archive', '404': '404' };
         if (condMap[type]) {
-            $('#bdea-hf-create-modal select[name="condition"]').val(condMap[type]);
+            $('#elementskey-hf-create-modal select[name="condition"]').val(condMap[type]);
         }
     }
 
     // Close modals
-    $(document).on('click', '.bdea-hf-modal-close, .bdea-hf-modal-overlay, [data-close-modal]', function (e) {
-        if ($(e.target).hasClass('bdea-hf-modal-overlay') || $(e.target).hasClass('bdea-hf-modal-close') || $(e.target).attr('data-close-modal') !== undefined) {
-            $('.bdea-hf-modal-overlay').hide();
+    $(document).on('click', '.elementskey-hf-modal-close, .elementskey-hf-modal-overlay, [data-close-modal]', function (e) {
+        if ($(e.target).hasClass('elementskey-hf-modal-overlay') || $(e.target).hasClass('elementskey-hf-modal-close') || $(e.target).attr('data-close-modal') !== undefined) {
+            $('.elementskey-hf-modal-overlay').hide();
         }
     });
 
     // Submit create template
-    $(document).on('click', '.bdea-hf-create-submit', function () {
+    $(document).on('click', '.elementskey-hf-create-submit', function () {
         var $btn  = $(this);
-        var $form = $('#bdea-hf-create-form');
+        var $form = $('#elementskey-hf-create-form');
         var data  = $form.serializeArray();
 
         data.push({ name: 'nonce', value: $btn.data('nonce') });
-        data.push({ name: 'action', value: 'bdea_hf_create_template' });
+        data.push({ name: 'action', value: 'elementskey_hf_create_template' });
 
         $btn.prop('disabled', true).text('Creating...');
 
@@ -82,21 +83,21 @@
     });
 
     // Edit conditions
-    $(document).on('click', '.bdea-hf-edit-cond', function (e) {
+    $(document).on('click', '.elementskey-hf-edit-cond', function (e) {
         e.preventDefault();
         var postId = $(this).data('id');
-        var $modal = $('#bdea-hf-conditions-modal');
-        var $list  = $modal.find('.bdea-hf-conditions-list');
+        var $modal = $('#elementskey-hf-conditions-modal');
+        var $list  = $modal.find('.elementskey-hf-conditions-list');
 
         $modal.find('input[name="template_id"]').val(postId);
-        $('#bdea-hf-cond-search').val('');
+        $('#elementskey-hf-cond-search').val('');
         $list.html('<p style="text-align:center;color:#8c8f94;padding:20px;">Loading...</p>');
         $modal.show();
 
         $.post(ajaxurl, {
-            action:   'bdea_hf_get_template_conditions',
+            action:   'elementskey_hf_get_template_conditions',
             post_id:  postId,
-            nonce:    $('.bdea-hf-conditions-save').data('nonce')
+            nonce:    $('.elementskey-hf-conditions-save').data('nonce')
         }, function (res) {
             if (res.success && res.data.conditions) {
                 $list.empty();
@@ -123,79 +124,79 @@
     });
 
     // Add condition row
-    $(document).on('click', '.bdea-hf-add-condition-row', function () {
-        var $list = $(this).closest('.bdea-hf-modal-body').find('.bdea-hf-conditions-list');
+    $(document).on('click', '.elementskey-hf-add-condition-row', function () {
+        var $list = $(this).closest('.elementskey-hf-modal-body').find('.elementskey-hf-conditions-list');
         addConditionRow($list, { type: 'include', condition: '' });
     });
 
     function addConditionRow($list, cond, idx) {
         var optionsHtml = buildOptions(cond.condition || '');
         var type        = cond.type === 'exclude' ? 'exclude' : 'include';
-        var index       = typeof idx === 'number' ? idx : $list.find('.bdea-hf-condition-row').length;
+        var index       = typeof idx === 'number' ? idx : $list.find('.elementskey-hf-condition-row').length;
 
         var row = $(
-            '<div class="bdea-hf-condition-row bdea-hf-cond-' + type + '">' +
-            '<span class="bdea-hf-drag-handle dashicons dashicons-menu" title="Drag to reorder"></span>' +
-            '<select name="conditions[' + index + '][type]" class="bdea-hf-cond-type">' +
+            '<div class="elementskey-hf-condition-row elementskey-hf-cond-' + type + '">' +
+            '<span class="elementskey-hf-drag-handle dashicons dashicons-menu" title="Drag to reorder"></span>' +
+            '<select name="conditions[' + index + '][type]" class="elementskey-hf-cond-type">' +
             '<option value="include"' + (type === 'include' ? ' selected' : '') + '>Include</option>' +
             '<option value="exclude"' + (type === 'exclude' ? ' selected' : '') + '>Exclude</option>' +
             '</select> ' +
-            '<select name="conditions[' + index + '][condition]" class="bdea-hf-cond-select">' +
+            '<select name="conditions[' + index + '][condition]" class="elementskey-hf-cond-select">' +
             optionsHtml +
             '</select> ' +
-            '<button type="button" class="bdea-hf-row-btn bdea-hf-duplicate-condition" title="Duplicate condition">&#10697;</button>' +
-            '<button type="button" class="bdea-hf-row-btn bdea-hf-remove-condition" title="Remove condition">\u2715</button>' +
-            '<div class="bdea-hf-specific-wrap"></div>' +
+            '<button type="button" class="elementskey-hf-row-btn elementskey-hf-duplicate-condition" title="Duplicate condition">&#10697;</button>' +
+            '<button type="button" class="elementskey-hf-row-btn elementskey-hf-remove-condition" title="Remove condition">\u2715</button>' +
+            '<div class="elementskey-hf-specific-wrap"></div>' +
             '</div>'
         );
 
         $list.append(row);
-        applySearch($('#bdea-hf-cond-search').val() || '');
+        applySearch($('#elementskey-hf-cond-search').val() || '');
         if ($list.hasClass('ui-sortable')) { $list.sortable('refresh'); }
         return row;
     }
 
     function reindexConditionRows($list) {
-        $list.find('.bdea-hf-condition-row').each(function (i) {
+        $list.find('.elementskey-hf-condition-row').each(function (i) {
             $(this).find('select[name$="[type]"]').attr('name', 'conditions[' + i + '][type]');
             $(this).find('select[name$="[condition]"]').attr('name', 'conditions[' + i + '][condition]');
         });
     }
 
     // Row type change -> update tint
-    $(document).on('change', '.bdea-hf-cond-type', function () {
-        var $row = $(this).closest('.bdea-hf-condition-row');
-        $row.removeClass('bdea-hf-cond-include bdea-hf-cond-exclude')
-            .addClass($(this).val() === 'exclude' ? 'bdea-hf-cond-exclude' : 'bdea-hf-cond-include');
+    $(document).on('change', '.elementskey-hf-cond-type', function () {
+        var $row = $(this).closest('.elementskey-hf-condition-row');
+        $row.removeClass('elementskey-hf-cond-include elementskey-hf-cond-exclude')
+            .addClass($(this).val() === 'exclude' ? 'elementskey-hf-cond-exclude' : 'elementskey-hf-cond-include');
     });
 
     // Duplicate condition row
-    $(document).on('click', '.bdea-hf-duplicate-condition', function () {
-        var $row  = $(this).closest('.bdea-hf-condition-row');
-        var $list = $row.closest('.bdea-hf-conditions-list');
+    $(document).on('click', '.elementskey-hf-duplicate-condition', function () {
+        var $row  = $(this).closest('.elementskey-hf-condition-row');
+        var $list = $row.closest('.elementskey-hf-conditions-list');
         addConditionRow($list, {
-            type:      $row.find('.bdea-hf-cond-type').val(),
-            condition: $row.find('.bdea-hf-cond-select').val()
+            type:      $row.find('.elementskey-hf-cond-type').val(),
+            condition: $row.find('.elementskey-hf-cond-select').val()
         });
     });
 
-    $(document).on('click', '.bdea-hf-remove-condition', function () {
-        $(this).closest('.bdea-hf-condition-row').remove();
+    $(document).on('click', '.elementskey-hf-remove-condition', function () {
+        $(this).closest('.elementskey-hf-condition-row').remove();
     });
 
     // Search filter
-    $(document).on('input', '#bdea-hf-cond-search', function () {
+    $(document).on('input', '#elementskey-hf-cond-search', function () {
         applySearch($(this).val());
     });
 
-    $(document).on('click', '.bdea-hf-cond-search-clear', function () {
-        $('#bdea-hf-cond-search').val('');
+    $(document).on('click', '.elementskey-hf-cond-search-clear', function () {
+        $('#elementskey-hf-cond-search').val('');
         applySearch('');
     });
 
     function applySearch(q) {
         q = (q || '').toLowerCase();
-        $('.bdea-hf-cond-select').each(function () {
+        $('.elementskey-hf-cond-select').each(function () {
             $(this).find('optgroup').each(function () {
                 var hasVisible = false;
                 $(this).find('option').each(function () {
@@ -209,12 +210,12 @@
     }
 
     // Specific items (pages/posts) for singular post type conditions
-    $(document).on('change', '.bdea-hf-cond-select', function () {
-        var $row  = $(this).closest('.bdea-hf-condition-row');
-        var $wrap = $row.find('.bdea-hf-specific-wrap');
+    $(document).on('change', '.elementskey-hf-cond-select', function () {
+        var $row  = $(this).closest('.elementskey-hf-condition-row');
+        var $wrap = $row.find('.elementskey-hf-specific-wrap');
         var val   = $(this).val();
 
-        $wrap.empty().removeClass('bdea-hf-specific-open');
+        $wrap.empty().removeClass('elementskey-hf-specific-open');
 
         var parts = val ? val.split(':') : [];
         if (parts.length === 3 && parts[0] === 'singular' && parts[1] === 'post_type') {
@@ -223,29 +224,29 @@
     });
 
     function loadSpecificItems($wrap, postType) {
-        $wrap.addClass('bdea-hf-specific-open')
-            .html('<span class="bdea-hf-specific-loading">Loading ' + $('<span>').text(postType).html() + ' items...</span>');
+        $wrap.addClass('elementskey-hf-specific-open')
+            .html('<span class="elementskey-hf-specific-loading">Loading ' + $('<span>').text(postType).html() + ' items...</span>');
 
         $.post(ajaxurl, {
-            action:   'bdea_hf_get_posts',
+            action:   'elementskey_hf_get_posts',
             post_type: postType,
-            nonce:    $('.bdea-hf-conditions-save').data('nonce')
+            nonce:    $('.elementskey-hf-conditions-save').data('nonce')
         }, function (res) {
             if (!res.success || !res.data.items || !res.data.items.length) {
-                $wrap.html('<span class="bdea-hf-specific-empty">No published items found.</span>');
+                $wrap.html('<span class="elementskey-hf-specific-empty">No published items found.</span>');
                 return;
             }
 
-            var html = '<div class="bdea-hf-specific-head">' +
+            var html = '<div class="elementskey-hf-specific-head">' +
                 '<span>Add specific ' + $('<span>').text(postType).html() + ' items:</span>' +
-                '<div class="bdea-hf-specific-actions">' +
-                '<button type="button" class="button button-small bdea-hf-specific-add" data-type="include">+ Include</button>' +
-                '<button type="button" class="button button-small bdea-hf-specific-add" data-type="exclude">- Exclude</button>' +
+                '<div class="elementskey-hf-specific-actions">' +
+                '<button type="button" class="button button-small elementskey-hf-specific-add" data-type="include">+ Include</button>' +
+                '<button type="button" class="button button-small elementskey-hf-specific-add" data-type="exclude">- Exclude</button>' +
                 '</div></div>' +
-                '<div class="bdea-hf-specific-list">';
+                '<div class="elementskey-hf-specific-list">';
 
             $.each(res.data.items, function (i, item) {
-                html += '<label class="bdea-hf-specific-item">' +
+                html += '<label class="elementskey-hf-specific-item">' +
                     '<input type="checkbox" value="' + item.id + '" />' +
                     '<span>' + $('<span>').text(item.title).html() + '</span>' +
                     '</label>';
@@ -256,45 +257,45 @@
         });
     }
 
-    $(document).on('click', '.bdea-hf-specific-add', function () {
-        var $wrap = $(this).closest('.bdea-hf-specific-wrap');
-        var $list = $wrap.closest('.bdea-hf-conditions-list');
+    $(document).on('click', '.elementskey-hf-specific-add', function () {
+        var $wrap = $(this).closest('.elementskey-hf-specific-wrap');
+        var $list = $wrap.closest('.elementskey-hf-conditions-list');
         var type  = $(this).data('type');
 
-        $wrap.find('.bdea-hf-specific-item input:checked').each(function () {
+        $wrap.find('.elementskey-hf-specific-item input:checked').each(function () {
             addConditionRow($list, { type: type, condition: 'singular:post_id:' + $(this).val() });
         });
 
-        $wrap.find('.bdea-hf-specific-item input').prop('checked', false);
+        $wrap.find('.elementskey-hf-specific-item input').prop('checked', false);
     });
 
     // Device visibility toggles
     function syncDeviceToggles($modal) {
-        $modal.find('.bdea-hf-device-toggle').each(function () {
+        $modal.find('.elementskey-hf-device-toggle').each(function () {
             var on = $(this).find('input').is(':checked');
-            $(this).toggleClass('bdea-hf-device-off', !on);
+            $(this).toggleClass('elementskey-hf-device-off', !on);
         });
     }
 
-    $(document).on('change', '.bdea-hf-device-toggle input', function () {
-        syncDeviceToggles($(this).closest('#bdea-hf-conditions-modal'));
+    $(document).on('change', '.elementskey-hf-device-toggle input', function () {
+        syncDeviceToggles($(this).closest('#elementskey-hf-conditions-modal'));
     });
 
     function updateConditionsModalForType(type) {
-        var $modal = $('#bdea-hf-conditions-modal');
+        var $modal = $('#elementskey-hf-conditions-modal');
         var isHeaderFooter = (type === 'header' || type === 'footer');
-        $modal.find('input[name="disable_theme"]').closest('.bdea-hf-field-inline').toggle(isHeaderFooter);
+        $modal.find('input[name="disable_theme"]').closest('.elementskey-hf-field-inline').toggle(isHeaderFooter);
         syncDeviceToggles($modal);
     }
 
     // Save conditions
-    $(document).on('click', '.bdea-hf-conditions-save', function () {
+    $(document).on('click', '.elementskey-hf-conditions-save', function () {
         var $btn   = $(this);
-        var $modal = $('#bdea-hf-conditions-modal');
+        var $modal = $('#elementskey-hf-conditions-modal');
         var postId = $modal.find('input[name="template_id"]').val();
         var conds  = [];
 
-        $modal.find('.bdea-hf-condition-row').each(function () {
+        $modal.find('.elementskey-hf-condition-row').each(function () {
             var type = $(this).find('select[name^="conditions["][name$="[type]"]').val();
             var cond = $(this).find('select[name^="conditions["][name$="[condition]"]').val();
             if (cond) {
@@ -310,7 +311,7 @@
         var devMobile       = $modal.find('input[name="device_mobile"]').is(':checked') ? 'yes' : '';
 
         $.post(ajaxurl, {
-            action:          'bdea_hf_update_conditions',
+            action:          'elementskey_hf_update_conditions',
             post_id:         postId,
             conditions:      conds,
             disable_theme:   disableTheme,
@@ -332,13 +333,13 @@
     });
 
     // Clear multi-select
-    $(document).on('click', '.bdea-hf-clear-select', function () {
+    $(document).on('click', '.elementskey-hf-clear-select', function () {
         var name = $(this).data('target');
-        $(this).closest('.bdea-hf-field').find('select[name="' + name + '[]"] option').prop('selected', false);
+        $(this).closest('.elementskey-hf-field').find('select[name="' + name + '[]"] option').prop('selected', false);
     });
 
     // Duplicate template
-    $(document).on('click', '.bdea-hf-duplicate-btn', function (e) {
+    $(document).on('click', '.elementskey-hf-duplicate-btn', function (e) {
         e.preventDefault();
         var $btn   = $(this);
         var postId = $btn.data('id');
@@ -346,7 +347,7 @@
         $btn.prop('disabled', true).text('...');
 
         $.post(ajaxurl, {
-            action: 'bdea_hf_duplicate_template',
+            action: 'elementskey_hf_duplicate_template',
             post_id: postId,
             nonce:  $btn.data('nonce')
         }, function (res) {
@@ -363,7 +364,7 @@
     });
 
     // Export template
-    $(document).on('click', '.bdea-hf-export-btn', function (e) {
+    $(document).on('click', '.elementskey-hf-export-btn', function (e) {
         e.preventDefault();
         var $btn   = $(this);
         var postId = $btn.data('id');
@@ -371,7 +372,7 @@
         $btn.prop('disabled', true).text('...');
 
         $.post(ajaxurl, {
-            action: 'bdea_hf_export_template',
+            action: 'elementskey_hf_export_template',
             post_id: postId,
             nonce:  $btn.data('nonce')
         }, function (res) {
@@ -397,53 +398,53 @@
     });
 
     // Open import modal
-    $(document).on('click', '.bdea-hf-import-btn', function (e) {
+    $(document).on('click', '.elementskey-hf-import-btn', function (e) {
         e.preventDefault();
-        $('#bdea-hf-import-modal').show();
+        $('#elementskey-hf-import-modal').show();
     });
 
     // Import dropzone
-    $(document).on('click', '#bdea-hf-dropzone', function () {
+    $(document).on('click', '#elementskey-hf-dropzone', function () {
         $(this).find('input[type="file"]').trigger('click');
     });
 
-    $(document).on('change', '#bdea-hf-dropzone input[type="file"]', function () {
+    $(document).on('change', '#elementskey-hf-dropzone input[type="file"]', function () {
         var file = this.files && this.files[0] ? this.files[0] : null;
-        $('#bdea-hf-dropzone').toggleClass('bdea-hf-dropzone-has-file', !!file);
-        $('#bdea-hf-dropzone .bdea-hf-dropzone-file').text(file ? 'Selected: ' + file.name : '');
+        $('#elementskey-hf-dropzone').toggleClass('elementskey-hf-dropzone-has-file', !!file);
+        $('#elementskey-hf-dropzone .elementskey-hf-dropzone-file').text(file ? 'Selected: ' + file.name : '');
     });
 
-    $(document).on('dragover dragenter', '#bdea-hf-dropzone', function (e) {
+    $(document).on('dragover dragenter', '#elementskey-hf-dropzone', function (e) {
         e.preventDefault();
-        $('#bdea-hf-dropzone').addClass('bdea-hf-dropzone-dragover');
+        $('#elementskey-hf-dropzone').addClass('elementskey-hf-dropzone-dragover');
     });
 
-    $(document).on('dragleave dragend', '#bdea-hf-dropzone', function (e) {
+    $(document).on('dragleave dragend', '#elementskey-hf-dropzone', function (e) {
         e.preventDefault();
-        $('#bdea-hf-dropzone').removeClass('bdea-hf-dropzone-dragover');
+        $('#elementskey-hf-dropzone').removeClass('elementskey-hf-dropzone-dragover');
     });
 
-    $(document).on('drop', '#bdea-hf-dropzone', function (e) {
+    $(document).on('drop', '#elementskey-hf-dropzone', function (e) {
         e.preventDefault();
-        $('#bdea-hf-dropzone').removeClass('bdea-hf-dropzone-dragover');
+        $('#elementskey-hf-dropzone').removeClass('elementskey-hf-dropzone-dragover');
         var files = e.originalEvent.dataTransfer.files;
         if (files && files.length) {
-            var input = $('#bdea-hf-dropzone input[type="file"]')[0];
+            var input = $('#elementskey-hf-dropzone input[type="file"]')[0];
             input.files = files;
             $(input).trigger('change');
         }
     });
 
     // Submit import
-    $(document).on('click', '.bdea-hf-import-submit', function () {
+    $(document).on('click', '.elementskey-hf-import-submit', function () {
         var $btn   = $(this);
-        var $form  = $('#bdea-hf-import-form');
+        var $form  = $('#elementskey-hf-import-form');
         var file   = $form.find('input[type="file"]')[0].files[0];
 
         if (!file) { alert('Select a .json file.'); return; }
 
         var fd = new FormData();
-        fd.append('action', 'bdea_hf_import_template');
+        fd.append('action', 'elementskey_hf_import_template');
         fd.append('nonce',  $btn.data('nonce'));
         fd.append('import_file', file);
 
@@ -471,24 +472,24 @@
     });
 
     // Select all checkboxes
-    $(document).on('change', '#bdea-hf-select-all', function () {
-        $('.bdea-hf-cb').prop('checked', $(this).is(':checked'));
+    $(document).on('change', '#elementskey-hf-select-all', function () {
+        $('.elementskey-hf-cb').prop('checked', $(this).is(':checked'));
     });
 
     // Bulk apply
-    $(document).on('click', '#bdea-hf-bulk-apply', function () {
-        var action = $('#bdea-hf-bulk-action').val();
+    $(document).on('click', '#elementskey-hf-bulk-apply', function () {
+        var action = $('#elementskey-hf-bulk-action').val();
         if (!action) { alert('Select an action.'); return; }
 
         var ids = [];
-        $('.bdea-hf-cb:checked').each(function () { ids.push($(this).val()); });
+        $('.elementskey-hf-cb:checked').each(function () { ids.push($(this).val()); });
         if (ids.length === 0) { alert('Select templates.'); return; }
 
         var $btn = $(this);
         $btn.prop('disabled', true).text('Processing...');
 
         $.post(ajaxurl, {
-            action:   'bdea_hf_bulk_action',
+            action:   'elementskey_hf_bulk_action',
             doaction: action,
             post_ids: ids,
             nonce:    $btn.data('nonce')
@@ -524,11 +525,11 @@
     }
 
     // Conditions list drag-drop reorder
-    var $condList = $('.bdea-hf-conditions-list');
+    var $condList = $('.elementskey-hf-conditions-list');
     if ($condList.length) {
         $condList.sortable({
-            handle:   '.bdea-hf-drag-handle',
-            items:    '.bdea-hf-condition-row',
+            handle:   '.elementskey-hf-drag-handle',
+            items:    '.elementskey-hf-condition-row',
             axis:     'y',
             tolerance: 'pointer',
             stop:     function () {
@@ -538,7 +539,7 @@
     }
 
     // Drag-drop reorder
-    var $tableBody = $('.bdea-hf-table tbody');
+    var $tableBody = $('.elementskey-hf-table tbody');
     if ($tableBody.length) {
         $tableBody.sortable({
             handle: 'td:first',
@@ -552,7 +553,7 @@
                     order.push($(this).data('id'));
                 });
                 $.post(ajaxurl, {
-                    action: 'bdea_hf_reorder_templates',
+                    action: 'elementskey_hf_reorder_templates',
                     order:  order,
                     nonce:  data.reorder_nonce || ''
                 }, function (res) {

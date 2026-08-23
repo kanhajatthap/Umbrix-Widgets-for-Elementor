@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Author_Box_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_author_box';
+        return 'elementskey_author_box';
     }
 
     public function get_title() {
@@ -22,31 +22,31 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_author_box_content',
+            'elementskey_author_box_content',
             [
-                'label' => __( 'Content', 'elementstack-elementor-addons' ),
+                'label' => __( 'Content', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'layout',
             [
-                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
+                'label' => __( 'Layout', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'left',
                 'options' => [
-                    'left' => __( 'Left', 'elementstack-elementor-addons' ),
-                    'top' => __( 'Top', 'elementstack-elementor-addons' ),
+                    'left' => __( 'Left', 'elementskey' ),
+                    'top' => __( 'Top', 'elementskey' ),
                 ],
             ]
         );
@@ -54,7 +54,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_avatar',
             [
-                'label' => __( 'Show Avatar', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Avatar', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -63,7 +63,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'avatar_size',
             [
-                'label' => __( 'Avatar Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Avatar Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 96,
                 'min' => 32,
@@ -75,7 +75,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_name',
             [
-                'label' => __( 'Show Name', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Name', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -84,7 +84,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_description',
             [
-                'label' => __( 'Show Description', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Description', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -93,7 +93,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_website',
             [
-                'label' => __( 'Show Website Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Website Link', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -102,9 +102,9 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_author_box_style',
+            'elementskey_author_box_style',
             [
-                'label' => __( 'Author Box', 'elementstack-elementor-addons' ),
+                'label' => __( 'Author Box', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -112,11 +112,11 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'box_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f7f7f7',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-author-box' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-author-box' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -124,13 +124,13 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'box_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'default' => [ 'size' => 8, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-author-box' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-author-box' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -138,11 +138,11 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'box_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-author-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-author-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -151,18 +151,18 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'name_typography',
-                'selector' => '{{WRAPPER}} .bdea-author-name',
+                'selector' => '{{WRAPPER}} .elementskey-author-name',
             ]
         );
 
         $this->add_control(
             'name_color',
             [
-                'label' => __( 'Name Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Name Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-author-name' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-author-name' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -171,18 +171,30 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'description_typography',
-                'selector' => '{{WRAPPER}} .bdea-author-description',
+                'selector' => '{{WRAPPER}} .elementskey-author-description',
             ]
         );
 
         $this->add_control(
             'description_color',
             [
-                'label' => __( 'Description Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-author-description' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-author-description' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'website_link_color',
+            [
+                'label' => __( 'Website Link Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#4361ee',
+                'selectors' => [
+                    '{{WRAPPER}} a.elementskey-author-website' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -203,7 +215,7 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         }
 
         if ( ! $post_id ) {
-            echo '<div class="bdea-loop-grid-empty">No post found.</div>';
+            echo '<div class="elementskey-loop-grid-empty">No post found.</div>';
             return;
         }
 
@@ -214,28 +226,28 @@ class BDEA_Author_Box_Widget extends \Elementor\Widget_Base {
         $author_url  = get_author_posts_url( $author_id );
 
         $avatar_size  = ! empty( $settings['avatar_size'] ) ? absint( $settings['avatar_size'] ) : 96;
-        $layout_class = ( 'top' === $settings['layout'] ) ? 'bdea-author-box-top' : 'bdea-author-box-left';
+        $layout_class = ( 'top' === $settings['layout'] ) ? 'elementskey-author-box-top' : 'elementskey-author-box-left';
         ?>
-        <div class="bdea-author-box <?php echo esc_attr( $layout_class ); ?>">
+        <div class="elementskey-author-box <?php echo esc_attr( $layout_class ); ?>">
             <?php if ( 'yes' === $settings['show_avatar'] ) : ?>
-                <div class="bdea-author-avatar">
+                <div class="elementskey-author-avatar">
                     <a href="<?php echo esc_url( $author_url ); ?>"><?php echo get_avatar( $author_id, $avatar_size ); ?></a>
                 </div>
             <?php endif; ?>
 
-            <div class="bdea-author-body">
+            <div class="elementskey-author-body">
                 <?php if ( 'yes' === $settings['show_name'] ) : ?>
-                    <div class="bdea-author-name">
+                    <div class="elementskey-author-name">
                         <a href="<?php echo esc_url( $author_url ); ?>"><?php echo esc_html( $author_name ); ?></a>
                     </div>
                 <?php endif; ?>
 
                 <?php if ( 'yes' === $settings['show_description'] && $description ) : ?>
-                    <div class="bdea-author-description"><?php echo esc_html( $description ); ?></div>
+                    <div class="elementskey-author-description"><?php echo esc_html( $description ); ?></div>
                 <?php endif; ?>
 
                 <?php if ( 'yes' === $settings['show_website'] && $website_url ) : ?>
-                    <a class="bdea-author-website" href="<?php echo esc_url( $website_url ); ?>" rel="nofollow"><?php echo esc_html( 'Visit Website' ); ?></a>
+                    <a class="elementskey-author-website" href="<?php echo esc_url( $website_url ); ?>" rel="nofollow"><?php echo esc_html( 'Visit Website' ); ?></a>
                 <?php endif; ?>
             </div>
         </div>

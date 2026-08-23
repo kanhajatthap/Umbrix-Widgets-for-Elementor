@@ -1,13 +1,13 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Framework\Renderer;
+namespace ElementsKey\Framework\Renderer;
 
-use BDEA\Framework\Conditions\ConditionManager;
-use BDEA\Framework\Cache\Cache;
+use ElementsKey\Framework\Conditions\ConditionManager;
+use ElementsKey\Framework\Cache\Cache;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -34,8 +34,8 @@ class TemplateRenderer {
         $best_priority = PHP_INT_MAX;
 
         foreach ( $template_ids as $id ) {
-            $conditions = get_post_meta( $id, '_bdea_hf_conditions', true );
-            $priority   = (int) get_post_meta( $id, '_bdea_hf_priority', true );
+            $conditions = get_post_meta( $id, '_elementskey_hf_conditions', true );
+            $priority   = (int) get_post_meta( $id, '_elementskey_hf_priority', true );
 
             if ( $this->condition_manager->evaluate( $conditions ) ) {
                 if ( $priority < $best_priority ) {
@@ -94,10 +94,10 @@ class TemplateRenderer {
 
         $templates = get_posts(
             [
-                'post_type'              => 'bdea_header_footer',
+                'post_type'              => 'elementskey_header_footer',
                 'post_status'            => 'publish',
                 'posts_per_page'         => 50,
-                'meta_key'               => '_bdea_hf_template_type', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Template type lookup is the primary filter.
+                'meta_key'               => '_elementskey_hf_template_type', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Template type lookup is the primary filter.
                 'meta_value'             => $type, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Template type lookup is the primary filter.
                 'orderby'                => 'menu_order',
                 'order'                  => 'ASC',

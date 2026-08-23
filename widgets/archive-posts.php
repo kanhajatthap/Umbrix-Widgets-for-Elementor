@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Archive_Posts_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_archive_posts';
+        return 'elementskey_archive_posts';
     }
 
     public function get_title() {
@@ -22,28 +22,28 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_archive_query_section',
+            'elementskey_archive_query_section',
             [
-                'label' => __( 'Query', 'elementstack-elementor-addons' ),
+                'label' => __( 'Query', 'elementskey' ),
             ]
         );
 
-        $post_types = [ '' => __( 'Auto (Archive / Main Query)', 'elementstack-elementor-addons' ) ] + bdea_widget_post_types();
+        $post_types = [ '' => __( 'Auto (Archive / Main Query)', 'elementskey' ) ] + elementskey_widget_post_types();
 
         $this->add_control(
             'post_type',
             [
-                'label' => __( 'Post Type', 'elementstack-elementor-addons' ),
+                'label' => __( 'Post Type', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '',
                 'options' => $post_types,
@@ -53,7 +53,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'posts_per_page',
             [
-                'label' => __( 'Posts Per Page', 'elementstack-elementor-addons' ),
+                'label' => __( 'Posts Per Page', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 9,
                 'min' => 1,
@@ -64,16 +64,16 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'orderby',
             [
-                'label' => __( 'Order By', 'elementstack-elementor-addons' ),
+                'label' => __( 'Order By', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => __( 'Date', 'elementstack-elementor-addons' ),
-                    'modified' => __( 'Modified Date', 'elementstack-elementor-addons' ),
-                    'title' => __( 'Title', 'elementstack-elementor-addons' ),
-                    'menu_order' => __( 'Menu Order', 'elementstack-elementor-addons' ),
-                    'rand' => __( 'Random', 'elementstack-elementor-addons' ),
-                    'comment_count' => __( 'Comment Count', 'elementstack-elementor-addons' ),
+                    'date' => __( 'Date', 'elementskey' ),
+                    'modified' => __( 'Modified Date', 'elementskey' ),
+                    'title' => __( 'Title', 'elementskey' ),
+                    'menu_order' => __( 'Menu Order', 'elementskey' ),
+                    'rand' => __( 'Random', 'elementskey' ),
+                    'comment_count' => __( 'Comment Count', 'elementskey' ),
                 ],
             ]
         );
@@ -81,12 +81,12 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => __( 'Order', 'elementstack-elementor-addons' ),
+                'label' => __( 'Order', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'DESC',
                 'options' => [
-                    'ASC' => __( 'Ascending', 'elementstack-elementor-addons' ),
-                    'DESC' => __( 'Descending', 'elementstack-elementor-addons' ),
+                    'ASC' => __( 'Ascending', 'elementskey' ),
+                    'DESC' => __( 'Descending', 'elementskey' ),
                 ],
             ]
         );
@@ -94,16 +94,16 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_archive_layout_section',
+            'elementskey_archive_layout_section',
             [
-                'label' => __( 'Layout', 'elementstack-elementor-addons' ),
+                'label' => __( 'Layout', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'columns',
             [
-                'label' => __( 'Columns', 'elementstack-elementor-addons' ),
+                'label' => __( 'Columns', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 2,
                 'min' => 1,
@@ -114,7 +114,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_thumbnail',
             [
-                'label' => __( 'Show Thumbnail', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Thumbnail', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -123,14 +123,14 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'thumbnail_size',
             [
-                'label' => __( 'Thumbnail Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Thumbnail Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'thumbnail' => __( 'Thumbnail', 'elementstack-elementor-addons' ),
-                    'medium' => __( 'Medium', 'elementstack-elementor-addons' ),
-                    'large' => __( 'Large', 'elementstack-elementor-addons' ),
-                    'medium_large' => __( 'Medium Large', 'elementstack-elementor-addons' ),
-                    'full' => __( 'Full', 'elementstack-elementor-addons' ),
+                    'thumbnail' => __( 'Thumbnail', 'elementskey' ),
+                    'medium' => __( 'Medium', 'elementskey' ),
+                    'large' => __( 'Large', 'elementskey' ),
+                    'medium_large' => __( 'Medium Large', 'elementskey' ),
+                    'full' => __( 'Full', 'elementskey' ),
                 ],
                 'default' => 'medium_large',
                 'condition' => [ 'show_thumbnail' => 'yes' ],
@@ -140,7 +140,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_date',
             [
-                'label' => __( 'Show Date', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Date', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -149,7 +149,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_excerpt',
             [
-                'label' => __( 'Show Excerpt', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Excerpt', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -158,7 +158,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'excerpt_length',
             [
-                'label' => __( 'Excerpt Length (words)', 'elementstack-elementor-addons' ),
+                'label' => __( 'Excerpt Length (words)', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 18,
                 'min' => 3,
@@ -170,7 +170,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'enable_pagination',
             [
-                'label' => __( 'Enable Pagination', 'elementstack-elementor-addons' ),
+                'label' => __( 'Enable Pagination', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'no',
             ]
@@ -179,9 +179,9 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_archive_style_section',
+            'elementskey_archive_style_section',
             [
-                'label' => __( 'Cards', 'elementstack-elementor-addons' ),
+                'label' => __( 'Cards', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -189,11 +189,11 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'card_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-archive-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-archive-card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -201,13 +201,13 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'card_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ],
                 'default' => [ 'size' => 8, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-archive-card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-archive-card' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -216,18 +216,18 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .bdea-archive-title',
+                'selector' => '{{WRAPPER}} .elementskey-archive-title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-archive-title a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-archive-title a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -236,18 +236,76 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'excerpt_typography',
-                'selector' => '{{WRAPPER}} .bdea-archive-excerpt',
+                'selector' => '{{WRAPPER}} .elementskey-archive-excerpt',
             ]
         );
 
         $this->add_control(
             'excerpt_color',
             [
-                'label' => __( 'Excerpt Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Excerpt Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-archive-excerpt' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-archive-excerpt' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'elementskey_archive_pagination_style_section',
+            [
+                'label' => __( 'Pagination', 'elementskey' ),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'pagination_bg',
+            [
+                'label' => __( 'Background', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#f3f4f6',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-archive-pagination .page-numbers' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'pagination_color',
+            [
+                'label' => __( 'Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#1f2937',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-archive-pagination .page-numbers' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'pagination_active_bg',
+            [
+                'label' => __( 'Active Background', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#4361ee',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-archive-pagination .page-numbers.current' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'pagination_active_color',
+            [
+                'label' => __( 'Active Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-archive-pagination .page-numbers.current' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -269,11 +327,11 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
             $query_args['paged'] = max( 1, get_query_var( 'paged' ) );
             $query            = new \WP_Query( $query_args );
         } else {
-            $query = new \WP_Query( bdea_widget_query_args( $settings ) );
+            $query = new \WP_Query( elementskey_widget_query_args( $settings ) );
         }
 
         if ( ! $query->have_posts() ) {
-            echo '<div class="bdea-loop-grid-empty">No posts found.</div>';
+            echo '<div class="elementskey-loop-grid-empty">No posts found.</div>';
             return;
         }
 
@@ -283,28 +341,28 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
         $excerpt_length = ! empty( $settings['excerpt_length'] ) ? absint( $settings['excerpt_length'] ) : 18;
         $thumbnail_size = ! empty( $settings['thumbnail_size'] ) ? $settings['thumbnail_size'] : 'medium_large';
         ?>
-        <div class="bdea-archive-posts">
-            <div class="bdea-archive-grid" style="--bdea-cols: <?php echo esc_attr( $columns ); ?>;">
+        <div class="elementskey-archive-posts">
+            <div class="elementskey-archive-grid" style="--elementskey-cols: <?php echo esc_attr( $columns ); ?>;">
                 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                     <?php $post_id = get_the_ID(); ?>
-                    <article class="bdea-archive-card">
+                    <article class="elementskey-archive-card">
                         <?php if ( 'yes' === $settings['show_thumbnail'] && has_post_thumbnail( $post_id ) ) : ?>
-                            <a class="bdea-archive-thumb" href="<?php the_permalink(); ?>">
+                            <a class="elementskey-archive-thumb" href="<?php the_permalink(); ?>">
                                 <?php echo get_the_post_thumbnail( $post_id, $thumbnail_size ); ?>
                             </a>
                         <?php endif; ?>
 
-                        <div class="bdea-archive-body">
-                            <h3 class="bdea-archive-title">
+                        <div class="elementskey-archive-body">
+                            <h3 class="elementskey-archive-title">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h3>
 
                             <?php if ( 'yes' === $settings['show_date'] ) : ?>
-                                <div class="bdea-archive-meta"><?php echo esc_html( get_the_date() ); ?></div>
+                                <div class="elementskey-archive-meta"><?php echo esc_html( get_the_date() ); ?></div>
                             <?php endif; ?>
 
                             <?php if ( 'yes' === $settings['show_excerpt'] ) : ?>
-                                <p class="bdea-archive-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), $excerpt_length ) ); ?></p>
+                                <p class="elementskey-archive-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), $excerpt_length ) ); ?></p>
                             <?php endif; ?>
                         </div>
                     </article>
@@ -312,7 +370,7 @@ class BDEA_Archive_Posts_Widget extends \Elementor\Widget_Base {
             </div>
 
             <?php if ( 'yes' === $settings['enable_pagination'] ) : ?>
-                <div class="bdea-archive-pagination">
+                <div class="elementskey-archive-pagination">
                     <?php
                     if ( $query->max_num_pages > 1 ) {
                         $big   = 999999999;

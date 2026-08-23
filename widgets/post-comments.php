@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Post_Comments_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_post_comments';
+        return 'elementskey_post_comments';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_post_comments_content',
+            'elementskey_post_comments_content',
             [
-                'label' => __( 'Content', 'elementstack-elementor-addons' ),
+                'label' => __( 'Content', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'show_count',
             [
-                'label' => __( 'Show Comment Count', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Comment Count', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -50,7 +50,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'avatar_size',
             [
-                'label' => __( 'Avatar Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Avatar Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 48,
                 'min' => 16,
@@ -62,9 +62,9 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
 
         // Title Style
         $this->start_controls_section(
-            'bdea_post_comments_title_style',
+            'elementskey_post_comments_title_style',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -73,18 +73,18 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-comments-title',
+                'selector' => '{{WRAPPER}} .elementskey-post-comments-title',
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-comments-title' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -92,12 +92,12 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-comments-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -106,9 +106,9 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
 
         // Comment Style
         $this->start_controls_section(
-            'bdea_post_comments_comment_style',
+            'elementskey_post_comments_comment_style',
             [
-                'label' => __( 'Comment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Comment', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -117,17 +117,17 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'comment_text_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-comments .comment',
+                'selector' => '{{WRAPPER}} .elementskey-post-comments .comment',
             ]
         );
 
         $this->add_control(
             'comment_text_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments .comment .comment-content, {{WRAPPER}} .bdea-post-comments .comment .comment-meta' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-comments .comment .comment-content, {{WRAPPER}} .elementskey-post-comments .comment .comment-meta' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -135,10 +135,22 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'comment_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments .comment' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-comments .comment' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'comment_border_color',
+            [
+                'label' => __( 'Comment Border Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#f3f4f6',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-post-comments .comment' => 'border-bottom-color: {{VALUE}};',
                 ],
             ]
         );
@@ -146,11 +158,11 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'comment_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments .comment' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-comments .comment' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -158,12 +170,12 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'comment_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments .comment + .comment' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-comments .comment + .comment' => 'margin-top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -171,12 +183,12 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'avatar_border_radius',
             [
-                'label' => __( 'Avatar Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Avatar Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments img.avatar' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-post-comments img.avatar' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -185,9 +197,9 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
 
         // Form Style
         $this->start_controls_section(
-            'bdea_post_comments_form_style',
+            'elementskey_post_comments_form_style',
             [
-                'label' => __( 'Form', 'elementstack-elementor-addons' ),
+                'label' => __( 'Form', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -196,17 +208,17 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'form_typography',
-                'selector' => '{{WRAPPER}} .bdea-post-comments input[type="text"], {{WRAPPER}} .bdea-post-comments input[type="email"], {{WRAPPER}} .bdea-post-comments input[type="url"], {{WRAPPER}} .bdea-post-comments textarea',
+                'selector' => '{{WRAPPER}} .elementskey-post-comments input[type="text"], {{WRAPPER}} .elementskey-post-comments input[type="email"], {{WRAPPER}} .elementskey-post-comments input[type="url"], {{WRAPPER}} .elementskey-post-comments textarea',
             ]
         );
 
         $this->add_control(
             'form_input_bg',
             [
-                'label' => __( 'Input Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Input Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments input[type="text"], {{WRAPPER}} .bdea-post-comments input[type="email"], {{WRAPPER}} .bdea-post-comments input[type="url"], {{WRAPPER}} .bdea-post-comments textarea' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-comments input[type="text"], {{WRAPPER}} .elementskey-post-comments input[type="email"], {{WRAPPER}} .elementskey-post-comments input[type="url"], {{WRAPPER}} .elementskey-post-comments textarea' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -214,10 +226,10 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_input_border_color',
             [
-                'label' => __( 'Input Border Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Input Border Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments input[type="text"], {{WRAPPER}} .bdea-post-comments input[type="email"], {{WRAPPER}} .bdea-post-comments input[type="url"], {{WRAPPER}} .bdea-post-comments textarea' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-comments input[type="text"], {{WRAPPER}} .elementskey-post-comments input[type="email"], {{WRAPPER}} .elementskey-post-comments input[type="url"], {{WRAPPER}} .elementskey-post-comments textarea' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -225,11 +237,11 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_btn_bg',
             [
-                'label' => __( 'Button Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments input[type="submit"], {{WRAPPER}} .bdea-post-comments button[type="submit"]' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-comments input[type="submit"], {{WRAPPER}} .elementskey-post-comments button[type="submit"]' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -237,11 +249,11 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'form_btn_color',
             [
-                'label' => __( 'Button Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-post-comments input[type="submit"], {{WRAPPER}} .bdea-post-comments button[type="submit"]' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-post-comments input[type="submit"], {{WRAPPER}} .elementskey-post-comments button[type="submit"]' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -253,7 +265,7 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
         $settings = $this->get_settings_for_display();
 
         if ( ! is_singular() ) {
-            echo '<div class="bdea-loop-grid-empty">Comments are only available on single posts.</div>';
+            echo '<div class="elementskey-loop-grid-empty">Comments are only available on single posts.</div>';
             return;
         }
 
@@ -263,9 +275,9 @@ class BDEA_Post_Comments_Widget extends \Elementor\Widget_Base {
 
         $avatar_size = ! empty( $settings['avatar_size'] ) ? absint( $settings['avatar_size'] ) : 48;
         ?>
-        <div class="bdea-post-comments">
+        <div class="elementskey-post-comments">
             <?php if ( 'yes' === $settings['show_count'] ) : ?>
-                <h3 class="bdea-post-comments-title">
+                <h3 class="elementskey-post-comments-title">
                     <?php comments_number( 'No comments', '1 Comment', '% Comments' ); ?>
                 </h3>
             <?php endif; ?>

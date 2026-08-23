@@ -1,10 +1,10 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
-namespace BDEA\Framework\Conditions;
+namespace ElementsKey\Framework\Conditions;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -19,44 +19,44 @@ class ConditionManager {
     private function register_defaults() {
         $defaults = [
             'entire_site' => [
-                'label' => __( 'Entire Website', 'elementstack-elementor-addons' ),
-                'group' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'Entire Website', 'elementskey' ),
+                'group' => __( 'General', 'elementskey' ),
             ],
             'front_page'  => [
-                'label' => __( 'Front Page', 'elementstack-elementor-addons' ),
-                'group' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'Front Page', 'elementskey' ),
+                'group' => __( 'General', 'elementskey' ),
             ],
             'home_page'   => [
-                'label' => __( 'Home / Blog Page', 'elementstack-elementor-addons' ),
-                'group' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'Home / Blog Page', 'elementskey' ),
+                'group' => __( 'General', 'elementskey' ),
             ],
             'custom_url'  => [
-                'label' => __( 'Custom URL', 'elementstack-elementor-addons' ),
-                'group' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'Custom URL', 'elementskey' ),
+                'group' => __( 'General', 'elementskey' ),
             ],
             'singular'    => [
-                'label' => __( 'All Singular', 'elementstack-elementor-addons' ),
-                'group' => __( 'Singular', 'elementstack-elementor-addons' ),
+                'label' => __( 'All Singular', 'elementskey' ),
+                'group' => __( 'Singular', 'elementskey' ),
             ],
             'singular:post_type:post' => [
-                'label' => __( 'All Posts', 'elementstack-elementor-addons' ),
-                'group' => __( 'Singular', 'elementstack-elementor-addons' ),
+                'label' => __( 'All Posts', 'elementskey' ),
+                'group' => __( 'Singular', 'elementskey' ),
             ],
             'singular:post_type:page' => [
-                'label' => __( 'All Pages', 'elementstack-elementor-addons' ),
-                'group' => __( 'Singular', 'elementstack-elementor-addons' ),
+                'label' => __( 'All Pages', 'elementskey' ),
+                'group' => __( 'Singular', 'elementskey' ),
             ],
             'archive'     => [
-                'label' => __( 'All Archives', 'elementstack-elementor-addons' ),
-                'group' => __( 'Archives', 'elementstack-elementor-addons' ),
+                'label' => __( 'All Archives', 'elementskey' ),
+                'group' => __( 'Archives', 'elementskey' ),
             ],
             'search'      => [
-                'label' => __( 'Search Results', 'elementstack-elementor-addons' ),
-                'group' => __( 'Archives', 'elementstack-elementor-addons' ),
+                'label' => __( 'Search Results', 'elementskey' ),
+                'group' => __( 'Archives', 'elementskey' ),
             ],
             '404'         => [
-                'label' => __( '404 Page', 'elementstack-elementor-addons' ),
-                'group' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( '404 Page', 'elementskey' ),
+                'group' => __( 'General', 'elementskey' ),
             ],
         ];
 
@@ -67,15 +67,15 @@ class ConditionManager {
         $post_types = get_post_types( [ 'public' => true ], 'objects' );
 
         foreach ( $post_types as $pt ) {
-            if ( in_array( $pt->name, [ 'bdea_header_footer', 'elementor_library', 'attachment' ], true ) ) {
+            if ( in_array( $pt->name, [ 'elementskey_header_footer', 'elementor_library', 'attachment' ], true ) ) {
                 continue;
             }
 
             $this->register(
                 'singular:post_type:' . $pt->name,
                 /* translators: %s: Post type singular label. */
-                sprintf( __( 'Singular: %s', 'elementstack-elementor-addons' ), $pt->label ),
-                __( 'Singular', 'elementstack-elementor-addons' )
+                sprintf( __( 'Singular: %s', 'elementskey' ), $pt->label ),
+                __( 'Singular', 'elementskey' )
             );
         }
 
@@ -92,15 +92,15 @@ class ConditionManager {
         $taxonomies = get_taxonomies( [ 'public' => true ], 'objects' );
 
         foreach ( $taxonomies as $tax ) {
-            if ( in_array( $tax->name, [ 'elementor_library', 'bdea_header_footer', 'nav_menu', 'link_category' ], true ) ) {
+            if ( in_array( $tax->name, [ 'elementor_library', 'elementskey_header_footer', 'nav_menu', 'link_category' ], true ) ) {
                 continue;
             }
 
             $this->register(
                 'archive:taxonomy:' . $tax->name,
                 /* translators: %s: Taxonomy name. */
-                sprintf( __( 'All %s Archives', 'elementstack-elementor-addons' ), $tax->labels->name ),
-                __( 'Archives', 'elementstack-elementor-addons' )
+                sprintf( __( 'All %s Archives', 'elementskey' ), $tax->labels->name ),
+                __( 'Archives', 'elementskey' )
             );
 
             $terms = get_terms( [
@@ -118,7 +118,7 @@ class ConditionManager {
                     'archive:taxonomy:' . $tax->name . ':term:' . $term->slug,
                     $term->name,
                     /* translators: %s: Taxonomy name. */
-                    sprintf( __( '%s Archives', 'elementstack-elementor-addons' ), $tax->labels->name )
+                    sprintf( __( '%s Archives', 'elementskey' ), $tax->labels->name )
                 );
             }
         }
@@ -154,15 +154,15 @@ class ConditionManager {
             $this->register(
                 'language:' . $code,
                 /* translators: %s: Language code. */
-                sprintf( __( 'Language: %s', 'elementstack-elementor-addons' ), strtoupper( $code ) ),
-                __( 'Language', 'elementstack-elementor-addons' )
+                sprintf( __( 'Language: %s', 'elementskey' ), strtoupper( $code ) ),
+                __( 'Language', 'elementskey' )
             );
         }
     }
 
     private function register_user_role_conditions() {
-        $this->register( 'user_role:logged_in', __( 'Logged In', 'elementstack-elementor-addons' ), __( 'User Role', 'elementstack-elementor-addons' ) );
-        $this->register( 'user_role:logged_out', __( 'Logged Out', 'elementstack-elementor-addons' ), __( 'User Role', 'elementstack-elementor-addons' ) );
+        $this->register( 'user_role:logged_in', __( 'Logged In', 'elementskey' ), __( 'User Role', 'elementskey' ) );
+        $this->register( 'user_role:logged_out', __( 'Logged Out', 'elementskey' ), __( 'User Role', 'elementskey' ) );
 
         $roles = wp_roles()->get_names();
 
@@ -170,24 +170,24 @@ class ConditionManager {
             $this->register(
                 'user_role:' . $role,
                 /* translators: %s: User role name. */
-                sprintf( __( 'Role: %s', 'elementstack-elementor-addons' ), $label ),
-                __( 'User Role', 'elementstack-elementor-addons' )
+                sprintf( __( 'Role: %s', 'elementskey' ), $label ),
+                __( 'User Role', 'elementskey' )
             );
         }
     }
 
     private function register_woocommerce_conditions() {
         $woo = [
-            'woocommerce:shop'            => __( 'Shop Page', 'elementstack-elementor-addons' ),
-            'woocommerce:product'         => __( 'Product Page', 'elementstack-elementor-addons' ),
-            'woocommerce:cart'            => __( 'Cart Page', 'elementstack-elementor-addons' ),
-            'woocommerce:checkout'        => __( 'Checkout Page', 'elementstack-elementor-addons' ),
-            'woocommerce:account'         => __( 'My Account Page', 'elementstack-elementor-addons' ),
-            'woocommerce:product_archive' => __( 'Product Archive (Category/Tag)', 'elementstack-elementor-addons' ),
+            'woocommerce:shop'            => __( 'Shop Page', 'elementskey' ),
+            'woocommerce:product'         => __( 'Product Page', 'elementskey' ),
+            'woocommerce:cart'            => __( 'Cart Page', 'elementskey' ),
+            'woocommerce:checkout'        => __( 'Checkout Page', 'elementskey' ),
+            'woocommerce:account'         => __( 'My Account Page', 'elementskey' ),
+            'woocommerce:product_archive' => __( 'Product Archive (Category/Tag)', 'elementskey' ),
         ];
 
         foreach ( $woo as $id => $label ) {
-            $this->register( $id, $label, __( 'WooCommerce', 'elementstack-elementor-addons' ) );
+            $this->register( $id, $label, __( 'WooCommerce', 'elementskey' ) );
         }
     }
 

@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Breadcrumbs_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_breadcrumbs';
+        return 'elementskey_breadcrumbs';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_breadcrumbs_section',
+            'elementskey_breadcrumbs_section',
             [
-                'label' => __( 'Breadcrumbs', 'elementstack-elementor-addons' ),
+                'label' => __( 'Breadcrumbs', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'breadcrumb_separator',
             [
-                'label' => __( 'Separator', 'elementstack-elementor-addons' ),
+                'label' => __( 'Separator', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => '/',
             ]
@@ -50,16 +50,16 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_home_label',
             [
-                'label' => __( 'Home Label', 'elementstack-elementor-addons' ),
+                'label' => __( 'Home Label', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Home', 'elementstack-elementor-addons' ),
+                'default' => __( 'Home', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'breadcrumb_hide_on_front',
             [
-                'label' => __( 'Hide on Homepage', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hide on Homepage', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -69,9 +69,9 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
 
         // Typography
         $this->start_controls_section(
-            'bdea_breadcrumbs_typo',
+            'elementskey_breadcrumbs_typo',
             [
-                'label' => __( 'Typography', 'elementstack-elementor-addons' ),
+                'label' => __( 'Typography', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -80,23 +80,23 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'breadcrumb_typography',
-                'selector' => '{{WRAPPER}} .bdea-breadcrumbs',
+                'selector' => '{{WRAPPER}} .elementskey-breadcrumbs',
             ]
         );
 
         $this->add_responsive_control(
             'breadcrumb_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-breadcrumbs' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-breadcrumbs' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -104,13 +104,13 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'breadcrumb_spacing',
             [
-                'label' => __( 'Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-breadcrumbs a' => 'margin-right: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .bdea-breadcrumb-separator' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-breadcrumbs a' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-breadcrumb-separator' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -119,9 +119,9 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
 
         // Colors
         $this->start_controls_section(
-            'bdea_breadcrumbs_colors',
+            'elementskey_breadcrumbs_colors',
             [
-                'label' => __( 'Colors', 'elementstack-elementor-addons' ),
+                'label' => __( 'Colors', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -129,11 +129,11 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_color',
             [
-                'label' => __( 'Link Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-breadcrumbs a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-breadcrumbs a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -141,10 +141,10 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_hover_color',
             [
-                'label' => __( 'Link Hover Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link Hover Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-breadcrumbs a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-breadcrumbs a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -152,11 +152,11 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_current_color',
             [
-                'label' => __( 'Current Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Current Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4b5563',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-breadcrumbs-current' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-breadcrumbs-current' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -164,11 +164,11 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'breadcrumb_sep_color',
             [
-                'label' => __( 'Separator Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Separator Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#9ca3af',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-breadcrumb-separator' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-breadcrumb-separator' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -230,22 +230,22 @@ class BDEA_Breadcrumbs_Widget extends \Elementor\Widget_Base {
         }
 
         if ( function_exists( 'yoast_breadcrumb' ) ) {
-            yoast_breadcrumb( '<div class="bdea-breadcrumbs">', '</div>' );
+            yoast_breadcrumb( '<div class="elementskey-breadcrumbs">', '</div>' );
             return;
         }
 
         $items = $this->build_trail( $settings );
         $sep   = ! empty( $settings['breadcrumb_separator'] ) ? $settings['breadcrumb_separator'] : '/';
         ?>
-        <nav class="bdea-breadcrumbs" aria-label="Breadcrumb">
+        <nav class="elementskey-breadcrumbs" aria-label="Breadcrumb">
             <?php foreach ( $items as $index => $item ) : ?>
                 <?php if ( $index > 0 ) : ?>
-                    <span class="bdea-breadcrumb-separator" aria-hidden="true"><?php echo esc_html( $sep ); ?></span>
+                    <span class="elementskey-breadcrumb-separator" aria-hidden="true"><?php echo esc_html( $sep ); ?></span>
                 <?php endif; ?>
                 <?php if ( ! empty( $item['url'] ) && $index < count( $items ) - 1 ) : ?>
                     <a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
                 <?php else : ?>
-                    <span class="bdea-breadcrumbs-current"><?php echo esc_html( $item['label'] ); ?></span>
+                    <span class="elementskey-breadcrumbs-current"><?php echo esc_html( $item['label'] ); ?></span>
                 <?php endif; ?>
             <?php endforeach; ?>
         </nav>

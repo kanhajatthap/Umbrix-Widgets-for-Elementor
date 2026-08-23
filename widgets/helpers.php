@@ -1,12 +1,12 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /**
- * Shared helpers for ElementStack content widgets (Loop Grid, Loop Carousel, Posts, Portfolio).
+ * Shared helpers for ElementsKey content widgets (Loop Grid, Loop Carousel, Posts, Portfolio).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param array $settings Widget settings.
  * @return array Query args.
  */
-function bdea_widget_query_args( $settings ) {
+function elementskey_widget_query_args( $settings ) {
     $args = [
         'post_type'           => ! empty( $settings['post_type'] ) ? $settings['post_type'] : 'post',
         'post_status'         => 'publish',
@@ -91,12 +91,12 @@ function bdea_widget_query_args( $settings ) {
  *
  * @return array slug => label
  */
-function bdea_widget_post_types() {
+function elementskey_widget_post_types() {
     $types = get_post_types( [ 'public' => true ], 'objects' );
     $out   = [];
 
     foreach ( $types as $type ) {
-        if ( in_array( $type->name, [ 'attachment', 'bdea_header_footer', 'elementor_library' ], true ) ) {
+        if ( in_array( $type->name, [ 'attachment', 'elementskey_header_footer', 'elementor_library' ], true ) ) {
             continue;
         }
         $out[ $type->name ] = $type->labels->singular_name;
@@ -111,7 +111,7 @@ function bdea_widget_post_types() {
  * @param string $taxonomy Taxonomy name.
  * @return array term_id => name
  */
-function bdea_widget_terms_list( $taxonomy ) {
+function elementskey_widget_terms_list( $taxonomy ) {
     $terms = get_terms( [
         'taxonomy'   => $taxonomy,
         'hide_empty' => false,
@@ -142,7 +142,7 @@ function bdea_widget_terms_list( $taxonomy ) {
  *
  * @return array template_id => title
  */
-function bdea_loop_template_options() {
+function elementskey_loop_template_options() {
     $templates = [];
 
     // Loop templates use elementor_library post type (like Elementor Pro)
@@ -175,7 +175,7 @@ function bdea_loop_template_options() {
  *
  * @return array slug => label
  */
-function bdea_widget_taxonomies() {
+function elementskey_widget_taxonomies() {
     $taxonomies = get_taxonomies( [ 'public' => true ], 'objects' );
     $out        = [];
 
@@ -189,13 +189,13 @@ function bdea_widget_taxonomies() {
 /**
  * Render loop items (loop template or built-in card) for Loop Grid / Loop Carousel.
  *
- * Shared between the widget render() and the bdea_loop_load AJAX handler so both
+ * Shared between the widget render() and the elementskey_loop_load AJAX handler so both
  * produce identical markup.
  *
  * @param \WP_Query $query    The post query to loop over.
  * @param array     $settings Widget settings.
  */
-function bdea_render_loop_items( $query, $settings ) {
+function elementskey_render_loop_items( $query, $settings ) {
     $template_id = ! empty( $settings['loop_template'] ) ? absint( $settings['loop_template'] ) : 0;
     $frontend    = \Elementor\Plugin::$instance->frontend ?? null;
 
@@ -216,38 +216,38 @@ function bdea_render_loop_items( $query, $settings ) {
     while ( $query->have_posts() ) : $query->the_post();
         $post_id = get_the_ID();
         ?>
-        <article class="bdea-loop-card">
+        <article class="elementskey-loop-card">
             <?php if ( ! empty( $settings['show_thumbnail'] ) && 'yes' === $settings['show_thumbnail'] && has_post_thumbnail( $post_id ) ) : ?>
-                <a class="bdea-loop-thumb" href="<?php the_permalink(); ?>">
+                <a class="elementskey-loop-thumb" href="<?php the_permalink(); ?>">
                     <?php echo get_the_post_thumbnail( $post_id, 'medium_large' ); ?>
                 </a>
             <?php endif; ?>
 
-            <div class="bdea-loop-body">
+            <div class="elementskey-loop-body">
                 <?php if ( ! empty( $settings['show_meta'] ) && 'yes' === $settings['show_meta'] ) : ?>
-                    <div class="bdea-loop-meta">
-                        <span class="bdea-loop-meta-date"><?php echo esc_html( get_the_date() ); ?></span>
+                    <div class="elementskey-loop-meta">
+                        <span class="elementskey-loop-meta-date"><?php echo esc_html( get_the_date() ); ?></span>
                         <?php $cats = get_the_category(); ?>
                         <?php if ( $cats ) : ?>
-                            <span class="bdea-loop-meta-sep">&middot;</span>
-                            <span class="bdea-loop-meta-cat"><?php echo esc_html( $cats[0]->name ); ?></span>
+                            <span class="elementskey-loop-meta-sep">&middot;</span>
+                            <span class="elementskey-loop-meta-cat"><?php echo esc_html( $cats[0]->name ); ?></span>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $settings['show_title'] ) && 'yes' === $settings['show_title'] ) : ?>
                     <?php $title_tag = in_array( $settings['title_tag'], [ 'h2', 'h3', 'h4', 'h5', 'div' ], true ) ? $settings['title_tag'] : 'h3'; ?>
-                    <<?php echo esc_attr( $title_tag ); ?> class="bdea-loop-title">
+                    <<?php echo esc_attr( $title_tag ); ?> class="elementskey-loop-title">
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                     </<?php echo esc_attr( $title_tag ); ?>>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $settings['show_excerpt'] ) && 'yes' === $settings['show_excerpt'] ) : ?>
-                    <p class="bdea-loop-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), $excerpt_length ) ); ?></p>
+                    <p class="elementskey-loop-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), $excerpt_length ) ); ?></p>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $settings['show_read_more'] ) && 'yes' === $settings['show_read_more'] ) : ?>
-                    <a class="bdea-loop-more" href="<?php the_permalink(); ?>">
+                    <a class="elementskey-loop-more" href="<?php the_permalink(); ?>">
                         <?php echo esc_html( ! empty( $settings['read_more_text'] ) ? $settings['read_more_text'] : 'Read More' ); ?>
                         <span aria-hidden="true">&rarr;</span>
                     </a>
@@ -265,7 +265,7 @@ function bdea_render_loop_items( $query, $settings ) {
  *
  * @param string $version SDK version to load.
  */
-function bdea_maybe_print_fb_sdk( $version = 'v25.0' ) {
+function elementskey_maybe_print_fb_sdk( $version = 'v25.0' ) {
     static $scheduled = false;
 
     if ( $scheduled ) {

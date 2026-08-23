@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Flip_Box_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_flip_box';
+        return 'elementskey_flip_box';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_flip_box_front',
+            'elementskey_flip_box_front',
             [
-                'label' => __( 'Front', 'elementstack-elementor-addons' ),
+                'label' => __( 'Front', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'flip_icon',
             [
-                'label' => __( 'Icon', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-star',
@@ -53,16 +53,16 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_front_title',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Front Title', 'elementstack-elementor-addons' ),
+                'default' => __( 'Front Title', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'flip_front_text',
             [
-                'label' => __( 'Description', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Hover or tap to flip the box.',
             ]
@@ -71,25 +71,25 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_flip_box_back',
+            'elementskey_flip_box_back',
             [
-                'label' => __( 'Back', 'elementstack-elementor-addons' ),
+                'label' => __( 'Back', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'flip_back_title',
             [
-                'label' => __( 'Title', 'elementstack-elementor-addons' ),
+                'label' => __( 'Title', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Back Title', 'elementstack-elementor-addons' ),
+                'default' => __( 'Back Title', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'flip_back_text',
             [
-                'label' => __( 'Description', 'elementstack-elementor-addons' ),
+                'label' => __( 'Description', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'This is the back side content.',
             ]
@@ -98,16 +98,16 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_btn_text',
             [
-                'label' => __( 'Button Text', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button Text', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'Learn More', 'elementstack-elementor-addons' ),
+                'default' => __( 'Learn More', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'flip_btn_url',
             [
-                'label' => __( 'Button Link', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button Link', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => 'https://example.com',
             ]
@@ -117,9 +117,9 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
 
         // General Style
         $this->start_controls_section(
-            'bdea_flip_general_style',
+            'elementskey_flip_general_style',
             [
-                'label' => __( 'General', 'elementstack-elementor-addons' ),
+                'label' => __( 'General', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -127,13 +127,13 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_height',
             [
-                'label' => __( 'Height', 'elementstack-elementor-addons' ),
+                'label' => __( 'Height', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 200, 'max' => 600 ] ],
                 'default' => [ 'size' => 300, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-box-inner' => 'min-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-box-inner' => 'min-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -142,18 +142,18 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name' => 'flip_border',
-                'selector' => '{{WRAPPER}} .bdea-flip-box',
+                'selector' => '{{WRAPPER}} .elementskey-flip-box',
             ]
         );
 
         $this->add_responsive_control(
             'flip_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -162,7 +162,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'flip_shadow',
-                'selector' => '{{WRAPPER}} .bdea-flip-box',
+                'selector' => '{{WRAPPER}} .elementskey-flip-box',
             ]
         );
 
@@ -170,9 +170,9 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
 
         // Front Style
         $this->start_controls_section(
-            'bdea_flip_front_style',
+            'elementskey_flip_front_style',
             [
-                'label' => __( 'Front', 'elementstack-elementor-addons' ),
+                'label' => __( 'Front', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -180,11 +180,11 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_front_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-front' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-face-front' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -192,11 +192,11 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_front_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-front' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-face-front' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -204,10 +204,10 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'front_icon_color',
             [
-                'label' => __( 'Icon Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-front .bdea-flip-icon' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-face-front .elementskey-flip-icon' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -215,12 +215,12 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'front_icon_size',
             [
-                'label' => __( 'Icon Size', 'elementstack-elementor-addons' ),
+                'label' => __( 'Icon Size', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 16, 'max' => 80 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-front .bdea-flip-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-face-front .elementskey-flip-icon' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -229,7 +229,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'front_title_typo',
-                'selector' => '{{WRAPPER}} .bdea-flip-face-front .bdea-flip-title',
+                'selector' => '{{WRAPPER}} .elementskey-flip-face-front .elementskey-flip-title',
             ]
         );
 
@@ -237,14 +237,14 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'front_text_typo',
-                'selector' => '{{WRAPPER}} .bdea-flip-face-front .bdea-flip-text',
+                'selector' => '{{WRAPPER}} .elementskey-flip-face-front .elementskey-flip-text',
             ]
         );
 
         $this->add_responsive_control(
             'front_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -255,7 +255,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-front' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-face-front' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -264,9 +264,9 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
 
         // Back Style
         $this->start_controls_section(
-            'bdea_flip_back_style',
+            'elementskey_flip_back_style',
             [
-                'label' => __( 'Back', 'elementstack-elementor-addons' ),
+                'label' => __( 'Back', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -274,11 +274,11 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_back_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1f2937',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-back' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-face-back' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -286,11 +286,11 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'flip_back_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-back' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-face-back' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -299,7 +299,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'back_title_typo',
-                'selector' => '{{WRAPPER}} .bdea-flip-face-back .bdea-flip-title',
+                'selector' => '{{WRAPPER}} .elementskey-flip-face-back .elementskey-flip-title',
             ]
         );
 
@@ -307,14 +307,14 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'back_text_typo',
-                'selector' => '{{WRAPPER}} .bdea-flip-face-back .bdea-flip-text',
+                'selector' => '{{WRAPPER}} .elementskey-flip-face-back .elementskey-flip-text',
             ]
         );
 
         $this->add_responsive_control(
             'back_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -325,7 +325,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-face-back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-face-back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -334,9 +334,9 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
 
         // Back Button Style
         $this->start_controls_section(
-            'bdea_flip_btn_style',
+            'elementskey_flip_btn_style',
             [
-                'label' => __( 'Button', 'elementstack-elementor-addons' ),
+                'label' => __( 'Button', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -344,10 +344,10 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_bg',
             [
-                'label' => __( 'Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-btn' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -355,10 +355,10 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_color',
             [
-                'label' => __( 'Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-btn' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -366,10 +366,10 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_bg',
             [
-                'label' => __( 'Hover Background', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-btn:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -377,10 +377,10 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'btn_hover_color',
             [
-                'label' => __( 'Hover Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Hover Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-flip-btn:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -389,14 +389,14 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'btn_typo',
-                'selector' => '{{WRAPPER}} .bdea-flip-btn',
+                'selector' => '{{WRAPPER}} .elementskey-flip-btn',
             ]
         );
 
         $this->add_responsive_control(
             'btn_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -407,7 +407,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -415,7 +415,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'default' => [
@@ -426,7 +426,7 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -434,12 +434,12 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'btn_spacing',
             [
-                'label' => __( 'Top Spacing', 'elementstack-elementor-addons' ),
+                'label' => __( 'Top Spacing', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 0, 'max' => 50 ] ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-flip-btn' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-flip-btn' => 'margin-top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -450,32 +450,32 @@ class BDEA_Flip_Box_Widget extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         ?>
-        <div class="bdea-flip-box-widget">
-            <div class="bdea-flip-box">
-                <div class="bdea-flip-box-inner">
-                    <div class="bdea-flip-face bdea-flip-face-front">
-                        <div class="bdea-flip-content">
+        <div class="elementskey-flip-box-widget">
+            <div class="elementskey-flip-box">
+                <div class="elementskey-flip-box-inner">
+                    <div class="elementskey-flip-face elementskey-flip-face-front">
+                        <div class="elementskey-flip-content">
                             <?php if ( ! empty( $settings['flip_icon']['value'] ) ) : ?>
-                                <div class="bdea-flip-icon"><i class="<?php echo esc_attr( $settings['flip_icon']['value'] ); ?>"></i></div>
+                                <div class="elementskey-flip-icon"><?php \Elementor\Icons_Manager::render_icon( $settings['flip_icon'], [ 'aria-hidden' => 'true' ] ); ?></div>
                             <?php endif; ?>
                             <?php if ( ! empty( $settings['flip_front_title'] ) ) : ?>
-                                <h3 class="bdea-flip-title"><?php echo esc_html( $settings['flip_front_title'] ); ?></h3>
+                                <h3 class="elementskey-flip-title"><?php echo esc_html( $settings['flip_front_title'] ); ?></h3>
                             <?php endif; ?>
                             <?php if ( ! empty( $settings['flip_front_text'] ) ) : ?>
-                                <p class="bdea-flip-text"><?php echo esc_html( $settings['flip_front_text'] ); ?></p>
+                                <p class="elementskey-flip-text"><?php echo esc_html( $settings['flip_front_text'] ); ?></p>
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="bdea-flip-face bdea-flip-face-back">
-                        <div class="bdea-flip-content">
+                    <div class="elementskey-flip-face elementskey-flip-face-back">
+                        <div class="elementskey-flip-content">
                             <?php if ( ! empty( $settings['flip_back_title'] ) ) : ?>
-                                <h3 class="bdea-flip-title"><?php echo esc_html( $settings['flip_back_title'] ); ?></h3>
+                                <h3 class="elementskey-flip-title"><?php echo esc_html( $settings['flip_back_title'] ); ?></h3>
                             <?php endif; ?>
                             <?php if ( ! empty( $settings['flip_back_text'] ) ) : ?>
-                                <p class="bdea-flip-text"><?php echo esc_html( $settings['flip_back_text'] ); ?></p>
+                                <p class="elementskey-flip-text"><?php echo esc_html( $settings['flip_back_text'] ); ?></p>
                             <?php endif; ?>
                             <?php if ( ! empty( $settings['flip_btn_text'] ) ) : ?>
-                                <a class="bdea-flip-btn" href="<?php echo esc_url( ! empty( $settings['flip_btn_url']['url'] ) ? $settings['flip_btn_url']['url'] : '#' ); ?>">
+                                <a class="elementskey-flip-btn" href="<?php echo esc_url( ! empty( $settings['flip_btn_url']['url'] ) ? $settings['flip_btn_url']['url'] : '#' ); ?>">
                                     <?php echo esc_html( $settings['flip_btn_text'] ); ?>
                                 </a>
                             <?php endif; ?>

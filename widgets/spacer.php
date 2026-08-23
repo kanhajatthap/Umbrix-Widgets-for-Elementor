@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Spacer_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_spacer';
+        return 'elementskey_spacer';
     }
 
     public function get_title() {
@@ -22,26 +22,26 @@ class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_spacer_section',
+            'elementskey_spacer_section',
             [
-                'label' => __( 'Spacer', 'elementstack-elementor-addons' ),
+                'label' => __( 'Spacer', 'elementskey' ),
             ]
         );
 
         $this->add_responsive_control(
             'spacer_height',
             [
-                'label' => __( 'Height', 'elementstack-elementor-addons' ),
+                'label' => __( 'Height', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', 'vh' ],
                 'range' => [
@@ -52,7 +52,7 @@ class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
                 'tablet_default' => [ 'size' => 40, 'unit' => 'px' ],
                 'mobile_default' => [ 'size' => 30, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-spacer' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-spacer' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -60,9 +60,19 @@ class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'show_mobile_helper',
             [
-                'label' => __( 'Show helper text in editor only', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show helper text in editor only', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'elementskey_spacer_style_section',
+            [
+                'label' => __( 'Style', 'elementskey' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
@@ -73,9 +83,9 @@ class BDEA_Spacer_Widget extends \Elementor\Widget_Base {
         $settings = $this->get_settings_for_display();
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();
         ?>
-        <div class="bdea-spacer">
+        <div class="elementskey-spacer">
             <?php if ( $is_editor && 'yes' === $settings['show_mobile_helper'] ) : ?>
-                <span class="bdea-spacer-helper">&#8596;</span>
+                <span class="elementskey-spacer-helper">&#8596;</span>
             <?php endif; ?>
         </div>
         <?php

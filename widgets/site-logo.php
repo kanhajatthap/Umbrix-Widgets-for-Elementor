@@ -1,16 +1,16 @@
 <?php
 /**
- * ElementStack Addons for Elementor
+ * ElementsKey Addons for Elementor
  * GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
+class ELEMENTSKEY_Site_Logo_Widget extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'bdea_site_logo';
+        return 'elementskey_site_logo';
     }
 
     public function get_title() {
@@ -22,32 +22,32 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementstack-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
-        return [ 'bdea-content-style' ];
+        return [ 'elementskey-content-style' ];
     }
 
     protected function register_controls() {
 
         $this->start_controls_section(
-            'bdea_site_logo_section',
+            'elementskey_site_logo_section',
             [
-                'label' => __( 'Site Logo', 'elementstack-elementor-addons' ),
+                'label' => __( 'Site Logo', 'elementskey' ),
             ]
         );
 
         $this->add_control(
             'logo_width',
             [
-                'label' => __( 'Width', 'elementstack-elementor-addons' ),
+                'label' => __( 'Width', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 20, 'max' => 400 ] ],
                 'default' => [ 'size' => 150, 'unit' => 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-site-logo img' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
+                    '{{WRAPPER}} .elementskey-site-logo img' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
                 ],
             ]
         );
@@ -55,7 +55,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'logo_fallback',
             [
-                'label' => __( 'Show Site Name if No Logo', 'elementstack-elementor-addons' ),
+                'label' => __( 'Show Site Name if No Logo', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -64,7 +64,7 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'logo_link',
             [
-                'label' => __( 'Link to Homepage', 'elementstack-elementor-addons' ),
+                'label' => __( 'Link to Homepage', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'yes',
             ]
@@ -73,16 +73,16 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'logo_align',
             [
-                'label' => __( 'Alignment', 'elementstack-elementor-addons' ),
+                'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementstack-elementor-addons' ), 'icon' => 'eicon-text-align-right' ],
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-site-logo' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-site-logo' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -90,9 +90,9 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'bdea_site_logo_style',
+            'elementskey_site_logo_style',
             [
-                'label' => __( 'Logo', 'elementstack-elementor-addons' ),
+                'label' => __( 'Logo', 'elementskey' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -101,17 +101,17 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'logo_fallback_typography',
-                'selector' => '{{WRAPPER}} .bdea-logo-fallback',
+                'selector' => '{{WRAPPER}} .elementskey-logo-fallback',
             ]
         );
 
         $this->add_control(
             'logo_fallback_color',
             [
-                'label' => __( 'Fallback Text Color', 'elementstack-elementor-addons' ),
+                'label' => __( 'Fallback Text Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-logo-fallback' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-logo-fallback' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -119,11 +119,11 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'logo_border_radius',
             [
-                'label' => __( 'Image Border Radius', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image Border Radius', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-site-logo img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-site-logo img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -131,14 +131,14 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'logo_opacity',
             [
-                'label' => __( 'Image Opacity', 'elementstack-elementor-addons' ),
+                'label' => __( 'Image Opacity', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [ 'min' => 0, 'max' => 1, 'step' => 0.05 ],
                 ],
                 'default' => [ 'size' => 1 ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-site-logo img' => 'opacity: {{SIZE}};',
+                    '{{WRAPPER}} .elementskey-site-logo img' => 'opacity: {{SIZE}};',
                 ],
             ]
         );
@@ -146,11 +146,11 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'logo_padding',
             [
-                'label' => __( 'Padding', 'elementstack-elementor-addons' ),
+                'label' => __( 'Padding', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .bdea-site-logo' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-site-logo' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -162,20 +162,20 @@ class BDEA_Site_Logo_Widget extends \Elementor\Widget_Base {
         $settings = $this->get_settings_for_display();
 
         $custom_logo_id = get_theme_mod( 'custom_logo' );
-        $logo = $custom_logo_id ? wp_get_attachment_image( $custom_logo_id, 'full', false, [ 'class' => 'bdea-logo-img' ] ) : '';
+        $logo = $custom_logo_id ? wp_get_attachment_image( $custom_logo_id, 'full', false, [ 'class' => 'elementskey-logo-img' ] ) : '';
 
         if ( empty( $logo ) ) {
             if ( 'yes' !== $settings['logo_fallback'] ) {
                 return;
             }
-            $logo = '<span class="bdea-logo-fallback">' . esc_html( get_bloginfo( 'name' ) ) . '</span>';
+            $logo = '<span class="elementskey-logo-fallback">' . esc_html( get_bloginfo( 'name' ) ) . '</span>';
         }
 
         if ( 'yes' === $settings['logo_link'] ) {
             $logo = '<a href="' . esc_url( home_url( '/' ) ) . '">' . $logo . '</a>';
         }
         ?>
-        <div class="bdea-site-logo">
+        <div class="elementskey-site-logo">
             <?php echo $logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Logo markup built with esc_url()/esc_html()/get_custom_logo(). ?>
         </div>
         <?php

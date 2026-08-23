@@ -1,27 +1,27 @@
-.bdea-hf-header,
-.bdea-hf-footer {
+.elementskey-hf-header,
+.elementskey-hf-footer {
     width: 100%;
     margin: 0;
     padding: 0;
 }
 
-.bdea-hf-header {
+.elementskey-hf-header {
     position: relative;
     z-index: 100;
 }
 
-.bdea-hf-footer {
+.elementskey-hf-footer {
     position: relative;
     z-index: 100;
 }
 
-.bdea-hf-announcement {
+.elementskey-hf-announcement {
     position: relative;
     z-index: 10002;
     width: 100%;
 }
 
-.bdea-hf-announcement-close {
+.elementskey-hf-announcement-close {
     position: absolute;
     top: 50%;
     right: 12px;
@@ -36,11 +36,11 @@
     transition: opacity 0.2s ease;
 }
 
-.bdea-hf-announcement-close:hover {
+.elementskey-hf-announcement-close:hover {
     opacity: 1;
 }
 
-.bdea-hf-bottom-bar {
+.elementskey-hf-bottom-bar {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -48,18 +48,18 @@
     z-index: 9998;
 }
 
-.bdea-hf-single,
-.bdea-hf-archive,
-.bdea-hf-404 {
+.elementskey-hf-single,
+.elementskey-hf-archive,
+.elementskey-hf-404 {
     width: 100%;
     max-width: 100%;
     margin: 0;
     padding: 0;
 }
 
-.elementor-editor-active .bdea-hf-header,
-.elementor-editor-active .bdea-hf-footer,
-.elementor-editor-active .bdea-hf-announcement,
-.elementor-editor-active .bdea-hf-bottom-bar {
+.elementor-editor-active .elementskey-hf-header,
+.elementor-editor-active .elementskey-hf-footer,
+.elementor-editor-active .elementskey-hf-announcement,
+.elementor-editor-active .elementskey-hf-bottom-bar {
     display: none;
 }

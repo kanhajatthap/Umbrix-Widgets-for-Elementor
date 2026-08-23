@@ -38,10 +38,10 @@
 
     function initCopyLinks(scope) {
         var root = scope && scope.querySelectorAll ? scope : document;
-        var links = root.querySelectorAll('.bdea-share-it-copy');
+        var links = root.querySelectorAll('.elementskey-share-it-copy');
 
         links.forEach(function (link) {
-            if (link.dataset.bdeaShareItInit === 'yes') {
+            if (link.dataset.elementskeyShareItInit === 'yes') {
                 return;
             }
 
@@ -57,7 +57,7 @@
                 });
             });
 
-            link.dataset.bdeaShareItInit = 'yes';
+            link.dataset.elementskeyShareItInit = 'yes';
         });
     }
 
@@ -69,7 +69,7 @@
         window.jQuery(window).on('elementor/frontend/init', function () {
             if (window.elementorFrontend && window.elementorFrontend.hooks) {
                 window.elementorFrontend.hooks.addAction(
-                    'frontend/element_ready/bdea_share_it.default',
+                    'frontend/element_ready/elementskey_share_it.default',
                     function (scope) {
                         var root = scope && scope[0] ? scope[0] : document;
                         initCopyLinks(root);
