@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: elementor
 Stable tag: 1.1.0
-License: GPLv2 or later
+License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 73 lightweight Elementor widgets + Theme Builder, crafted by a developer with 12 years of WordPress industry experience.
