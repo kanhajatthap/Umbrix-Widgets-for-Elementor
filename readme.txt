@@ -2,7 +2,7 @@
 Contributors: kanhajatthap
 Tags: elementor, widgets, addons, page builder, theme builder
 Requires at least: 6.0
-Tested up to: 7.1
+Tested up to: 6.7
 Requires PHP: 7.4
 Requires Plugins: elementor
 Stable tag: 1.1.0

@@ -31,6 +31,10 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
             }
         }
 
+        if ( empty( $current_url ) ) {
+            $current_url = home_url( '/' );
+        }
+
         return [
             'url'   => esc_url_raw( (string) $current_url ),
             'title' => wp_strip_all_tags( (string) $current_title ),
@@ -56,8 +60,13 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
     public function get_style_depends() {
         $depends = [ 'elementskey-share-it-style' ];
 
+        if ( class_exists( '\Elementor\Icons_Manager' ) ) {
+            \Elementor\Icons_Manager::enqueue_shim();
+        }
+
         $depends[] = 'elementor-icons-fa-solid';
         $depends[] = 'elementor-icons-fa-brands';
+        $depends[] = 'font-awesome-5-all';
 
         return $depends;
     }
@@ -218,6 +227,7 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-share-it-link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-share-it-link i' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .elementskey-share-it-link svg' => 'fill: {{VALUE}};',
                 ],
             ]
@@ -231,6 +241,7 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-share-it-link:hover, {{WRAPPER}} .elementskey-share-it-link:focus' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-share-it-link:hover i, {{WRAPPER}} .elementskey-share-it-link:focus i' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .elementskey-share-it-link:hover svg, {{WRAPPER}} .elementskey-share-it-link:focus svg' => 'fill: {{VALUE}};',
                 ],
             ]
@@ -286,8 +297,9 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-share-it-link' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}} / 3);',
-                    '{{WRAPPER}} .elementskey-share-it-link svg' => 'height: calc({{SIZE}}{{UNIT}} / 3); width: calc({{SIZE}}{{UNIT}} / 3);',
+                    '{{WRAPPER}} .elementskey-share-it-link' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}} / 2.2);',
+                    '{{WRAPPER}} .elementskey-share-it-link i' => 'font-size: calc({{SIZE}}{{UNIT}} / 2.2);',
+                    '{{WRAPPER}} .elementskey-share-it-link svg' => 'height: calc({{SIZE}}{{UNIT}} / 2.2); width: calc({{SIZE}}{{UNIT}} / 2.2);',
                 ],
             ]
         );

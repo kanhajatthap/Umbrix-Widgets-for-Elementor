@@ -242,8 +242,12 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range'      => [ 'px' => [ 'min' => 24, 'max' => 120 ] ],
+                'default'    => [
+                    'size' => 40,
+                    'unit' => 'px',
+                ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-slides .swiper-button-prev, {{WRAPPER}} .elementskey-slides .swiper-button-next' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-slides .swiper-button-prev, {{WRAPPER}} .elementskey-slides .swiper-button-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -255,6 +259,10 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range'      => [ 'px' => [ 'min' => 10, 'max' => 50 ] ],
+                'default'    => [
+                    'size' => 20,
+                    'unit' => 'px',
+                ],
                 'selectors'  => [
                     '{{WRAPPER}} .elementskey-slides .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-slides .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-slides .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],

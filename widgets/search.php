@@ -22,7 +22,7 @@ class ELEMENTSKEY_Search_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementkey-lite-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {

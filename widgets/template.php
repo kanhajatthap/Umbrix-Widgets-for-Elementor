@@ -30,12 +30,18 @@ class ELEMENTSKEY_Template_Widget extends \Elementor\Widget_Base {
     }
 
     protected function get_templates() {
+        static $templates = null;
+
+        if ( null !== $templates ) {
+            return $templates;
+        }
+
         $templates = [];
 
         $args = [
             'post_type'      => 'elementor_library',
             'post_status'    => 'publish',
-            'posts_per_page' => -1,
+            'posts_per_page' => 100,
             'orderby'        => 'title',
             'order'          => 'ASC',
         ];

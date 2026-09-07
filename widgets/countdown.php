@@ -140,13 +140,13 @@ class ELEMENTSKEY_Countdown_Widget extends \Elementor\Widget_Base {
                 'label' => __( 'Alignment', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
-                    'center' => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
-                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
+                    'flex-start' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'center'     => [ 'title' => __( 'Center', 'elementskey' ), 'icon' => 'eicon-text-align-center' ],
+                    'flex-end'   => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
                 ],
                 'default' => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-countdown' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-countdown' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -158,6 +158,17 @@ class ELEMENTSKEY_Countdown_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-countdown-box' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'top_bar_color',
+            [
+                'label' => __( 'Top Accent Bar Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-countdown-box::before' => 'background: {{VALUE}};',
                 ],
             ]
         );
@@ -246,7 +257,6 @@ class ELEMENTSKEY_Countdown_Widget extends \Elementor\Widget_Base {
             [
                 'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#4361ee',
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-countdown-number' => 'color: {{VALUE}};',
                 ],
@@ -277,7 +287,6 @@ class ELEMENTSKEY_Countdown_Widget extends \Elementor\Widget_Base {
             [
                 'label' => __( 'Color', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#4b5563',
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-countdown-label' => 'color: {{VALUE}};',
                 ],

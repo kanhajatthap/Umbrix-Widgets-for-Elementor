@@ -650,8 +650,12 @@ class ELEMENTSKEY_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
                 'range' => [
                     'px' => [ 'min' => 24, 'max' => 120 ],
                 ],
+                'default' => [
+                    'size' => 40,
+                    'unit' => 'px',
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-swiper-button-prev, {{WRAPPER}} .elementskey-swiper-button-next' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-swiper-button-prev, {{WRAPPER}} .elementskey-swiper-button-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -664,6 +668,10 @@ class ELEMENTSKEY_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [ 'min' => 10, 'max' => 60 ],
+                ],
+                'default' => [
+                    'size' => 20,
+                    'unit' => 'px',
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',

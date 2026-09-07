@@ -477,7 +477,7 @@ class ELEMENTSKEY_Form_Widget extends \Elementor\Widget_Base {
         $form_url      = admin_url( 'admin-post.php' );
         $widget_id     = $this->get_id();
         ?>
-        <form class="elementskey-form" action="<?php echo esc_url( $form_url ); ?>" method="post" data-success="<?php echo esc_attr( $success_msg ); ?>" data-error="<?php echo esc_attr( $error_msg ); ?>" data-email-to="<?php echo esc_attr( $email_to ); ?>" data-email-subject="<?php echo esc_attr( $email_subject ); ?>">
+        <form class="elementskey-form" action="<?php echo esc_url( $form_url ); ?>" method="post" data-success="<?php echo esc_attr( $success_msg ); ?>" data-error="<?php echo esc_attr( $error_msg ); ?>" data-email-subject="<?php echo esc_attr( $email_subject ); ?>">
             <input type="hidden" name="action" value="elementskey_form_submit">
             <input type="hidden" name="elementskey_form_id" value="<?php echo esc_attr( $widget_id ); ?>">
             <?php foreach ( $fields as $index => $field ) : ?>

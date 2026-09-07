@@ -463,12 +463,16 @@ class ELEMENTSKEY_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'arrow_size',
             [
-                'label' => __( 'Arrow Size', 'elementskey' ),
-                'type' => \Elementor\Controls_Manager::SLIDER,
+                'label'      => __( 'Arrow Size', 'elementskey' ),
+                'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
-                'range' => [ 'px' => [ 'min' => 10, 'max' => 40 ] ],
-                'selectors' => [
-                    '{{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                'range'      => [ 'px' => [ 'min' => 20, 'max' => 120 ] ],
+                'default'    => [
+                    'size' => 40,
+                    'unit' => 'px',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -480,8 +484,12 @@ class ELEMENTSKEY_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range'      => [ 'px' => [ 'min' => 10, 'max' => 60 ] ],
+                'default'    => [
+                    'size' => 20,
+                    'unit' => 'px',
+                ],
                 'selectors'  => [
-                    '{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

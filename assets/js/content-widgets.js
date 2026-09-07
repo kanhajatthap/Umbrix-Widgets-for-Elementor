@@ -359,10 +359,10 @@
                 return;
             }
 
-            var dayEl = el.querySelector('[data-unit="days"]');
-            var hourEl = el.querySelector('[data-unit="hours"]');
-            var minEl = el.querySelector('[data-unit="minutes"]');
-            var secEl = el.querySelector('[data-unit="seconds"]');
+            var dayEl  = el.querySelector('[data-unit="days"] .elementskey-countdown-number') || el.querySelector('[data-unit="days"]');
+            var hourEl = el.querySelector('[data-unit="hours"] .elementskey-countdown-number') || el.querySelector('[data-unit="hours"]');
+            var minEl  = el.querySelector('[data-unit="minutes"] .elementskey-countdown-number') || el.querySelector('[data-unit="minutes"]');
+            var secEl  = el.querySelector('[data-unit="seconds"] .elementskey-countdown-number') || el.querySelector('[data-unit="seconds"]');
 
             function pad(n) {
                 return n < 10 ? '0' + n : String(n);

@@ -754,7 +754,7 @@ function elementskey_load_modules() {
         return;
     }
 
-    require_once ELEMENTSKEY_PATH . 'modules/header-footer/Module.php';
+    require_once ELEMENTSKEY_PATH . 'modules/builder/Module.php';
     \ElementsKey\Modules\HeaderFooter\Module::instance();
 
     require_once ELEMENTSKEY_PATH . 'Framework/WidgetConditions.php';
@@ -777,7 +777,7 @@ function elementskey_handle_form_submit() {
 
     $form_id = isset( $_POST['elementskey_form_id'] ) ? sanitize_text_field( wp_unslash( $_POST['elementskey_form_id'] ) ) : '';
 
-    $email_to    = isset( $_POST['elementskey_email_to'] ) ? sanitize_email( wp_unslash( $_POST['elementskey_email_to'] ) ) : get_option( 'admin_email' );
+    $email_to      = get_option( 'admin_email' );
     $email_subject = isset( $_POST['elementskey_email_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['elementskey_email_subject'] ) ) : __( 'New Form Submission', 'elementskey' );
 
     $body_lines = [];
@@ -961,6 +961,213 @@ function elementskey_enqueue_admin_assets( $hook ) {
 }
 add_action( 'admin_enqueue_scripts', 'elementskey_enqueue_admin_assets' );
 
+register_activation_hook( __FILE__, 'elementskey_activate_site_setup' );
+
+function elementskey_activate_site_setup() {
+    elementskey_ensure_site_pages();
+}
+
+function elementskey_get_site_page_data() {
+    return [
+        'home' => [
+            'title' => __( 'Home', 'elementskey' ),
+            'slug'  => 'home',
+            'type'  => 'home',
+        ],
+        'about' => [
+            'title' => __( 'About', 'elementskey' ),
+            'slug'  => 'about',
+            'type'  => 'about',
+        ],
+        'contact' => [
+            'title' => __( 'Contact', 'elementskey' ),
+            'slug'  => 'contact',
+            'type'  => 'contact',
+        ],
+        'plugin' => [
+            'title' => __( 'Plugin', 'elementskey' ),
+            'slug'  => 'plugin',
+            'type'  => 'plugin',
+        ],
+    ];
+}
+
+function elementskey_get_site_page_id( $slug ) {
+    $page = get_page_by_path( $slug );
+    if ( $page instanceof WP_Post ) {
+        return $page->ID;
+    }
+
+    $data = elementskey_get_site_page_data();
+    if ( ! empty( $data[ $slug ] ) ) {
+        $page = get_page_by_title( $data[ $slug ]['title'] );
+        if ( $page instanceof WP_Post ) {
+            return $page->ID;
+        }
+    }
+
+    return 0;
+}
+
+function elementskey_ensure_site_pages() {
+    $data = elementskey_get_site_page_data();
+    $created = [];
+
+    foreach ( $data as $key => $settings ) {
+        $existing_id = elementskey_get_site_page_id( $settings['slug'] );
+
+        if ( $existing_id ) {
+            $created[ $key ] = $existing_id;
+            continue;
+        }
+
+        $page_id = wp_insert_post( [
+            'post_type'    => 'page',
+            'post_status'  => 'publish',
+            'post_title'   => $settings['title'],
+            'post_name'    => $settings['slug'],
+            'post_content' => '[elementskey_site_page type="' . esc_attr( $settings['type'] ) . '"]',
+        ] );
+
+        if ( ! is_wp_error( $page_id ) ) {
+            $created[ $key ] = $page_id;
+        }
+    }
+
+    if ( ! empty( $created['home'] ) && 'page' === get_option( 'show_on_front' ) && ! get_option( 'page_on_front' ) ) {
+        update_option( 'page_on_front', $created['home'] );
+        update_option( 'show_on_front', 'page' );
+    }
+
+    if ( ! empty( $created['home'] ) && ! get_option( 'page_on_front' ) ) {
+        update_option( 'page_on_front', $created['home'] );
+        update_option( 'show_on_front', 'page' );
+    }
+
+    return $created;
+}
+
+function elementskey_enqueue_site_assets() {
+    if ( is_admin() ) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'elementskey-site-font',
+        'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
+        [],
+        ELEMENTSKEY_VERSION
+    );
+
+    wp_enqueue_style(
+        'elementskey-site-style',
+        ELEMENTSKEY_URL . 'assets/css/site.css',
+        [ 'elementskey-site-font' ],
+        ELEMENTSKEY_VERSION
+    );
+}
+add_action( 'wp_enqueue_scripts', 'elementskey_enqueue_site_assets' );
+
+function elementskey_get_site_menu_items() {
+    $items = [];
+    foreach ( elementskey_get_site_page_data() as $key => $settings ) {
+        $page_id = elementskey_get_site_page_id( $settings['slug'] );
+        $items[ $key ] = [
+            'label' => $settings['title'],
+            'url'   => $page_id ? get_permalink( $page_id ) : home_url( '/' . $settings['slug'] . '/' ),
+        ];
+    }
+
+    return $items;
+}
+
+function elementskey_render_site_header() {
+    $items = elementskey_get_site_menu_items();
+    $nav = '';
+
+    foreach ( $items as $item ) {
+        $nav .= '<li><a href="' . esc_url( $item['url'] ) . '">' . esc_html( $item['label'] ) . '</a></li>';
+    }
+
+    return sprintf(
+        '<header class="elementskey-site-header"><div class="elementskey-site-container"><div class="elementskey-site-brand-wrap"><a class="elementskey-site-brand" href="%1$s">ElementKey Lite</a></div><nav class="elementskey-site-nav"><ul>%2$s</ul></nav><a class="elementskey-site-cta" href="%3$s">Get Started</a></div></header>',
+        esc_url( home_url( '/' ) ),
+        $nav,
+        esc_url( home_url( '/contact/' ) )
+    );
+}
+
+function elementskey_render_site_footer() {
+    $socials = [
+        'Facebook' => 'https://facebook.com',
+        'X' => 'https://x.com',
+        'Instagram' => 'https://instagram.com',
+        'LinkedIn' => 'https://linkedin.com',
+    ];
+
+    $links = '';
+    foreach ( $socials as $label => $url ) {
+        $links .= '<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener noreferrer" aria-label="' . esc_attr( $label ) . '">' . esc_html( $label ) . '</a>';
+    }
+
+    return sprintf(
+        '<footer class="elementskey-site-footer"><div class="elementskey-site-container elementskey-site-footer-grid"><div class="elementskey-site-footer-brand"><div class="elementskey-site-brand">ElementKey Lite</div><p>Professional Elementor add-ons, crisp design, and fast front-end workflows built for modern WordPress teams.</p></div><div class="elementskey-site-footer-links"><h4>Explore</h4><ul><li><a href="%1$s">Home</a></li><li><a href="%2$s">About</a></li><li><a href="%3$s">Contact</a></li><li><a href="%4$s">Plugin</a></li></ul></div><div class="elementskey-site-footer-newsletter"><h4>Newsletter</h4><form class="elementskey-site-newsletter" method="post"><input type="email" placeholder="Your email" aria-label="Email address"><button type="submit">Join</button></form></div><div class="elementskey-site-footer-social"><h4>Follow</h4><div class="elementskey-site-social-links">%5$s</div></div></div><div class="elementskey-site-footer-bottom"><span>© %6$s ElementKey Lite</span><span>Built with Elementor styling and plugin-first workflows</span></div></footer>',
+        esc_url( home_url( '/home/' ) ),
+        esc_url( home_url( '/about/' ) ),
+        esc_url( home_url( '/contact/' ) ),
+        esc_url( home_url( '/plugin/' ) ),
+        $links,
+        gmdate( 'Y' )
+    );
+}
+
+function elementskey_render_site_homepage() {
+    return '<main class="elementskey-site-page"><section class="elementskey-site-hero"><div class="elementskey-site-container elementskey-site-hero-grid"><div class="elementskey-site-copy"><span class="elementskey-site-kicker">WordPress growth toolkit</span><h1>Build a faster, cleaner Elementor website with ElementKey Lite.</h1><p>Launch modern pages with compact widgets, header/footer flexibility, and a premium plugin-first experience.</p><div class="elementskey-site-actions"><a class="elementskey-site-button primary" href="'. esc_url( home_url( '/plugin/' ) ) .'">Explore plugin</a><a class="elementskey-site-button secondary" href="'. esc_url( home_url( '/contact/' ) ) .'">Book a demo</a></div><ul class="elementskey-site-metrics"><li><strong>73+</strong><span>Widgets</span></li><li><strong>Fast</strong><span>Load time</span></li><li><strong>Modern</strong><span>Design</span></li></ul></div><div class="elementskey-site-visual"><div class="elementskey-site-card card-main"><span>Launch-ready</span><h3>ElementKey Lite</h3><p>Custom headers, flexible sections, and polished layouts.</p></div><div class="elementskey-site-card card-small"><span>Quick setup</span><strong>1-click starter site</strong></div></div></div></section><section class="elementskey-site-section"><div class="elementskey-site-container"><div class="elementskey-site-section-heading"><span>Why teams choose us</span><h2>Everything your plugin website needs.</h2></div><div class="elementskey-site-grid three"><article class="elementskey-site-feature"><div class="elementskey-site-icon">01</div><h3>Custom layouts</h3><p>Create premium pages with flexible sections, buttons, galleries, and content blocks.</p></article><article class="elementskey-site-feature"><div class="elementskey-site-icon">02</div><h3>Built for Elementor</h3><p>Use a plugin-first workflow that keeps site design smooth and easy to manage.</p></article><article class="elementskey-site-feature"><div class="elementskey-site-icon">03</div><h3>Conversion-ready</h3><p>From CTA blocks to newsletter capture, every section supports real growth goals.</p></article></div></div></section><section class="elementskey-site-section alt"><div class="elementskey-site-container"><div class="elementskey-site-section-heading"><span>Plugin highlights</span><h2>Powerful, lightweight, and ready to publish.</h2></div><div class="elementskey-site-grid four"><div class="elementskey-site-stat"><strong>Header Builder</strong><span>Custom, branded navigation</span></div><div class="elementskey-site-stat"><strong>Footer Builder</strong><span>Social + newsletter + CTA</span></div><div class="elementskey-site-stat"><strong>Responsive Design</strong><span>Looks sharp on mobile</span></div><div class="elementskey-site-stat"><strong>Modern UI</strong><span>Clean cards and gradients</span></div></div></div></section></main>';
+}
+
+function elementskey_render_site_about() {
+    return '<main class="elementskey-site-page"><section class="elementskey-site-section"><div class="elementskey-site-container elementskey-site-split"><div><span class="elementskey-site-kicker">About ElementKey Lite</span><h1>We design smarter plugin experiences for WordPress creators.</h1><p>ElementKey Lite helps businesses and agencies build premium pages faster, without bloated code or confusing configuration.</p><p>Our mission is simple: provide strong Elementor tooling with clean design, lightweight performance, and a flexible workflow that feels native to WordPress.</p></div><div class="elementskey-site-panel"><h3>What we deliver</h3><ul><li>Modern website structure</li><li>Reusable plugin sections</li><li>Flexible marketing content</li><li>Fast publishing workflow</li></ul></div></div></section></main>';
+}
+
+function elementskey_render_site_contact() {
+    return '<main class="elementskey-site-page"><section class="elementskey-site-section"><div class="elementskey-site-container elementskey-site-contact-grid"><div><span class="elementskey-site-kicker">Contact</span><h1>Let’s build your next WordPress website.</h1><p>Need a branded landing page, plugin marketing site, or custom Elementor experience? We are ready to help.</p><ul class="elementskey-site-contact-list"><li>Email: hello@elementkeylite.com</li><li>Phone: +92 300 1234567</li><li>Location: Lahore, Pakistan</li></ul></div><div class="elementskey-site-panel form-panel"><h3>Send a message</h3><form class="elementskey-site-contact-form"><input type="text" placeholder="Your name"><input type="email" placeholder="Email address"><textarea placeholder="Your project details"></textarea><button type="submit">Submit</button></form></div></div></section></main>';
+}
+
+function elementskey_render_site_plugin() {
+    return '<main class="elementskey-site-page"><section class="elementskey-site-section"><div class="elementskey-site-container"><div class="elementskey-site-section-heading"><span>Plugin</span><h1>Everything you need in one WordPress toolkit.</h1></div><div class="elementskey-site-grid three"><article class="elementskey-site-feature"><h3>Elementor widgets</h3><p>Use ready-made blocks for CTA, icons, pricing, galleries, and landing sections.</p></article><article class="elementskey-site-feature"><h3>Header & footer</h3><p>Customize navigation and footer content to match your business identity.</p></article><article class="elementskey-site-feature"><h3>Launch workflow</h3><p>Turn your plugin into a live marketing site with simple, conversion-focused design.</p></article></div></div></section></main>';
+}
+
+function elementskey_render_site_page_shortcode( $atts = [] ) {
+    $atts = shortcode_atts( [ 'type' => 'home' ], $atts, 'elementskey_site_page' );
+
+    $type = sanitize_key( $atts['type'] );
+
+    switch ( $type ) {
+        case 'about':
+            $content = elementskey_render_site_about();
+            break;
+        case 'contact':
+            $content = elementskey_render_site_contact();
+            break;
+        case 'plugin':
+            $content = elementskey_render_site_plugin();
+            break;
+        case 'header':
+            return elementskey_render_site_header();
+        case 'footer':
+            return elementskey_render_site_footer();
+        case 'home':
+        default:
+            $content = elementskey_render_site_homepage();
+            break;
+    }
+
+    return elementskey_render_site_header() . $content . elementskey_render_site_footer();
+}
+add_shortcode( 'elementskey_site_page', 'elementskey_render_site_page_shortcode' );
+add_shortcode( 'elementskey_site_header', 'elementskey_render_site_header' );
+add_shortcode( 'elementskey_site_footer', 'elementskey_render_site_footer' );
+
 function elementskey_render_admin_page() {
     if ( ! current_user_can( 'manage_options' ) ) {
         return;
@@ -1055,8 +1262,8 @@ function elementskey_render_admin_page() {
                                 <div class="elementskey-admin-widget-card-head">
                                     <div class="elementskey-admin-widget-icon dashicons dashicons-editor-kitchensink" aria-hidden="true"></div>
                                     <div class="elementskey-admin-widget-details">
-                                        <h3><?php esc_html_e( 'Theme Builder', 'elementskey' ); ?></h3>
-                                        <p><?php esc_html_e( 'Create and manage custom header, footer, and theme templates with Elementor.', 'elementskey' ); ?></p>
+                                        <h3><?php esc_html_e( 'Builder', 'elementskey' ); ?></h3>
+                                        <p><?php esc_html_e( 'Create and manage custom templates with Elementor.', 'elementskey' ); ?></p>
                                     </div>
                                 </div>
                                 <div class="elementskey-admin-widget-toggle-wrap">

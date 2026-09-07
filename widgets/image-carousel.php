@@ -22,7 +22,7 @@ class ELEMENTSKEY_Image_Carousel_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'elementkey-lite-elements' ];
+        return [ 'elementskey-elements' ];
     }
 
     public function get_style_depends() {
@@ -301,8 +301,12 @@ class ELEMENTSKEY_Image_Carousel_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [ 'px' => [ 'min' => 24, 'max' => 120 ] ],
+                'default' => [
+                    'size' => 40,
+                    'unit' => 'px',
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-image-carousel-prev, {{WRAPPER}} .elementskey-image-carousel-next' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-image-carousel-prev, {{WRAPPER}} .elementskey-image-carousel-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -314,6 +318,10 @@ class ELEMENTSKEY_Image_Carousel_Widget extends \Elementor\Widget_Base {
                 'type'       => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range'      => [ 'px' => [ 'min' => 10, 'max' => 60 ] ],
+                'default' => [
+                    'size' => 20,
+                    'unit' => 'px',
+                ],
                 'selectors'  => [
                     '{{WRAPPER}} .elementskey-image-carousel-prev .elementskey-arrow-icon, {{WRAPPER}} .elementskey-image-carousel-next .elementskey-arrow-icon, {{WRAPPER}} .elementskey-image-carousel-prev .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-image-carousel-next .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-image-carousel-prev .elementskey-arrow-icon svg, {{WRAPPER}} .elementskey-image-carousel-next .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],

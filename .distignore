@@ -12,6 +12,7 @@ package.json
 package-lock.json
 phpunit.xml
 phpunit.xml.dist
-tests
-screenshot-*.png
-screenshot-*.jpg
+tools
+backup-elementor-data.json
+style-controls-reference.txt
+phpcs.xml.dist

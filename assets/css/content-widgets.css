@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    ElementKey Lite content widgets
    Loop Grid | Loop Carousel | Off-Canvas | Posts | Portfolio
    ========================================================================== */
@@ -921,6 +921,14 @@ a.elementskey-icon-box:hover {
     right: 12px;
 }
 
+.elementskey-custom-arrow {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .elementskey-custom-arrow::after {
     content: none !important;
     display: none !important;
@@ -937,12 +945,19 @@ a.elementskey-icon-box:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: inherit;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
     line-height: 1;
 }
 
-.elementskey-custom-arrow .elementskey-arrow-icon svg,
-.elementskey-custom-arrow .elementskey-arrow-icon svg * {
+.elementskey-custom-arrow .elementskey-arrow-icon i {
+    font-size: 20px;
+}
+
+.elementskey-custom-arrow .elementskey-arrow-icon svg {
+    width: 20px;
+    height: 20px;
     fill: currentColor !important;
 }
 
@@ -2629,6 +2644,10 @@ a.elementskey-icon-box:hover {
 }
 
 .elementskey-countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 14px;
     padding: 20px 26px;
     min-width: 96px;
@@ -2649,6 +2668,7 @@ a.elementskey-icon-box:hover {
 }
 
 .elementskey-countdown-number {
+    display: block;
     font-size: 40px;
     font-weight: 800;
     line-height: 1;
@@ -2656,6 +2676,7 @@ a.elementskey-icon-box:hover {
 }
 
 .elementskey-countdown-label {
+    display: block;
     font-size: 13px;
     margin-top: 8px;
     text-transform: uppercase;

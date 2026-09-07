@@ -23,11 +23,33 @@
     text-decoration: none;
     border-radius: 999px;
     box-sizing: border-box;
-    transition: color 0.2s ease, background-color 0.2s ease;
+    color: #ffffff;
+    background-color: #1f3a76;
+    font-size: 18px;
+    line-height: 1;
+    transition: color 0.2s ease, background-color 0.2s ease, fill 0.2s ease;
 }
 
 .elementskey-share-it-link:hover,
 .elementskey-share-it-link:focus {
+    color: #ffffff;
+    background-color: #365ea8;
+}
+
+.elementskey-share-it-link i {
+    font-size: inherit;
+    color: inherit;
+    display: inline-block;
+    line-height: 1;
+}
+
+.elementskey-share-it-link svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+    transition: fill 0.2s ease;
 }
 
 .elementskey-share-it-icon {
