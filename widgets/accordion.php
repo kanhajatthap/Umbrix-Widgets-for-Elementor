@@ -149,6 +149,17 @@ class ELEMENTSKEY_Accordion_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'header_active_color',
+            [
+                'label' => __( 'Active Text Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-accordion-item.is-active .elementskey-accordion-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'header_padding',
             [
