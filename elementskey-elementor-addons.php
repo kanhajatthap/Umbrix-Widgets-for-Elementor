@@ -759,6 +759,9 @@ function elementskey_load_modules() {
 
     require_once ELEMENTSKEY_PATH . 'Framework/WidgetConditions.php';
     \ElementsKey\Framework\WidgetConditions::instance();
+
+    require_once ELEMENTSKEY_PATH . 'modules/custom-css/CustomCss.php';
+    \ElementsKey\Modules\CustomCss\CustomCss::instance();
 }
 add_action( 'init', 'elementskey_load_modules', 15 );
 
