@@ -252,6 +252,29 @@ class ELEMENTSKEY_Testimonial_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'star_color',
+            [
+                'label' => __( 'Star Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#f59e0b',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-testimonial-star.is-filled' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'star_empty_color',
+            [
+                'label' => __( 'Empty Star Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-testimonial-star:not(.is-filled)' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
     }
 
