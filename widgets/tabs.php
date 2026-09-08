@@ -158,6 +158,15 @@ class ELEMENTSKEY_Tabs_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'tab_active_typography',
+                'selector' => '{{WRAPPER}} .elementskey-tab-item.is-active .elementskey-tab-title',
+                'label' => __( 'Active Typography', 'elementskey' ),
+            ]
+        );
+
         $this->add_control(
             'tab_bg',
             [
