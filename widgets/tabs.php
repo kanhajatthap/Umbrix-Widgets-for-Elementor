@@ -86,7 +86,7 @@ class ELEMENTSKEY_Tabs_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'tab_position',
             [
                 'label' => __( 'Position', 'elementskey' ),
@@ -95,6 +95,7 @@ class ELEMENTSKEY_Tabs_Widget extends \Elementor\Widget_Base {
                 'options' => [
                     'top' => __( 'Top', 'elementskey' ),
                     'left' => __( 'Left', 'elementskey' ),
+                    'right' => __( 'Right', 'elementskey' ),
                 ],
             ]
         );
@@ -173,7 +174,7 @@ class ELEMENTSKEY_Tabs_Widget extends \Elementor\Widget_Base {
                 'label' => __( 'Background', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-tab-item' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-tab-title' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -185,7 +186,29 @@ class ELEMENTSKEY_Tabs_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f5f7ff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-tab-item.is-active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-tab-item.is-active .elementskey-tab-title' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tab_hover_color',
+            [
+                'label' => __( 'Hover Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-tab-item:hover .elementskey-tab-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tab_hover_bg',
+            [
+                'label' => __( 'Hover Background', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-tab-item:hover .elementskey-tab-title' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -302,10 +325,20 @@ class ELEMENTSKEY_Tabs_Widget extends \Elementor\Widget_Base {
             return;
         }
 
-        $position = ! empty( $settings['tab_position'] ) ? $settings['tab_position'] : 'top';
-        $widget_class = 'elementskey-tabs-widget elementskey-tabs-pos-' . $position;
+        $valid_positions = [ 'top', 'left', 'right' ];
+        $pos_desktop = ! empty( $settings['tab_position'] ) ? $settings['tab_position'] : 'top';
+        $pos_tablet  = ! empty( $settings['tab_position_tablet'] ) ? $settings['tab_position_tablet'] : $pos_desktop;
+        $pos_mobile  = ! empty( $settings['tab_position_mobile'] ) ? $settings['tab_position_mobile'] : $pos_tablet;
+
+        if ( ! in_array( $pos_desktop, $valid_positions, true ) ) { $pos_desktop = 'top'; }
+        if ( ! in_array( $pos_tablet, $valid_positions, true ) ) { $pos_tablet = $pos_desktop; }
+        if ( ! in_array( $pos_mobile, $valid_positions, true ) ) { $pos_mobile = $pos_tablet; }
+
         ?>
-        <div class="<?php echo esc_attr( $widget_class ); ?>">
+        <div class="elementskey-tabs-widget elementskey-tabs-pos-<?php echo esc_attr( $pos_desktop ); ?>"
+             data-pos-desk="<?php echo esc_attr( $pos_desktop ); ?>"
+             data-pos-tablet="<?php echo esc_attr( $pos_tablet ); ?>"
+             data-pos-mobile="<?php echo esc_attr( $pos_mobile ); ?>">
             <div class="elementskey-tabs-nav" role="tablist">
                 <?php foreach ( $settings['tabs'] as $index => $tab ) : ?>
                     <?php

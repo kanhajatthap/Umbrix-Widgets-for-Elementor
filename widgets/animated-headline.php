@@ -98,6 +98,22 @@ class ELEMENTSKEY_Animated_Headline_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'headline_effect',
+            [
+                'label' => __( 'Animation Effect', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => __( 'Default', 'elementskey' ),
+                    'blur'    => __( 'Blur', 'elementskey' ),
+                    'flip'    => __( 'Flip', 'elementskey' ),
+                    'slide'   => __( 'Slide', 'elementskey' ),
+                    'pop'     => __( 'Pop', 'elementskey' ),
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Alignment
@@ -279,7 +295,7 @@ class ELEMENTSKEY_Animated_Headline_Widget extends \Elementor\Widget_Base {
             <?php if ( $before ) : ?>
                 <span class="elementskey-headline-before"><?php echo esc_html( $before ); ?></span>
             <?php endif; ?>
-            <span class="elementskey-headline-words" data-speed="<?php echo esc_attr( $speed ); ?>">
+            <span class="elementskey-headline-words" data-speed="<?php echo esc_attr( $speed ); ?>" data-effect="<?php echo esc_attr( $settings['headline_effect'] ); ?>">
                 <?php foreach ( $words as $index => $word ) : ?>
                     <span class="elementskey-headline-word<?php echo 0 === $index ? ' is-active' : ''; ?>"><?php echo esc_html( $word['word'] ); ?></span>
                 <?php endforeach; ?>

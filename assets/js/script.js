@@ -11,13 +11,19 @@
             }
 
             var speed = wrapper.getAttribute('data-speed') || 1200;
+            var animVariant = wrapper.getAttribute('data-anim') || 'default';
             var bars = wrapper.querySelectorAll('.elementskey-progress-fill');
 
             var setWidths = function () {
                 bars.forEach(function (bar) {
                     var width = bar.getAttribute('data-width') || 0;
-                    bar.style.transition = 'width ' + speed + 'ms ease';
+                    var easing = animVariant === 'bounce' ? 'cubic-bezier(0.34, 1.56, 0.64, 1)' : 'ease';
+                    bar.style.transition = 'width ' + speed + 'ms ' + easing;
                     bar.style.width = width + '%';
+
+                    if (animVariant !== 'default') {
+                        bar.classList.add('elementskey-anim-' + animVariant);
+                    }
                 });
             };
 

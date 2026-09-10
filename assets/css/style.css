@@ -103,11 +103,11 @@
 }
 
 .elementskey-carousel-widget {
-    position: relative;
     width: 100%;
 }
 
 .elementskey-carousel-widget .elementskey-swiper {
+    position: relative;
     overflow: hidden;
 }
 
@@ -300,4 +300,50 @@
     width: 18px;
     height: 18px;
     font-size: 18px;
+}
+
+/* ---------- Progress Bar Animation Variants ---------- */
+.elementskey-progress-fill.elementskey-anim-gradient {
+    background-image: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%) !important;
+    background-size: 200% 100% !important;
+    animation: elementskey-pbar-gradient 2s linear infinite;
+}
+
+.elementskey-progress-fill.elementskey-anim-striped {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.25) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 75%,
+        transparent 75%,
+        transparent
+    ) !important;
+    background-size: 1rem 1rem !important;
+    animation: elementskey-pbar-striped 0.8s linear infinite;
+}
+
+.elementskey-progress-fill.elementskey-anim-bounce {
+    animation: elementskey-pbar-bounce 1.4s ease forwards;
+}
+
+@keyframes elementskey-pbar-gradient {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+@keyframes elementskey-pbar-striped {
+    0% { background-position: 1rem 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes elementskey-pbar-bounce {
+    0% { width: 0; transform: scaleX(0); transform-origin: left; }
+    60% { transform: scaleX(1.02); }
+    80% { transform: scaleX(0.98); }
+    100% { transform: scaleX(1); }
 }

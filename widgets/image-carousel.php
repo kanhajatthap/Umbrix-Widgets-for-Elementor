@@ -294,6 +294,19 @@ class ELEMENTSKEY_Image_Carousel_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'nav_position',
+            [
+                'label' => __( 'Arrow Position', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'inside',
+                'options' => [
+                    'inside' => __( 'Inside', 'elementskey' ),
+                    'outside' => __( 'Outside', 'elementskey' ),
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'arrow_size',
             [
@@ -462,8 +475,9 @@ class ELEMENTSKEY_Image_Carousel_Widget extends \Elementor\Widget_Base {
             'spaceTablet' => $space_tablet,
             'spaceMobile' => $space_mobile,
         ];
+        $nav_class = ( isset( $settings['nav_position'] ) && 'outside' === $settings['nav_position'] ) ? 'elementskey-nav-outside' : 'elementskey-nav-inside';
         ?>
-        <div class="elementskey-carousel-widget elementskey-image-carousel-widget elementskey-nav-inside" data-settings='<?php echo esc_attr( wp_json_encode( $settings_data ) ); ?>'>
+        <div class="elementskey-carousel-widget elementskey-image-carousel-widget <?php echo esc_attr( $nav_class ); ?>" data-settings='<?php echo esc_attr( wp_json_encode( $settings_data ) ); ?>'>
             <div class="swiper elementskey-swiper">
                 <div class="swiper-wrapper">
                     <?php foreach ( $settings['carousel_images'] as $slide ) : ?>
@@ -500,12 +514,12 @@ class ELEMENTSKEY_Image_Carousel_Widget extends \Elementor\Widget_Base {
                         </div>
                     <?php endforeach; ?>
                 </div>
-
-                <?php if ( $settings['show_arrows'] === 'yes' ) : ?>
-                    <button type="button" class="elementskey-swiper-button-prev elementskey-image-carousel-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                    <button type="button" class="elementskey-swiper-button-next elementskey-image-carousel-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                <?php endif; ?>
             </div>
+
+            <?php if ( $settings['show_arrows'] === 'yes' ) : ?>
+                <button type="button" class="elementskey-swiper-button-prev elementskey-image-carousel-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+                <button type="button" class="elementskey-swiper-button-next elementskey-image-carousel-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+            <?php endif; ?>
 
             <?php if ( $settings['show_dots'] === 'yes' ) : ?>
                 <div class="swiper-pagination elementskey-swiper-pagination elementskey-image-carousel-pagination"></div>

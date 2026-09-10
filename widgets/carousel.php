@@ -917,12 +917,12 @@ class ELEMENTSKEY_Swiper_Carousel_Widget extends \Elementor\Widget_Base {
                         </div>
                     <?php endforeach; ?>
                 </div>
-
-                <?php if ( $settings['show_arrows'] === 'yes' ) : ?>
-                    <button type="button" class="elementskey-swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                    <button type="button" class="elementskey-swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                <?php endif; ?>
             </div>
+
+            <?php if ( $settings['show_arrows'] === 'yes' ) : ?>
+                <button type="button" class="elementskey-swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+                <button type="button" class="elementskey-swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+            <?php endif; ?>
 
             <?php if ( $settings['show_dots'] === 'yes' ) : ?>
                 <div class="swiper-pagination elementskey-swiper-pagination"></div>

@@ -643,10 +643,6 @@ a.elementskey-icon-box:hover {
 }
 
 /* ---------- Image Carousel ---------- */
-.elementskey-image-carousel-widget {
-    position: relative;
-}
-
 .elementskey-image-carousel-slide {
     position: relative;
     overflow: hidden;
@@ -873,10 +869,6 @@ a.elementskey-icon-box:hover {
 }
 
 /* ---------- Loop Carousel ---------- */
-.elementskey-carousel-widget.elementskey-loop-carousel-widget {
-    position: relative;
-}
-
 .elementskey-loop-carousel-card {
     border-radius: 8px;
 }
@@ -934,7 +926,7 @@ a.elementskey-icon-box:hover {
     display: none !important;
 }
 
-.elementskey-media-carousel .elementskey-custom-arrow::after,
+.elementskey-media-carousel-widget .elementskey-custom-arrow::after,
 .elementskey-slides-widget .elementskey-custom-arrow::after,
 .elementskey-testimonial-carousel-widget .elementskey-custom-arrow::after {
     content: none !important;
@@ -967,6 +959,13 @@ a.elementskey-icon-box:hover {
 
 .elementskey-nav-outside .elementskey-swiper-button-next {
     right: -52px;
+}
+
+.elementskey-swiper,
+.elementskey-media-carousel,
+.elementskey-slides,
+.elementskey-testimonial-carousel {
+    position: relative;
 }
 
 /* Generic swiper nav used by slides, media & testimonial carousels */
@@ -1010,6 +1009,14 @@ a.elementskey-icon-box:hover {
 .elementskey-testimonial-carousel-widget .swiper-button-next:hover {
     background: #4361ee;
     color: #fff;
+}
+
+.elementskey-nav-outside .swiper-button-prev {
+    left: -52px;
+}
+
+.elementskey-nav-outside .swiper-button-next {
+    right: -52px;
 }
 
 .elementskey-swiper-pagination {
@@ -1411,10 +1418,15 @@ a.elementskey-icon-box:hover {
     flex-direction: column;
 }
 
-.elementskey-tabs-widget.elementskey-tabs-pos-left {
+.elementskey-tabs-widget.elementskey-tabs-pos-left,
+.elementskey-tabs-widget.elementskey-tabs-pos-right {
     flex-direction: row;
     align-items: flex-start;
     gap: 20px;
+}
+
+.elementskey-tabs-widget.elementskey-tabs-pos-right {
+    flex-direction: row-reverse;
 }
 
 .elementskey-tabs-nav {
@@ -1423,18 +1435,50 @@ a.elementskey-icon-box:hover {
     gap: 6px;
 }
 
-.elementskey-tabs-pos-left .elementskey-tabs-nav {
+.elementskey-tabs-pos-left .elementskey-tabs-nav,
+.elementskey-tabs-pos-right .elementskey-tabs-nav {
     flex-direction: column;
+    flex-wrap: nowrap;
     flex-shrink: 0;
     min-width: 180px;
 }
 
-.elementskey-tab-item {
+.elementskey-tab-item,
+.elementskey-tab-item:hover,
+.elementskey-tab-item:focus,
+.elementskey-tab-item:active {
+    -webkit-appearance: none;
+    appearance: none;
     border: 0;
-    background: transparent;
+    background-color: transparent;
+    background-image: none;
     cursor: pointer;
     padding: 0;
     margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+
+.elementskey-tab-item.elementskey-tab-item:hover,
+.elementskey-tab-item.elementskey-tab-item:focus,
+.elementskey-tab-item.elementskey-tab-item:active {
+    background-color: transparent;
+    background-image: none;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.elementskey-tab-item:focus-visible {
+    outline: 2px solid #4361ee;
+    outline-offset: 2px;
 }
 
 .elementskey-tab-title {
@@ -1451,6 +1495,7 @@ a.elementskey-icon-box:hover {
 }
 
 .elementskey-tab-item:hover .elementskey-tab-title {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .elementskey-tab-item.is-active .elementskey-tab-title {
@@ -1469,7 +1514,8 @@ a.elementskey-icon-box:hover {
     border-radius: 10px;
 }
 
-.elementskey-tabs-pos-left .elementskey-tab-panes {
+.elementskey-tabs-pos-left .elementskey-tab-panes,
+.elementskey-tabs-pos-right .elementskey-tab-panes {
     margin-top: 0;
 }
 
@@ -2492,6 +2538,57 @@ a.elementskey-icon-box:hover {
     position: static;
 }
 
+.elementskey-headline-words[data-effect="blur"] .elementskey-headline-word {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(0) scale(1);
+    transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
+.elementskey-headline-words[data-effect="blur"] .elementskey-headline-word.is-active {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.elementskey-headline-words[data-effect="flip"] {
+    perspective: 600px;
+}
+
+.elementskey-headline-words[data-effect="flip"] .elementskey-headline-word {
+    opacity: 0;
+    transform: rotateX(90deg);
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.elementskey-headline-words[data-effect="flip"] .elementskey-headline-word.is-active {
+    opacity: 1;
+    transform: rotateX(0deg);
+}
+
+.elementskey-headline-words[data-effect="slide"] .elementskey-headline-word {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.elementskey-headline-words[data-effect="slide"] .elementskey-headline-word.is-active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.elementskey-headline-words[data-effect="pop"] .elementskey-headline-word {
+    opacity: 0;
+    transform: scale(0.3);
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.elementskey-headline-words[data-effect="pop"] .elementskey-headline-word.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
 /* ---------- Hotspot ---------- */
 .elementskey-hotspot-widget {
     position: relative;
@@ -2682,6 +2779,98 @@ a.elementskey-icon-box:hover {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
+}
+
+.elementskey-topbar-no .elementskey-countdown-box::before,
+.elementskey-topbar-hide .elementskey-countdown-box::before {
+    display: none;
+}
+
+/* Countdown design variants */
+.elementskey-countdown-style-solid .elementskey-countdown-box,
+.elementskey-countdown-style-gradient .elementskey-countdown-box,
+.elementskey-countdown-style-neon .elementskey-countdown-box {
+    border: none;
+}
+
+.elementskey-countdown-style-solid .elementskey-countdown-box {
+    background-color: #1f2937;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.elementskey-countdown-style-solid .elementskey-countdown-box::before {
+    display: none;
+}
+
+.elementskey-countdown-style-solid .elementskey-countdown-number {
+    color: #ffffff;
+}
+
+.elementskey-countdown-style-solid .elementskey-countdown-label {
+    color: #9ca3af;
+}
+
+.elementskey-countdown-style-gradient .elementskey-countdown-box {
+    background: linear-gradient(135deg, var(--ek-cd-g1, #4361ee), var(--ek-cd-g2, #7209b7));
+    border-radius: 16px;
+    box-shadow: 0 14px 30px rgba(67, 97, 238, 0.35);
+}
+
+.elementskey-countdown-style-gradient .elementskey-countdown-box::before {
+    display: none;
+}
+
+.elementskey-countdown-style-gradient .elementskey-countdown-number {
+    color: #ffffff;
+}
+
+.elementskey-countdown-style-gradient .elementskey-countdown-label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.elementskey-countdown-style-minimal .elementskey-countdown-box {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 82px;
+}
+
+.elementskey-countdown-style-minimal .elementskey-countdown-box::before {
+    display: none;
+}
+
+.elementskey-countdown-style-minimal .elementskey-countdown-number {
+    color: #4361ee;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.elementskey-countdown-style-minimal .elementskey-countdown-label {
+    color: #6b7280;
+}
+
+.elementskey-countdown-style-neon .elementskey-countdown-box {
+    background: #10121a;
+    border: 1px solid rgba(114, 9, 183, 0.45);
+    border-radius: 12px;
+    box-shadow: 0 0 22px rgba(114, 9, 183, 0.28), inset 0 0 18px rgba(67, 97, 238, 0.10);
+}
+
+.elementskey-countdown-style-neon .elementskey-countdown-box::before {
+    background: linear-gradient(90deg, #4361ee, #7209b7, #f72585);
+    height: 3px;
+}
+
+.elementskey-countdown-style-neon .elementskey-countdown-number {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(67, 97, 238, 0.85);
+}
+
+.elementskey-countdown-style-neon .elementskey-countdown-label {
+    color: #b9c2d9;
 }
 
 /* ---------- Table of Content ---------- */
@@ -3579,4 +3768,50 @@ a.elementskey-icon-box:hover {
 .elementskey-create-loop-template:disabled {
     opacity: 0.7;
     cursor: default;
+}
+
+/* ---------- Progress Tracker Animation Variants ---------- */
+.elementskey-progress-tracker-fill.elementskey-anim-gradient {
+    background-image: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%) !important;
+    background-size: 200% 100% !important;
+    animation: elementskey-pt-gradient 2s linear infinite;
+}
+
+.elementskey-progress-tracker-fill.elementskey-anim-striped {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.25) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 75%,
+        transparent 75%,
+        transparent
+    ) !important;
+    background-size: 1rem 1rem !important;
+    animation: elementskey-pt-striped 0.8s linear infinite;
+}
+
+.elementskey-progress-tracker-fill.elementskey-anim-bounce {
+    animation: elementskey-pt-bounce 1.4s ease forwards;
+}
+
+@keyframes elementskey-pt-gradient {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+@keyframes elementskey-pt-striped {
+    0% { background-position: 1rem 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes elementskey-pt-bounce {
+    0% { width: 0; transform: scaleX(0); transform-origin: left; }
+    60% { transform: scaleX(1.02); }
+    80% { transform: scaleX(0.98); }
+    100% { transform: scaleX(1); }
 }

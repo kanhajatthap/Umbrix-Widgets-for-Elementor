@@ -72,6 +72,21 @@ class ELEMENTSKEY_Progress_Tracker_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'animation_variant',
+            [
+                'label' => __( 'Animation Variant', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default'   => __( 'Default', 'elementskey' ),
+                    'gradient'  => __( 'Gradient Sweep', 'elementskey' ),
+                    'striped'   => __( 'Striped', 'elementskey' ),
+                    'bounce'    => __( 'Bounce', 'elementskey' ),
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -131,7 +146,7 @@ class ELEMENTSKEY_Progress_Tracker_Widget extends \Elementor\Widget_Base {
         $percentage       = (int) $settings['progress_percentage'];
         $show_percentage  = ( 'yes' === $settings['progress_show_percentage'] );
         ?>
-        <div class="elementskey-progress-tracker" data-width="<?php echo esc_attr( $percentage ); ?>">
+        <div class="elementskey-progress-tracker" data-width="<?php echo esc_attr( $percentage ); ?>" data-anim="<?php echo esc_attr( $settings['animation_variant'] ); ?>">
             <?php if ( $description ) : ?>
                 <div class="elementskey-progress-tracker-description"><?php echo esc_html( $description ); ?></div>
             <?php endif; ?>

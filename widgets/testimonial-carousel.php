@@ -106,14 +106,16 @@ class ELEMENTSKEY_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'tc_slides_view',
             [
                 'label' => __( 'Slides to Show', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 2,
                 'min' => 1,
-                'max' => 4,
+                'max' => 6,
+                'default' => 2,
+                'tablet_default' => 1,
+                'mobile_default' => 1,
             ]
         );
 
@@ -408,6 +410,19 @@ class ELEMENTSKEY_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
+            'nav_position',
+            [
+                'label' => __( 'Arrow Position', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'inside',
+                'options' => [
+                    'inside' => __( 'Inside', 'elementskey' ),
+                    'outside' => __( 'Outside', 'elementskey' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
             'arrow_color',
             [
                 'label' => __( 'Arrow Color', 'elementskey' ),
@@ -547,16 +562,22 @@ class ELEMENTSKEY_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
         $previous_icon = ! empty( $settings['prev_arrow_icon'] ) ? $settings['prev_arrow_icon'] : [ 'value' => 'fas fa-chevron-left', 'library' => 'fa-solid' ];
         $next_icon     = ! empty( $settings['next_arrow_icon'] ) ? $settings['next_arrow_icon'] : [ 'value' => 'fas fa-chevron-right', 'library' => 'fa-solid' ];
 
+        $slides_desktop = ! empty( $settings['tc_slides_view'] ) ? (int) $settings['tc_slides_view'] : 2;
+        $slides_tablet  = ! empty( $settings['tc_slides_view_tablet'] ) ? (int) $settings['tc_slides_view_tablet'] : 1;
+        $slides_mobile  = ! empty( $settings['tc_slides_view_mobile'] ) ? (int) $settings['tc_slides_view_mobile'] : 1;
+
         $slider_data = [
             'autoplay' => ( 'yes' === $settings['tc_autoplay'] ),
             'dots'     => ( 'yes' === $settings['tc_dots'] ),
             'arrows'   => ( 'yes' === $settings['tc_arrows'] ),
-            'slides'   => max( 1, (int) $settings['tc_slides_view'] ),
-            'slidesTablet' => 1,
-            'slidesMobile' => 1,
+            'slides'        => max( 1, $slides_desktop ),
+            'slidesDesktop' => max( 1, $slides_desktop ),
+            'slidesTablet'  => max( 1, $slides_tablet ),
+            'slidesMobile'  => max( 1, $slides_mobile ),
         ];
+        $nav_class = ( isset( $settings['nav_position'] ) && 'outside' === $settings['nav_position'] ) ? 'elementskey-nav-outside' : 'elementskey-nav-inside';
         ?>
-        <div class="elementskey-testimonial-carousel-widget">
+        <div class="elementskey-testimonial-carousel-widget <?php echo esc_attr( $nav_class ); ?>">
             <div class="elementskey-testimonial-carousel swiper" data-settings='<?php echo esc_attr( wp_json_encode( $slider_data ) ); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ( $settings['testimonials'] as $item ) : ?>
@@ -586,14 +607,14 @@ class ELEMENTSKEY_Testimonial_Carousel_Widget extends \Elementor\Widget_Base {
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <?php if ( $slider_data['arrows'] ) : ?>
-                    <button type="button" class="swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                    <button type="button" class="swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                <?php endif; ?>
-                <?php if ( $slider_data['dots'] ) : ?>
-                    <div class="swiper-pagination"></div>
-                <?php endif; ?>
             </div>
+            <?php if ( $slider_data['dots'] ) : ?>
+                <div class="swiper-pagination"></div>
+            <?php endif; ?>
+            <?php if ( $slider_data['arrows'] ) : ?>
+                <button type="button" class="swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+                <button type="button" class="swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+            <?php endif; ?>
         </div>
         <?php
     }

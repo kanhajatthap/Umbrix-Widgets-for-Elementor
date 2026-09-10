@@ -84,14 +84,16 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'mc_slides_view',
             [
                 'label' => __( 'Slides to Show', 'elementskey' ),
                 'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 3,
                 'min' => 1,
                 'max' => 6,
+                'default' => 3,
+                'tablet_default' => 2,
+                'mobile_default' => 1,
             ]
         );
 
@@ -168,6 +170,19 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'nav_position',
+            [
+                'label' => __( 'Arrow Position', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'inside',
+                'options' => [
+                    'inside' => __( 'Inside', 'elementskey' ),
+                    'outside' => __( 'Outside', 'elementskey' ),
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'mc_arrow_size',
             [
@@ -180,7 +195,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-media-carousel .swiper-button-prev, {{WRAPPER}} .elementskey-media-carousel .swiper-button-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .swiper-button-prev, {{WRAPPER}} .elementskey-media-carousel-widget .swiper-button-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -197,7 +212,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-media-carousel .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-media-carousel .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-media-carousel .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-media-carousel-widget .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-media-carousel-widget .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -227,7 +242,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-media-carousel .swiper-button-prev, {{WRAPPER}} .elementskey-media-carousel .swiper-button-next' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .swiper-button-prev, {{WRAPPER}} .elementskey-media-carousel-widget .swiper-button-next' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -239,7 +254,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => 'rgba(0,0,0,0.4)',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-media-carousel .swiper-button-prev, {{WRAPPER}} .elementskey-media-carousel .swiper-button-next' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .swiper-button-prev, {{WRAPPER}} .elementskey-media-carousel-widget .swiper-button-next' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -248,7 +263,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name'     => 'mc_arrow_border',
-                'selector' => '{{WRAPPER}} .elementskey-media-carousel .elementskey-custom-arrow',
+                'selector' => '{{WRAPPER}} .elementskey-media-carousel-widget .elementskey-custom-arrow',
             ]
         );
 
@@ -259,7 +274,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-media-carousel .elementskey-custom-arrow' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .elementskey-custom-arrow' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -270,7 +285,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                 'label'     => __( 'Arrow Border Color', 'elementskey' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-media-carousel .elementskey-custom-arrow' => 'border-style: solid; border-width: 1px; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .elementskey-custom-arrow' => 'border-style: solid; border-width: 1px; border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -283,8 +298,8 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                 'size_units' => [ 'px' ],
                 'range'      => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-media-carousel .swiper-button-prev' => 'left: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementskey-media-carousel .swiper-button-next' => 'right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-nav-inside .elementskey-media-carousel-widget .swiper-button-prev' => 'left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-nav-inside .elementskey-media-carousel-widget .swiper-button-next' => 'right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -296,7 +311,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#d9d9d9',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-media-carousel .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -308,7 +323,7 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-media-carousel .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-media-carousel-widget .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -326,16 +341,22 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
         $previous_icon = ! empty( $settings['mc_prev_arrow_icon'] ) ? $settings['mc_prev_arrow_icon'] : [ 'value' => 'fas fa-chevron-left', 'library' => 'fa-solid' ];
         $next_icon     = ! empty( $settings['mc_next_arrow_icon'] ) ? $settings['mc_next_arrow_icon'] : [ 'value' => 'fas fa-chevron-right', 'library' => 'fa-solid' ];
 
+        $slides_desktop = ! empty( $settings['mc_slides_view'] ) ? (int) $settings['mc_slides_view'] : 3;
+        $slides_tablet  = ! empty( $settings['mc_slides_view_tablet'] ) ? (int) $settings['mc_slides_view_tablet'] : 2;
+        $slides_mobile  = ! empty( $settings['mc_slides_view_mobile'] ) ? (int) $settings['mc_slides_view_mobile'] : 1;
+
         $slider_data = [
             'autoplay' => ( 'yes' === $settings['mc_autoplay'] ),
             'dots'     => ( 'yes' === $settings['mc_dots'] ),
             'arrows'   => ( 'yes' === $settings['mc_arrows'] ),
-            'slides'   => max( 1, (int) $settings['mc_slides_view'] ),
-            'slidesTablet' => 2,
-            'slidesMobile' => 1,
+            'slides'        => max( 1, $slides_desktop ),
+            'slidesDesktop' => max( 1, $slides_desktop ),
+            'slidesTablet'  => max( 1, $slides_tablet ),
+            'slidesMobile'  => max( 1, $slides_mobile ),
         ];
+        $nav_class = ( isset( $settings['nav_position'] ) && 'outside' === $settings['nav_position'] ) ? 'elementskey-nav-outside' : 'elementskey-nav-inside';
         ?>
-        <div class="elementskey-media-carousel-widget">
+        <div class="elementskey-media-carousel-widget <?php echo esc_attr( $nav_class ); ?>">
             <div class="elementskey-media-carousel swiper" data-settings='<?php echo esc_attr( wp_json_encode( $slider_data ) ); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ( $settings['media_items'] as $item ) : ?>
@@ -361,14 +382,14 @@ class ELEMENTSKEY_Media_Carousel_Widget extends \Elementor\Widget_Base {
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <?php if ( $slider_data['arrows'] ) : ?>
-                    <button type="button" class="swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                    <button type="button" class="swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                <?php endif; ?>
-                <?php if ( $slider_data['dots'] ) : ?>
-                    <div class="swiper-pagination"></div>
-                <?php endif; ?>
             </div>
+            <?php if ( $slider_data['dots'] ) : ?>
+                <div class="swiper-pagination"></div>
+            <?php endif; ?>
+            <?php if ( $slider_data['arrows'] ) : ?>
+                <button type="button" class="swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+                <button type="button" class="swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+            <?php endif; ?>
         </div>
         <?php
     }

@@ -58,17 +58,7 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        $depends = [ 'elementskey-share-it-style' ];
-
-        if ( class_exists( '\Elementor\Icons_Manager' ) ) {
-            \Elementor\Icons_Manager::enqueue_shim();
-        }
-
-        $depends[] = 'elementor-icons-fa-solid';
-        $depends[] = 'elementor-icons-fa-brands';
-        $depends[] = 'font-awesome-5-all';
-
-        return $depends;
+        return [ 'elementskey-share-it-style', 'elementor-icons-fa-solid', 'elementor-icons-fa-brands' ];
     }
 
     public function get_script_depends() {

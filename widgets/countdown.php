@@ -125,6 +125,71 @@ class ELEMENTSKEY_Countdown_Widget extends \Elementor\Widget_Base {
 
         $this->end_controls_section();
 
+        // Design Style (ready-to-use variants)
+        $this->start_controls_section(
+            'elementskey_countdown_design_style',
+            [
+                'label' => __( 'Design', 'elementskey' ),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'countdown_style',
+            [
+                'label' => __( 'Design', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'classic',
+                'options' => [
+                    'classic'  => __( 'Classic', 'elementskey' ),
+                    'solid'    => __( 'Solid', 'elementskey' ),
+                    'gradient' => __( 'Gradient', 'elementskey' ),
+                    'minimal'  => __( 'Minimal', 'elementskey' ),
+                    'neon'     => __( 'Neon', 'elementskey' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'design_solid_bg',
+            [
+                'label' => __( 'Box Background', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'condition' => [ 'countdown_style' => 'solid' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-countdown-style-solid .elementskey-countdown-box' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'design_gradient_1',
+            [
+                'label' => __( 'Gradient Color 1', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'condition' => [ 'countdown_style' => 'gradient' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-countdown-style-gradient .elementskey-countdown-box'
+                        => '--ek-cd-g1: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'design_gradient_2',
+            [
+                'label' => __( 'Gradient Color 2', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'condition' => [ 'countdown_style' => 'gradient' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-countdown-style-gradient .elementskey-countdown-box'
+                        => '--ek-cd-g2: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
         // Box Style
         $this->start_controls_section(
             'elementskey_countdown_box_style',
@@ -170,6 +235,19 @@ class ELEMENTSKEY_Countdown_Widget extends \Elementor\Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-countdown-box::before' => 'background: {{VALUE}};',
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'top_bar_show',
+            [
+                'label' => __( 'Top Accent Bar', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'elementskey' ),
+                'label_off' => __( 'Hide', 'elementskey' ),
+                'default' => 'yes',
+                'render_type' => 'ui',
+                'prefix_class' => 'elementskey-topbar-',
             ]
         );
 
@@ -321,8 +399,16 @@ class ELEMENTSKEY_Countdown_Widget extends \Elementor\Widget_Base {
         $hours_label = ! empty( $settings['countdown_hours_label'] ) ? $settings['countdown_hours_label'] : 'Hours';
         $min_label   = ! empty( $settings['countdown_minutes_label'] ) ? $settings['countdown_minutes_label'] : 'Minutes';
         $sec_label   = ! empty( $settings['countdown_seconds_label'] ) ? $settings['countdown_seconds_label'] : 'Seconds';
+
+        $style = ! empty( $settings['countdown_style'] ) ? $settings['countdown_style'] : 'classic';
+        $valid_styles = [ 'classic', 'solid', 'gradient', 'minimal', 'neon' ];
+        if ( ! in_array( $style, $valid_styles, true ) ) {
+            $style = 'classic';
+        }
+
+        $top_bar_hide = ( empty( $settings['top_bar_show'] ) || 'yes' !== $settings['top_bar_show'] );
         ?>
-        <div class="elementskey-countdown" data-date="<?php echo esc_attr( $date ); ?>">
+        <div class="elementskey-countdown elementskey-countdown-style-<?php echo esc_attr( $style ); ?><?php echo $top_bar_hide ? ' elementskey-topbar-hide' : ''; ?>" data-date="<?php echo esc_attr( $date ); ?>">
             <?php if ( $show_days ) : ?>
                 <div class="elementskey-countdown-box elementskey-countdown-days" data-unit="days">
                     <span class="elementskey-countdown-number">00</span>

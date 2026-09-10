@@ -235,6 +235,19 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'nav_position',
+            [
+                'label' => __( 'Arrow Position', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'inside',
+                'options' => [
+                    'inside' => __( 'Inside', 'elementskey' ),
+                    'outside' => __( 'Outside', 'elementskey' ),
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'slides_arrow_size',
             [
@@ -247,7 +260,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-slides .swiper-button-prev, {{WRAPPER}} .elementskey-slides .swiper-button-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .swiper-button-prev, {{WRAPPER}} .elementskey-slides-widget .swiper-button-next, {{WRAPPER}} .elementskey-custom-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -264,7 +277,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-slides .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-slides .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-slides .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .elementskey-custom-arrow .elementskey-arrow-icon, {{WRAPPER}} .elementskey-slides-widget .elementskey-custom-arrow .elementskey-arrow-icon i, {{WRAPPER}} .elementskey-slides-widget .elementskey-custom-arrow .elementskey-arrow-icon svg' => 'font-size: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -294,7 +307,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-slides .swiper-button-prev, {{WRAPPER}} .elementskey-slides .swiper-button-next' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .swiper-button-prev, {{WRAPPER}} .elementskey-slides-widget .swiper-button-next' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -306,7 +319,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => 'rgba(0,0,0,0.4)',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-slides .swiper-button-prev, {{WRAPPER}} .elementskey-slides .swiper-button-next' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .swiper-button-prev, {{WRAPPER}} .elementskey-slides-widget .swiper-button-next' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -315,7 +328,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Border::get_type(),
             [
                 'name'     => 'slides_arrow_border',
-                'selector' => '{{WRAPPER}} .elementskey-slides .elementskey-custom-arrow',
+                'selector' => '{{WRAPPER}} .elementskey-slides-widget .elementskey-custom-arrow',
             ]
         );
 
@@ -326,7 +339,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-slides .elementskey-custom-arrow' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .elementskey-custom-arrow' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -337,7 +350,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'label'     => __( 'Arrow Border Color', 'elementskey' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-slides .elementskey-custom-arrow' => 'border-style: solid; border-width: 1px; border-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .elementskey-custom-arrow' => 'border-style: solid; border-width: 1px; border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -350,8 +363,8 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'size_units' => [ 'px' ],
                 'range'      => [ 'px' => [ 'min' => 0, 'max' => 100 ] ],
                 'selectors'  => [
-                    '{{WRAPPER}} .elementskey-slides .swiper-button-prev' => 'left: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementskey-slides .swiper-button-next' => 'right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-nav-inside .elementskey-slides-widget .swiper-button-prev' => 'left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskey-nav-inside .elementskey-slides-widget .swiper-button-next' => 'right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -363,7 +376,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#d9d9d9',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-slides .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -375,7 +388,7 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#4361ee',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskey-slides .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .elementskey-slides-widget .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -398,8 +411,9 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
             'dots'     => ( 'yes' === $settings['slides_dots'] ),
             'arrows'   => ( 'yes' === $settings['slides_arrows'] ),
         ];
+        $nav_class = ( isset( $settings['nav_position'] ) && 'outside' === $settings['nav_position'] ) ? 'elementskey-nav-outside' : 'elementskey-nav-inside';
         ?>
-        <div class="elementskey-slides-widget">
+        <div class="elementskey-slides-widget <?php echo esc_attr( $nav_class ); ?>">
             <div class="elementskey-slides swiper" data-settings='<?php echo esc_attr( wp_json_encode( $slider_data ) ); ?>'>
                 <div class="swiper-wrapper">
                     <?php foreach ( $settings['slides'] as $slide ) : ?>
@@ -422,14 +436,14 @@ class ELEMENTSKEY_Slides_Widget extends \Elementor\Widget_Base {
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <?php if ( $slider_data['arrows'] ) : ?>
-                    <button type="button" class="swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                    <button type="button" class="swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
-                <?php endif; ?>
-                <?php if ( $slider_data['dots'] ) : ?>
-                    <div class="swiper-pagination"></div>
-                <?php endif; ?>
             </div>
+            <?php if ( $slider_data['dots'] ) : ?>
+                <div class="swiper-pagination"></div>
+            <?php endif; ?>
+            <?php if ( $slider_data['arrows'] ) : ?>
+                <button type="button" class="swiper-button-prev elementskey-custom-arrow" aria-label="Previous Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $previous_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+                <button type="button" class="swiper-button-next elementskey-custom-arrow" aria-label="Next Slide"><span class="elementskey-arrow-icon"><?php \Elementor\Icons_Manager::render_icon( $next_icon, [ 'aria-hidden' => 'true' ] ); ?></span></button>
+            <?php endif; ?>
         </div>
         <?php
     }

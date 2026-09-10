@@ -205,6 +205,36 @@ class ELEMENTSKEY_Icon_List_Widget extends \Elementor\Widget_Base {
         );
 
         $this->add_responsive_control(
+            'icon_padding',
+            [
+                'label' => __( 'Padding', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'default' => [
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-icon-list-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'default' => [
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-icon-list-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
             'icon_size',
             [
                 'label' => __( 'Size', 'elementskey' ),

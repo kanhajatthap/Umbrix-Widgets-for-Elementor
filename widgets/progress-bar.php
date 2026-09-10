@@ -96,6 +96,21 @@ class ELEMENTSKEY_Progress_Bar_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'animation_variant',
+            [
+                'label' => __( 'Animation Variant', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default'   => __( 'Default', 'elementskey' ),
+                    'gradient'  => __( 'Gradient Sweep', 'elementskey' ),
+                    'striped'   => __( 'Striped', 'elementskey' ),
+                    'bounce'    => __( 'Bounce', 'elementskey' ),
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // General Style
@@ -282,7 +297,8 @@ class ELEMENTSKEY_Progress_Bar_Widget extends \Elementor\Widget_Base {
         ?>
 
         <div class="elementskey-progress-wrapper"
-             data-speed="<?php echo esc_attr( $settings['animation_speed'] ); ?>">
+             data-speed="<?php echo esc_attr( $settings['animation_speed'] ); ?>"
+             data-anim="<?php echo esc_attr( $settings['animation_variant'] ); ?>">
 
             <?php foreach ( $settings['bars'] as $item ) : ?>
 
