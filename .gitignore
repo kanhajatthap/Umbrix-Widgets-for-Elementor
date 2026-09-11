@@ -4,3 +4,5 @@ style-controls-reference.txt
 Thumbs.db
 
 .playwright-mcp/
+AGENTS.md
+opencode.json
