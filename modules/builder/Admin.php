@@ -34,7 +34,7 @@ class Admin {
         add_action( 'wp_ajax_elementskey_hf_get_posts', [ $this, 'ajax_get_posts' ] );
         add_action( 'admin_post_elementskey_hf_restore', [ $this, 'handle_restore' ] );
         add_filter( 'post_row_actions', [ $this, 'add_row_actions' ], 10, 2 );
-        add_filter( 'bulk_actions-edit-elementskey_header_footer', [ $this, 'add_bulk_actions' ] );
+        add_filter( 'bulk_actions-edit-builder', [ $this, 'add_bulk_actions' ] );
     }
 
     public function hide_notices() {
@@ -95,7 +95,7 @@ class Admin {
 
         $templates   = $this->get_templates( $type_view, $statuses[ $status_view ] );
         $all_pages   = get_pages();
-        $hf_counts   = wp_count_posts( 'elementskey_header_footer' );
+        $hf_counts   = wp_count_posts( 'builder' );
         $library_templates = array_merge(
             $this->get_templates( 'loop', [ 'publish', 'draft', 'trash' ] ),
             $this->get_templates( 'section', [ 'publish', 'draft', 'trash' ] )
@@ -360,7 +360,7 @@ class Admin {
                                     <?php
                                     $elementskey_archive_condition_taxonomies = get_taxonomies( [ 'public' => true ], 'objects' );
                                     foreach ( $elementskey_archive_condition_taxonomies as $elementskey_tax ) :
-                                        if ( in_array( $elementskey_tax->name, [ 'elementor_library', 'elementskey_header_footer', 'nav_menu', 'link_category' ], true ) ) {
+                                        if ( in_array( $elementskey_tax->name, [ 'elementor_library', 'builder', 'nav_menu', 'link_category' ], true ) ) {
                                             continue;
                                         }
                                         ?>
@@ -621,7 +621,7 @@ if ( is_wp_error( $post_id ) ) {
 
         $post_id = wp_insert_post( [
             'post_title'  => $name,
-            'post_type'   => 'elementskey_header_footer',
+            'post_type'   => 'builder',
             'post_status' => 'publish',
         ] );
 
@@ -774,7 +774,7 @@ if ( is_wp_error( $post_id ) ) {
 
         $post = get_post( $post_id );
 
-        if ( ! $post || ! in_array( $post->post_type, [ 'elementskey_header_footer', 'elementor_library' ], true ) ) {
+        if ( ! $post || ! in_array( $post->post_type, [ 'builder', 'elementor_library' ], true ) ) {
             wp_send_json_error( [ 'message' => __( 'Template not found.', 'elementskey' ) ] );
         }
 
@@ -913,7 +913,7 @@ if ( is_wp_error( $post_id ) ) {
 
         $post = get_post( $post_id );
 
-        if ( ! $post || ! in_array( $post->post_type, [ 'elementskey_header_footer', 'elementor_library' ], true ) ) {
+        if ( ! $post || ! in_array( $post->post_type, [ 'builder', 'elementor_library' ], true ) ) {
             wp_send_json_error( [ 'message' => __( 'Template not found.', 'elementskey' ) ] );
         }
 
@@ -1001,7 +1001,7 @@ if ( is_wp_error( $post_id ) ) {
         // Determine post type from export data
         $post_type = isset( $data['type'] ) && 'elementor_library' === $data['type']
             ? 'elementor_library'
-            : 'elementskey_header_footer';
+            : 'builder';
 
         $post_id = wp_insert_post( [
             'post_title'  => sanitize_text_field( $data['title'] ),
@@ -1041,7 +1041,7 @@ if ( is_wp_error( $post_id ) ) {
             update_post_meta( $post_id, '_elementor_template_type', $data['elementor_template_type'] );
         }
 
-        add_post_type_support( 'elementskey_header_footer', 'elementor' );
+        add_post_type_support( 'builder', 'elementor' );
 
         $this->cache->flush_all();
 
@@ -1098,18 +1098,39 @@ if ( is_wp_error( $post_id ) ) {
             return get_posts( $args );
         }
 
-        $args = [
-            'post_type'      => 'elementskey_header_footer',
+        // "All" view merges both post types so section/loop templates appear
+        $hf_args = [
+            'post_type'      => 'builder',
             'post_status'    => $statuses,
             'posts_per_page' => -1,
             'orderby'        => 'menu_order date',
             'order'          => 'ASC',
         ];
         if ( $type ) {
-            $args['meta_key']   = '_elementskey_hf_template_type'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Template type lookup is the primary filter.
-            $args['meta_value'] = $type; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Template type lookup is the primary filter.
+            $hf_args['meta_key']   = '_elementskey_hf_template_type'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Template type lookup is the primary filter.
+            $hf_args['meta_value'] = $type; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Template type lookup is the primary filter.
+            return get_posts( $hf_args );
         }
-        return get_posts( $args );
+
+        $hf_posts = get_posts( $hf_args );
+
+        $library_args = [
+            'post_type'      => 'elementor_library',
+            'post_status'    => $statuses,
+            'posts_per_page' => -1,
+            'orderby'        => 'title date',
+            'order'          => 'ASC',
+            'meta_query'     => [ // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required to list only Elementor loop templates.
+                [
+                    'key'     => '_elementor_template_type',
+                    'value'   => [ 'section', 'loop-item', 'loop' ],
+                    'compare' => 'IN',
+                ],
+            ],
+        ];
+        $library_posts = get_posts( $library_args );
+
+        return array_merge( $hf_posts, $library_posts );
     }
 
     private function render_type_badge( $type ) {
@@ -1155,12 +1176,12 @@ if ( is_wp_error( $post_id ) ) {
     }
 
     public function add_row_actions( $actions, $post ) {
-        if ( 'elementskey_header_footer' !== $post->post_type ) {
+        if ( 'builder' !== $post->post_type ) {
             return $actions;
         }
 
         $new_actions = [];
-        $post_type_object = get_post_type_object( 'elementskey_header_footer' );
+        $post_type_object = get_post_type_object( 'builder' );
 
         if ( current_user_can( 'edit_post', $post->ID ) ) {
             $new_actions['edit_with_elementor'] = sprintf(

@@ -47,15 +47,15 @@ class PostType {
             'query_var'           => false,
         ];
 
-        register_post_type( 'elementskey_header_footer', $args );
+        register_post_type( 'builder', $args );
 
-        add_post_type_support( 'elementskey_header_footer', 'elementor' );
+        add_post_type_support( 'builder', 'elementor' );
     }
 
     public function hide_editor_support() {
-        remove_post_type_support( 'elementskey_header_footer', 'editor' );
-        remove_post_type_support( 'elementskey_header_footer', 'comments' );
-        remove_post_type_support( 'elementskey_header_footer', 'custom-fields' );
-        remove_post_type_support( 'elementskey_header_footer', 'trackbacks' );
+        remove_post_type_support( 'builder', 'editor' );
+        remove_post_type_support( 'builder', 'comments' );
+        remove_post_type_support( 'builder', 'custom-fields' );
+        remove_post_type_support( 'builder', 'trackbacks' );
     }
 }

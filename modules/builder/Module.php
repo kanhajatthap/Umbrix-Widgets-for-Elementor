@@ -71,7 +71,7 @@ class Module {
         $this->load_class( 'PostType' );
         $this->post_type = new PostType();
 
-        add_action( 'save_post_elementskey_header_footer', [ $this, 'bust_cache_on_save' ] );
+        add_action( 'save_post_builder', [ $this, 'bust_cache_on_save' ] );
         add_action( 'wp_trash_post', [ $this, 'bust_cache_on_trash' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_assets' ] );
 
@@ -127,7 +127,7 @@ class Module {
     }
 
     public function bust_cache_on_trash( $post_id ) {
-        if ( 'elementskey_header_footer' === get_post_type( $post_id ) ) {
+        if ( 'builder' === get_post_type( $post_id ) ) {
             $this->cache->flush_all();
         }
     }

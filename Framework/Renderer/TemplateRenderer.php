@@ -94,7 +94,7 @@ class TemplateRenderer {
 
         $templates = get_posts(
             [
-                'post_type'              => 'elementskey_header_footer',
+                'post_type'              => 'builder',
                 'post_status'            => 'publish',
                 'posts_per_page'         => 50,
                 'meta_key'               => '_elementskey_hf_template_type', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Template type lookup is the primary filter.

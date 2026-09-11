@@ -67,7 +67,7 @@ class ConditionManager {
         $post_types = get_post_types( [ 'public' => true ], 'objects' );
 
         foreach ( $post_types as $pt ) {
-            if ( in_array( $pt->name, [ 'elementskey_header_footer', 'elementor_library', 'attachment' ], true ) ) {
+            if ( in_array( $pt->name, [ 'builder', 'elementor_library', 'attachment' ], true ) ) {
                 continue;
             }
 
@@ -92,7 +92,7 @@ class ConditionManager {
         $taxonomies = get_taxonomies( [ 'public' => true ], 'objects' );
 
         foreach ( $taxonomies as $tax ) {
-            if ( in_array( $tax->name, [ 'elementor_library', 'elementskey_header_footer', 'nav_menu', 'link_category' ], true ) ) {
+            if ( in_array( $tax->name, [ 'elementor_library', 'builder', 'nav_menu', 'link_category' ], true ) ) {
                 continue;
             }
 

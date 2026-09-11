@@ -14,7 +14,7 @@ if ( ! did_action( 'elementor/loaded' ) ) {
 
 function elementskey_create_theme_builder_template( $type, $title, $json_data ) {
     $existing = get_posts( [
-        'post_type'      => 'elementskey_header_footer',
+        'post_type'      => 'builder',
         'post_status'    => 'any',
         'posts_per_page' => 1,
         'meta_key'       => '_elementskey_hf_template_type',
@@ -26,7 +26,7 @@ function elementskey_create_theme_builder_template( $type, $title, $json_data ) 
         $post_id = (int) $existing[0];
     } else {
         $post_id = wp_insert_post( [
-            'post_type'    => 'elementskey_header_footer',
+            'post_type'    => 'builder',
             'post_status'  => 'publish',
             'post_title'   => $title,
             'post_content' => '',

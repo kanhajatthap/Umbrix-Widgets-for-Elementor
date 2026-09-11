@@ -58,7 +58,7 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return [ 'elementskey-share-it-style', 'elementor-icons-fa-solid', 'elementor-icons-fa-brands' ];
+        return [ 'elementskey-share-it-style', 'elementskey-fa-solid', 'elementskey-fa-brands' ];
     }
 
     public function get_script_depends() {
@@ -383,7 +383,7 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
             'x' => [
                 'enabled' => ( ! empty( $settings['elementskey_share_it_x'] ) ),
                 'label' => 'X',
-                'icon' => [ 'value' => 'fab fa-twitter', 'library' => 'fa-brands' ],
+                'icon' => [ 'value' => 'fab fa-x-twitter', 'library' => 'fa-brands' ],
                 'url' => 'https://twitter.com/intent/tweet?url=' . $encoded_url . '&text=' . $encoded_title,
             ],
             'linkedin' => [
@@ -455,7 +455,8 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
                             aria-label="<?php echo esc_attr( $share_link['label'] ); ?>"
                             title="<?php echo esc_attr( $share_link['label'] ); ?>"
                         >
-                            <?php \Elementor\Icons_Manager::render_icon( $share_link['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                            <?php $icon_class = ! empty( $share_link['icon']['value'] ) ? $share_link['icon']['value'] : 'fab fa-facebook-f'; ?>
+                            <i class="<?php echo esc_attr( $icon_class ); ?>" aria-hidden="true"></i>
                         </a>
                     <?php elseif ( 'email' === $network ) : ?>
                         <a
@@ -464,7 +465,8 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
                             aria-label="<?php echo esc_attr( $share_link['label'] ); ?>"
                             title="<?php echo esc_attr( $share_link['label'] ); ?>"
                         >
-                            <?php \Elementor\Icons_Manager::render_icon( $share_link['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                            <?php $icon_class = ! empty( $share_link['icon']['value'] ) ? $share_link['icon']['value'] : 'fas fa-envelope'; ?>
+                            <i class="<?php echo esc_attr( $icon_class ); ?>" aria-hidden="true"></i>
                         </a>
                     <?php else : ?>
                         <a
@@ -475,7 +477,8 @@ class ELEMENTSKEY_Share_It_Widget extends \Elementor\Widget_Base {
                             aria-label="<?php echo esc_attr( $share_link['label'] ); ?>"
                             title="<?php echo esc_attr( $share_link['label'] ); ?>"
                         >
-                            <?php \Elementor\Icons_Manager::render_icon( $share_link['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                            <?php $icon_class = ! empty( $share_link['icon']['value'] ) ? $share_link['icon']['value'] : 'fab fa-facebook-f'; ?>
+                            <i class="<?php echo esc_attr( $icon_class ); ?>" aria-hidden="true"></i>
                         </a>
                     <?php endif; ?>
                 <?php endforeach; ?>

@@ -29,6 +29,10 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
         return [ 'elementskey-content-style' ];
     }
 
+    public function get_script_depends() {
+        return [ 'elementskey-content-script' ];
+    }
+
     protected function get_menus() {
         $menus = wp_get_nav_menus();
         $options = [];
@@ -40,6 +44,24 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
 
     protected function get_locations() {
         return get_registered_nav_menus();
+    }
+
+    protected function get_mobile_breakpoint() {
+        $breakpoint = 767;
+
+        if ( class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance->breakpoints ) ) {
+            $breakpoints = \Elementor\Plugin::$instance->breakpoints->get_active_breakpoints();
+
+            if ( ! empty( $breakpoints['mobile'] ) ) {
+                $value = (int) $breakpoints['mobile']->get_value();
+
+                if ( $value > 0 ) {
+                    $breakpoint = $value;
+                }
+            }
+        }
+
+        return $breakpoint;
     }
 
     protected function register_controls() {
@@ -81,6 +103,21 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_locations(),
                 'condition' => [ 'wp_menu_source' => 'location' ],
+            ]
+        );
+
+        $this->add_control(
+            'wp_menu_style',
+            [
+                'label' => __( 'Design Style', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'default',
+                'options' => [
+                    'default' => __( 'Default', 'elementskey' ),
+                    'pills' => __( 'Pills', 'elementskey' ),
+                    'underline' => __( 'Underline', 'elementskey' ),
+                    'vertical' => __( 'Vertical', 'elementskey' ),
+                ],
             ]
         );
 
@@ -158,6 +195,7 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
 
         if ( 'location' === $settings['wp_menu_source'] ) {
             $args['theme_location'] = ! empty( $settings['wp_menu_location'] ) ? $settings['wp_menu_location'] : '';
+            $args['menu']           = 0;
         } else {
             $args['menu'] = ! empty( $settings['wp_menu_id'] ) ? absint( $settings['wp_menu_id'] ) : 0;
         }
@@ -169,6 +207,34 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
             return;
         }
 
-        wp_nav_menu( $args );
+        $style_class = 'default' !== $settings['wp_menu_style'] ? ' elementskey-menu-style-' . $settings['wp_menu_style'] : '';
+        $args['menu_class'] .= $style_class;
+
+        $element_id = $this->get_id();
+        $breakpoint = $this->get_mobile_breakpoint();
+
+        $this->add_render_attribute(
+            'elementskey-menu-wrapper',
+            [
+                'class'              => 'elementskey-menu-widget',
+                'data-menu-breakpoint' => $breakpoint,
+                'style'              => '--elementskey-menu-breakpoint: ' . $breakpoint . 'px;',
+            ]
+        );
+
+        $args['menu_id']     = 'elementskey-wp-menu-' . $element_id;
+        $args['link_after']  = '<span class="elementskey-menu-caret" aria-hidden="true"></span>';
+        ?>
+        <nav <?php $this->print_render_attribute_string( 'elementskey-menu-wrapper' ); ?> aria-label="<?php esc_attr_e( 'Menu', 'elementskey' ); ?>">
+            <button class="elementskey-menu-toggle" type="button" aria-label="<?php esc_attr_e( 'Toggle menu', 'elementskey' ); ?>" aria-expanded="false" aria-controls="elementskey-menu-container-<?php echo esc_attr( $element_id ); ?>">
+                <span class="elementskey-menu-toggle-bar" aria-hidden="true"></span>
+                <span class="elementskey-menu-toggle-bar" aria-hidden="true"></span>
+                <span class="elementskey-menu-toggle-bar" aria-hidden="true"></span>
+            </button>
+            <div class="elementskey-menu-container" id="elementskey-menu-container-<?php echo esc_attr( $element_id ); ?>">
+                <?php wp_nav_menu( $args ); ?>
+            </div>
+        </nav>
+        <?php
     }
 }

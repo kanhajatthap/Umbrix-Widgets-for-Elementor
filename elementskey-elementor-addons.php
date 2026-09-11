@@ -1428,6 +1428,27 @@ function elementskey_register_assets() {
         true
     );
 
+    wp_register_style(
+        'elementskey-fontawesome',
+        ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',
+        [],
+        '5.15.3'
+    );
+
+    wp_register_style(
+        'elementskey-fa-brands',
+        ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/brands.min.css',
+        [ 'elementskey-fontawesome' ],
+        '5.15.3'
+    );
+
+    wp_register_style(
+        'elementskey-fa-solid',
+        ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/solid.min.css',
+        [ 'elementskey-fontawesome' ],
+        '5.15.3'
+    );
+
     wp_register_script(
         'elementskey-content-script',
         ELEMENTSKEY_URL . 'assets/js/content-widgets.js',

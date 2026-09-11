@@ -26,7 +26,7 @@ class MetaBox {
             return;
         }
 
-        if ( 'elementskey_header_footer' !== get_post_type() ) {
+        if ( 'builder' !== get_post_type() ) {
             return;
         }
 
@@ -61,7 +61,7 @@ class MetaBox {
             'elementskey_hf_template_type',
             __( 'Template Type', 'elementskey' ),
             [ $this, 'render_type_meta_box' ],
-            'elementskey_header_footer',
+            'builder',
             'side',
             'default'
         );
@@ -70,7 +70,7 @@ class MetaBox {
             'elementskey_hf_display_conditions',
             __( 'Display Conditions', 'elementskey' ),
             [ $this, 'render_conditions_meta_box' ],
-            'elementskey_header_footer',
+            'builder',
             'normal',
             'high'
         );
@@ -79,7 +79,7 @@ class MetaBox {
             'elementskey_hf_settings',
             __( 'Template Settings', 'elementskey' ),
             [ $this, 'render_settings_meta_box' ],
-            'elementskey_header_footer',
+            'builder',
             'side',
             'default'
         );
@@ -202,7 +202,7 @@ class MetaBox {
             return;
         }
 
-        if ( 'elementskey_header_footer' !== get_post_type( $post_id ) ) {
+        if ( 'builder' !== get_post_type( $post_id ) ) {
             return;
         }
 
@@ -271,7 +271,7 @@ class MetaBox {
     private function get_next_condition_index() {
         global $post;
 
-        if ( ! $post || 'elementskey_header_footer' !== $post->post_type ) {
+        if ( ! $post || 'builder' !== $post->post_type ) {
             return 0;
         }
 

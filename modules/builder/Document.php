@@ -21,7 +21,7 @@ class Document extends \ElementsKey\Framework\Elementor\ThemeBuilderDocument {
     }
 
     protected static function get_cpt() {
-        return 'elementskey_header_footer';
+        return 'builder';
     }
 
     protected function register_document_controls() {

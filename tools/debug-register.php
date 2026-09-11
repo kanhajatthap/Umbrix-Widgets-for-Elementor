@@ -1,7 +1,7 @@
 <?php
-var_dump( post_type_exists( 'elementskey_header_footer' ) );
+var_dump( post_type_exists( 'builder' ) );
 register_post_type(
-    'elementskey_header_footer',
+    'builder',
     [
         'labels' => [
             'name' => 'Theme Builder',
@@ -11,10 +11,10 @@ register_post_type(
         'supports' => [ 'title', 'author' ],
     ]
 );
-var_dump( post_type_exists( 'elementskey_header_footer' ) );
+var_dump( post_type_exists( 'builder' ) );
 $result = wp_insert_post( [
     'post_title' => 'Header Test',
-    'post_type' => 'elementskey_header_footer',
+    'post_type' => 'builder',
     'post_status' => 'publish',
 ] );
 var_dump( $result );

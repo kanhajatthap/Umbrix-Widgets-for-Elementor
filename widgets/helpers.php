@@ -96,7 +96,7 @@ function elementskey_widget_post_types() {
     $out   = [];
 
     foreach ( $types as $type ) {
-        if ( in_array( $type->name, [ 'attachment', 'elementskey_header_footer', 'elementor_library' ], true ) ) {
+        if ( in_array( $type->name, [ 'attachment', 'builder', 'elementor_library' ], true ) ) {
             continue;
         }
         $out[ $type->name ] = $type->labels->singular_name;

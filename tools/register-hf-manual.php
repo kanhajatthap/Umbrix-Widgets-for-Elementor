@@ -3,9 +3,9 @@ if ( ! function_exists( 'register_post_type' ) ) {
     die( "WordPress not loaded\n" );
 }
 
-if ( ! post_type_exists( 'elementskey_header_footer' ) ) {
+if ( ! post_type_exists( 'builder' ) ) {
     register_post_type(
-        'elementskey_header_footer',
+        'builder',
         [
             'labels'              => [
                 'name'               => 'Theme Builder',
@@ -35,12 +35,12 @@ if ( ! post_type_exists( 'elementskey_header_footer' ) ) {
             'query_var'          => false,
         ]
     );
-    add_post_type_support( 'elementskey_header_footer', 'elementor' );
+    add_post_type_support( 'builder', 'elementor' );
 }
 
 function elementskey_make_template( $type, $title, $data ) {
     $existing = get_posts( [
-        'post_type'      => 'elementskey_header_footer',
+        'post_type'      => 'builder',
         'post_status'    => 'any',
         'posts_per_page' => 1,
         'meta_key'       => '_elementskey_hf_template_type',
@@ -50,7 +50,7 @@ function elementskey_make_template( $type, $title, $data ) {
 
     $post_id = ! empty( $existing ) ? (int) $existing[0] : wp_insert_post( [
         'post_title'  => $title,
-        'post_type'   => 'elementskey_header_footer',
+        'post_type'   => 'builder',
         'post_status' => 'publish',
     ] );
 

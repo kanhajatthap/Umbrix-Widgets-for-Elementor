@@ -3183,39 +3183,136 @@ a.elementskey-icon-box:hover {
 }
 
 /* ---------- Menus ---------- */
-.elementskey-menu,
-.elementskey-wp-menu {
+.elementskey-menu-widget {
+    position: relative;
+    --elementskey-menu-breakpoint: 767px;
+}
+
+.elementskey-menu-widget .elementskey-menu,
+.elementskey-menu-widget .elementskey-wp-menu {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-.elementskey-menu.is-vertical,
-.elementskey-wp-menu.is-vertical {
+.elementskey-menu-widget .elementskey-menu.is-horizontal,
+.elementskey-menu-widget .elementskey-wp-menu.is-horizontal,
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-default {
+    flex-direction: row;
+}
+
+.elementskey-menu-widget .elementskey-menu.is-vertical,
+.elementskey-menu-widget .elementskey-wp-menu.is-vertical {
     flex-direction: column;
+    align-items: stretch;
     gap: 10px;
 }
 
-.elementskey-menu a,
-.elementskey-wp-menu a {
+.elementskey-menu-widget .elementskey-menu a,
+.elementskey-menu-widget .elementskey-wp-menu a {
     text-decoration: none;
+    display: inline-block;
 }
 
-.elementskey-menu .sub-menu,
-.elementskey-wp-menu .sub-menu {
+.elementskey-menu-widget .menu-item-has-children {
+    position: relative;
+}
+
+/* Dropdown caret (chevron) */
+.elementskey-menu-caret {
+    display: none;
+    width: 8px;
+    height: 8px;
+    margin-left: 7px;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.elementskey-menu-widget .menu-item-has-children > a > .elementskey-menu-caret {
+    display: inline-block;
+}
+
+.elementskey-menu-widget .menu-item-has-children:hover > a > .elementskey-menu-caret,
+.elementskey-menu-widget .menu-item-has-children.is-open > a > .elementskey-menu-caret {
+    transform: rotate(225deg);
+}
+
+/* Overlay dropdown sub-menus */
+.elementskey-menu-widget .sub-menu {
     list-style: none;
-    padding-left: 16px;
+    margin: 0;
+    padding: 8px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.10);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
-/* ---------- WP Menu design variants ---------- */
-.elementskey-wp-menu.elementskey-menu-style-pills li {
+.elementskey-menu-widget .menu-item-has-children:hover > .sub-menu,
+.elementskey-menu-widget .menu-item-has-children.is-open > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.elementskey-menu-widget .sub-menu .sub-menu {
+    top: 0;
+    left: 100%;
+}
+
+.elementskey-menu-widget .elementskey-menu.is-vertical .sub-menu,
+.elementskey-menu-widget .elementskey-wp-menu.is-vertical .sub-menu,
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-vertical .sub-menu {
+    top: 0;
+    left: 100%;
+}
+
+.elementskey-menu-widget .sub-menu li {
     margin: 0;
 }
 
-.elementskey-wp-menu.elementskey-menu-style-pills a {
+.elementskey-menu-widget .sub-menu a {
+    display: block;
+    padding: 9px 16px;
+    min-width: 100%;
+    white-space: nowrap;
+    color: #374151;
+}
+
+.elementskey-menu-widget .sub-menu li:hover {
+    background: #f3f4f6;
+}
+
+.elementskey-menu-widget .sub-menu a:hover {
+    color: #1f2937;
+}
+
+.elementskey-menu-widget .current-menu-item > a {
+    color: #4361ee;
+}
+
+/* ---------- WP Menu design variants ---------- */
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-pills li {
+    margin: 0;
+}
+
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-pills a {
     display: inline-block;
     padding: 7px 18px;
     border-radius: 30px;
@@ -3223,15 +3320,17 @@ a.elementskey-icon-box:hover {
     transition: background 0.25s ease, color 0.25s ease;
 }
 
-.elementskey-wp-menu.elementskey-menu-style-pills a:hover {
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-pills a:hover {
+    background: #eef2ff;
+    color: #4361ee;
 }
 
-.elementskey-wp-menu.elementskey-menu-style-underline a {
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-underline a {
     padding: 6px 2px;
     position: relative;
 }
 
-.elementskey-wp-menu.elementskey-menu-style-underline a::after {
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-underline a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -3245,23 +3344,126 @@ a.elementskey-icon-box:hover {
     transition: transform 0.3s ease;
 }
 
-.elementskey-wp-menu.elementskey-menu-style-underline a:hover::after {
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-underline a:hover::after,
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-underline .current-menu-item > a::after {
     transform: scaleX(1);
 }
 
-.elementskey-wp-menu.elementskey-menu-style-vertical {
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-vertical {
     flex-direction: column;
+    align-items: stretch;
     gap: 4px;
 }
 
-.elementskey-wp-menu.elementskey-menu-style-vertical a {
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-vertical a {
     display: block;
     padding: 10px 14px;
     border-radius: 8px;
     transition: background 0.25s ease, color 0.25s ease;
 }
 
-.elementskey-wp-menu.elementskey-menu-style-vertical a:hover {
+.elementskey-menu-widget .elementskey-wp-menu.elementskey-menu-style-vertical a:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+/* ---------- Menu toggle (hamburger) ---------- */
+.elementskey-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.elementskey-menu-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: #1f2937;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.elementskey-menu-widget.is-open .elementskey-menu-toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.elementskey-menu-widget.is-open .elementskey-menu-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.elementskey-menu-widget.is-open .elementskey-menu-toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Responsive / mobile ---------- */
+.elementskey-menu-widget.is-mobile .elementskey-menu-toggle {
+    display: flex;
+}
+
+.elementskey-menu-widget.is-mobile .elementskey-menu-container {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(17, 24, 39, 0.12);
+    z-index: 998;
+}
+
+.elementskey-menu-widget.is-mobile.is-open > .elementskey-menu-container {
+    display: block;
+}
+
+.elementskey-menu-widget.is-mobile .elementskey-menu,
+.elementskey-menu-widget.is-mobile .elementskey-wp-menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.elementskey-menu-widget.is-mobile .elementskey-wp-menu.elementskey-menu-style-underline a::after {
+    left: 12px;
+    right: 12px;
+}
+
+/* Expand sub-menus inline instead of floating dropdowns */
+.elementskey-menu-widget.is-mobile .sub-menu {
+    position: static;
+    min-width: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0 0 0 16px;
+    margin: 4px 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+}
+
+.elementskey-menu-widget.is-mobile .sub-menu .sub-menu {
+    top: auto;
+    left: 0;
+}
+
+.elementskey-menu-widget.is-mobile .menu-item-has-children:hover > .sub-menu {
+    display: none;
+}
+
+.elementskey-menu-widget.is-mobile .menu-item-has-children.is-open > .sub-menu {
+    display: block;
 }
 
 /* ---------- Taxonomy Filter ---------- */
