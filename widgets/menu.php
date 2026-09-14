@@ -91,6 +91,19 @@ class ELEMENTSKEY_Menu_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'menu_show_caret',
+            [
+                'label' => __( 'Dropdown Indicator', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'elementskey' ),
+                'label_off' => __( 'Hide', 'elementskey' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'description' => __( 'Show the dropdown arrow next to menu items that have a submenu.', 'elementskey' ),
+            ]
+        );
+
         $this->add_responsive_control(
             'menu_align',
             [
@@ -111,6 +124,25 @@ class ELEMENTSKEY_Menu_Widget extends \Elementor\Widget_Base {
                     '{{WRAPPER}} .elementskey-menu-widget .elementskey-menu:not(.is-vertical)' => 'justify-content: {{VALUE}};',
                     '{{WRAPPER}} .elementskey-menu-widget .elementskey-menu.is-vertical' => 'align-items: {{VALUE}};',
                     '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu' => 'align-items: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_breakpoint',
+            [
+                'label' => __( 'Mobile Breakpoint', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => '',
+                'description' => __( 'Width below which the menu switches to the mobile toggle layout.', 'elementskey' ),
+                'options' => [
+                    '' => __( 'Auto (Elementor Mobile)', 'elementskey' ),
+                    '480' => '480px',
+                    '600' => '600px',
+                    '768' => '768px',
+                    '900' => '900px',
+                    '1024' => '1024px',
+                    '1200' => '1200px',
                 ],
             ]
         );
@@ -605,6 +637,68 @@ class ELEMENTSKEY_Menu_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'menu_toggle_hover_heading',
+            [
+                'label' => __( 'Hover', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'menu_toggle_background_hover',
+            [
+                'label' => __( 'Background', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-toggle:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_toggle_bar_color_hover',
+            [
+                'label' => __( 'Bar Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-toggle:hover .elementskey-menu-toggle-bar' => 'background: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_toggle_active_heading',
+            [
+                'label' => __( 'Open State', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'menu_toggle_background_active',
+            [
+                'label' => __( 'Background', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-open .elementskey-menu-toggle' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_toggle_bar_color_active',
+            [
+                'label' => __( 'Bar Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-open .elementskey-menu-toggle .elementskey-menu-toggle-bar' => 'background: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'menu_toggle_radius',
             [
@@ -617,7 +711,31 @@ class ELEMENTSKEY_Menu_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
+            'menu_toggle_margin',
+            [
+                'label' => __( 'Margin', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem', 'vw' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-toggle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_toggle_padding',
+            [
+                'label' => __( 'Padding', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-toggle' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
             'menu_toggle_align',
             [
                 'label' => __( 'Alignment', 'elementskey' ),
@@ -635,6 +753,266 @@ class ELEMENTSKEY_Menu_Widget extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .elementskey-menu-toggle' => '{{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        /* Style: Mobile Menu */
+        $this->start_controls_section(
+            'elementskey_menu_mobile_style',
+            [
+                'label' => __( 'Mobile Menu', 'elementskey' ),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_panel_width_mode',
+            [
+                'label' => __( 'Panel Width', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'full',
+                'options' => [
+                    'full' => __( 'Full Width', 'elementskey' ),
+                    'content' => __( 'Fit Content', 'elementskey' ),
+                    'custom' => __( 'Custom', 'elementskey' ),
+                ],
+                'description' => __( 'Width of the mobile dropdown panel. Full Width spans the whole widget from the left.', 'elementskey' ),
+                'selectors_dictionary' => [
+                    'full' => 'width: auto; min-width: 0; left: 0; right: 0; max-width: none;',
+                    'content' => 'width: max-content; min-width: 240px; right: auto; max-width: calc(100vw - 24px);',
+                    'custom' => 'width: 280px; min-width: 0; right: auto;',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container' => '{{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_panel_align',
+            [
+                'label' => __( 'Panel Alignment', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [ 'title' => __( 'Left', 'elementskey' ), 'icon' => 'eicon-text-align-left' ],
+                    'right' => [ 'title' => __( 'Right', 'elementskey' ), 'icon' => 'eicon-text-align-right' ],
+                ],
+                'default' => 'left',
+                'condition' => [
+                    'menu_mobile_panel_width_mode' => [ 'content', 'custom' ],
+                ],
+                'selectors_dictionary' => [
+                    'left' => 'left: 0; right: auto;',
+                    'right' => 'left: auto; right: 0;',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container' => '{{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_panel_width',
+            [
+                'label' => __( 'Custom Width', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [ 'min' => 200, 'max' => 1200 ],
+                ],
+                'default' => [ 'unit' => 'px', 'size' => 280 ],
+                'condition' => [
+                    'menu_mobile_panel_width_mode' => 'custom',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container' => 'width: {{SIZE}}{{UNIT}}; min-width: 0;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_panel_heading',
+            [
+                'label' => __( 'Panel', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_panel_background',
+            [
+                'label' => __( 'Background Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'menu_mobile_panel_border',
+                'selector' => '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_panel_radius',
+            [
+                'label' => __( 'Border Radius', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_panel_padding',
+            [
+                'label' => __( 'Padding', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'menu_mobile_panel_shadow',
+                'selector' => '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-container',
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_items_heading',
+            [
+                'label' => __( 'Menu Items', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'menu_mobile_typography',
+                'selector' => '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu a',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_item_gap',
+            [
+                'label' => __( 'Items Gap', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range' => [
+                    'px' => [ 'min' => 0, 'max' => 50 ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_item_padding',
+            [
+                'label' => __( 'Item Padding', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_caret_heading',
+            [
+                'label' => __( 'Dropdown Indicator', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_caret_color',
+            [
+                'label' => __( 'Icon Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_caret_size',
+            [
+                'label' => __( 'Icon Size', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range' => [
+                    'px' => [ 'min' => 0, 'max' => 30 ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_caret_thickness',
+            [
+                'label' => __( 'Icon Thickness', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [ 'min' => 1, 'max' => 6 ],
+                ],
+                'default' => [ 'unit' => 'px', 'size' => 2 ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'border-right-width: {{SIZE}}{{UNIT}}; border-bottom-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'menu_mobile_caret_gap',
+            [
+                'label' => __( 'Gap', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range' => [
+                    'px' => [ 'min' => 0, 'max' => 30 ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_mobile_caret_position',
+            [
+                'label' => __( 'Indicator Position', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'inline',
+                'description' => __( 'Place the dropdown indicator next to the text or push it to the right edge of the menu item.', 'elementskey' ),
+                'options' => [
+                    'inline' => __( 'Inline (Next to Text)', 'elementskey' ),
+                    'end' => __( 'Right (Text Left)', 'elementskey' ),
                 ],
             ]
         );
@@ -658,11 +1036,26 @@ class ELEMENTSKEY_Menu_Widget extends \Elementor\Widget_Base {
         $element_id  = $this->get_id();
         $breakpoint  = $this->get_mobile_breakpoint();
 
+        if ( ! empty( $settings['menu_mobile_breakpoint'] ) ) {
+            $custom_breakpoint = absint( $settings['menu_mobile_breakpoint'] );
+
+            if ( $custom_breakpoint > 0 ) {
+                $breakpoint = $custom_breakpoint;
+            }
+        }
+
+        $panel_mode  = ! empty( $settings['menu_mobile_panel_width_mode'] ) ? $settings['menu_mobile_panel_width_mode'] : 'full';
+        $panel_align = ! empty( $settings['menu_mobile_panel_align'] ) ? $settings['menu_mobile_panel_align'] : 'left';
+        $show_caret  = ! empty( $settings['menu_show_caret'] ) && 'yes' === $settings['menu_show_caret'];
+        $caret_pos   = ! empty( $settings['menu_mobile_caret_position'] ) ? $settings['menu_mobile_caret_position'] : 'inline';
+
         $this->add_render_attribute(
             'elementskey-menu-wrapper',
             [
-                'class'              => 'elementskey-menu-widget',
+                'class'              => 'elementskey-menu-widget' . ( 'end' === $caret_pos ? ' is-caret-end' : '' ),
                 'data-menu-breakpoint' => $breakpoint,
+                'data-menu-panel'      => $panel_mode,
+                'data-menu-panel-align' => $panel_align,
                 'style'              => '--elementskey-menu-breakpoint: ' . $breakpoint . 'px;',
             ]
         );
@@ -682,7 +1075,7 @@ class ELEMENTSKEY_Menu_Widget extends \Elementor\Widget_Base {
                     'menu_id'     => 'elementskey-menu-' . $element_id,
                     'fallback_cb' => false,
                     'depth'       => 3,
-                    'link_after'  => '<span class="elementskey-menu-caret" aria-hidden="true"></span>',
+                    'link_after'  => $show_caret ? '<span class="elementskey-menu-caret" aria-hidden="true"></span>' : '',
                 ] );
                 ?>
             </div>

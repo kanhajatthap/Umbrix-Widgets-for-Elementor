@@ -138,6 +138,19 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'wp_menu_show_caret',
+            [
+                'label' => __( 'Dropdown Indicator', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'elementskey' ),
+                'label_off' => __( 'Hide', 'elementskey' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'description' => __( 'Show the dropdown arrow next to menu items that have a submenu.', 'elementskey' ),
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -181,6 +194,152 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
+
+        /* Style: Submenu Indicator */
+        $this->start_controls_section(
+            'elementskey_wp_menu_caret_style',
+            [
+                'label' => __( 'Submenu Indicator', 'elementskey' ),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'wp_menu_caret_color',
+            [
+                'label' => __( 'Icon Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget .elementskey-menu-caret' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'wp_menu_caret_size',
+            [
+                'label' => __( 'Icon Size', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range' => [
+                    'px' => [ 'min' => 0, 'max' => 30 ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget .elementskey-menu-caret' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'wp_menu_caret_thickness',
+            [
+                'label' => __( 'Icon Thickness', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [ 'min' => 1, 'max' => 6 ],
+                ],
+                'default' => [ 'unit' => 'px', 'size' => 2 ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget .elementskey-menu-caret' => 'border-right-width: {{SIZE}}{{UNIT}}; border-bottom-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'wp_menu_caret_gap',
+            [
+                'label' => __( 'Gap', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range' => [
+                    'px' => [ 'min' => 0, 'max' => 30 ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget .elementskey-menu-caret' => 'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'wp_menu_mobile_caret_heading',
+            [
+                'label' => __( 'Mobile', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'wp_menu_mobile_caret_color',
+            [
+                'label' => __( 'Icon Color', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'wp_menu_mobile_caret_size',
+            [
+                'label' => __( 'Icon Size', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range' => [
+                    'px' => [ 'min' => 0, 'max' => 30 ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'wp_menu_mobile_caret_thickness',
+            [
+                'label' => __( 'Icon Thickness', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [ 'min' => 1, 'max' => 6 ],
+                ],
+                'default' => [ 'unit' => 'px', 'size' => 2 ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'border-right-width: {{SIZE}}{{UNIT}}; border-bottom-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'wp_menu_mobile_caret_gap',
+            [
+                'label' => __( 'Gap', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'em' ],
+                'range' => [
+                    'px' => [ 'min' => 0, 'max' => 30 ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementskey-menu-widget.is-mobile .elementskey-menu-caret' => 'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'wp_menu_mobile_caret_position',
+            [
+                'label' => __( 'Indicator Position', 'elementskey' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'inline',
+                'description' => __( 'Place the dropdown indicator next to the text or push it to the right edge of the menu item.', 'elementskey' ),
+                'options' => [
+                    'inline' => __( 'Inline (Next to Text)', 'elementskey' ),
+                    'end' => __( 'Right (Text Left)', 'elementskey' ),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render() {
@@ -212,18 +371,22 @@ class ELEMENTSKEY_Wp_Menu_Widget extends \Elementor\Widget_Base {
 
         $element_id = $this->get_id();
         $breakpoint = $this->get_mobile_breakpoint();
+        $caret_pos  = ! empty( $settings['wp_menu_mobile_caret_position'] ) ? $settings['wp_menu_mobile_caret_position'] : 'inline';
 
         $this->add_render_attribute(
             'elementskey-menu-wrapper',
             [
-                'class'              => 'elementskey-menu-widget',
+                'class'              => 'elementskey-menu-widget' . ( 'end' === $caret_pos ? ' is-caret-end' : '' ),
                 'data-menu-breakpoint' => $breakpoint,
                 'style'              => '--elementskey-menu-breakpoint: ' . $breakpoint . 'px;',
             ]
         );
 
         $args['menu_id']     = 'elementskey-wp-menu-' . $element_id;
-        $args['link_after']  = '<span class="elementskey-menu-caret" aria-hidden="true"></span>';
+
+        if ( ! empty( $settings['wp_menu_show_caret'] ) && 'yes' === $settings['wp_menu_show_caret'] ) {
+            $args['link_after'] = '<span class="elementskey-menu-caret" aria-hidden="true"></span>';
+        }
         ?>
         <nav <?php $this->print_render_attribute_string( 'elementskey-menu-wrapper' ); ?> aria-label="<?php esc_attr_e( 'Menu', 'elementskey' ); ?>">
             <button class="elementskey-menu-toggle" type="button" aria-label="<?php esc_attr_e( 'Toggle menu', 'elementskey' ); ?>" aria-expanded="false" aria-controls="elementskey-menu-container-<?php echo esc_attr( $element_id ); ?>">

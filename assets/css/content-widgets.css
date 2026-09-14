@@ -3188,6 +3188,11 @@ a.elementskey-icon-box:hover {
     --elementskey-menu-breakpoint: 767px;
 }
 
+.elementor-widget-elementskey_menu,
+.elementor-widget-elementskey_wp_menu {
+    position: relative;
+}
+
 .elementskey-menu-widget .elementskey-menu,
 .elementskey-menu-widget .elementskey-wp-menu {
     list-style: none;
@@ -3408,12 +3413,21 @@ a.elementskey-icon-box:hover {
     display: flex;
 }
 
+.elementskey-menu-widget.is-mobile {
+    position: static;
+}
+
 .elementskey-menu-widget.is-mobile .elementskey-menu-container {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    max-height: 70vh;
+    overflow: auto;
     padding: 12px 16px;
     background: #ffffff;
     border: 1px solid #e5e7eb;
@@ -3464,6 +3478,22 @@ a.elementskey-icon-box:hover {
 
 .elementskey-menu-widget.is-mobile .menu-item-has-children.is-open > .sub-menu {
     display: block;
+}
+
+/* Mobile: push dropdown indicator to the right edge of the menu item */
+.elementskey-menu-widget.is-mobile.is-caret-end .menu-item-has-children {
+    width: 100%;
+}
+
+.elementskey-menu-widget.is-mobile.is-caret-end .menu-item-has-children > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.elementskey-menu-widget.is-mobile.is-caret-end .menu-item-has-children > a > .elementskey-menu-caret {
+    flex-shrink: 0;
 }
 
 /* ---------- Taxonomy Filter ---------- */
