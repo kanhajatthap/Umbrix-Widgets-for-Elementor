@@ -3217,8 +3217,8 @@ a.elementskey-icon-box:hover {
     gap: 10px;
 }
 
-.elementskey-menu-widget .elementskey-menu a,
-.elementskey-menu-widget .elementskey-wp-menu a {
+.elementskey-menu-widget .elementskey-menu > li > a,
+.elementskey-menu-widget .elementskey-wp-menu > li > a {
     text-decoration: none;
     display: inline-block;
 }
@@ -3288,11 +3288,11 @@ a.elementskey-icon-box:hover {
     left: 100%;
 }
 
-.elementskey-menu-widget .sub-menu li {
+.elementskey-menu-widget .sub-menu > li {
     margin: 0;
 }
 
-.elementskey-menu-widget .sub-menu a {
+.elementskey-menu-widget .sub-menu > li > a {
     display: block;
     padding: 9px 16px;
     min-width: 100%;
@@ -3300,11 +3300,11 @@ a.elementskey-icon-box:hover {
     color: #374151;
 }
 
-.elementskey-menu-widget .sub-menu li:hover {
+.elementskey-menu-widget .sub-menu > li:hover {
     background: #f3f4f6;
 }
 
-.elementskey-menu-widget .sub-menu a:hover {
+.elementskey-menu-widget .sub-menu > li > a:hover {
     color: #1f2937;
 }
 
@@ -3494,6 +3494,173 @@ a.elementskey-icon-box:hover {
 
 .elementskey-menu-widget.is-mobile.is-caret-end .menu-item-has-children > a > .elementskey-menu-caret {
     flex-shrink: 0;
+}
+
+/* Mega Menu */
+.elementskey-menu-widget .sub-menu.elementskey-mega-menu-sub {
+    min-width: max-content;
+    width: max-content;
+    max-width: min(920px, calc(100vw - 32px));
+    padding: 0;
+    overflow: visible;
+}
+
+.elementskey-menu-widget .elementskey-mega-menu-content {
+    padding: 0;
+}
+
+.elementskey-menu-widget.is-mega-center .elementskey-mega-menu-sub {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, 8px);
+}
+
+.elementskey-menu-widget.is-mega-center .menu-item-has-children:hover > .elementskey-mega-menu-sub,
+.elementskey-menu-widget.is-mega-center .menu-item-has-children.is-open > .elementskey-mega-menu-sub {
+    transform: translate(-50%, 0);
+}
+
+.elementskey-menu-widget.is-mobile .sub-menu.elementskey-mega-menu-sub {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    left: 0;
+    right: auto;
+    transform: none;
+}
+
+.elementskey-menu-widget.is-mobile.is-mega-center .elementskey-mega-menu-sub {
+    left: auto;
+    right: auto;
+    transform: none;
+}
+
+/* Mega Menu: click trigger */
+.elementskey-menu-widget[data-menu-trigger="click"] .menu-item-has-children:hover > .sub-menu:not(.elementskey-mega-menu-sub) {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+}
+
+.elementskey-menu-widget[data-menu-trigger="click"] .menu-item-has-children.is-open > .sub-menu:not(.elementskey-mega-menu-sub),
+.elementskey-menu-widget[data-menu-trigger="click"] .menu-item-has-children.is-open > .elementskey-mega-menu-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.elementskey-menu-widget[data-menu-trigger="click"] .menu-item-has-children.is-open > .elementskey-mega-menu-sub {
+    transform: translateY(0);
+}
+
+.elementskey-menu-widget.is-mega-center[data-menu-trigger="click"] .menu-item-has-children.is-open > .elementskey-mega-menu-sub {
+    transform: translate(-50%, 0);
+}
+
+.elementskey-menu-widget.is-mega-center[data-menu-trigger="click"] .menu-item-has-children:not(.is-open) > .elementskey-mega-menu-sub,
+.elementskey-menu-widget.is-mega-center[data-menu-trigger="click"] .menu-item-has-children:not(.is-open) > .sub-menu:not(.elementskey-mega-menu-sub) {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 8px);
+}
+
+.elementskey-menu-widget[data-menu-trigger="click"] .menu-item-has-children:not(.is-open) > .elementskey-mega-menu-sub {
+    transform: translateY(8px);
+}
+
+.elementskey-menu-widget.is-mega-center[data-menu-trigger="click"] .menu-item-has-children:not(.is-open) > .elementskey-mega-menu-sub {
+    transform: translate(-50%, 8px);
+}
+
+/* Mega Menu: menu item icon */
+.elementskey-menu-widget .elementskey-mega-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 1em;
+}
+
+.elementskey-menu-widget .elementskey-mega-icon i,
+.elementskey-menu-widget .elementskey-mega-icon svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+}
+
+/* Mega Menu: menu item badge */
+.elementskey-menu-widget .elementskey-menu-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #4361ee;
+    border-radius: 999px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* Mega Menu: full width panel spans the whole widget */
+.elementskey-menu-widget .elementskey-mega-menu-item.elementskey-mega-full {
+    position: static;
+}
+
+.elementskey-menu-widget .elementskey-mega-menu-item.elementskey-mega-full > .sub-menu {
+    top: 100%;
+    left: 50%;
+    right: 50%;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.elementskey-menu-widget.is-mega-center .elementskey-mega-menu-item.elementskey-mega-full > .sub-menu {
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    transform: none;
+}
+
+.elementskey-menu-widget.is-mega-center .elementskey-mega-menu-item.elementskey-mega-full:hover > .sub-menu,
+.elementskey-menu-widget.is-mega-center .elementskey-mega-menu-item.elementskey-mega-full.is-open > .sub-menu {
+    transform: none;
+}
+
+.elementskey-menu-widget.is-mega-center[data-menu-trigger="click"] .elementskey-mega-menu-item.elementskey-mega-full > .sub-menu:not(.is-open) {
+    transform: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Mega Menu: panel widths */
+.elementskey-menu-widget .sub-menu.elementskey-mega-menu-sub.is-mega-auto {
+    min-width: max-content;
+    max-width: min(920px, calc(100vw - 32px));
+}
+
+.elementskey-menu-widget.is-mobile .elementskey-mega-menu-item.elementskey-mega-full {
+    position: relative;
+}
+
+.elementskey-menu-widget.is-mobile .elementskey-mega-menu-item.elementskey-mega-full > .sub-menu {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    left: 0;
+    right: auto;
+    top: 100%;
+}
+
+/* Mega Menu: hide template panels on mobile */
+.elementskey-menu-widget.is-hide-mobile-template.is-mobile .elementskey-mega-menu-item > .sub-menu.elementskey-mega-menu-sub {
+    display: none;
 }
 
 /* ---------- Taxonomy Filter ---------- */

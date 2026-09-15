@@ -14,7 +14,7 @@ abstract class ThemeBuilderDocument extends \Elementor\Core\DocumentTypes\PageBa
         $properties = parent::get_properties();
 
         $properties['admin_tab_group']          = 'theme';
-        $properties['support_kit']              = false;
+        $properties['support_kit']              = true;
         $properties['show_in_library']          = true;
         $properties['support_wp_page']          = false;
         $properties['support_wp_page_templates'] = false;

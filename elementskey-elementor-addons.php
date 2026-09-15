@@ -235,6 +235,7 @@ function elementskey_get_default_widget_status() {
         'video_playlist' => 1,
         'progress_tracker' => 1,
         'menu_widget' => 1,
+        'mega_menu' => 1,
         'taxonomy_filter' => 1,
         'link_in_bio' => 1,
         'site_logo' => 1,
@@ -480,6 +481,10 @@ function elementskey_get_widget_definitions() {
             'label' => 'Menu',
             'class' => 'ELEMENTSKEY_Menu_Widget',
         ],
+        'mega_menu' => [
+            'label' => 'Mega Menu',
+            'class' => 'ELEMENTSKEY_Mega_Menu_Widget',
+        ],
         'taxonomy_filter' => [
             'label' => 'Taxonomy Filter',
             'class' => 'ELEMENTSKEY_Taxonomy_Filter_Widget',
@@ -624,6 +629,7 @@ function elementskey_register_widgets( $widgets_manager ) {
     require_once( ELEMENTSKEY_PATH . 'widgets/video-playlist.php' );
     require_once( ELEMENTSKEY_PATH . 'widgets/progress-tracker.php' );
     require_once( ELEMENTSKEY_PATH . 'widgets/menu.php' );
+    require_once( ELEMENTSKEY_PATH . 'widgets/mega-menu.php' );
     require_once( ELEMENTSKEY_PATH . 'widgets/taxonomy-filter.php' );
     require_once( ELEMENTSKEY_PATH . 'widgets/link-in-bio.php' );
     require_once( ELEMENTSKEY_PATH . 'widgets/site-logo.php' );
@@ -724,6 +730,7 @@ function elementskey_get_widget_descriptions() {
         'video_playlist' => 'Video player with a clickable playlist of YouTube/Vimeo items.',
         'progress_tracker' => 'Animated linear progress bar with label and percentage.',
         'menu' => 'Display a WordPress navigation menu horizontally or vertically.',
+        'mega_menu' => 'Mega menu with Elementor template dropdowns assigned per menu item.',
         'taxonomy_filter' => 'Term filter buttons or dropdown for any taxonomy.',
         'link_in_bio' => 'Centered avatar, bio and vertical link buttons layout.',
         'site_logo' => 'Show the site custom logo with fallback to site name.',
